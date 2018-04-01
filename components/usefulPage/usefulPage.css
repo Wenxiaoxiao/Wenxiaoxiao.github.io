@@ -1,0 +1,18 @@
+.itemBranch{
+ margin-left: 10px;
+ margin-right:10px;
+ background:lightcyan;
+ -webkit-background-size:cover;
+ background-size:cover;
+}
+.allBranch{
+ margin-left: 10px;
+ margin-right:10px;
+ background:pink;
+ -webkit-background-size:cover;
+ background-size:cover;
+}
+.colorItem{
+ width:100px;
+ height:100px;
+}

@@ -1,11 +1,57 @@
-
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html ng-app="enjoy">
 <head>
-	<title>我的个人主页</title>
-	<link rel="stylesheet" href="index.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>enjoy</title>
+    <link rel="stylesheet" href="components/contentPage/contentPage.css" />
+    <link rel="stylesheet" href="components/homePage/homePage.css" />
+    <link rel="stylesheet" href="components/suggestionPage/suggestionPage.css" />
+    <link rel="stylesheet" href="components/usefulPage/usefulPage.css" />
+    <link rel="stylesheet" href="components/yearMonthPlugin/yearMonthPlugin.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/swiper-3.4.1.min.css" />
 </head>
 <body>
-
+	<div id="wrap">
+		<div id="main" ui-view></div>
+		<div id="tab">
+			<ul>
+				<li><a href="" ui-sref="homePage">首页</a></li>
+				<li><a href="" ui-sref="contentPage">内容</a></li>
+				<li><a href="" ui-sref="usefulPage">精选</a></li>
+				<li><a href="" ui-sref="suggestionPage">建议</a></li>
+			</ul>
+		</div>
+	</div>
 </body>
+<script src="js/libs/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/libs/angular.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/libs/angular-css.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/libs/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/libs/swiper-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/libs/me-lazyload.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="app.js" type="text/javascript" charset="utf-8"></script>
+<script src="components/contentPage/contentPage.js" type="text/javascript" charset="utf-8"></script>
+<script src="components/homePage/homePage.js" type="text/javascript" charset="utf-8"></script>
+<script src="components/suggestionPage/suggestionPage.js" type="text/javascript" charset="utf-8"></script>
+<script src="components/usefulPage/usefulPage.js" type="text/javascript" charset="utf-8"></script>
+<script src="components/yearMonthPlugin/yearMonthPlugin.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/libs/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 </html>
+<script type="text/javascript">
+	/*初始化swiper*/
+	$('#tab>ul>li').on('click',function(){
+		setTimeout(function(){
+			var mySwiper = new Swiper ('.swiper-container', {
+		      loop: true,
+		      autoplay:2000,
+		      pagination: '.swiper-pagination',
+		      autoplayDisableOnInteraction:false,
+		      paginationClickable:true
+		    })
+		},0)
+	})
+</script>
