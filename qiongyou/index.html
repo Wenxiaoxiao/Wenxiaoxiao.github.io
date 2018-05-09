@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最世界自由行</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+</head>
+<body>
+    <header>
+        <ul class="u1">
+            <li>目的地</li>
+            <li>锦囊</li>
+            <li>行程助手</li>
+            <li>社区
+                <ul class="u2">
+                    <li>旅行论坛<span></span>
+                        <div class="threeBox">
+                            <img src="img/hhhh.jpg" alt="">
+                        </div>
+                    </li>
+                    <li>旅行问答</li>
+                    <li>JNE旅行生活美学</li>
+                    <li>特别策划</li>
+                </ul>
+            </li>
+            <li>最世界<span></span>自由行</li>
+            <li>机票</li>
+            <li>酒店</li>
+            <li>预订
+                <ul class="u3">
+                    <li><a href="">特价酒店</a><span></span></li>
+                    <li><a href="">Airbnb</a></li>
+                    <li><a href="">保险</a></li>
+                    <li><a href="">华人旅馆</a></li>
+                    <li><a href="">邮轮</a></li>
+                    <li><a href="">租车</a></li>
+                </ul>
+            </li>
+        </ul>
+        <a href="">登录</a><a href="">注册</a><a href=""></a><a href=""></a><a href=""></a>
+        <input type="submit" value="">
+        <input type="search" value="">
+    </header>
+    <div class="search">
+        <img src="img/index-logo.png" alt="">
+        <input type="search" placeholder="搜索国家、城市、产品">
+        <input type="submit" value="搜索">
+        <div class="right">
+            <div class="phone">
+                <img src="img/phone.jpg" alt="">
+                <span>APP</span>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li>首页</li>
+            <li>机酒自由行</li>
+            <li>城市玩乐
+                <img src="img/wanletag.gif" alt=""><span></span>
+            </li>
+            <li>签证</li>
+            <li>租车自驾</li>
+            <li>邮轮</li>
+            <li>海岛游</li>
+            <li>限时特卖</li>
+            <li>特色线路</li>
+            <li>CityWlak</li>
+        </ul>
+    </nav>
+    <div class="outter">
+        <div class="swiper-container" id="banner">
+            <div class="swiper-wrapper">
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination" id="banner_page"></div>
+            <!--如果需要导航按钮-->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <!--如果需要滚动条-->
+            <div class="swiper-scrollbar"></div>
+        </div>
+        <ul class="citys">
+        </ul>
+    </div>
+    <div class="main">
+        <div class="tab_img">
+            <a href="#"><img src="img/t1.jpg" alt=""></a><a href="#"><img src="img/t2.jpg" alt=""></a><a href="#"><img src="img/t3.jpg" alt=""></a><a
+                href="#"><img src="img/t4.jpg" alt=""></a>
+        </div>
+        <div class="sold">
+            <h2>限时特卖</h2>
+            <p>每日必看的特价精选<a href="#"><img src="img/chang1.png" alt=""></a></p>
+            <div class="clear"></div>
+            <dl>
+                <dt><img src="img/s1.jpg"></dt>
+                <dd>
+                    <p>【清明/五一/端午假期】深圳直飞岘港4-5天自由行(超值...<!--特惠，赠接送机--></p>
+                    <p><span>1960</span>元起</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt><img src="img/s2.jpg"></dt>
+                <dd>
+                    <p>【五一/端午】北京/上海/广州/香港往返巴厘岛5-7天<!--自由-->...<!--行(人气五星INAYA/帕特拉/多星级酒店可选+赠接送机+含早餐)--></p>
+                    <p><span>3399</span>元起</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt><img src="img/s3.jpg"></dt>
+                <dd>
+                    <p>【清明/五一/端午】上海/杭州/成都/宁波/重庆直飞芽...<!--庄4-6天自由行(赠接送机+多酒店可选/可选五星酒店)--></p>
+                    <p><span>2099</span>元起</p>
+                </dd>
+            </dl>
+        </div>
+        <div class="hotel">
+            <h2>机酒自由行<span>精选全球最优质机票、酒店、邮轮等旅行产品</span></h2>
+            <ul class="hotelLists">
+
+            </ul>
+            <div class="clear"></div>
+            <div class="tab_hotel"></div>
+        </div>
+        <div class="hotel">
+            <h2>城市玩乐<span>像当地人一样，体验最本土的吃喝玩乐</span></h2>
+            <ul class="hotelLists" id="hotelLists1">
+
+            </ul>
+            <div class="clear"></div>
+            <div class="tab_hotel"></div>
+        </div>
+        <div class="hotel">
+            <h2>主题推荐<span>亲子、蜜月、个性玩法…你想要的这里都有</span></h2>
+            <ul class="hotelLists" id="hotelLists">
+
+            </ul>
+            <div class="clear"></div>
+            <div class="tab_hotel" id="tab_hotel"></div>
+        </div>
+    </div>
+    <footer>
+        <div class="foot1">
+            <ul class="footnav">
+                <li><a href="#">机酒自由行</a></li>
+                <li><a href="#">城市玩乐</a></li>
+                <li><a href="#">签证</a></li>
+                <li><a href="#">租车自驾</a></li>
+                <li><a href="#">邮轮</a></li>
+                <li><a href="#">海岛游</a></li>
+                <li><a href="#">限时特卖</a></li>
+                <li><a href="#">特色线路</a></li>
+                <li><a href="#">CityWalk</a></li>
+            </ul>
+            <dl class="d1">
+                <dt></dt>
+                <dd>
+                    <h5>专业保证</h5>
+                    <p>我们收集穷游er的真实诉求，也找寻全世界最独特的</p>
+                    <p>旅行目的地，让更多的穷游er轻松出行</p>
+                </dd>
+            </dl>
+            <dl class="d2">
+                <dt></dt>
+                <dd>
+                    <h5>多重审核</h5>
+                    <p>对旅游产品供应商严格筛选，资质认证层层把关，</p>
+                    <p>为穷游er精挑细选最值得信赖的旅行产品</p>
+                </dd>
+            </dl>
+            <dl class="d3">
+                <dt></dt>
+                <dd>
+                    <h5>安心陪护</h5>
+                    <p>对所有穷游er的购买进行跟踪服务以及质量监控，有</p>
+                    <p>效投诉先行赔付，出现任何问题负责到底</p>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="foot2">
+            <p>最世界·自由行——从一张机票、一家酒店的订购，到一次暖心的接机服务、一张轻松融入当地的交通卡，让我们带你探索这个世界</p>
+            <ul class="footnav2">
+                <li>关注我们<a href="#"></a><img src="img/last1.jpg" alt=""></li>
+                <li><a href="#"></a><img src="img/last2.jpg" alt=""></li>
+                <li><a href="#"></a><img src="img/last3.jpg" alt=""></li>
+                <li><a href="#"></a><img src="img/last4.jpg" alt=""></li>
+            </ul>
+            <div class="clear"></div>
+            <ul class="footnav3">
+                <li><a href="#">关于最世界·自由行</a></li>
+                <li><a href="#">服务与隐私</a></li>
+                <li><a href="#"> 联系我们</a></li>
+                <li><a href="#">旅游度假资质</a></li>
+                <li><a href="#">营业执照</a></li>
+                <li><a href="#"> 投诉建议</a></li>
+            </ul>
+            <p>2004-2017 © 穷游网™ qyer.com All rights reserved. Version v5.57 京ICP备12003524号 京公网安备11010502023470 京ICP证140673号</p>
+            <ul class="footnav4">
+                <li>友情链接：<a href="#">美国旅游</a></li>
+                <li><a href="#">房车租赁</a></li>
+                <li><a href="#">旅行工具</a></li>
+                <li><a href="#">美规车网</a></li>
+            </ul>
+        </div>
+    </footer>
+    <div class="side">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"><a href=""></a></div>
+
+    </div>
+
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

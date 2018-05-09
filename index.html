@@ -1,60 +1,93 @@
 <!DOCTYPE html>
-<html ng-app="enjoy">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>enjoy</title>
-    <link rel="stylesheet" href="components/contentPage/contentPage.css" />
-    <link rel="stylesheet" href="components/homePage/homePage.css" />
-    <link rel="stylesheet" href="components/suggestionPage/suggestionPage.css" />
-    <link rel="stylesheet" href="components/usefulPage/usefulPage.css" />
-    <link rel="stylesheet" href="components/yearMonthPlugin/yearMonthPlugin.css" />
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/swiper-3.4.1.min.css" />
-</head>
-<body>
-	<div id="wrap">
-		<div id="main" ui-view></div>
-		<div id="tab">
-			<ul>
-				<li><a href="" ui-sref="homePage">首页</a></li>
-				<li><a href="" ui-sref="contentPage">内容</a></li>
-				<li><a href="" ui-sref="usefulPage">精选</a></li>
-				<li><a href="" ui-sref="suggestionPage">建议</a></li>
-			</ul>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="angular/css/swiper-3.4.1.min.css" />
+		<script src="angular/js/libs/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="angular/js/libs/swiper-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			background: linear-gradient(to bottom right ,#dcc8b5,#b8c6c8);
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#banner .swiper-container {
+	      width: 100%;
+	      margin:auto;
+	      padding: 50px 0;
+	    }
+	    #banner .swiper-slide {
+	      background-position: center;
+	      background-size: cover;
+	      width: 250px;
+	      height: 300px;
+	      padding: 20px;
+	      border-radius: 5px;
+	    }
+	    #banner .swiper-slide a{
+	    	display: block;
+	    	width: 100%;
+	    	height: 30px;
+	    	background: #fff;
+	    	text-decoration: none;
+	    	color:lightseagreen;
+	    	line-height: 30px;
+	    	text-align: center;
+	    	text-align: -moz-center;
+	    	text-align: -webkit-center;
+	    	margin-bottom: 20px;
+	    }
+	    #footer{
+	    	text-align: center;
+	    }
+	</style>
+	<body>
+		<div id="banner">
+			<!-- Swiper -->
+		  <div class="swiper-container">
+		    <div class="swiper-wrapper">
+		            <div class="swiper-slide" style="background:lightseagreen;">
+		            	<a href="angular/index.html">angular项目</a>
+		            	<a href="animate/index.html">动态效果</a>
+		            	<a href="qiongyou/index.html">穷游最世界</a>
+		            </div>
+		            <div class="swiper-slide" style="background:lightsalmon;"></div>
+		            <div class="swiper-slide" style="background:lawngreen;"></div>
+		            <div class="swiper-slide" style="background:lightslategray;"></div>
+		    </div>
+		    <!-- Add Pagination -->
+		    <div class="swiper-pagination"></div>
+		  </div>
 		</div>
-	</div>
-</body>
-<script src="js/libs/jquery.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/libs/angular.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/libs/angular-css.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/libs/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/libs/swiper-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/libs/me-lazyload.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/libs/ucd.svg.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/libs/inspireCircle.js" type="text/javascript" charset="utf-8"></script>
-
-
-<script src="app.js" type="text/javascript" charset="utf-8"></script>
-<script src="components/contentPage/contentPage.js" type="text/javascript" charset="utf-8"></script>
-<script src="components/homePage/homePage.js" type="text/javascript" charset="utf-8"></script>
-<script src="components/suggestionPage/suggestionPage.js" type="text/javascript" charset="utf-8"></script>
-<script src="components/usefulPage/usefulPage.js" type="text/javascript" charset="utf-8"></script>
-<script src="components/yearMonthPlugin/yearMonthPlugin.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/libs/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<div id="footer">
+			Copyright &copy;2018 文小芳
+		</div>
+		<script>
+		    var swiper = new Swiper('.swiper-container', {
+		      effect: 'coverflow',
+		      grabCursor: true,
+		      /*autoplay:2000,*/
+		      centeredSlides: true,
+		      slidesPerView: 'auto',
+		      coverflowEffect: {
+		        rotate: 50,
+		        stretch: 0,
+		        depth: 100,
+		        modifier: 1,
+		        slideShadows : true,
+		      },
+		      pagination: {
+		        el: '.swiper-pagination',
+		      },
+		    });
+		</script>
+	</body>
 </html>
-<script type="text/javascript">
-	/*初始化swiper*/
-	$('#tab>ul>li').on('click',function(){
-		setTimeout(function(){
-			var mySwiper = new Swiper ('.swiper-container', {
-		      loop: true,
-		      autoplay:2000,
-		      pagination: '.swiper-pagination',
-		      autoplayDisableOnInteraction:false,
-		      paginationClickable:true
-		    })
-		},0)
-	})
-</script>

@@ -5,3 +5,6 @@
     color: #fff;
 } 
 #hbanner .swiper-pagination-bullet{background:#fff !important;}
+#hbanner .swiper-slide img{
+	width: 100%;
+}

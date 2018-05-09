@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title></title>
+ </head>
+ <style type="text/css">
+  *{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+  }
+  html,body{
+   width: 100%;
+   height: 100%;
+   background: #ccc;
+  }
+  .ASRbox{
+   width: 1520px;
+   height:auto;
+  }
+  .ASRbox>div>h5{
+   width:13.6%;
+   height: 40px;
+   font-size: 16px;
+   color: #333333;
+   font-weight: bold;
+   text-indent: 25px;
+   background: url(img/app.png) left 2px no-repeat;
+   background-size: 20px 20px;
+  }
+  .abilityDescription{
+   padding: 20px;
+   background: #fff;
+   border-radius: 15px;
+  }
+  .historyVersion{
+   padding: 20px;
+   background: #fff;
+   border-radius: 15px;
+   margin-top: 20px;
+  }
+  .SDKversion{
+   padding: 20px;
+   background: #fff;
+   border-radius: 15px;
+   margin-top: 20px;
+   position: relative;
+  }
+  .SDKversion table,.abilityDescription table{
+   border-collapse: collapse;
+   width: 100%;
+   font-size: 12px;
+  }
+  .SDKversion table tr td,.abilityDescription table tr td{
+   border:1px solid #d8d8d8;
+  }
+  .SDKversion table tr td:nth-child(1),.abilityDescription table tr td:nth-child(1){
+       text-indent: 20px;
+       line-height: 39px;
+       background: #f4f4f4;
+       width: 13.6%;
+       color: #343434;
+       min-width: 200px;
+  }
+  .SDKversion table tr td:nth-child(2),.abilityDescription table tr td:nth-child(2){
+   line-height: 39px;
+      padding-left: 20px;
+      color: #666666;
+      word-wrap: break-word;
+      max-width: 1280px;
+  }
+  .SDKversion>.btns{
+   width:86.4%;
+   position: absolute;
+      top: 20px;
+      right: 20px;
+  }
+  .SDKversion>.btns>div{
+   float: right;
+   background: #1d8af1;
+   margin-left: 15px;
+   color: #fff;
+   width: 110px;
+   height: 30px;
+   line-height: 30px;
+   border-radius: 3px;
+   text-indent: 39px;
+   font-size: 13px;
+  }
+  .SDKversion>.btns>div:nth-child(2){
+   width: 85px;
+   background:url(other.png) 14px center no-repeat #1d8af1;
+  }
+  .SDKversion>.btns>div:nth-child(1){
+   background:url(img/download.png) 14px center no-repeat #1d8af1;
+   background-size: 20px 20px;
+  }
+  .SDKversion>.btns>div:nth-child(3){
+   background:url(img/link.png) 14px center no-repeat #1d8af1;
+   background-size: 20px 20px;
+  }
+  .SDKversion>.btns>div:nth-child(4){
+   background:url(开发指南.png) 14px center no-repeat #1d8af1;
+  }
+  .SDKversion>.btns>div:nth-child(5){
+   background:url(API文档.png) 14px center no-repeat #1d8af1;
+  }
+  .SDKversion>.btns>div:nth-child(6){
+   background:url(SDK下载.png) 14px center no-repeat #1d8af1;
+  }
+  #numberData h3{
+   color: #333333;
+   height: 40px;
+   line-height: 40px;
+   background: url(版本-bj2.png);
+   margin-top: 20px;
+   font-size: 12px;
+   text-indent: 20px;
+  }
+  #numberData1 h3{
+   margin-top: 0;
+  }
+  #numberData table{
+   display:none;
+   width: 100%;
+   margin-left: 6px;
+   margin-top: 10px;
+   border-collapse: collapse;
+  }
+  #numberData table tbody{
+   width: 100%;
+  }
+  #numberData table tr{
+   width: 100%;
+  }
+  #numberData table th{
+   font-size: 12px;
+      text-indent: 20px;
+      text-align: left;
+      font-weight: normal;
+   height: 40px;
+   background: #eeeeee;
+   border: 1px solid #d8d8d8;
+  }
+  #numberData table td{
+   font-size: 12px;
+      text-indent: 20px;
+      text-align: left;
+      font-weight: normal;
+   height: 88px;
+   border: 1px solid #d8d8d8;
+  }
+  #numberData table th:nth-child(1){
+   width:240px;
+  }
+  #numberData table th:nth-child(2){
+   width:178px;
+  }
+  #numberData table th:nth-child(3){
+   width:184px;
+  }
+  #numberData table th:nth-child(4){
+   width:318px;
+  }
+  #numberData table th:nth-child(5){
+   width:528px;
+  }
+  #numberData .btns>div{
+   float: left;
+   background: #1d8af1;
+   margin-left: 15px;
+   color: #fff;
+   width: 110px;
+   height: 30px;
+   line-height: 30px;
+   border-radius: 3px;
+   text-indent: 39px;
+   font-size: 13px;
+  }
+  #numberData .btns>div:nth-child(1){
+   background:url(SDK下载.png) 14px center no-repeat #1d8af1;
+  }
+  #numberData .btns>div:nth-child(2){
+   background:url(API文档.png) 14px center no-repeat #1d8af1;
+  }
+  #numberData .btns>div:nth-child(3){
+   background:url(开发指南.png) 14px center no-repeat #1d8af1;
+  }
+  #numberData .btns>div:nth-child(4){
+   background:url(API.png) 14px center no-repeat #1d8af1;
+  }
+  #numberData>div{
+   position: relative;
+   padding-left: 24px;
+  }
+  #numberData>div>div{
+   position: absolute;
+   top: 0;
+   left:0;
+   width:24px;
+   height:40px;
+   background: url(版本-收起.png) center no-repeat;
+  }
+  #numberData>div>span{
+   display: block;
+   position: absolute;
+   top:28px;
+   left:11px;
+   border-left: 1px dashed #adadad;
+   border-right: 1px dashed #adadad;
+  }
+ </style>
+ <script src="../angular/js/libs/jquery.js" type="text/javascript" charset="utf-8"></script>
+ <body>
+  <div class="ASRbox">
+   <div class="abilityDescription">
+    <h5>能力介绍</h5>
+    <table>
+     <tr>
+      <td>能力名称</td>
+      <td>ASR</td>
+     </tr>
+     <tr>
+      <td>能力简介</td>
+      <td>ASR</td>
+     </tr>
+     <tr>
+      <td>责任人</td>
+      <td>ASR</td>
+     </tr>
+     <tr>
+      <td>商业目标</td>
+      <td>ASR</td>
+     </tr>
+     <tr>
+      <td>体验目标</td>
+      <td>ASR</td>
+     </tr>
+     <tr>
+      <td>竞争力</td>
+      <td>ASR</td>
+     </tr>
+     <tr>
+      <td>产品支持度</td>
+      <td>ASR</td>
+     </tr>
+     <tr>
+      <td>EMUI版本</td>
+      <td>ASR</td>
+     </tr>
+     <tr>
+      <td>能力开放部门</td>
+      <td>ASR</td>
+     </tr>
+    </table>
+   </div>
+   <div class="SDKversion">
+    <h5>SDK版本</h5>
+    <div class="btns">
+     <div>批量下载</div>
+     <div>其他</div>
+     <div>API清单</div>
+     <div>开发指南</div>
+     <div>API文档</div>
+     <div>SDK下载</div>
+    </div>
+    <table>
+     <tr>
+      <td>能力名称</td>
+      <td>ASR</td>
+     </tr>
+     <tr>
+      <td>能力简介</td>
+      <td>ASR</td>
+     </tr>
+     <tr>
+      <td>责任人</td>
+      <td>ASR</td>
+     </tr>
+     <tr>
+      <td>商业目标</td>
+      <td>ASR</td>
+     </tr> 
+    </table>
+   </div>
+   <div class="historyVersion">
+    <h5>历史版本</h5>
+    <div id="numberData">
+     <div id="numberData1">
+      <h3>1.2.2版本</h3>
+      <table border="0" cellspacing="0" cellpadding="0">
+       <tr>
+        <th>版本号</th>
+        <th>发布时间</th>
+        <th>责任人</th>
+        <th>功能点</th>
+        <th>操作</th>
+       </tr>
+       <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td class="btns">
+         <div>SDK下载</div>
+         <div>API文档</div>
+         <div>开发指南</div>
+         <div>API清单</div>
+        </td>
+       </tr>
+      </table>
+      <div></div>
+      <span></span>
+     </div>
+     <div id="numberData2">
+      <h3>1.2.0版本</h3>
+      <table border="0" cellspacing="0" cellpadding="0">
+       <tr>
+        <th>版本号</th>
+        <th>发布时间</th>
+        <th>责任人</th>
+        <th>功能点</th>
+        <th>操作</th>
+       </tr>
+       <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td class="btns">
+         <div>SDK下载</div>
+         <div>API文档</div>
+         <div>开发指南</div>
+         <div>API清单</div>
+        </td>
+       </tr>
+      </table>
+      <div></div>
+      <span></span>
+     </div>
+     <div id="numberData3">
+      <h3>1.1.0版本</h3>
+      <table border="0" cellspacing="0" cellpadding="0">
+       <tr>
+        <th>版本号</th>
+        <th>发布时间</th>
+        <th>责任人</th>
+        <th>功能点</th>
+        <th>操作</th>
+       </tr>
+       <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td class="btns">
+         <div>SDK下载</div>
+         <div>API文档</div>
+         <div>开发指南</div>
+         <div>API清单</div>
+        </td>
+       </tr>
+      </table>
+      <div></div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
+<script type="text/javascript">
+ $('#numberData h3').on('click',function(){
+  if($(this).siblings()[0].style.display=="block"){
+   $(this).siblings()[0].style.display="none";
+   $(this)[0].style.background='url(版本-bj2.png)';
+   $(this).parent().find('div')[4].style.background='url(版本-收起.png) center no-repeat';
+  }else{
+   $(this).siblings()[0].style.display="block";
+   $(this)[0].style.background='url(版本-bj1.png)';
+   $(this).parent().find('div')[4].style.background='url(版本-展开.png) center no-repeat';
+  }
+  drawLine();
+ })
+ function drawLine(){
+  var Dheight1=$('#numberData1')[0].offsetHeight+20-32+20;
+  $('#numberData1>span')[0].style.height=Dheight1+'px';
+
+  var Dheight2=$('#numberData2')[0].offsetHeight+20-32+20;
+  $('#numberData2>span')[0].style.height=Dheight2+'px';
+ }
+ drawLine();
+</script>
+
