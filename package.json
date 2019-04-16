@@ -117,8 +117,8 @@
       "node"
     ],
     "watchPlugins": [
-      "E:\\PHPstudy\\A_190401\\react-antd-less\\node_modules\\jest-watch-typeahead\\filename.js",
-      "E:\\PHPstudy\\A_190401\\react-antd-less\\node_modules\\jest-watch-typeahead\\testname.js"
+      "E:\\devoutact\\node_modules\\jest-watch-typeahead\\filename.js",
+      "E:\\devoutact\\node_modules\\jest-watch-typeahead\\testname.js"
     ]
   },
   "babel": {
