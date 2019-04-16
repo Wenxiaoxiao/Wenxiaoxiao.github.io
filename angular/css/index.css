@@ -1,0 +1,41 @@
+#wrap{
+	height: 100%;
+	width:100%;	
+	position:relative;
+}
+#main{
+	height:885px;
+	width:100%;
+	top:50px;
+	position: absolute;
+	overflow: auto;
+}
+#tab{
+	height:50px;
+	width:100%;
+	position:absolute;
+	top: 0;
+}
+#tab ul{
+	height: 100%;
+	width:100%;
+}
+#tab ul li{
+	width:25%;
+	height: 100%;
+	float: left;
+}
+#tab ul li a{
+	display: block;
+	height: 50px;
+	width:100%;
+	line-height: 50px;
+	font-size:18px;
+	text-align: center;
+	color:#fff;
+	background:#ade6ad;
+}
+body{
+	/*background: linear-gradient(to bottom right ,#dcc8b5,#b8c6c8);*/
+}
+

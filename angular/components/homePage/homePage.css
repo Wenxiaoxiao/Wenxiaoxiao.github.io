@@ -1,0 +1,10 @@
+#hbanner{height:300px;width:100%;}
+#hbanner .swiper-container {
+    width:100%;
+    height: 100%;
+    color: #fff;
+} 
+#hbanner .swiper-pagination-bullet{background:#fff !important;}
+#hbanner .swiper-slide img{
+	width: 100%;
+}
