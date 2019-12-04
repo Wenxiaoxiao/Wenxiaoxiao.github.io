@@ -93,7 +93,7 @@ function testApp1(){
                 window.location.href = "weixin://"; // iOS端URL Scheme，和Xcode中的设置保持一致
                 window.setTimeout(function() {
                     window.location = "http://weixin.qq.com/"; // appstore下载地址
-                },  2000);
+                },2000);
 
         } else if (navigator.userAgent.match(/(android|Android);?/i)) {
                 window.location.href = "weixin://"; // Android端URL Scheme
