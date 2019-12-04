@@ -79,11 +79,31 @@
         <p onclick="copywx()" class="copy"><a href="javascript:openApp()">复制并跳转微信3</a></p>
         <p onclick="copywx()" class="copy"><a id="open_btn">复制并跳转微信4</a></p>
         <p onclick="copywx()" class="copy"><a href="javascript:openApp1('weixin://','http://weixin.qq.com/')">复制并跳转微信5</a></p>
+        <p onclick="copywx()" class="copy"><a href="javascript:testApp1()">复制并跳转微信6</a></p>
         <div onclick="closeshow()" class="closeshow pull-right guanbi">x</div>
     </div>
 </body>
 </html>
 <script type="text/javascript">
+function testApp1(){
+    (function () {
+        var name,value;
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+                // iOS设备
+                window.location.href = "weixin://"; // iOS端URL Scheme，和Xcode中的设置保持一致
+                window.setTimeout(function() {
+                    window.location = "http://weixin.qq.com/"; // appstore下载地址
+                },  2000);
+
+        } else if (navigator.userAgent.match(/(android|Android);?/i)) {
+                window.location.href = "weixin://"; // Android端URL Scheme
+                window.setTimeout(function(){
+                    window.location = "http://weixin.qq.com/"; // Android apk下载地址
+                },2000);
+        }
+
+    })()
+}
 /* 检测是否安装了微信*/
 function testApp(url) {  
     var timeout, t = 1000, hasApp = true;  
@@ -205,11 +225,12 @@ function openApp1(openUrl, callback) {
     ifr.style.display = 'none';
     if (callback) {
         checkOpen(function (opened) {//checkOpen中的cbk参数 = function (opened)
-            if(opened == 0){
+            if(opened === 0){
                 //用户没有安装app 可以请求下载地址并跳转 跳转方法：window.location.href 即可
                 window.location.href = "http://weixin.qq.com/"
-            }else if(opened ==1){
+            }else if(opened ===1){
                 //用户打开了app  用户有安装app 
+                window.location.href = "weixin://"
             }
         });
         }
