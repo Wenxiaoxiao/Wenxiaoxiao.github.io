@@ -85,12 +85,15 @@
 <script type="text/javascript">
 /* 检测是否安装了微信*/
 function testApp(url) { 
-  var timeout, t = 500, hasApp = true; 
+  var timeout, t = 1000, hasApp = true; 
   setTimeout(function () {
-    if (hasApp) { 
-      alert('安装了app'); 
+    if (!hasApp) { 
+        var r=confirm("您没有安装微信，请先安装微信!");
+        if (r==true){
+            location.href="http://weixin.qq.com/"
+        }
     } else { 
-      alert('未安装app'); 
+        location.href=url
     } 
     document.body.removeChild(ifr); 
   }, 5000) 
