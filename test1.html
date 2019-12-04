@@ -87,13 +87,11 @@
 function testApp(url) { 
   var timeout, t = 1000, hasApp = true; 
   setTimeout(function () { 
-    if (!hasApp) { 
-        //alert('未安装app');
-        var r=confirm("您没有安装微信，请先安装微信!");
-        if (r==true){
-            location.href="http://weixin.qq.com/"
-        }
-    }
+    if (hasApp) { 
+      alert('安装了app'); 
+    } else { 
+      alert('未安装app'); 
+    } 
     document.body.removeChild(ifr); 
   }, 2000) 
   
