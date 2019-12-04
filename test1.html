@@ -139,8 +139,8 @@ function openApp(){
     }
 };
 //  判断是否安装了 微信
-var app_links = "http://weixin.qq.com/",
-    url_scheme = "weixin://";
+var app_links = "weixin://",
+    url_scheme = "http://weixin.qq.com/";
 // app link
 function deeplink() {
     if (/MicroMessenger/i.test(navigator.userAgent)) {
