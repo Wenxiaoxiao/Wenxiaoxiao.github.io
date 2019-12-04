@@ -78,6 +78,7 @@
         <p onclick="copywx()" class="copy"><a href="weixin://">复制并跳转微信1</a></p>
         <p onclick="copywx()" class="copy"><a href="javascript:testApp('weixin://')">复制并跳转微信2</a></p>
         <p onclick="copywx()" class="copy"><a href="javascript:openApp()">复制并跳转微信3</a></p>
+        <p onclick="copywx()" class="copy"><a id="open_btn">复制并跳转微信4</a></p>
         <div onclick="closeshow()" class="closeshow pull-right guanbi">x</div>
     </div>
 </body>
@@ -137,6 +138,41 @@ function openApp(){
 	    }
     }
 };
+//  判断是否安装了 微信
+var app_links = "http://weixin.qq.com/",
+    url_scheme = "weixin://";
+// app link
+function deeplink() {
+    if (/MicroMessenger/i.test(navigator.userAgent)) {
+        console.log("aaa");
+        window.location.href = app_links;
+    } else {
+        console.log("bbb");
+        window.location.href = url_scheme;
+        var ifr = document.createElement("iframe");
+        ifr.src = url_scheme;
+        ifr.style.display = "none"
+        document.body.appendChild(ifr);
+        window.setTimeout(function () {
+            document.body.removeChild(ifr);
+            if (!document.hidden) {
+                window.location.href = app_links;
+            }
+        }, 2000)
+    }
+}
+//调用方法
+//js调用
+var open_btn = document.getElementById("open_btn");
+open_btn.onclick = function () {
+    deeplink();
+};
+//jQuery调用
+// $(document).ready(function () {
+//     $('#open-btn').on('click', function () {
+//         deeplink();
+//     });
+// })
  /*点击复制微信号*/
  function copywx(){
     const range = document.createRange();
