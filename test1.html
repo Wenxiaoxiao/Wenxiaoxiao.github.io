@@ -243,7 +243,9 @@ function openApp1(openUrl, callback) {
  function copywx(){
     const range = document.createRange();
     range.selectNode(document.getElementById('copy_content'));
+    console.log("range",range);
     const selection = window.getSelection();
+    console.log("selection",selection);
     if(selection.rangeCount > 0) selection.removeAllRanges();
     selection.addRange(range);
     document.execCommand('copy');

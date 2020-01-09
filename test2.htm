@@ -1,0 +1,53 @@
+<script src="${res}/js/jquery.jplayer.min.js" type="text/javascript"></script>
+<!-- 公司首字母列表 -->
+<script type="text/html" id="companyInitial">
+    {{each data as k i}}
+    <li data-type="{{k}}">{{k}}</li>
+    {{/each}}
+</script>
+<!-- 公司列表 -->
+<script type="text/html" id="companyList">
+    {{each data as k i}}
+    <div class="com-item">
+        <div class="com-img">
+            {{if k.logo[0]}}
+            <img src="{{k.logo[0].url}}">
+            {{/if}}
+            <p>{{k.shortName}}</p>
+        </div>
+        <div class="com-info">
+            <p>{{k.resume}}</p>
+            {{if k.logo[0]}}
+            <button data-company='{"logo":"{{k.logo[0].url}}","name":"{{k.name}}","detail":"{{k.detail}}","shortName":"{{k.shortName}}"}' target="_blank">查看{{k.shortName}}产品</button>
+            {{/if}}
+        </div>
+    </div>
+    {{/each}}
+</script>
+
+<script src="${res}/js/jquery.jplayer.min.js" type="text/javascript"></script>
+<!-- 公司首字母列表 -->
+<script type="text/html" id="companyInitial">
+    <% for(var i = 0; i < data.length; i++) { %>
+        <li data-type="<%= data[i] %>"><%= data[i] %></li>
+    <% } %>
+</script>
+<!-- 公司列表 -->
+<script type="text/html" id="companyList">
+    <%for(var i = 0; i < data.length; i++) {%>
+        <div class="com-item">
+            <div class="com-img">
+                <% if (data[i].logo[0]){ %>
+                <img src="<%= data[i].logo[0].url %>">
+                <% } %>
+                <p><%= data[i].shortName %></p>
+            </div>
+            <div class="com-info">
+                <p><%= data[i].resume %></p>
+                <% if (data[i].logo[0]){ %>
+                <button data-company='{"logo":"<%= data[i].logo[0].url %>","name":"<%= data[i].name %>","detail":"<%= data[i].detail %>","shortName":"<%= data[i].shortName %>"}' target="_blank">查看<%= data[i].shortName %>产品</button>
+                <% } %>
+            </div>
+        </div>
+    <%}%>
+</script>

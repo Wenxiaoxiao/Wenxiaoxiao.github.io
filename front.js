@@ -467,3 +467,4 @@ Cms.MobileUA=function(){
     mua.SMART_PHONE = mua.MOBILE && !mua.TABLET;  
     return mua;  
 }
+
