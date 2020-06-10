@@ -1,0 +1,15 @@
+$baseFontSize: 75;
+$font-size-base: 16px; //基础字体大小
+@function r($px){//$px为需要转换的字号
+    @return $px / $baseFontSize * 1rem;
+}
+@mixin px2rems($pxs){
+    @each $key, $value in $pxs{
+        #{$key}: $value/$baseFontSize * 1rem;
+    }
+}
+.personal-center-wrapper{
+    width:r(750);
+    height:r(200);
+    background:#ff0;
+}
