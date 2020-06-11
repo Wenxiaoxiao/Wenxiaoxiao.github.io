@@ -1,0 +1,63 @@
+<header class="layout-header">
+    <div class="header">
+        <a class="a_left">
+            <span class="icon iconfont icon-jiantouzuo drawer"></span>
+        </a>
+        <div class="logo-title">
+            @@title
+        </div>
+        <div class="btns">
+            <span id="icon-icon11" class="icon iconfont icon-gengduo2 drawer"></span>
+        </div>
+    </div>
+</header>
+<div class="xrk-header-pull-bg"></div>
+<div class="xrk-header-pull ">
+    <img content="img-t" src="https://www.wts999.com/r/cms/www/mobile/images/icon_up.png" class="pull-up">
+    <a>
+        <div>官网首页</div>
+    </a>
+    <a>
+        <div>保险商城</div>
+    </a>
+    <a>
+        <div>梧优理赔</div>
+    </a>
+    <a>
+        <div>保险顾问</div>
+    </a>
+    <a>
+        <div>管家服务</div>
+    </a>
+    <a>
+        <div>方案定制</div>
+    </a>
+    <a>
+        <div>个人中</div>
+    </a>
+    <a>
+        <div>在线客服</div>
+    </a>
+</div>
+
+<script>
+    $(function () {
+        //菜单
+        $("#icon-icon11").on("click", function () {
+            $(".xrk-header-pull-bg").show();
+            $(".xrk-header-pull").addClass("active");
+        });
+        $(".xrk-header-pull-bg").on("click", function () {
+            $(".xrk-header-pull-bg").hide();
+            $(".xrk-header-pull").removeClass("active");
+        });
+        $(".a_left").click(function(){
+            var history = window.history;
+            if (history.length > 1) {
+                window.history.go(-1)
+            } else {
+                location.href = "https://www.wts999.com/"
+            }
+        })
+    })
+</script>
