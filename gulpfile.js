@@ -52,7 +52,7 @@ gulp.task('browserSync', function() {
 gulp.task('watch',gulp.series(function(ab){
     gulp.watch(['m/**/*.html'],gulp.series('task-dev'));
     gulp.watch(['m/lib/*.js'],gulp.series('task-dev'));
-    gulp.watch(['./sass/main/**/*.scss'],gulp.series('task-dev'));
+    gulp.watch(['sass/**/*.scss'],gulp.series('task-dev'));
     ab()
     // gulp.watch('dist/**/*.html', browserSync.reload);
     // gulp.watch('dist/**/*.js', browserSync.reload);
