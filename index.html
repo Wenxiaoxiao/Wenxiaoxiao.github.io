@@ -70,3 +70,12 @@
 </div>
 </body>
 </html>
+<script src="./common.js"></script>
+<script type="text/javascript">
+var now = new Date();
+var endTime = Number(now.getTime())+Number(1000*10);
+var seconds = countDown(endTime,callback);
+function callback(seconds){
+	console.log(seconds);
+}
+</script>
