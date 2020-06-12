@@ -42,21 +42,6 @@ gulp.task('copy:ico', function() {
 });
 
 // Watchers
-// gulp.task('watch',gulp.series(function(done){
-//      w('m/**/*.html', 'fileinclude');
-//     w('m/lib/*.js', 'js');
-//     w('m/lib/*.js', 'js-lint');
-//     w('./sass/main/**/*.scss', 'sass');
-
-//     function w(path,task){
-//         gulp.watch(path,[task]);
-//         // watch(path, function (done) {
-//         //     // gulp.start(task);
-//         //     // done();
-//         // });
-//     }
-//     done()
-// }))
 gulp.task('browserSync', function() {
     browserSync.init({
         server: {
@@ -115,7 +100,7 @@ gulp.task('js-lint', function(cb) {
 });
 //scss
 gulp.task('sass', function(ab) {
-    gulp.src('./sass/main/**/*.scss')
+    gulp.src('sass/**/*.scss')
         .pipe(plumber())
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(sass())
@@ -147,7 +132,7 @@ gulp.task('fileinclude_build', function() {
 });
 //scss
 gulp.task('sass_build', function() {
-    gulp.src('./sass/main/**/*.scss')
+    gulp.src('sass/**/*.scss')
         .pipe(plumber())
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(sass())
@@ -196,7 +181,6 @@ var options = minimist(process.argv.slice(2), {string: ["rev"]});
 //     NODE_ENV='0';
 //     //因为我没有你的gulpfile.js,所以我只能尝试使用gulp.series和gulp.parallel与你的gulp任务而不是run-sequence
 //     //runSequence('task-dev','watch');
-    
 //     ab()
 // }); 
 gulp.task('default', gulp.series('task-dev','watch',function (done) {
