@@ -7,6 +7,7 @@ const fileinclude = require('gulp-file-include'); //html合并
 const del = require('del'); //删除
 const runSequence = require('run-sequence'); //控制多个任务进行顺序执行
 // const compass = require('gulp-compass'); //scss合并
+var browserSync = require('browser-sync');
 const plumber = require('gulp-plumber'); //错误处理
 const preprocess = require("gulp-preprocess"); //js模板处理
 const stripDebug = require('gulp-strip-debug'); //去掉打印
@@ -56,20 +57,23 @@ gulp.task('copy:ico', function() {
 //     }
 //     done()
 // }))
-gulp.task('watch', function () {
-    w('m/**/*.html', 'fileinclude');
-    w('m/lib/*.js', 'js');
-    w('m/lib/*.js', 'js-lint');
-    w('./sass/main/**/*.scss', 'sass');
-
-    function w(path,task){
-        // gulp.watch(path,[task]);
-        watch(path, function (done) {
-            gulp.start(task);
-            // done();
-        });
-    }
+gulp.task('browserSync', function() {
+    browserSync.init({
+        server: {
+            baseDir: './dist'
+        }
+    })
 });
+gulp.task('watch',gulp.series(function(ab){
+    gulp.watch(['m/**/*.html'],gulp.series('task-dev'));
+    gulp.watch(['m/lib/*.js'],gulp.series('task-dev'));
+    gulp.watch(['./sass/main/**/*.scss'],gulp.series('task-dev'));
+    ab()
+    // gulp.watch('dist/**/*.html', browserSync.reload);
+    // gulp.watch('dist/**/*.js', browserSync.reload);
+    // gulp.watch('dist/**/*.js', browserSync.reload);
+    // gulp.watch('dist/**/*.css', browserSync.reload);
+}));
 // gulp.task('start', gulp.series(gulp.parallel(connectServe, watchCode, openInBrowser)));
 // 测试环境
 // html模板
@@ -186,23 +190,6 @@ gulp.task('task-lint', gulp.series('sass','fileinclude', 'copy','copy:ico','js-l
 gulp.task('task-build', gulp.series('clean','sass_build', 'fileinclude_build','copy','copy:ico','js_build','js_exclude', function (done) {
     done();
 }));
-// gulp.task('watch',gulp.series(function(ab){
-//     gulp.watch([
-//         'm/**/*.html',
-//         'm/**/*.htm',
-//         'm/lib/*.js',
-//         'm/sass/**/*.scss',
-//     ], ['task-dev']);
-//     ab()
-// }));
-// gulp.task("watch",gulp.series(function(ab){
-//     gulp.watch('m/**/*.html','m/**/*.htm','m/lib/*.js','m/sass/**/*.scss',gulp.series("task-dev"))
-//     ab()
-// }))
-// gulp.task("watch",function (done) {
-//     gulp.watch('m/**/*.html','m/**/*.htm','m/lib/*.js','m/sass/**/*.scss',gulp.series("task-dev"))
-//     done()
-// });
 
 var options = minimist(process.argv.slice(2), {string: ["rev"]});
 // gulp.task('default', function(ab){
@@ -214,6 +201,7 @@ var options = minimist(process.argv.slice(2), {string: ["rev"]});
 // }); 
 gulp.task('default', gulp.series('task-dev','watch',function (done) {
     done();
+    // runSequence(['browserSync', 'watch'], done);
 }));
 //测试环境
 gulp.task('dev', gulp.series('clean','sass', 'fileinclude', 'copy', 'copy:ico','js', function (done) {
