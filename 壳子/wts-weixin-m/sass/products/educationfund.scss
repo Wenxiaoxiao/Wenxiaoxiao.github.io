@@ -1,0 +1,481 @@
+.educationfund{
+  body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, span, textarea, p, blockquote, a, th, td, header, nav, section, article, aside, footer, figure, figcaption, menu, button {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: inherit;
+  }
+  .orange{
+    color:#ff7200;
+  }
+  padding-bottom:r(30);
+  background:#fff;
+  .top{
+    width:r(750);
+    height:r(324);
+    background: url("../images/educationfund/1.png") no-repeat;
+    background-size:100% 100%;
+    .toptxt{
+      padding-left:r(42);
+      color:#fff;
+      height:r(64);
+      line-height:r(64);
+      .s24{
+        font-size:r(24);
+        margin-right:r(10);
+        display:inline-block;
+      }
+      .s23{
+        font-size:r(23);
+        margin-left:r(10);
+        display:inline-block;
+        margin-right:r(7);
+      }
+      .link{
+        width:r(25);
+        height:r(25);
+        vertical-align: middle;
+        img{
+          width:r(25);
+        }
+      }
+    }
+  }
+  .header{
+    width:r(690);
+    height:r(240);
+    background:#fff;
+    box-shadow: r(0) r(0) r(4) rgba(0,0,0,0.1);
+    border-radius:r(10);
+    margin:r(-70) auto r(39);
+    padding:r(44) r(0) r(44) r(35);
+    &>div{
+      line-height:r(57);
+      font-size:r(27);
+      &>img{
+        width:r(28);
+        height:r(28);
+        vertical-align: middle;
+      }
+    }
+  }
+  .hide{
+    display:none;
+  }
+  #InsurederList{
+    padding:r(0) r(30);
+    position: relative;
+    max-height:r(86);
+    height:r(86);
+    width:10rem;
+    overflow: hidden;
+    // height:r(398);
+    .nameList{
+      height:r(84);
+      overflow-x: auto;
+      width:r(690);
+      white-space: nowrap;
+      // overflow-y: hidden;
+      // padding-bottom:r(20);
+      .name{
+        font-size:r(28);
+        padding:r(10) r(20);
+        height:r(62);
+        border-radius:r(10);
+        border:r(2) solid #dcdcdc;
+        color:#666;
+        background:#fff;
+        display:inline-block;
+        position: relative;
+      }
+      .name.active{
+        background:#4580f6;
+        color:#fff;
+        border:r(2) solid #4580f6;
+        &>.tri{
+          width: 0;
+          height: 0;
+          border: r(20) solid;
+          border-color: transparent transparent #e5eeff;
+          position: absolute;
+          bottom:r(-24);
+          left:50%;
+          transform:translateX(-50%);
+        }
+      }
+    }
+  }
+  #chosedInsureder{
+    margin:r(0) auto;
+    margin-top:r(-2);
+    width:r(690);
+    height:r(318);
+    background:#fff;
+    position: relative;
+    .errorMessage{
+      width:r(690);
+      height:r(120);
+      border-radius:r(10);
+      position: absolute;
+      background:#e5eeff;
+      padding:r(20);
+      font-size:r(31);
+    }
+    .list_p{
+      width:r(690);
+      height:r(220);
+      border-radius:r(10);
+      position: absolute;
+      background:#e5eeff;
+      .guarantees{
+        background:#e5eeff;
+        line-height:r(64);
+        font-size:r(31);
+        padding:r(20);
+        border-radius:r(10);
+        position: absolute;
+        width:r(690);
+        height:r(220);
+        &>.guarantee2{
+          font-size:r(26);
+          overflow: hidden;
+          .s1{
+            float:left;
+          }
+          .s2{
+            float:right;
+          }
+        }
+        &>.guarantee4{
+          font-size:r(26);
+          overflow: hidden;
+          .s1{
+            float:left;
+          }
+          .s2{
+            float:right;
+          }
+        }
+      }
+      .next{
+        font-size:r(32);
+        line-height:r(98);
+        position: absolute;
+        bottom:r(-98);
+      }
+    }
+  }
+  .minHeight{
+    height:r(120) !important;
+    margin-bottom:r(20) !important;
+  }
+  .detail{
+    width:r(690);
+    min-height: r(258);
+    background:#fff5ee;
+    margin:0 auto;
+    text-align:center;
+    padding-top:r(50);
+    padding-bottom:r(10);
+    position: relative;
+    margin-bottom:r(20);
+    &>.lookdetail{
+      position: absolute;
+      top:r(20);
+      right:r(20);
+      font-size:r(24);
+      color:#666;
+    }
+    &>.t_d1{
+      font-size:r(27);
+    }
+    &>.t_d2{
+      font-size:r(42);
+      margin:r(10) auto r(10);
+      font-weight:bold;
+    }
+    &>.t_d3{
+      padding:0 r(20);
+      font-size:r(26);
+      overflow:hidden;
+      line-height:r(64);
+      .s1{
+        float:left;
+      }
+      .s2{
+        float:right;
+      }
+    }
+  }
+  .detail.error-detail{
+    height:auto;
+    min-height:r(100);
+    line-height:r(50);
+    color:#4d4d4d;
+    padding-top:r(30);
+    padding-left:r(20);
+    padding-right:r(20);
+    border-radius:r(10);
+    .change{
+      font-size:r(24);
+      color:#333;
+      text-align:center;
+    }
+  }
+  .measureBox{
+    min-height:r(400);
+    background:#fff;
+    padding:r(20) r(30) r(30);
+    &>.div{
+      height:r(90);
+      line-height:r(90);
+      border-bottom:r(1) solid #ddd;
+      overflow: hidden;
+      &>.left{
+        float:left;
+      }
+      &>.right{
+        float:right;
+      }
+      &>.design-input,&>.design-select{
+        direction: rtl;
+        height:r(90);
+        border:none;
+        text-align:right;
+        padding-right:r(34);
+        display:block;
+        background:#fff;
+        background:url('../images/educationfund/rightarrow.png') right center no-repeat;
+        background-size:r(15) r(26);
+      }
+      &>.design-select{
+        width:r(150);
+      }
+      &>.addAndde{
+        margin-top:r(16);
+        // border:r(1) solid #e5e5e5;
+        height:r(58);
+        // border-radius:r(10);
+        line-height:r(58);
+        overflow: hidden;
+        .deAmount,.addAmount{
+          width:r(52);
+          display:block;
+          float:left;
+          text-align:center;
+          height:r(54);
+          line-height:r(54);
+        }
+        .amount{
+          width:r(168);
+          border:none;
+          border-top:r(2) solid #e5e5e5;
+          border-bottom:r(2) solid #e5e5e5;
+          display:block;
+          float:left;
+          text-align:center;
+          height:r(54);
+          line-height:r(54);
+        }
+      }
+    }
+    &>.insureStyle{
+      border:none;
+    }
+    .yhq_box{
+      font-size:r(25);
+      color:#ff7200;
+      height:r(58);
+      line-height:r(58);
+      text-align:center;
+      &>img{
+        width:r(30);
+        height:r(22);
+        margin-right:r(12);
+      }
+    }
+    .submitbtn{
+      height:r(90);
+      line-height:r(90);
+      width:r(690);
+      background:#4580f6;
+      color:#fff;
+      border-radius:r(10);
+      font-size:r(32);
+      text-align:center;
+    }
+  }
+  .space{
+    width:r(750);
+    height:r(18);
+    background:#f5f5f5;
+  }
+  .banner{
+    width:r(750);
+    height:r(324);
+    padding:r(0) r(30);
+    .title{
+      font-size:r(32);
+      line-height:r(98);
+    }
+    &>img{
+      width:r(690);
+    }
+  }
+  .bottom{
+    width:r(750);
+    min-height:r(300);
+    background:#fff;
+    padding:r(0) r(30);
+    &>.title{
+      font-size:r(32);
+      line-height:r(98);
+    }
+    &>.box{
+      border-radius:r(10);
+      overflow: hidden;
+      box-shadow: r(0) r(0) r(4) rgba(0,0,0,0.1);
+      height:r(452);
+      &>.box-top{
+        height:r(218);
+        background:#fff5ee;
+        overflow: hidden;
+        padding-top:r(34);
+        &>div{
+          width:33.33%;
+          float:left;
+          &>img{
+            height:r(62);
+            display:block;
+            margin:0 auto;
+          }
+          &>.box_s1{
+            font-size:r(29);
+            display:block;
+            text-align: center;
+            margin:r(23) r(0) r(10);
+          }
+          &>.box_s2{
+            font-size:r(22);
+            color:#666;
+            display:block;
+            text-align: center;
+          }
+        }
+      }
+      &>.box-bottom{
+        height:r(243);
+        background:#fff;
+        font-size:r(25);
+        padding-top:r(19);
+        padding-left:r(25);
+        padding-right:r(25);
+        &>.list_d{
+          line-height:r(64);
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .marquee {
+          width: 100%;
+          height:r(243);
+          align-items: center;
+          // background-color: #fdfbde;
+          display: flex;
+          box-sizing: border-box;
+          margin-top:r(10);
+          .marquee_box {
+              display: block;
+              position: relative;
+              width: 100%;
+              height:r(243);
+              overflow: hidden;
+          }
+        }
+        .lists{
+          font-size:r(26);
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width:100%;
+          animation: marquee 4s linear infinite;
+          &>.list_d{
+            line-height:r(64);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+        @keyframes marquee {
+          0% { top:0; }
+          100% { top:r(-192); }
+        }
+        // .marquee {
+        //   width: 100%;
+        //   height:r(243);
+        //   &>.list_d{
+        //     line-height:r(64);
+        //   }
+        // }
+      }
+    }
+  }
+  .detailModal{
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    &>.close{
+      position:fixed;
+      top:31%;
+      left:80%;
+    }
+    &>.bg{
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.5);
+    }
+    &>.content{
+      padding:r(30);
+      width:r(540);
+      height:r(374);
+      border-radius:r(10);
+      background:#fff;
+      position:fixed;
+      top:30%;
+      left:50%;
+      transform: translateX(-50%);
+      .tit{
+        font-size:r(32);
+        &>span{
+          background:#4580f6;
+          margin-right:r(9);
+          width:r(10);
+          height:r(10);
+          display:inline-block;
+          vertical-align: middle;
+          border-radius:50%;
+        }
+      }
+      .con-box{
+        .item{
+          overflow: hidden;
+          padding:r(13) 0;
+          .label{
+            font-size:r(26);
+            color:#666;
+            float:left;
+          }
+          .con{
+            width:r(303);
+            font-size:r(26);
+            float:right;
+          }
+        }
+      }
+    }
+  }
+}

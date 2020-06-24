@@ -1,0 +1,112 @@
+.phone-doctor-orderDetail {
+    font-size: r(32);
+    height: 100%;
+    overflow-y: auto;
+    a {
+        text-decoration: underline;
+    }
+    .title {
+        padding: r(20) r(30) r(10);
+    }
+    .box {
+        background: #fff;
+        padding: r(30);
+        line-height: 2;
+        .icon {
+            width: r(100);
+            vertical-align: middle;
+        }
+        .name {
+            display: inline-block;
+            margin-left: r(15);
+            font-weight: bold;
+            font-size: r(40);
+        }
+        .key {
+            display: inline-block;
+            width: r(150);
+        }
+        .blue {
+            color: #4580f6;
+        }
+        .gray {
+            color: #666;
+        }
+    }
+    .info-text {
+        padding: 0 r(30);
+        color: #666;
+        &.mt {
+            margin-top: r(20);
+        }
+    }
+    .explain {
+        line-height: 1.5;
+        word-break: break-all;
+    }
+    .telMe {
+        position: fixed;
+        bottom: r(15);
+        text-align: center;
+        width: 10rem;
+        display: block;
+    }
+    @media screen and (max-height: 600px) {
+        .telMe {
+            position: static;
+            line-height: 2;
+        }
+    }
+    .hide-dom {
+        display: none;
+    }
+    &.showState1 {
+        .state1 {
+            display: block;
+        }
+        .state1.inline {
+            display: inline-block;
+        }
+    }
+    &.showState2 {
+        .state2 {
+            display: block;
+        }
+        .state2.inline {
+            display: inline-block;
+        }
+    }
+    &.showState3 {
+        .state3 {
+            display: block;
+        }
+        .state3.inline {
+            display: inline-block;
+        }
+    }
+    &.showState4 {
+        .state4 {
+            display: block;
+        }
+        .state4.inline {
+            display: inline-block;
+        }
+    }
+    &.showState5 {
+        .state5 {
+            display: block;
+        }
+        .state5.inline {
+            display: inline-block;
+        }
+    }
+    a,
+    .openPDF {
+        color: #4580f6;
+        text-decoration: underline;
+    }
+    .openPDF {
+        text-align: center;
+        margin-top: r(25);
+    }
+}

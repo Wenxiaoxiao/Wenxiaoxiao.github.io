@@ -1,0 +1,68 @@
+.healthy{
+
+  @include remCalc(padding,20,40);
+  h2{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    @include remCalc(font-size,40);
+    color: #75d339;
+  }
+  .health-title{
+    background-color: transparent;
+    color: #75d339;
+  }
+  .text{
+    font-size: 12px;
+    line-height: 1.6;
+    color: #666;
+  }
+  .healthy-btns{
+    padding: 10px 0;
+    text-align: center;
+    .btn-left,.btn-right{
+      display: inline-block;
+      @include remCalc(padding,10,30);
+      color: #666;
+      border: 1px solid $cpBaseCol;
+      @include border-radius(40px);
+      @include remCalc(font-size,28);
+      margin: 0 5px;
+    }
+    .btn-right{
+      border:0;
+      text-decoration: underline;
+    }
+  }
+
+  //新增健康告知题目样式
+  .items{
+    @include remCalc(font-size,28);
+    line-height: r(50);
+    min-height: r(50);
+  }
+  .lables{
+    line-height: r(50);
+    height: auto;
+  }
+  .from-right{
+    height: r(50);
+    line-height: r(50);
+  }
+  .form-center{
+    display: block;
+    text-align: center;
+    float: none;
+    width: r(400);
+    margin: 0 auto;
+  }
+  .input-text{
+    @include remCalc(font-size,28);
+    height: r(50);
+    line-height: r(50);
+  }
+}
+.premium.healthy{
+  padding: 0;
+  background-color: #fff;
+}

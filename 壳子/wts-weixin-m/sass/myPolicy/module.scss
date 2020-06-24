@@ -1,0 +1,73 @@
+/*模板类*/
+
+
+/*复选框*/
+.lz-radio{
+  position: relative;
+  -webkit-appearance: none;
+  @include remCalc(width,40);
+  @include remCalc(height,40);
+  background-color: transparent;
+  border: none;
+}
+.lz-radio:before{
+  content: "\e623";
+  display: inline-block;
+  font-family:"iconfont" !important;
+  font-size: r(30);;
+  @include remCalc(line-height,40);
+  text-align: center;
+  @include remCalc(width,40);
+  @include remCalc(height,40);
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  color: #fff;
+  opacity: 1;
+  top: r(10);
+  right: 0;
+  @include border-radius(50%);
+}
+.radios:before{
+    margin-top:r(16);
+}
+.lz-radio2:before{
+   top: r(0); 
+}
+.lz-radio:checked::before{
+  background-color: $baseColor;
+  border: 1px solid $baseColor;
+}
+
+/*多选框*/
+.lz-checkbox{
+  position: relative;
+  -webkit-appearance: none;
+  @include remCalc(width,46);
+  @include remCalc(height,46);
+  background-color: transparent;
+  border: none;
+}
+.lz-checkbox:before{
+  content: "\e64e";
+  display: inline-block;
+  font-family:"iconfont" !important;
+  font-size: r(32);;
+  @include remCalc(line-height,36);
+  text-align: center;
+  @include remCalc(width,36);
+  @include remCalc(height,36);
+  background-color: #fff;
+  color: #fff;
+  border: 1px solid #ccc;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: r(6);
+//@include border-radius(50%);
+}
+.lz-checkbox:checked::before{
+  color:$baseColor;
+  background-color: #fff;
+  border: 1px solid $baseColor;
+}

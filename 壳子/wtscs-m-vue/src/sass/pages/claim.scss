@@ -1,0 +1,167 @@
+.claim-container{
+  height: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 45px;
+  .gyInfo{
+      width: 100%;
+      background: #fff;
+      .gyHeader{
+          padding-top: r(25);
+          padding-bottom: r(15);
+          li{
+              float: left;
+              width: 25%;
+              text-align: center;
+              img{
+                  width: r(94);
+              }
+              p{
+                  font-size: r(25);
+                  line-height: r(40);
+              }
+          }
+      }
+      .gyImg{
+          img{
+              width: 100%;
+          }
+      }
+      .gyTieshi{
+          padding: r(20);
+            .gyTieshiInfo{
+                padding: r(20);
+                padding-top: r(80);
+                background: url("~@/app4_7/lp09.png") no-repeat;
+                background-size:100% 100%; 
+                border-radius: r(10);
+                overflow: hidden;
+                position: relative;
+                .gyTieshiInfo_title{
+                   position: absolute; 
+                   width: 100%;
+                   left: 0;
+                   top: 0;
+                }
+            }
+          ul{
+              padding:0 r(25);
+              background: #fff;
+              border-radius: r(10);
+           li{
+               font-size: r(28);
+               line-height: r(45);
+               border-bottom: 1px solid #dddddd;
+               &:nth-last-of-type(1){
+                   border:none;
+               }
+               .title{
+                   padding: r(20) 0;
+                   position: relative;
+                   color: #3982f7;
+                   line-height: r(50);
+                   .pic{
+                   float: left;
+                   img{
+                       width: r(48);
+                       display: block;
+                   }
+               }
+               .desc{
+                   float: left;
+                   padding-left: r(18);
+               }
+               .icons{
+                   float: left;
+                   position: absolute;
+                   right: 0;
+                   top: r(20);
+               }
+               }
+               .content{
+                   padding-bottom: r(20);
+                   font-size: r(28);
+                //    display: none;
+               }
+           }
+          }
+      }
+  }
+  .title{
+    font-size: r(33);
+    font-weight: 900;
+    padding: r(20);
+    padding-bottom: r(0);
+}
+.view-container{
+    margin-top: 10px;
+}
+
+.share-detail{
+  .title-h3 {
+      font-size: r(32);
+      text-align: center;
+      h3 {
+        display: inline-block;
+        position: relative;
+        height: r(56);
+        line-height: r(56);
+        font-weight: 900;
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          height: 2px;
+          width: r(62);
+          background-color: #e2e2e2;
+          margin-top: -1px;
+        }
+        &::before {
+          left: r(-92);
+        }
+        &::after {
+          right: r(-92);
+        }
+      }
+    } 
+  .banner-box{
+      background-color: #fff;
+      padding: r(20) r(10);
+      .banner-pic{
+          width: 100%;
+          height: r(260);
+          position: relative;
+          img{
+              display: block;
+              width: 100%;
+              height: 100%;
+          }
+          .bottom{
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              height: r(76);
+              line-height: r(56);
+              background: url(~@/filter-bg.png) no-repeat center;
+              background-size: 100% 100%;
+              padding: r(20) r(15) 0;
+              font-size: r(30);
+              .pro-title{
+                  color: #fff;
+              }
+              .amount{
+                  color: #ffaf23
+              }
+          }
+      }
+  }
+  .article-box{
+      padding: r(20) 0;
+      background-color: #fff;
+      margin-top: r(15);
+  }
+}
+}

@@ -1,0 +1,109 @@
+.products-payStatus {
+    text-align: center;
+    color: #000;
+    height: 100%;
+    .panel {
+        background: #ffa418;
+        height: r(500);
+        padding-top: r(80);
+        .icon {
+            width: r(44);
+            vertical-align: middle;
+        }
+        .text1 {
+            font-size: r(46);
+            color: #fff;
+            display: inline-block;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+    }
+    .bottom-box {
+        position: relative;
+        top: r(-300);
+        box-shadow: 3px 3px 8px 0 rgba(0,0,0,0.1);
+        margin: 0 r(40) r(30);
+        padding-top: r(40);
+        background: #fff6e8;
+        border-radius: 5px;
+        .text2 {
+            font-size: r(34);
+            font-weight: 700;
+            span {
+                color: #ff793d;
+                margin-left: 1px;
+            }
+        }
+        .text3 {
+            font-size: r(28);
+            color: #666;
+            margin-top: 3px;
+        }
+        .box {
+            margin-top: r(40);
+            background: #fff;
+            border-radius: 5px;
+            padding: r(40);
+            box-shadow: inherit;
+            .code {
+                box-shadow: inherit;
+                width: r(441);
+                vertical-align: top;
+                margin-top: r(40);
+                margin-bottom: r(40);
+            }
+            .text4 {
+                font-size: r(28);
+            }
+            .text5 {
+                font-size: r(28);
+                vertical-align: top;
+            }
+            .a {
+                font-size: r(28);
+                color: #ff793d;
+                vertical-align: top;
+            }
+        }
+    }
+    
+    
+}
+.products-payStatus.error {
+    min-height: 100vh;
+    background: #fff;
+    .panel {
+        height: r(310);
+        padding-top: r(110);
+        .text2 {
+            font-size: r(28);
+            color: #fff;
+            vertical-align: top;
+        }
+    }
+    .bottom-box {
+        position: static;
+        background: transparent;
+        padding: 0;
+        box-shadow:none;
+        .a {
+            font-size: r(28); 
+            vertical-align: top;
+            color: #ff793d;
+        }
+        .btn {
+            background: #ffa418;
+            line-height: r(100);
+            height: r(100);
+            text-align: center;
+            font-size: r(34);
+            color: #fff;
+            margin-top: r(90);
+            margin-left: r(50);
+            margin-right: r(50);
+            border-radius: 5px;
+            margin-bottom: r(30);
+        }
+    }
+    
+}

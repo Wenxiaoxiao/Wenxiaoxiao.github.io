@@ -1,0 +1,237 @@
+.kefu{
+    height: 100%;
+    padding-bottom: r(120);
+    overflow: auto;
+    .kefu_content{
+        padding: 0 r(30);
+        .kefuheader{
+            padding: r(30) 0;
+            .kefu_head{
+                float: left;
+                width: r(66);
+                padding-top: r(30);
+                img{
+                    width: 100%;
+                }
+            }
+            .kefu_head_info{
+                float: left;
+                background: #fff;
+                font-size: r(28);
+                padding: r(20);
+                border-radius: r(15);
+                position: relative;
+                margin-left: r(30);
+                &:after{content:'';position:absolute;right:100%;top:r(45);width:0;height:0;border-width:r(18);border-style:solid;border-color:transparent;border-right-width:r(18);border-right-color:currentColor;color:#fff;}
+            }
+        }
+        .kefu_banner{
+            img{
+                width: 100%;
+            }
+        }
+        .kefu_que{
+            margin-top: r(30);
+            background: #fff;
+            border-radius: r(15);
+            padding: 0 r(18);
+            .kefu_pue_title{
+                font-size: r(34);
+                font-weight: 900;
+                color: #000;
+                line-height: r(90);
+                .icon-wenda{
+                    color: #0084ff;
+                    font-weight: 100;
+                    font-size: r(40);
+                    margin-right: r(10);
+                }
+                .kefu_pue_title_img{
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: r(38);
+                    height: auto;
+                }
+                span{
+                    vertical-align: middle;
+                    margin-left: r(10);
+                }
+            }
+            .swiper-container{
+               padding-bottom: r(20);
+            }
+            .swiper-slide{
+                line-height: 1;
+                font-size: r(26);
+                border: 1px solid #dddddd;
+                border-radius: r(10);
+                padding:r(15);
+                &.active{
+                    background: #0084ff;
+                    color: #fff;
+                    border: 1px solid #0084ff;
+                    &:after{content:'';position:absolute;top:100%;left:50%;margin-left:r(-12);width:0;height:0;border-width:r(12);border-style:solid;border-color:transparent;border-top-color:currentColor;color:#0084ff;}
+                }
+            }
+            .kefu_que_content{
+                padding:0 r(17);
+                .item{
+                    &:last-child{
+                        .title{
+                            border-bottom: 0;
+                        }
+                    }
+                    &.active{
+                        &:nth-last-of-type(1){
+                            padding-bottom: r(30);
+                        }
+                        .desc{
+                            display: block;
+                        }
+                        .title{
+                            border: none;
+                        }
+                    }
+                    .title{
+                        position: relative;
+                        line-height: r(86);
+                        font-size: r(30);
+                        border-bottom: 1px solid #eee;
+                        &:nth-last-of-type(1){
+                            border: none;
+                        }
+                        .left{
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            float: left;
+                            width: 5px;
+                            height: 5px;
+                            margin: auto 0;
+                            border-radius: 50%;
+                            background: #0084ff;
+                        }
+                        .center{
+                            float: left;
+                            margin-left: r(20);
+                            font-size: r(30);
+                        }
+                        .iconfont{
+                            float: right;
+                        }
+                    }
+                    .desc{
+                        background: #eaeaea;
+                        border-radius: r(15);
+                        padding: r(20);
+                        display: none;
+                        .top{
+                            line-height: r(45);
+                            font-size: r(27);
+                            color: #777;
+                            padding-bottom: r(15);
+                            border-bottom: 1px dashed #b2b2b2;
+                        }
+                        .bottom{
+                            .bottom_title{
+                                text-align: center;
+                                color: #b2b2b2;
+                                font-size: r(27);
+                                line-height: r(80);
+                            }
+                            .bottom_desc{
+                                text-align: center;
+                                .desc_pic{
+                                    display: inline-block;
+                                    width: r(45);
+                                    height: r(45);
+                                    padding-top: r(9);
+                                    border-radius: 50%;
+                                    border: 1px solid #cecece;
+                                    vertical-align: middle;
+                                    img{
+                                        width: r(24);
+                                        display: block;
+                                        margin: 0 auto;
+                                    }
+                                }
+                                .desc_info{
+                                    margin-left: r(20);
+                                    vertical-align: middle;
+                                    display: inline-block;
+                                    font-size: r(25);
+                                    color: #000;
+                                }
+                                .use,.nouse{
+                                    display: inline-block;
+                                    border: 1px solid #cecece;
+                                    line-height: r(40);
+                                    border-radius: r(20);
+                                    width: r(110);
+                                    height: r(40);
+                                    overflow: hidden;
+                                    position: relative;
+                                    font-size: r(22);
+                                    color: #666666;
+                                    padding-left: r(30);
+                                    img{
+                                        position: absolute;
+                                        width: r(24);
+                                        top: r(6);
+                                        left: r(15);
+                                    }
+                                    &.nouse{
+                                        margin-left: r(40);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .kefuButtom{
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        margin-left:r(-375);
+        width: r(750);
+        height: r(110);
+        
+        background: #fff;
+        border-top: 1px solid #eeeeee;
+        li{
+            float: left;
+            width: 33.3333%;
+            height: r(110);
+            text-align: center;
+            padding-top: r(10);
+            border-right: 1px solid #eee;
+            &:nth-last-of-type(1){
+                border: none;
+            }
+            .iconfont{
+            color: #0084ff;
+            line-height: r(50);
+            
+            }
+            .pic{
+                line-height: r(50);
+            }
+            .desc{
+                line-height: 1.1;
+                font-size: r(24);
+            }
+            .icon-2{
+                font-size: r(50);
+            }
+            .icon-zaixianzixun{
+                font-size: r(43);
+            }
+            .icon-dianhua4{
+                font-size: r(43);
+            }
+        }
+    }
+}

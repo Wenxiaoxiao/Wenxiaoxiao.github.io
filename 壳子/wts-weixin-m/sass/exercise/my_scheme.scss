@@ -1,0 +1,238 @@
+.my_scheme_mask{
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display: none;
+  img{
+    position: absolute;
+    top: r(30);
+    right: r(30);
+     width: r(300);
+  }
+  .my_scheme_mask_content{
+    color: #fff;
+    font-size: r(32);
+    position: absolute;
+    top: r(300);
+    right: r(350);
+  }
+}
+.my_scheme{
+  background: #e3f5ff;
+  min-height: 100%;
+  .my_scheme_no{
+    width: 100%;
+    position: fixed;
+    top: 35%;
+    .my_scheme_no_pic{
+      width: 100%;
+      text-align: center;
+      img{
+        width: r(310);
+      }
+    }
+    .my_scheme_no_btn{
+      width: 100%;
+      text-align: center;
+      margin-top: r(50);
+      span{
+        display: inline-block;
+        color: #fff;
+        font-size: r(30);
+        line-height: r(80);
+        width: r(273);
+        height: r(90);
+        background: url("../images/customization/m16.png") no-repeat;
+        background-size:100% 100%; 
+      }
+    }
+  }
+
+  .my_scheme_list{
+    width: 100%;
+    box-sizing: border-box;
+    padding: r(30);
+    .my_scheme_item{
+      margin-bottom: r(20);
+      background: #fff;
+      box-sizing: border-box;
+      padding:r(30);
+      border-radius: r(15);
+      -moz-box-shadow:0px 1px 11px #c6e5fb; -webkit-box-shadow:0px 1px 11px #c6e5fb; box-shadow:0px 1px 11px #c6e5fb;
+      .my_scheme_item_title{
+        color: #000;
+        font-size: r(33);
+        font-weight: 900;
+      }
+
+      .my_scheme_item_state{
+    width: 100%;
+    background: #69a7fc;
+    border-radius: r(15);
+    box-sizing: border-box;
+    padding: r(25);
+    position: relative;
+    display: none;
+    .my_scheme_item_state_bar{
+       width: 100%;
+      box-sizing: border-box;
+      padding:0 r(50);
+      position: absolute;
+      left: 0;
+      top: r(54);
+      div{
+        width: 100%;
+        height: r(3);
+        background: #93c1ff;
+      }
+    }
+    .my_scheme_item_state_content::after{
+      clear:both;content:'';display:block;width:0;height:0;visibility:hidden;
+    }
+    .my_scheme_item_state_content{
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      .my_scheme_item_state_content_item{
+        width: 25%;
+        float: left;
+        text-align: center;
+        .pic{
+          width: 100%;
+          img{
+            width: r(47);
+          }
+        }
+        .desc{
+          font-size: r(26);
+          color: #fff;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+      .my_scheme_item_content{
+        width: 100%;
+        height: r(181);
+        margin-top: r(25);
+        position: relative;
+        background: url("../images/customization/m08.png") no-repeat;
+        background-size:100% 100%; 
+        .my_scheme_item_content_desc{
+          position: absolute;
+          top: r(40);
+            left: r(50);
+          .my_scheme_item_content_desc_title{
+            color: #000;
+            font-size: r(30);
+            line-height: r(50);
+          }
+          .my_scheme_item_content_desc_desc{
+            color: #5d5d5d;
+            font-size: r(24);
+            line-height: r(40);
+            
+          }
+          .my_scheme_item_content_desc_info{
+            color: #000;
+            font-size: r(30);
+            line-height: r(100);
+          }
+        }
+        .my_scheme_item_content_state_pic{
+          width: r(128);
+          height: r(128);
+          position: absolute;
+          top: r(25);
+          right: r(60);
+          img{
+            width: 100%;
+          }
+        }
+      }
+      .my_scheme_item_bottom{
+        width: 100%;
+        margin-top: r(30);
+        .my_scheme_item_bottom_price{
+          float: left;
+          color: #ff4c61;
+          font-size: r(30);
+          font-weight: 900;
+          padding: r(8);
+        }
+        .my_scheme_item_bottom_btn{
+          float: right;
+          span{
+            display: block;
+            width: r(168);
+            padding: r(6) 0;
+            padding-top: r(10);
+            font-size: r(30);
+            border-radius: r(30);
+            text-align: center;
+            color: #fff;
+          }
+          .shanchu{
+            background: #fff;
+            -moz-box-shadow:0px 1px 11px #ddd; -webkit-box-shadow:0px 1px 11px #ddd; box-shadow:0px 1px 11px #ddd;
+          color: #000;
+          }
+          .zhifu{
+            background: -webkit-linear-gradient(#f77158, #fd535e); /* Safari 5.1 - 6.0 */
+
+            background: -o-linear-gradient(#f77158, #fd535e); /* Opera 11.1 - 12.0 */
+
+            background: -moz-linear-gradient(#f77158, #fd535e); /* Firefox 3.6 - 15 */
+
+            background: linear-gradient(#f77158, #fd535e); /* 标准的语法 */
+          }
+           .cxdz{
+             background: -webkit-linear-gradient(#6ca7ff, #3986fa); /* Safari 5.1 - 6.0 */
+
+            background: -o-linear-gradient(#6ca7ff, #3986fa); /* Opera 11.1 - 12.0 */
+
+            background: -moz-linear-gradient(#6ca7ff, #3986fa); /* Firefox 3.6 - 15 */
+
+            background: linear-gradient(#6ca7ff, #3986fa); /* 标准的语法 */
+          }
+          .ckfa{
+           background: -webkit-linear-gradient(#6ca7ff, #3986fa); /* Safari 5.1 - 6.0 */
+
+            background: -o-linear-gradient(#6ca7ff, #3986fa); /* Opera 11.1 - 12.0 */
+
+            background: -moz-linear-gradient(#6ca7ff, #3986fa); /* Firefox 3.6 - 15 */
+
+            background: linear-gradient(#6ca7ff, #3986fa); /* 标准的语法 */
+          }
+          .sczl,.wszl{
+            background: -webkit-linear-gradient(#f77158, #fd535e); /* Safari 5.1 - 6.0 */
+
+            background: -o-linear-gradient(#f77158, #fd535e); /* Opera 11.1 - 12.0 */
+
+            background: -moz-linear-gradient(#f77158, #fd535e); /* Firefox 3.6 - 15 */
+
+            background: linear-gradient(#f77158, #fd535e); /* 标准的语法 */
+          }
+
+          .share{
+            background: -webkit-linear-gradient(#f77158, #fd535e); /* Safari 5.1 - 6.0 */
+
+            background: -o-linear-gradient(#f77158, #fd535e); /* Opera 11.1 - 12.0 */
+
+            background: -moz-linear-gradient(#f77158, #fd535e); /* Firefox 3.6 - 15 */
+
+            background: linear-gradient(#f77158, #fd535e); /* 标准的语法 */
+          }
+
+        }
+      }
+       .my_scheme_item_bottom::after{
+        clear:both;content:'';display:block;width:0;height:0;visibility:hidden;
+      }
+    }
+  }
+}

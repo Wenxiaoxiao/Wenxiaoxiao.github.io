@@ -1,0 +1,126 @@
+.order-pays{
+  height: 100vh;
+  position: relative;
+  .pays-top-title{
+    height: r(90);
+    line-height: r(90);
+    background: #fff9f1;
+    text-align: center;
+    font-size: r(30);
+    border-bottom: 1px solid #ffb783;
+    .left{
+      width: 100%;
+      color: #ff6f07;
+
+    }
+
+  }
+
+
+
+
+
+.order-list-pays{
+  .titles{
+    font-size: r(36);
+    text-align: center;
+  }
+  .uls-order{
+    li{
+      padding-top: r(28);
+    }
+  }
+  .need-coms1{
+    position: relative;
+    top: -1px;
+    //@include tips(1px 8px,3px,12px,#fff,5px);
+    padding: 1px 8px;
+    width: r(96);
+    height: r(38);
+    background: #fff;
+    border-radius: 5px;
+
+    font-size: r(28);
+    border: 1px solid $cpBaseCol;
+    margin-left: 5px;
+    color:$cpBaseCol ;
+    z-index: 100000;
+
+  }
+}
+
+
+
+  .ul-pay-list{
+    width: 100%;
+    padding:r(10) r(56) r(10) r(46);
+    background-color: #fff;
+    li{
+      box-sizing: content-box;
+      padding-left: r(80);
+      position: relative;
+      padding-top: r(20);
+      padding-bottom: r(20);
+      @include remCalc(height,60);
+      @include remCalc(font-size,36);
+      line-height: r(60);
+      border-bottom: 1px solid #fff;
+    }
+    li:last-child{
+      border: none;
+    }
+    .pay-img{
+      position: absolute;
+      left: 0;
+      top: r(20);
+      @include remCalc(width,60);
+      @include remCalc(height,60);
+    }
+    .lz-radio{
+      position: relative;
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      background-color: transparent;
+      border: none;
+    }
+    .lz-radio:before{
+      content: "\e623";
+      display: inline-block;
+      font-family:"iconfont" !important;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      width: 24px;
+      height: 24px;
+      background-color: #fff;
+      border: 1px solid #b2b2b2;
+      color: #fff;
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      right: 0;
+      @include border-radius(50%);
+    }
+    .lz-radio:checked::before{
+      background-color: $baseColor;
+      border: 1px solid $baseColor;
+    }
+  }
+
+  .wts-btn-big{
+    position: absolute;
+    bottom: 20px;
+    left: r(30);
+  }
+.pay_result{
+  text-align: center;
+  .icon-zhifuchenggong{
+    @include remCalc(font-size,200);
+    color: $cpredCol;
+
+  }
+}
+
+
+}

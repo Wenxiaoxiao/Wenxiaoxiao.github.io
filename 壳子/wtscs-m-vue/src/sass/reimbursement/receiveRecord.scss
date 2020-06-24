@@ -1,0 +1,64 @@
+.receiveRecord-container{
+    width:r(750);
+    .empty{
+        min-height:r(880);
+        text-align: center;
+        padding-top:r(320);
+        padding-bottom:r(320);
+        &>img{
+            width:r(185);
+            height:r(154);
+            display:block;
+            margin:0 auto;
+        }
+        &>span{
+            font-size:r(28);
+            color:#666;
+            line-height:r(80);
+        }
+    }
+    .receive-list{
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        .receive{
+            height:r(162);
+            background:#fff;
+            border-bottom:r(2) solid #ddd;
+            padding:r(40) r(24) r(40) r(30);
+            overflow: hidden;
+            .left{
+                width:r(470);
+                height:r(82);
+                float:left;
+                line-height:r(44);
+                .d1{
+                    font-size:r(29);
+                }
+                .d2{
+                    font-size:r(21);
+                    color:#999;
+                }
+            }
+            .right{
+                width:r(225);
+                height:r(82);
+                float:left;
+                text-align: right;
+                line-height:r(44);
+                .p1{
+                    color:#ff7200;
+                    font-size:r(29);
+                    font-weight:bold;
+                }
+                .p2{
+                    color:#999;
+                    font-size:r(26);
+                }
+            }
+        }
+        .receive:nth-last-of-type(1){
+            border: none;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+.policyRecord-container{
+    width:r(750);
+    .policy-list{
+        width:r(750);
+        padding:r(30) r(20) r(160);
+        .policy{
+            height:r(302);
+            width:r(690);
+            background:#fff;
+            box-shadow:0 0 r(8) rgba(0,0,0,0.2);
+            border-radius:r(10);
+            margin:0 auto r(30);
+            font-size:r(30);
+            position: relative;
+            .top{
+                overflow: hidden;
+                height:r(80);
+                border-bottom:r(2) solid #ededed;
+                line-height:r(80);
+                padding:r(0) r(18) r(0) r(24);
+                .s1{
+                    float:left;
+                }
+                .s2{
+                    float:right;
+                    color:#4580f6;
+                }
+            }
+            .middle{
+                padding:r(25) r(18) r(0) r(24);
+                line-height:r(52);
+            }
+            .btn{
+                width:r(160);
+                height:r(60);
+                line-height:r(60);
+                text-align: center;
+                background:#4580f6;
+                color:#fff;
+                border-radius:r(10);
+                position: absolute;
+                bottom:r(30);
+                right:r(24);
+            }
+        }
+    }
+}

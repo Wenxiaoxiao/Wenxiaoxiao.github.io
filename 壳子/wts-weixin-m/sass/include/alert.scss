@@ -1,0 +1,441 @@
+.readys {
+  background-color: #fff;
+  z-index: 100000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .ready-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+  }
+  .ready-img-1 {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -35px;
+    margin-left: -35px;
+    opacity: .5;
+    animation: scolls 1.5s linear infinite forwards;
+  }
+  @keyframes scolls {
+    0% {
+      transform: rotate(0deg) translate(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: rotate(-180deg) translate(0);
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(-360deg) translate(0);
+      opacity: 0.5;
+    }
+  }
+}
+
+/*在线客服*/
+a.services {
+  position: fixed;
+  top: 70%;
+  right: 5%;
+  z-index: 2222;
+  display: block;
+  margin: 0 auto;
+  width: r(120);
+  @include remCalc(height, 140);
+  text-align: center;
+  background-color: #ff9306;
+  @include border-radius(5px);
+  color: #fff;
+  i {
+    @include remCalc(font-size, 60);
+    display: block;
+    position: absolute;
+    top: r(-5);
+    left: 50%;
+    @include transform(translateX(-50%));
+  }
+  span.services-text {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    line-height: 16px;
+  }
+  .martop {
+    margin-top: r(65);
+  }
+}
+
+/*咨询*/
+a.consultation {
+  position: fixed;
+  top: 65%;
+  right: 5%;
+  z-index: 555;
+  display: inline-block;
+  @include remCalc(width, 100);
+  @include remCalc(height, 100);
+  text-align: center;
+  background-color: rgba(0, 0, 0, .5);
+  @include border-radius(50%);
+  color: #fff;
+  i {
+    @include remCalc(font-size, 54);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    @include transform(translateX(-50%));
+  }
+  span {
+    position: absolute;
+    bottom: r(5);
+    left: 50%;
+    @include remCalc(font-size, 24);
+    @include transform(translateX(-50%));
+  }
+}
+
+.consultation:hover, .consultation:focus {
+  color: #fff;
+}
+
+.lz-layers {
+  .layer-none05{
+    display: none;
+  }
+ .layer-01 {
+    display: none;
+    width: 100%;
+    background-color: #fff;
+    .title {
+      width: 100%;
+      @include remCalc(height, 80);
+      @include remCalc(font-size, 34);
+      color: #000;
+    }
+  }
+ 
+
+  .layer-03 {
+    .lay-p {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 1000;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      .p-next, .p-finish {
+        width: 40%;
+        height: 7%;
+        display: block;
+        position: absolute;
+      }
+      .p-a-01 {
+        bottom: 18%;
+        left: 30%;
+      }
+      .p-a-02 {
+        top: 67%;
+        left: 31.2%;
+      }
+      .p-a-03 {
+        top: 61%;
+        left: 30%;
+      }
+      .p-a-04 {
+        top: 18.59%;
+        left: 30.7%;
+      }
+      .p-a-05 {
+        top: 50.46%;
+        left: 30%;
+      }
+      .p-finish {
+        top: 66.06%;
+        left: 32%;
+      }
+    }
+    .avtive {
+      display: block;
+    }
+  }
+  .layer-04 {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    @include border-radius(10px);
+    //position: relative;
+    a {
+      @include remCalc(width, 300);
+      position: absolute;
+      bottom: 20px;
+    }
+    .call {
+      left: r(20);
+    }
+    .delete {
+      right: r(20);
+      border-color: #ababab;
+      color: #ababab;
+    }
+  }
+  .layer-05 {
+    position: relative;
+    width: r(580);
+    height: r(260);
+    overflow: visible;
+    background-color: #fff;
+    padding: 10px 10px r(120);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    #layer_05_btn {
+      position: absolute;
+      bottom: r(30);
+      left: 50%;
+      margin-left: r(-147);
+    }
+    .txt_tip{
+      color: #fd9143;
+    }
+    .input-box {
+      @include remCalc(height, 80);
+      @include remCalc(line-height, 80);
+      @include remCalc(width, 500);
+      padding-left: 10px;
+      margin: 15px auto 5px;
+      @include remCalc(font-size, 30);
+      background-color: #f0eff5;
+      @include border-radius(5px);
+      input {
+        display: inline-block;
+        @include remCalc(height, 80);
+        margin: 0;
+        padding: 0;
+        border: none;
+        background-color: #f0eff5;
+      }
+      .input_tel {
+        @include remCalc(width, 300);
+      }
+    }
+    .lz-fs-30 {
+      @include remCalc(font-size, 28);
+    }
+  }
+  .layer-06 {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: rgba($color: #000000, $alpha: .4);
+    &.active{
+      display: block;
+    }
+    .occupationBox{
+      position: absolute;
+      top: 15%;
+      left: 10%;
+      width: 80%;
+      height: 70%;
+      background-color: #fff;
+      overflow-y: auto;
+      padding-top: r(100);
+      z-index: 22;
+    }
+    .treeSecrch {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: r(90);
+      padding: r(10) r(20);
+      background-color: #f5f5f5;
+      &:before{
+        content: '\e679';
+        font-family: "iconfont" !important;
+        position: absolute;
+        left: r(30);
+        top: 45%;
+        font-size: r(30);
+        margin-top: r(-15);
+      }
+      .search{
+        display: block;
+        font-size: r(30);
+        line-height: r(70);
+        background-color: #fff;
+        text-align: left;
+        width: 100%;
+        height: r(70);
+        padding: 0 r(10) 0 r(50);
+        margin-bottom: 0;
+        border: none;
+      }
+    }
+    >ul.treemenu{
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      margin: 0;
+      max-height: r(800);
+    }
+    .treemenu li {
+      list-style: none;
+    }
+    .liRemove{
+      display: none!important;
+    }
+
+    .treemenu .toggler {
+      cursor: pointer;
+    }
+
+    .treemenu .toggler:before {
+      display: inline-block;
+      margin-right: 2pt;
+    }
+
+    li.tree-empty > .toggler {
+      color: #aaa;
+    }
+    li.tree-empty > .toggler:before {
+      content: "\2212";
+    }
+    li.tree-closed > .toggler:before {
+      content: "+";
+    }
+    li.tree-opened > .toggler:before {
+      content: "\2212";
+    }
+
+    .tree {
+      color: #666;
+      width: 100%;
+      margin: 10px auto;
+      @include remCalc(font-size, 30);
+      li {
+        padding: r(5) r(10) r(5) r(20);
+      }
+    }
+
+    .tree li > a,
+    .tree li > span {
+      padding: r(5) r(10);
+      border-radius: 4px;
+    }
+
+    .tree li a {
+      color: #666;
+      text-decoration: none;
+      line-height: 20pt;
+      border-radius: 4px;
+    }
+
+  }
+  .layer-07 {
+    display: none;
+    padding: 20px 10px;
+    .code-img {
+      display: block;
+      margin: 0 auto;
+      width: 60%;
+    }
+    .lz-fs-34 {
+      @include remCalc(font-size, 34);
+      @include remCalc(line-height, 40);
+    }
+    .btn-shibie {
+      display: block;
+      @include remCalc(width, 320);
+      text-align: center;
+      margin: 5px auto;
+      @include remCalc(padding, 5);
+      border: 1px solid $bg-color-ff6e06;
+      @include remCalc(font-size, 40);
+      @include border-radius(40px);
+      color: $bg-color-ff6e06;
+    }
+  }
+}
+
+.demo-layer-01 {
+  border-radius: 5px !important;
+}
+
+.return_personal {
+  position: fixed;
+  right: 15px;
+  bottom: 15%;
+  z-index: 999;
+  img {
+    @include remCalc(width, 94);
+    @include remCalc(height, 94);
+  }
+}
+
+.notice-right {
+  box-shadow: none !important;
+}
+
+.guanbi-blank {
+  @include remCalc(width, 50);
+  @include remCalc(height, 50);
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 11;
+}
+//移动端关闭按钮
+.layer-guanbi {
+  position: relative;
+  .layui-layer-close2 {
+    opacity: 0;
+    z-index: 999;
+  }
+}
+
+.layer-guanbi::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  right: r(-25);
+  top: r(-25);
+  color: #999;
+  @include remCalc(width, 50);
+  @include remCalc(height, 50);
+  background-image: url(../images/guanbi.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 10;
+}
+.alert-force{
+  .layui-layer-title{
+    background-color: $bg-color-ff6e06;
+    color: #fff;
+  }
+  .layui-layer-content{
+    font-size: r(30);
+    padding: 15px 10px 25px;
+  }
+}

@@ -1,0 +1,182 @@
+.market-comment{
+    .top{
+        width: 100%;
+        position: relative;
+        #text{
+            width: 100%;
+            border: none;
+            font-size: r(30);
+            line-height: r(40);
+            padding: r(20) r(30);
+            resize:none;
+            vertical-align: middle;
+        }
+        .number{
+            position: absolute;
+            right: r(30);
+            bottom: r(20);
+            font-size: r(28);
+            color: #999;
+        }
+        .red{
+            color: red;
+        }
+    }
+    .middle{
+        background-color: #fff;
+        border-top: 1px solid #ececec;
+        padding: r(15) r(30);
+        height: r(80);
+        font-size: r(30);
+        line-height: r(50);
+        .xxs{
+            display: inline-block;
+            position: relative;
+            top: -2px;
+        }
+        .xx{
+            height: r(50);
+            display: inline-block;
+            line-height: r(50);
+            &:after{
+                content: "\e6c2";
+                font-family: "iconfont";
+                display: inline-block;
+                font-size: r(36);
+                color: #999;
+                vertical-align: middle;
+            }
+            &.active:after{
+                content: "\e6c4";
+                color: $baseColor;
+            }
+        }
+    }
+    #send{
+        width: 100%;
+        margin-top: r(100);
+        height: r(100);
+        line-height: r(100);
+        text-align: center;
+        font-size: r(40);
+        background-color: $baseColor;
+        color: #fff;
+    }
+    .titles{
+        font-size: r(36);
+        line-height: r(90);
+        padding-left: r(30);
+        background-color: #fff;
+        border-bottom: 1px solid #ececec;
+    }
+    .getMore{
+        width: 100%;
+        display: block;
+        background-color: #fff;
+        text-align: center;
+        line-height: r(80);
+        font-size: r(30);
+        color: #666;
+        border-top: 1px solid #ececec;
+        margin-bottom: r(10);
+    }
+    .commentList{
+        .commentLi{
+            background-color: #fff;
+            width: 100%;
+            padding: r(15) r(30);
+            font-size: r(30);
+            margin-bottom: r(20);
+            &:last-child{
+                margin-bottom: 0;
+            }
+            .head{
+                position: relative;
+                padding-left: r(100);
+            }
+            .headImg{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: r(80);
+                height: r(80);
+                @include border-radius(50%);
+            }
+            .name{
+                font-size: r(30);
+                line-height: r(40);
+            }
+            .timeAndLevel{
+                font-size: r(26);
+                line-height: r(35);
+                .time{
+                    padding-right: r(10);
+                    position: relative;
+                    top: 3px;
+                    border-right: 1px solid #ececec;
+                    padding-right: 8px;
+                    margin-right: 5px;
+                    color: #666;
+                }
+                .xx{
+                    line-height: r(34);
+                    margin-right: 5px;
+                }
+            }
+            .content{
+                font-size: r(32);
+                margin-top: 10px;
+                word-break:break-all;
+            }
+        }
+        .xx{
+            display: inline-block;
+            margin-right: 5px;
+            &:after{
+                content: "\e6c4";
+                font-family: "iconfont";
+                display: inline-block;
+                font-size: r(28);
+                color: $baseColor;
+                vertical-align: middle;
+            }
+        }
+    }
+    .allComments{
+        font-size: r(32);
+        background-color: #fff;
+        line-height: r(90);
+        border-bottom: 1px solid #ececec;
+        padding-left: r(30);
+    }
+    .productsLevel{
+        background-color: #fff;
+        margin-bottom: r(20);
+        padding: r(15) r(30);
+        .p1{
+            font-size: r(38);
+            line-height: r(60);
+            margin-bottom: 5px;
+        }
+        .p2 {
+            font-size: r(30);
+            line-height: r(45);
+        }
+        .xx{
+            position: relative;
+            top: -2px;
+        }
+
+    }
+    .notMore{
+        display: none;
+        width: 100%;
+        font-size: r(30);
+        color: #666;
+        line-height: r(90);
+        text-align: center;
+        &.active{
+            display: block;
+        }
+    }
+}

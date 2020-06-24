@@ -1,0 +1,172 @@
+
+.layer-alert-06 {
+    margin: 0 auto;
+    max-width: 9rem;
+    background-color: #fff;
+    overflow-y: scroll;
+    .baoxian {
+      width: 100%;
+      text-align: center;
+      color: #000000;
+      font-size: r(42);
+      border-bottom: 1px solid #dddddd;
+      height: r(104);
+      line-height: r(104);
+    }
+  
+    .baoxianps {
+      width: 91%;
+      margin: 0 auto;
+      border-bottom: 1px solid #dddddd;
+      font-size: r(32);
+      padding: 0 r(10) 0 r(10);
+      a {
+        display: inline-block;
+        color: #000000;
+        line-height: r(40);
+        padding: r(20) 0;
+        font-family: "Microsoft YaHei";
+  
+      }
+    }
+    .baoxianps:last-of-type {
+      border: none;
+      margin-bottom: r(20);
+      a {
+        line-height: r(40);
+  
+      }
+    }
+  
+  }
+
+  .layer-02 {
+    // display: none;
+    margin: 0 auto;
+    max-width: 9rem;
+    background-color: #fff;
+    width: 90vw;
+    height: 60vh;
+    box-sizing: border-box!important;
+    position: relative;
+    word-wrap: break-word;
+    *{
+        box-sizing: border-box!important;
+    }
+    .layer-02-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      z-index: 2;
+      li {
+        width: 100%;
+        @include remCalc(height, 100);
+        @include remCalc(line-height, 100);
+        @include remCalc(font-size, 40);
+        text-align: center;
+        border-bottom: 1px solid #e6e6e6;
+        position: relative;
+        float: left;
+      }
+      li:not(:first-child) {
+        border-left: 1px solid #e6e6e6;
+      }
+      li.active {
+        border-bottom: 2px solid $cpBaseCol;
+        color: $cpBaseCol;
+      }
+      li.active:before {
+        content: '';
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-bottom-color: $cpBaseCol;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -6px;
+      }
+    }
+    .layer-02-bot {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding-top: r(100);
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      > li {
+        width: 100%;
+        display: none;
+        padding: r(30);
+        color: #000;
+        > p {
+          color: #000;
+        }
+      }
+      > li.active {
+        display: block;
+      }
+    }
+  }
+
+  .lz-layers-03{
+    // display: none;
+    background-color: #fff; 
+    
+    @include remCalc(padding,30);
+    >a{
+      display: block;
+    }
+    p{
+      color:#000;
+    }
+  }
+
+//弹窗默认背景为透明
+  .bac-transparent{
+    background-color: transparent!important;
+    .layui-m-layerchild{
+        background-color: transparent!important;
+    }
+  }
+
+  //信息框样式
+  .layui-m-layer-lzAlert{
+    width: 80%!important;
+    
+    .layui-m-layercont{
+      font-size: r(30);
+      word-break:break-all;
+    }
+    .layui-m-layerbtn{
+      span[yes]{
+        font-size: r(30);
+        color:$baseColor;
+      }
+
+    }
+  }
+  .layui-m-layer-inquiry{
+    width: 80%!important;
+    .layui-m-layercont{
+      font-size: r(30);
+    }
+    .layui-m-layerbtn{
+      height: 40px;
+      line-height: 40px;
+      span[yes]{
+        font-size: r(30);
+        color:$baseColor;
+      }
+      span[no]{
+        font-size: r(30);
+        color: #666;
+      }
+
+    }
+  }

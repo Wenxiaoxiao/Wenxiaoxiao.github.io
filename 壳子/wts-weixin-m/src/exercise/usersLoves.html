@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <!--测试环境-->
+    @@include("include/header.htm",{ "title":"保险大数据", "keywords": "", "description": "" })
+</head>
+
+<body>
+    @@include("include/ready-ani.htm")
+    <div class="body-container usersLoves">
+        @@include("include/crkHead.htm",{
+            "title":"保险大数据"
+        })
+        <div class="users-dist">
+                <div class="users-dist-bg">
+                    <p class="p1 p1-m">梧桐树服务的客户群体遍布</p>
+                    <p class="p1">全国<span class="p_cl provinceCount"></span>省份，<span class="p_cl cityCount"></span>城市</p>
+                    <p class="p2"> 梧桐树总计为<span class="p_cl userCount"></span>位客户提供保险服务</p>
+                    <p class="p2">今日有<span class="p_cl todayUser"></span>人享受梧桐树优质保险服务</p>
+                </div>
+            </div>
+        <div class="insure-box">
+            <div class="canvas-box">
+                <div class="insure_title">
+                    <span class="textLinears">
+                        <i class="i_t_left"></i>
+                        梧桐树的客户在全国的分布
+                        <i class="i_t_right"></i>
+                    </span>
+                </div>
+                <div id="insure_map" style="width: 100%;height: 9rem;"></div>
+            </div>
+            <div class="canvas-box">
+                <div class="insure_title">
+                    <span class="textLinears">
+                        <i class="i_t_left"></i>
+                        梧桐树的客户会购买哪些类型的保险？
+                        <i class="i_t_right"></i>
+                    </span>
+                </div>
+                <div id="insure_type" class="canvas-box" style="width: 100%;height: 8rem;"></div>
+            </div>
+            <div class="canvas-box">
+                <div class="insure_title">
+                    <span  class="textLinears">
+                        <i class="i_t_left"></i>
+                        梧桐树的客户会为哪些人投保？
+                        <i class="i_t_right"></i>
+                    </span>
+                </div>
+                <div id="insure_who" class="canvas-box" style="width: 100%;height: 8rem;"></div>
+            </div>
+            <div class="canvas-box">
+                <div class="insure_title">
+                    <span class="textLinears">
+                        <i class="i_t_left"></i>
+                        梧桐树的客户给自己配置的重疾保障是多少？
+                        <i class="i_t_right"></i>
+                    </span>
+                </div>
+                <div id="insure_average" class="canvas-box" style="width: 100%;height: 8rem;"></div>
+            </div>
+        </div>
+        <div class="usersLoves-prons clearfix">
+            <h1 class="textLinears">梧桐树客户最喜欢买这些产品</h1>
+        </div>
+        <img src="@@webRoot/lib/images/usersLoves/users-bottom.jpg" class="img-c" alt="">
+    </div>
+</body>
+<!--模板引擎-->
+<script src="@@webRoot/lib/js/template.js"></script>
+<script src="@@webRoot/lib/layer/layer.js"></script>
+<script src="@@webRoot/lib/js/lodash.js"></script>
+<script src="@@webRoot/lib/js/jweixin-1.4.0.js"></script>
+<!--template辅助函数-->
+<script src="@@webRoot/lib/units/helper.js?r=@@time"></script>
+<script src="@@webRoot/lib/js/echarts/echarts.min.js"></script>
+<script src="@@webRoot/lib/js/echarts/china.js"></script>
+<script src="@@webRoot/lib/js/echarts/data.js"></script>
+
+<script id="pronTml" type="text/html">
+    {{each productList as value i}}
+    {{if value.source == "policyBase"}}
+        <a href="@@webRoot/product/{{value.code}}" class="prons-list {{i%2>0?'fr':'fl'}}">
+            <div class="prons-list-title">{{value.insuranceTitle}}</div>
+            <div class="prons-list-des">
+                {{#value.productCharactor | pronsHtml}}
+            </div>
+        </a>
+    {{else}}
+        <a href="@@webRoot/market/pros-detail.html?id={{value.id}}" class="prons-list {{i%2>0?'fr':'fl'}}">
+            <div class="prons-list-title">{{value.insuranceTitle}}</div>
+            <div class="prons-list-des">
+                {{#value.productCharactor | pronsHtml}}
+            </div>
+        </a>
+    {{/if}}
+    {{/each}}
+</script>
+<script>
+    $(function () {
+        //comeFrom=xcx 隐藏头部
+        var comeFrom = sessionStorage.getItem('comeFrom');
+        if(comeFrom && comeFrom === 'xcx'){
+            $(".layout-header").hide();
+        }
+        getDatasAjax();
+        $.shareWx({
+            title:"大家都在买什么保险？",
+            desc:'精选的产品，专业的服务，快速的理赔，梧桐树保险网用大数据告诉你，全国的人们都爱买什么保险。'
+        }); //微信分享
+        function getDatasAjax(){
+            var paramList = {
+                type: "get",
+                url: "/policy/statistic/api/map",
+                data: {},
+                contentType: "application/json;charset=UTF-8",
+                success: function (ajaxData, isError) {
+                    if (!isError) {
+                        return;
+                    }
+                    $(".userCount").text(ajaxData.data.userCount); //总计客户
+                    $(".cityCount").text(ajaxData.data.cityCount+"个"); //城市数
+                    $(".provinceCount").text(ajaxData.data.provinceCount+"个"); //省份
+                    $(".todayUser").text(ajaxData.data.todayUser) //今日客户
+                    var html = template("pronTml",ajaxData.data)
+                    $(".usersLoves-prons").append(html)
+                    getDatas(ajaxData.data)
+                    $('.lz-readys').hide();
+                    if($.tools().user.indexOf("wtsbxwApp")>-1){
+                        var obj={
+                            href:location.href,
+                            title:'大家都在买什么保险？',
+                            content:'精选的产品，专业的服务，快速的理赔，梧桐树保险网用大数据告诉你，全国的人们都爱买什么保险。',
+                            thumbs:'https://bx.wts999.com/lib/images/logo-3.jpg'
+                        };
+                        setTimeout(function(){
+                            location.href="https://bx.wts999.com/app.html?share="+encodeURI(JSON.stringify(obj));
+                        },2000)
+                        
+                    }
+                }
+            }
+            $.ajaxPackage(paramList);
+        }
+        
+
+        function getDatas(data){
+            // return
+            var typesDatas={
+                names:data.typeMap.names,
+                values:_.map(data.typeMap.values,function(v){return (v*100).toFixed(1)}),
+                title:'大家都会买哪些险种',
+                id:'insure_type',
+                textColor:'#ff7430',
+                pillColor:"#ffa242",
+                unit:"%" //单位
+            };
+            var whosDatas={
+                names:_.map(data.relationMap.names,function(v){return sex_dts[v]}),
+                values:_.map(data.relationMap.values,function(v){return (v*100).toFixed(1)}),
+                title:'大家都在为谁投保',
+                id:'insure_who',
+                textColor:'#7b9cf7',
+                pillColor:"#5482d9",
+                unit:"%"//单位
+            };
+            var averageDatas={
+                names:_.map(data.ageMap.names,function(v){return cover_dts[v]}),
+                values:_.map(data.ageMap.values,function(v){return parseInt(v/10000)}),
+                title:'大家平均都配置了多少保额的重疾',
+                id:'insure_average',
+                textColor:'#ff7430',
+                pillColor:"#ffa242",
+                unit:"万"//单位
+            };
+
+            var mapDatas = {
+                names:data.areaMap.names,
+                values:_.map(data.areaMap.values,function(v){
+                     return {
+                         name:citys_dts[v.name],
+                         value:v.value,
+                    }
+                }),
+                title:'梧桐树的客户在全国的分布',
+                id:'insure_map',
+            }
+            insure_type(typesDatas)
+            insure_type(whosDatas)
+            insure_type(averageDatas)
+            insure_map(mapDatas)
+        }
+
+        /** 购买哪些类型的保险-柱状图**/
+        function insure_type(data) {
+            var dom = document.getElementById(data.id);
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            option = {
+                xAxis: {
+                    type: 'category',
+                    data: data.names,
+                    left: 'center',
+                    axisLine:{
+                        lineStyle:{
+                            color:"#6191d2"
+                        }
+                    }
+                },
+                legend:{
+                    top:'10'
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        //设置y轴数值为%
+                        formatter: '{value}'+data.unit+'',
+                    },
+                    axisLine:{
+                        lineStyle:{
+                            color:"#6191d2"
+                        }
+                    },
+                    splitLine:{
+                        lineStyle:{
+                            color:["#103978"]
+                        }
+                    }
+                },
+                grid: {
+                    width: '83%',
+                    bottom:"40",
+                    top:'30',
+                    left:"12%"
+                },
+                title: {
+                    text: data.title,
+                    left:"center",
+                    textStyle: {
+                        align: 'center',
+                        verticalAlign: 'middle',
+                        fontWeight: '900',
+                        color: '#fff',
+                        lineHeight: '2'
+                    },
+                    show:false
+                },
+                series: [{
+                    data: data.values,
+                    type: 'bar',
+                    barWidth: '50%',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top',
+                            color:data.textColor,
+                            fontWeight:"bold",
+                            formatter: "{c}"+data.unit
+                        }
+                    },
+                    itemStyle:{
+                        color:data.pillColor, 
+                        shadowColor: 'rgba(0, 39,100, .6)',
+                        shadowBlur: 30
+                    }
+                }],
+                backgroundColor: '#002764',
+                textStyle: {
+                    fontSize: '12',
+                    color: '#fff'
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    },
+                    formatter: function (params) {
+                        var tar = params[0];
+                        var text = data.unit == "%"?"占比":"";
+                        var needBreak=data.unit == "%"?'<br/> ':'';
+                        return tar.name + needBreak +text+': ' + tar.value+data.unit;
+                    }
+                },
+            };;
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        }
+        function insure_map(data){
+            var _dom = document.getElementById(data.id)
+            var myChart = echarts.init(_dom)
+            var option = {
+                title : {
+                    text: '点击可查看详情',
+                    left: 'center',
+                    textStyle:{
+                        color: '#fff',
+                        fontSize:'16'
+                    }
+                },
+                tooltip : {
+                    trigger: 'item',
+                    textStyle:{
+
+                    },
+                    formatter:function(params){
+                        if(!params.data){
+                            return "暂无"
+                        }else{
+                            return "<p style='text-align:center;'>"+params.data.name+"</p>"+"梧桐树为"+params.data.value+"位客户</br>提供优质保险服务"
+                        }
+                    }
+                },
+                visualMap:[ {
+                    type:"continuous",
+                    min: data.names[0],
+                    max: data.names[1],
+                    itemWidth:"10",
+                    itemHeight:"200",
+                    orient : 'horizontal',
+                    left: 'center',
+                    bottom: '5px',
+                    text:[data.names[0]+"份",data.names[1]+"份"],           // 文本，默认为数值文本
+                    calculable : false,
+                    inverse:true,
+                    formatter:"{value}份",
+                    show:false,
+                    inRange:{
+                        color:["#177ece","#023f91"],
+                    },
+                    textStyle:{
+                        color:"#fff",
+                        fontSize:"14",
+                        fontWeight:"bold",
+                    }
+                }],
+                series : [
+                    {
+                        type: 'map',
+                        mapType: 'china',
+                        roam: false,
+                        left:'center',
+                        top:"50",
+                        bottom:'30',
+                        layoutCenter:"200%",
+                        itemStyle:{
+                            normal: {
+                                areaColor: '#2fbbfe',
+                                borderColor: '#fff',
+                            },
+                        },
+                        label: {
+                            normal: {
+                                show: false,
+                                color:"#fff"
+                            },
+                            emphasis: {
+                                show: true,
+                                color:"#000"
+                            }
+                        },
+                        zoom: 1.1,
+                        data:data.values
+                    }
+                ]
+            };
+
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        }
+    })
+</script>
+
+</html>

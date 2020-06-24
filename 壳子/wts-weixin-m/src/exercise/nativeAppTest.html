@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"app原生测试", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="box">
+        <button class="share">主动拉起分享</button>
+        <br>
+        <br>
+        <button class="getUserInfo">获取用户信息</button>
+        <br>
+        <br>
+        <button class="openMiniProgram">打开小程序</button>
+        <br>
+        <br>
+        <div class="routerInfo">
+            <input type="text" style="width:80%;">
+            <br>
+            <button class="routerBtn">链接跳转</button>
+        </div>
+        <br>
+        <br>
+        <button class="readPdf">pdf预览</button>
+        <br>
+        <br>
+        <button class="downloadImage">下载图片</button>
+        <br>
+        <br>
+
+        <img id="videoPlay1" src="https://www.wts999.com/r/cms/www/mobile/images/m_spfm.jpg" alt="" style='width:100%' />
+        <!-- <video id="videoPlay1" controls="controls" width="100%" poster="https://www.wts999.com/r/cms/www/mobile/images/m_spfm.jpg">
+            <source src="https://www.wts999.com/r/cms/www/mobile/images/2019-1-1.mp4" type="video/mp4">
+           <source src="http://media.wts999.com/wutongshu/aboutmp4.mp4" type="video/mp4">
+        </video> -->
+        <br>
+        <br><br>
+        <br><br>
+        <br><br>
+
+        <button class="uploadRecognition">人脸识别</button>
+
+        <br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br>
+        <textarea name="" id="textarea01" cols="10" rows="5"></textarea>
+        <br>
+        <br><br>
+        <br><br>
+        <br>
+        <input type="text" id="input01">
+        <br>
+        <br><br>
+        <br><br>
+        <br>
+        <input type="text" id="input02">
+        <br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br>
+        <input type="text" id="input03">
+        <br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br>
+        <input type="text" id="input04">
+    </div>
+    @@include("include/footer.htm")
+    <script>
+        $(function () {
+            // //初始化微信分享
+            nativeApp.general.deviceready(function () {
+                nativeApp.weixin.initShare({
+                    router:"wts://share?type=1&link="+encodeURIComponent("https://bx.wts999.com/index.html")+"&title="+encodeURIComponent("梧桐树保险网")+"&content="+encodeURIComponent("测试")+"&logo="+encodeURIComponent("https://bx.wts999.com/m/lib/images/logo-3.jpg")
+                })
+            })
+
+            $("#videoPlay1").click(function(){
+                alert(1111);
+                nativeApp.general.deviceready(function () {
+                nativeApp.general.playVideo({
+                    url:"https://www.wts999.com/r/cms/www/mobile/images/2019-1-1.mp4"
+                })
+            })
+            return;
+            })
+
+            //主动拉起微信分享
+            $(".share").click(function () {
+                nativeApp.general.deviceready(function () {
+                    nativeApp.general.router({
+                        url:"wts://share?type=1&link="+encodeURIComponent("https://bx.wts999.com/index.html")+"&title="+encodeURIComponent("梧桐树保险网")+"&content="+encodeURIComponent("测试")+"&logo="+encodeURIComponent("https://bx.wts999.com/m/lib/images/logo-3.jpg")
+                    })
+                })
+            })
+
+            //获取用户信息
+            $(".getUserInfo").click(function () {
+                nativeApp.general.deviceready(function () {
+                    nativeApp.user.getUserInfo(function (res) {
+                        console.log(res);
+                    }, function (res) {
+                        alert(res);
+                        nativeApp.general.router({url:"wts://wechatLogin"});
+                    });
+                });
+            })
+
+            //打开小程序
+            $(".openMiniProgram").click(function () {
+                nativeApp.general.deviceready(function () {
+                    nativeApp.weixin.openMiniProgram({
+                        userName:"gh_3a48827267fd",
+                        path:"pages/index/index",
+                        miniProgramType:"0"
+                    });
+                });
+            })
+
+            //pdf预览
+            $(".readPdf").click(function () {
+                nativeApp.general.deviceready(function () {
+                    nativeApp.general.readPdf({
+                        url:"https://static.wts999.com/FILE/重疾绿通服务详情介绍及具体医院网点---6月18号.pdf"
+                    });
+                });
+            })
+
+            //下载图片
+            $(".downloadImage").click(function () {
+                nativeApp.general.deviceready(function () {
+                    nativeApp.general.download({
+                        url:"https://bx.wts999.com/m/lib/images/logo-3.jpg",
+                        type:"image"
+                    });
+                });
+            })
+
+            $(".uploadRecognition").click(function(){
+                nativeApp.general.deviceready(function () {
+                    nativeApp.general.uploadRecognition(function(res){
+                        alert(res);
+                    },function(){
+                        alert("失败");
+                    });
+                });
+            })
+
+            //链接跳转
+            $('.routerInfo .routerBtn').click(function(){
+                var url = $(".routerInfo input").val();
+                if(!url)return;
+                nativeApp.general.deviceready(function () {
+                    nativeApp.general.router({
+                        url:url
+                    });
+                });
+            })
+
+            $("input").focus(function(){
+                // 获取焦点
+            　　let commentDom = $(this)[0];
+            　　setTimeout(function() {
+            　　　　commentDom.scrollIntoView(true);
+            　　　　commentDom.scrollIntoViewIfNeeded();
+            　　}, 500)
+            })
+
+            $("textarea").focus(function(){
+                // 获取焦点
+            　　let commentDom = $(this)[0];
+            　　setTimeout(function() {
+            　　　　commentDom.scrollIntoView(true);
+            　　　　commentDom.scrollIntoViewIfNeeded();
+            　　}, 500)
+            })
+        })
+    </script>
+</body>
+
+</html>

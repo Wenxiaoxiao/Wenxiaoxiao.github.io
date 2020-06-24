@@ -1,0 +1,219 @@
+.license {
+  font-size: r(32);
+  color: #3c3c3c;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  .tops {
+    width: 100%;
+    @include remCalc(height, 100);
+    @include remCalc(line-height, 100);
+    background-color: $cpBaseCol;
+    color: #fff;
+    text-align: center;
+  }
+  p {
+    background-color: white;
+    text-indent: 2em;
+    padding: r(28) r(30) r(20) r(30);
+    line-height: r(52);
+    font-size: r(32);
+    color: #3c3c3c;
+  }
+  h4 {
+    padding: r(20) r(30) r(10) r(12);
+    margin-top: 10px;
+    @include remCalc(font-size, 40);
+    margin-top: r(15);
+    color: #ff6f07;
+    line-height: r(60);
+    background-color: #fff;
+  }
+  ul {
+    padding: 0 r(30);
+    background-color: #fff;
+    overflow: hidden;
+    li {
+      @include remCalc(font-size, 32);
+      line-height: r(49);
+      word-break:break-all;
+    }
+    li:first-of-type {
+      line-height: r(52);
+      margin-bottom: r(13);
+      font-weight: 600;
+    }
+    li:last-of-type {
+      padding-bottom: r(28);
+    }
+    .policy-click {
+      margin: r(24) 0 r(32) r(103);
+      width: r(490);
+      border: 1px solid #ff6f07;
+      height: r(70);
+      line-height: r(70);
+      font-size: r(32);
+      text-align: center;
+      border-radius: r(10);
+    }
+    .policy-two {
+      font-weight: 600;
+      padding-top: r(14);
+      margin-top: r(28);
+      line-height: r(76);
+      border-top: 1px dashed #b2b2b2;
+    }
+  }
+  a {
+    color: $cpBaseCol;
+  }
+}
+
+/*查询保单*/
+.query-claims {
+
+  .mui-input-group {
+    .mui-input-row {
+      height: 50px;
+      label {
+        width: 30%;
+        @include remCalc(font-size, 28);
+        padding: 18px 15px;
+      }
+      input, select {
+        @include remCalc(font-size, 28);
+        width: 70%;
+        line-height: 50px;
+        height: 50px;
+        padding: 0;
+      }
+      .icon-gengduo {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        margin-top: -12px;
+        color: #999;
+      }
+
+    }
+  }
+  .wts-btn-big {
+    margin-top: 20px;
+  }
+}
+
+/*常见问题*/
+.commonQ {
+  .question-table {
+    width: 100% !important;
+  }
+  padding-bottom: r(80);
+  .title-question {
+    padding-left: 10px;
+    @include remCalc(height, 92);
+    @include remCalc(font-size, 32);
+    @include remCalc(line-height, 92);
+    color: $baseColor;
+
+    i {
+      margin-right: 5px;
+      @include remCalc(font-size, 42);
+    }
+    .icon-lipeiguanli, .icon-shouhou {
+      @include remCalc(font-size, 42);
+    }
+    .icon-lipeiguanli {
+      @include remCalc(font-size, 38);
+      position: relative;
+      top: 1px;
+    }
+    .icon-baodan {
+      @include remCalc(font-size, 38);
+      position: relative;
+      top: 1px;
+    }
+    .icon-xin {
+      @include remCalc(font-size, 36);
+    }
+  }
+  .table-view {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    background-color: #fff;
+    .table-view-cell{
+      position: relative;
+      overflow: hidden;
+      padding: 11px 15px;
+      .navigate-right{
+        font-size: r(30);
+        position: relative;
+        display: block;
+        overflow: hidden;
+        margin: -11px -15px;
+        padding: inherit;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: inherit;
+      }
+      .collapse-content{
+        position: relative;
+        display: none;
+        overflow: hidden;
+        margin: 11px -15px -11px;
+        padding: 8px 15px;
+        transition:height, .35s ease;
+        background: white;
+      }
+      &.active{
+        margin-top: -1px;
+        .navigate-right{
+          background: #f6e0c5;
+          &:after {
+            transform: rotate(135deg);
+          }
+        }
+        .collapse-content{
+          display:block;
+        }
+      }
+    }
+    li {
+
+      .mui-navigate-right {
+        @include remCalc(font-size, 30);
+      }
+      p {
+        @include remCalc(font-size, 30);
+      }
+      a:before {
+        content: "";
+        border: 3px solid $baseColor;
+        border-radius: 50%;
+        color: #e5e5e5;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        display: inline-block;
+        vertical-align: middle;
+
+      }
+      a:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: r(22);
+        margin-top: r(-14);
+        width: r(18);
+        height: r(18);
+        border-right: 1px solid #b5b5b5;
+        border-top: 1px solid #b5b5b5;
+        @include transform(rotate(45deg));
+
+      }
+    }
+    li:not(:first-child) {
+      border-top: 1px solid #ececec;
+    }
+  }
+}

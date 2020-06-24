@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        @@include("include/header.htm",{ "title":"梧优理赔（协赔）服务承诺书", "keywords": "", "description": "" })
+    </head>
+    <body>
+        <div class="body-container wylppages1">
+            <div class="wylpldfwContent1">
+                <div class="top"></div>
+                <div class="content">
+                    <div class="header">
+                        <div class="title">尊敬的客户：</div>
+                        <div class="d1">感谢您对梧桐树保险网的信任与支持！<br/>梧桐树保险网，成立于 2006 年，是经中国银保监会批准设立的全国性、综合性保险经纪机构，持有互联网保险经纪牌照，具备保险网销资质，是网上买保险的正规平台。</div>
+                        <div class="d2">我们坚持精选好产品，理赔更无忧的理念。不仅提供精选自全网的优质产品，更于业内率先推出“梧忧理赔”服务。在梧桐树保险网与您相伴的日子里，我们将坚持：</div>
+                    </div>
+                    <div class="fwcn">
+                        <div class="title">“梧优理赔”十大服务承诺</div>
+                        <div class="box" id="tenbox">
+
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        若您发现我们违反以上承诺，敬请致电我们客服热线400-9955-788反映，我们将认真核实和处理，并将情况反馈给您。再次感谢您的信任与支持！
+                    </div>
+                    <div class="gongzhang">
+                        <span>梧桐树保险经纪有限公司</span>
+                    </div>
+                </div>
+                <!-- <img src="@@webRoot/lib/images/wylp/6.png" alt="‘梧优理赔’十大服务承诺" class="bac">
+                <img src="@@webRoot/lib/images/wylp/7.png" alt="理赔报案，快速响应 1v1协助，专业高效 理赔指导，快捷省心 疑难案件，多方协助 快速理赔，全程跟踪" class="bac">
+                <img src="@@webRoot/lib/images/wylp/8.png" alt="承诺时效，保障权益 超时未赔，先行垫付 核算明细，保证利益" class="bac">
+                <img src="@@webRoot/lib/images/wylp/9.png" alt="理赔透明，确保无误 服务回访，督查质量" class="bac"> -->
+            </div>
+        </div>
+        @@include("include/footer.htm")
+        <script type="text/html" id="tenboxtpl">
+            {{each data as item i}}
+            <div class="boxline">
+                <div class="boxitem left">
+                    <div class="index">{{item.left.index}}</div>
+                    <div class="title">{{item.left.title}}</div>
+                    <div class="des">{{item.left.des}}</div>
+                    {{if item.left.img}}
+                    <img src="{{item.left.img}}"/>
+                    {{/if}}
+                </div>
+                <div class="boxitem right">
+                    <div class="index">{{item.right.index}}</div>
+                    <div class="title">{{item.right.title}}</div>
+                    <div class="des">{{item.right.des}}</div>
+                    {{if item.right.img}}
+                    <img src="{{item.right.img}}"/>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+        </script>
+    </body>
+    <script>
+        var datalist = {
+            num:[1,2,3,4,5],
+            data:[
+            {
+                left:{
+                    index:'01',
+                    title:'理赔报案 快速响应',
+                    des:'理赔热线7x24小时在线服务，报案申请将在30分钟内响应。',
+                    img:null
+                },
+                right:{
+                    index:'02',
+                    title:'1V1协助 专业高效',
+                    des:'理赔专家一对一服务，确保理赔过程专业、简单、高效、无干扰。',
+                    img:null
+                }
+            },
+            {
+                left:{
+                    index:'03',
+                    title:'理赔指导 快捷省心',
+                    des:'不同属性的理赔案件，均有专人提供针对性理赔指导建议，协助理赔资料收集，确保理赔省时、省力、更省心。',
+                    img:null
+                },
+                right:{
+                    index:'04',
+                    title:'疑难案件 多方协助',
+                    des:'涉及理赔纠纷的案件，更有专业、优质的合作单位诚鼎公估、知途律师事务所协助处理。',
+                    img:null
+                }
+            },
+            {
+                left:{
+                    index:'05',
+                    title:'快速理赔 全程跟踪',
+                    des:'特优渠道专线对接保险公司，启动快速理赔通道，理赔服务过程实时追踪。',
+                    img:null
+                },
+                right:{
+                    index:'06',
+                    title:'承诺时效 保障权益',
+                    des:'一般保险理赔案件，经保险公司确认索赔手续齐全后：',
+                    img:'@@webRoot/lib/images/wylp/table.png'
+                }
+            },
+            {
+                left:{
+                    index:'07',
+                    title:'超时未赔 先行垫付',
+                    des:'所有保险理赔案件，保险公司确认复核无误，60天未获赔付的，由我司先行垫付。',
+                    img:null
+                },
+                right:{
+                    index:'08',
+                    title:'核算明细 保证利益',
+                    des:'依据赔付标准，精准核算理赔明细，避免发生错赔、漏赔等损害客户利益的情况。',
+                    img:null
+                }
+            },
+            {
+                left:{
+                    index:'09',
+                    title:'理赔透明 确保无误',
+                    des:'理赔进度实时反馈，确保理赔过程透明，确认客户无异议后，方可结案。',
+                    img:null
+                },
+                right:{
+                    index:'10',
+                    title:'服务回访 督察质量',
+                    des:'理赔成功后，由理赔督查组回访客户，积极听取客户意见，确保理赔服务质量更高、体验更好。',
+                    img:null
+                }
+            }]
+        };
+        var html1 = template("tenboxtpl",datalist);
+        $("#tenbox").html(html1);
+    </script>
+</html>

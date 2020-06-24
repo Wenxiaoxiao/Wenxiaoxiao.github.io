@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"保险方案专家1对1量身定制", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <!-- 加载动画 -->
+    @@include("include/ready-ani.htm")
+    @@include("include/crkHead.htm",{ "title":"保险方案专家1对1量身定制" })
+    <div class="body-container srdz-index">
+        <div class="img-box">
+            <img src="@@webRoot/lib/images/srdz/index01.jpg" alt="">
+        </div>
+        <div class="payBtn_top">
+
+        </div>
+        <div class="img-box">
+            <div class="ct-box" id="showFixed"></div>
+            <img src="@@webRoot/lib/images/srdz/index02.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index03.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index04.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index05.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index06.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index07.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index08.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index09.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index10.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index11.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index12.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index13.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index14.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index15.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index16.jpg" alt="">
+            <img src="@@webRoot/lib/images/srdz/index17.jpg" alt="">
+        </div>
+
+        <div class="payBtn_bottom"></div>
+        <a class="my_scheme_btn" href="./my_scheme.html"><img src="@@webRoot/lib/images/srdz/indexBtn.png" alt=""></a>
+
+    </div>
+
+    <script type="text/html" id="payBtnTop">
+        <div class="payBtn_content">
+            <div class="top clearfix">
+                <div class="price">￥{{if isActivity && activityPrice}}{{activityPrice}}{{else}}{{originalPrice}}{{/if}}</div>
+                {{if isActivity && activityPrice}}
+                    <div class="activity">
+                        
+                        {{if isActivity && activityPrice && remainNum}}
+                            <div class="activity_desc">剩余名额:<i>{{remainNum}}<i>位</div>
+                        {{/if}}
+                        <div class="old_price">原价￥{{originalPrice}}</div>
+                    </div>
+                {{/if}}
+                <div class="payBtn"><span>立即抢购</span></div>
+            </div>
+            <div class="bottom">
+                <img class="left" src="@@webRoot/lib/images/srdz/index18.png" alt="">
+                <span class="desc">已为<i>1000万+</i>客户带去优质服务</span>
+            </div>
+        </div>
+   </script>
+
+    <script type="text/html" id="payBtnBottom">
+        <div class="payBtn_content">
+            <div class="top clearfix">
+                <div class="price">￥{{if isActivity && activityPrice}}{{activityPrice}}{{else}}{{originalPrice}}{{/if}}</div>
+                {{if isActivity && activityPrice}}
+                    <div class="activity">
+                        {{if remainNum}}
+                            <div class="activity_desc">仅剩{{remainNum}}位</div>
+                        {{/if}}
+                        <div class="old_price">原价￥{{originalPrice}}</div>
+                    </div>
+                {{/if}}
+                <div class="payBtn animate-btn"><span>立即抢购</span></div>
+            </div>
+        </div>
+    </script>
+    @@include("include/footer.htm")
+    <script src="@@webRoot/lib/units/H5Pay.js"></script>
+    <script src="@@webRoot/lib/js/layer.js"></script>
+    <script>
+        $(function () {
+            var login = wtsLogin;
+            login.init({
+                env: $.globedata.environment
+            }, function (user) {
+                var activityId = $.getQueryString("activityId") || "1218054598970642432";
+                var isActivity = false;
+
+                var payFlag = true;
+                var wxPayApi = null;
+                var openId = '';
+                $.shareWx({
+                    title: "保险方案专家1对1量身定制",
+                    desc: '【限时领取】1对1专家咨询，个人及家庭保险方案量身定制。'
+                });
+                scrollFixed();
+                initActivity();
+                // 初始化活动
+                function initActivity() {
+                    getMyScheme(function (data) {
+                        data.isActivity = isActivity;
+                        var payBtnTop = template("payBtnTop", data); //模板渲染
+                        var payBtnBottom = template("payBtnBottom", data); //模板渲染
+                        $(".payBtn_top").html(payBtnTop);
+                        $(".payBtn_bottom").html(payBtnBottom);
+                        eventFn(data);  //支付事件绑定;
+                        if (user) {
+                            getpayorders(function (orderData) {
+                                if(orderData.showOrdersBtn){
+                                   $(".my_scheme_btn").show();
+                                }
+                                //获取授权
+                                new H5Pay().getOpenId({
+                                    belongTo: 2
+                                })
+                                $(".lz-readys").hide();
+                            })
+                        }else{
+                            $(".lz-readys").hide();
+                        }
+                    })
+                }
+                //获取私人订制活动信息
+                function getMyScheme(callback) {
+                    $.ajaxPackage({
+                        type: "post",
+                        url: "/fsservers/servers/api/list",
+                        data: JSON.stringify({ activityId: activityId, type: 3, status: 1 }),
+                        contentType: "application/json",
+                        async: true,
+                        success: function (data, isError) {
+                            if (!isError) {
+                                return;
+                            };
+                            if (data.httpCode != 200 || data.data.length == 0) {
+                                return;
+                            }
+                            hasActivity(function (flag) {
+                                isActivity = flag;
+                                callback(data.data[0]);
+                            })
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(textStatus);
+                        }
+                    });
+                }
+
+                //获取用户保单信息数据
+                function getpayorders(callback) {
+                    $.ajaxPackage({
+                        type: "post",
+                        url: "/fsservers/serversOrder/api/orders",
+                        data: JSON.stringify({serverStatusStr:"1,2,3",payStatusStr :"2,3,4",pageSize:10000}),
+                        contentType: "application/json",
+                        async: true,
+                        success: function (data, isError) {
+                            if (!isError) {
+                                return;
+                            };
+                            if (data.httpCode != 200) {
+                                return;
+                            }
+                            var obj = {showOrdersBtn:false};
+                            if(data.data.length == 0){
+                                return callback(obj)
+                            }
+                            obj.showOrdersBtn = true;
+                            callback(obj);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(textStatus);
+                        }
+                    });
+                }
+
+                //判断是否存在活动
+                function hasActivity(callback) {
+                    $.ajaxPackage({
+                        type: "post",
+                        url: "/fsservers/activies/api/active",
+                        data: JSON.stringify({}),
+                        contentType: "application/json",
+                        async: true,
+                        success: function (data, isError) {
+                            if (data.httpCode != 200) {
+                                return callback(false);
+                            }
+                            var timeData = data.data;
+                            var NowDate = Date.parse(new Date());
+                            if (timeData && timeData.endTime && Date.parse(timeData.endTime.replace(/-/g, '/')) > NowDate) {
+                                callback(true);
+                            } else {
+                                callback(false);
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            return callback(false);
+                        }
+                    });
+                }
+
+
+                function scrollFixed() {
+                    var showFixedHeight = $("#showFixed").offset().top;
+                    console.log(showFixedHeight)
+                    $(window).on("scroll", function () {
+                        if ($(this).scrollTop() >= showFixedHeight) {
+                            $(".payBtn_bottom").show();
+                        } else {
+                            $(".payBtn_bottom").hide();
+                        }
+                    })
+                }
+
+                //创建订单
+                function createOrder(actInfo,callback) {
+                    var load = layer.msg('正在创建订单...', {
+                        icon: 16
+                        , shade: 0.01
+                    });
+                    $.ajaxPackage({
+                        type: "post",
+                        url: "/fsservers/serversOrder/api/beginOrder",
+                        contentType: "application/json",
+                        async: true,
+                        data: JSON.stringify({
+                            serverId: actInfo.id,
+                            sourceChannel: ""
+                        }),
+                        success: function (data, isError) {
+                            if (!isError) {
+                                return;
+                            };
+                            if (data.httpCode != 200) {
+                                return;
+                            }
+                            layer.close(load);
+                            callback(data.data.id);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(textStatus);
+                        }
+                    })
+                }
+
+                //支付
+                function pay(orderId) {
+                    // 判断环境
+                    var payType = "01";
+                    if ($.tools().isAL()) {
+                        payType = "02";
+                    }
+                    setTimeout(function () {
+                        payFlag = true;
+                    }, 1500);
+                    // 跳转支付流程
+                    var payInfo = new H5Pay();
+                    payInfo.init({
+                        orderId: orderId,
+                        payWay: payType,
+                        orderType: 'fsServer',
+                        H5orderType: "fsServerChannel",
+                        paySuccessUrl: 'https://' + window.location.host + '/pay/lzpay/return?tradeNo=' + orderId + "&orderType=fsServer"
+                    }, function (r) {
+                        if (!r.code) {
+                            layer.msg(r.msg)
+                        }
+                        payFlag = true;
+                    })
+                }
+
+                //事件相关
+                function eventFn(data) {
+                    //立即抢购的点击事件
+                    $(".payBtn").click(function () {
+                        if (!user) {
+                            return layer.msg("请在微信或支付宝中使用!");
+                        }
+                        createOrder(data,function(orderId){
+                            if($.tools().isWtsNativeApp()){
+                                return window.location.href = "./pay.html?id=" + orderId;
+                            }
+                            pay(orderId);
+                        })
+                    })
+                }
+
+            })
+        })
+    </script>
+</body>
+
+</html>

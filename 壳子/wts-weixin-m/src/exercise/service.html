@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    @@include("include/header.htm",{
+    "title":"梧桐树服务指南",
+    "keywords": "梧桐树保险网，保单查询，保险产品咨询，理赔服务，售后服务，投保常见问题",
+    "description": "梧桐树保险网，保单问题咨询，投保须知，理赔相关问题，如何退保，保单如何售后。"
+    })
+</head>
+
+<body>
+<div class="body-container service">
+    <img src="@@webRoot/lib/images/service/service-1.jpg" alt="" class="img-c">
+    <img src="@@webRoot/lib/images/service/service-2.jpg" alt="" class="img-c">
+    <img src="@@webRoot/lib/images/service/service-3.jpg" alt="" class="img-c">
+    <img src="@@webRoot/lib/images/service/service-4.jpg" alt="" class="img-c">
+    <img src="@@webRoot/lib/images/service/service-5.jpg" alt="" class="img-c">
+    <div class="blank-box" style="width:100%;"></div>
+    <div class="btns">
+        <a href="tel://400-9955-788" class="left btn">全国服务热线:400-9955-788</a>
+        <a href="./kefu.html" class="right btn"><i class="iconfont icon-pinglun margin-right-10"></i>在线客服</a>
+    </div>
+</div>
+
+</body>
+<script src="@@webRoot/lib/js/jweixin-1.4.0.js"></script>
+<script>
+   $(function(){
+    shareWx("会员服务指南-梧桐树保险网", "https://"+ $.domain+"/lib/images/logo-3.jpg", "梧桐树保险网会员享有无忧理赔服务，全程协办理赔，理赔速度快，质量优，以及家庭医生、重疾绿通、紧急救援等高端医疗服务。", $.tools().getWxId())
+    function shareWx(title, img, desc, appId) {
+                var appId = appId;
+                var title = title;
+                var url = location.href.split('#')[0];
+                // 调用服务器获取签名
+                $.ajax({
+                    type: "POST",
+                    url: "/tools/wechat/api/getJssdk",
+                    data: {appid: appId, url: url},
+                    async: false,
+                    dataType: 'json',
+                    success: function (data, isError) {
+                        //微信config授权
+                        if (!isError) {
+                            return;
+                        }
+                        wx.config({
+                            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                            appId: appId, // 必填，公众号的唯一标识
+                            timestamp: data.data.timeStamp, // 必填，生成签名的时间戳
+                            nonceStr: data.data.nonceStr, // 必填，生成签名的随机串
+                            signature: data.data.signature,// 必填，签名，见附录1
+                            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                        });
+                        wx.ready(function () {
+                            //分享到朋友圈
+                            wx.onMenuShareTimeline({
+                                title: title,
+                                desc: desc,
+                                link: url,
+                                imgUrl: img,
+                                success: function () {
+                                    //layer.msg('分享成功！');
+                                },
+                                cancel: function () { 
+                                    $.layerMsg('取消分享！')
+                                },
+                                fail: function (res) {
+                                    alert(JSON.stringify(res));
+                                }
+                            });
+                            //分享给朋友
+                            wx.onMenuShareAppMessage({
+                                title: title,
+                                desc: desc,
+                                link: url,
+                                imgUrl: img,
+                                trigger: function (res) {
+                                    // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                                    //alert('发送成功');
+                                },
+                                success: function (res) {
+                                    //layer.msg('已分享！');
+                                },
+                                cancel: function (res) {
+                                    $.layerMsg('已取消！')
+                                },
+                                fail: function (res) {
+                                    alert(JSON.stringify(res));
+                                }
+                            });
+                            //alert('已注册获取“发送给朋友”状态事件');
+
+                        });
+
+                        wx.error(function (res) {
+                            console.log(res);
+                        });
+
+                    }
+                });
+
+            }
+   })
+</script>
+</html>

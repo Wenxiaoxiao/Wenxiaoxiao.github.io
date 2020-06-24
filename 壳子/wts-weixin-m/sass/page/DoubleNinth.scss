@@ -1,0 +1,57 @@
+.DobleNinth{
+  height:auto;
+  img{
+    width: 100%;
+  }
+  .dn-body{
+    .dn-goods{
+      position: relative;
+      a{
+        display: block;
+        position: absolute;
+        width: 92%;
+        left: 4%;
+        bottom: 0;
+        height: r(230);
+        z-index: 100;
+      }
+    }
+  }
+  .dn-footer{
+    background-color: #ffa85b;
+    .hot-sell{
+      padding: 0 r(30);
+      .hsBoxs{
+        overflow: hidden;
+        margin-bottom: r(30);
+        .hsbox{
+          position: relative;
+          a{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+          }
+          img{
+            width: r(328);
+            height: r(448);
+          }
+        }
+      }
+    }
+  }
+  .dn_bottom{
+    width: 100%;
+    height: r(508);
+    background: url("../images/double_images/dn_footer_bg.jpg") no-repeat center ;
+    background-size: cover;
+    overflow: hidden;
+    span{
+      width: r(668);
+      margin: r(80) auto;
+      display: block;
+    }
+  }
+}

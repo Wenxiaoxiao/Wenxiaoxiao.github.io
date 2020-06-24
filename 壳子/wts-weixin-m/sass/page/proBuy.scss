@@ -1,0 +1,91 @@
+.probuy{
+  background-color: #f6db9f;
+  .probuy-content{
+    border-radius: r(20);
+    border:1px solid transparent;
+    margin-bottom: r(55);
+    padding: 0 5px;
+    position: relative;
+    .content-header{
+      width: r(463);
+      height: r(80);
+      background: url("../images/photo/probuy-icon1.png") no-repeat ;
+      background-position: top center;
+      background-size: 100%;
+      margin: 0 auto;
+     .lz-title{
+        color: #fff;
+        z-index: 100;
+       @include remCalc(font-size, 40);
+      }
+    }
+    .content-box{
+      position: relative;
+      margin-top: r(20);
+      .content-img{
+       width: 100%;
+       height:r(300);
+      }
+      .content-title{
+        line-height: r(65);
+      }
+      .content-text{
+        padding:0 r(25);
+        background-color: #fff;
+
+        .content-hint{  
+            span{
+              display: inline-block;
+              padding: 2px 4px;
+              &:nth-child(n){
+                border: 1px solid #009944;
+                color:#009944;
+              }
+              &:nth-child(2n){
+                border: 1px solid #ff6f07;
+                color: #ff6f07;
+              }
+              &:nth-child(3n){
+                border: 1px solid #00b7ee;
+                color:#00b7ee;
+              }
+          }
+        }
+        .content-buy{
+          .money{
+            padding: r(10) r(11) r(10);
+            em{
+              font-size: r(55);
+            }
+          }
+          a{
+            background-color: $baseColor;
+            padding:r(17) r(30);
+            border-radius: r(40);
+            margin-top:-3px;
+            &:active{
+              color: #fff;
+              box-shadow: 2px 2px 5px #666;
+            }
+          }
+        }
+      }
+
+    }
+
+
+    .bottom-icon{
+      width: r(67);
+      height: r(71);
+      position: absolute;
+      right: r(-7);
+      bottom: r(-27);
+    }
+  }
+  .probuy-footer{
+    width: r(718);
+    height: r(111);
+    margin:0 auto;
+    margin-top: r(-10);
+  }
+}

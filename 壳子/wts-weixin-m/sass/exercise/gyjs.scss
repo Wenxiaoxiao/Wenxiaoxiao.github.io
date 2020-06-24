@@ -1,0 +1,53 @@
+.gyjs{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background:#6464ff;
+    .gyjsContent{
+        width: 100%;
+        background: url("../images/exercise/gyjs/1.jpg") #6464ff no-repeat;
+        background-size: 100% auto;
+        padding: r(35) r(24);
+        padding-top: r(300);
+    }
+    .content{
+        width: 100%;
+        border-radius: r(15);
+        background:#fff;
+        padding-top: r(20);
+        padding-bottom: r(20);
+        .item{
+            .title{
+                position: relative;
+                height: r(70);
+                span{
+                    position: absolute;
+                    left: 0;
+                    top: r(20);
+                    font-size: r(30);
+                    color: #fff;
+                    padding-left: r(17);
+                    padding-right: r(30);
+                    display: block;
+                    line-height: r(50);
+                    background: url("../images/exercise/gyjs/2.png") no-repeat;
+                    background-size: 100% 100%;
+                    border-radius: 0 r(25) r(25) 0;
+                }
+            }
+            .desc{
+                padding:0 r(22);
+                width: 100%;
+                background: #fff;
+                border-radius: r(15);
+                font-size: r(26);
+                line-height: r(45);
+                padding: r(15);
+                span{
+                    color: #0e36b0;
+                }
+            }
+        }
+    }
+}

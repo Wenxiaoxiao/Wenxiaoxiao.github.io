@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"支付", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <!-- 加载动画 -->
+    @@include("include/ready-ani.htm")
+    <div class="body-container pay_info">
+
+    </div>
+    @@include("include/footer.htm")
+    <script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+
+    <!-- 选择方案列表 -->
+    <script type="text/html" id="orderData">
+        <div class="pay_info_header">
+            <div class="pay_info_header_bar">
+                <div></div>
+            </div>
+            <div class="pay_info_header_content">
+                {{each orderState as value}}
+                <div class="pay_info_header_content_item {{if type == '1' || type == '3'}}active{{/if}}">
+                    <div class="pic">
+                        <img src="{{value.icon}}" alt="">
+                    </div>
+                    <div class="desc">{{value.text}}</div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="pay_info_content">
+            <div class="pay_info_content_info">
+                {{if payStatus == 1}}
+                    <div class="unpaid">
+                        <div class="pay_header">
+                            <img src="@@webRoot/lib/images/customization/p01.png" alt="">
+                            <div class="pay_header_desc">请于<span>1小时</span>内完成支付，否则订单将取消</div>
+                            <div class="pay_header_info">{{serverName}}</div>
+                            <div class="pay_header_price">应付金额：<span>￥{{needAmount || realAmount}}</span></div>
+                        </div>
+                        <div class="pay_way_header">请选择支付方式</div>
+                        <div class="pay_way">
+                            <div class="pay_way_item">
+                                <img src="@@webRoot/lib/images/customization/p02.jpg" alt="">
+                                <span class="pay_way_item_title">微信支付</span>
+                                <span class="pay_way_item_desc" payType="01"><img
+                                        src="@@webRoot/lib/images/customization/p04.png" alt=""></span>
+                            </div>
+
+                            <div class="pay_way_item">
+                                <img src="@@webRoot/lib/images/customization/p03.jpg" alt="">
+                                <span class="pay_way_item_title">支付宝支付</span>
+                                <span class="pay_way_item_desc" payType="02"><img
+                                        src="@@webRoot/lib/images/customization/p04.png" alt=""></span>
+                            </div>
+
+                            <div class="pay_way_item">
+                                <img src="@@webRoot/lib/images/customization/p04.jpg" alt="">
+                                <span class="pay_way_item_title">银联支付</span>
+                                <span class="pay_way_item_desc" payType="04"><img
+                                        src="@@webRoot/lib/images/customization/p04.png" alt=""></span>
+                            </div>
+                        </div>
+
+                        <div class="pay_btn"><span>立即支付</span></div>
+                    </div>
+                {{else}}
+                    {{if type == 1 || type == 3}}
+                        {{if payStatus == 4}}
+                            <div class="zfsuccess isSuccess">
+                                <div class="zfsuccess_title">信息已完善</div>
+                                <img class="zfsuccess_desc_img" src="@@webRoot/lib/images/customization/ewm.jpg" alt="">
+                                <div class="zfsuccess_desc_info">长按识别二维码,关注梧桐树保险网查看方案</div>
+                                <div class="zfsuccess_desc">为您精选的私人保障方案定制顾问<br />会在1小时内联系您，请您保持通话畅通!</div>
+                                <div class="zfsuccess_desc_btn"><span>查看我的方案</span></div>
+                            </div>
+                        {{else}}
+                            <div class="zfsuccess">
+                                <img src="@@webRoot/lib/images/customization/p05.png" alt="">
+                                <div class="zfsuccess_title">支付成功！</div>
+                                <div class="zfsuccess_desc">为了更好的为您定制方案<br>请进一步完善您的信息<br>信息越完善真实,定制出来的方案越精准哦!</div>
+                                <div class="zfsuccess_desc_wsxx"><span>完善需求 定制精准方案</span></div>
+                            </div>
+                        {{/if}}
+                    {{else}}
+                        <div class="zfsuccess isSuccess">
+                            <div class="zfsuccess_title">{{if serverStatus == 3}}诊断成功{{else}}下单成功{{/if}}</div>
+                            <img class="zfsuccess_desc_img" src="@@webRoot/lib/images/customization/ewm.jpg" alt="">
+                            <div class="zfsuccess_desc_info">长按识别二维码,关注梧桐树保险网查看诊断方案</div>
+                            <div class="zfsuccess_desc">为您精选的保险专家顾问<br />会在1小时内联系您，请您保持通话畅通!</div>
+                            <div class="zfsuccess_desc_btn"><span>我的保险诊断服务</span></div>
+                        </div>
+                    {{/if}}
+                    
+                {{/if}}
+
+            </div>
+        </div>
+    </script>
+    <script src="@@webRoot/lib/units/H5Pay.js"></script>
+    <script src="@@webRoot/lib/units/AppPay.js"></script>
+    <script>
+        $(function () {
+            var login = wtsLogin
+            login.init({
+                env: $.globedata.environment
+            }, function (user) {
+                if (user && user.token) sessionStorage.setItem("token", user.token);
+                var payFlag = true;
+                var wxPayApi = null;
+                //订单编号
+                var orderId = $.getQueryString("id");
+                //支付方式
+                var payType = null;
+                //订单类型
+                var type = null;
+                //订单状态
+                var orderStatus = null;
+                //订单金额
+                var orderAmount = null;
+                //产品类型(单人投保还是多人投保)
+                var supportType = null;
+                var openId = '';
+                //获取授权
+                if (!$.tools().isWtsNativeApp()) {
+                    new H5Pay().getOpenId({
+                        belongTo: 2
+                    })
+                }
+
+                //获取订单信息
+                getOrderInfo();
+
+                function getOrderInfo() {
+                    $.ajaxPackage({
+                        type: "post",
+                        url: "/fsservers/serversOrder/api/detail",
+                        contentType: "application/json",
+                        data: JSON.stringify({ id: orderId }),
+                        async: true,
+                        success: function (data, isError) {
+                            if (!isError) {
+                                return;
+                            };
+                            if (data.httpCode != 200) {
+                                return;
+                            }
+
+                            orderStatus = data.data.payStatus;
+                            type = data.data.type;
+                            orderAmount = data.data.needAmount || data.data.realAmount;
+                            supportType = data.data.serverType;
+                            if (data.data.type == 2) {
+                                data.data.orderState = [{
+                                    icon: "@@webRoot/lib/images/customization/m01.png",
+                                    text: "等待支付"
+                                }, {
+                                    icon: "@@webRoot/lib/images/customization/m01.png",
+                                    text: "下单成功"
+                                }, {
+                                    icon: "@@webRoot/lib/images/customization/m01.png",
+                                    text: "保险诊断"
+                                }];
+                                if (data.data.payStatus == 1) {
+                                    //未支付
+                                    data.data.orderState[0].icon =
+                                        "@@webRoot/lib/images/customization/m02.png";
+
+                                } else if (data.data.payStatus == 2 || data.data.payStatus == 3) {
+                                    //定制中
+                                    data.data.orderState[0].icon =
+                                        "@@webRoot/lib/images/customization/m02.png";
+                                    data.data.orderState[1].icon =
+                                        "@@webRoot/lib/images/customization/m02.png";
+                                    if (data.data.serverStatus == 3) {
+                                        data.data.orderState[2].icon =
+                                            "@@webRoot/lib/images/customization/m02.png";
+                                    }
+                                }
+
+                            } else {
+                                data.data.orderState = [{
+                                    icon: "@@webRoot/lib/images/customization/m02.png",
+                                    text: "购买服务"
+                                }, {
+                                    icon: "@@webRoot/lib/images/customization/m01.png",
+                                    text: "完善信息"
+                                }, {
+                                    icon: "@@webRoot/lib/images/customization/m01.png",
+                                    text: "规划师服务"
+                                }, {
+                                    icon: "@@webRoot/lib/images/customization/m01.png",
+                                    text: "设计方案"
+                                }];
+                                if (data.data.payStatus == 2 || data.data.payStatus == 3) {
+                                    //支付成功
+                                    data.data.orderState[0].icon =
+                                        "@@webRoot/lib/images/customization/m02.png";
+                                } else if (data.data.payStatus == 4) {
+                                    //支付成功
+                                    data.data.orderState[0].icon =
+                                        "@@webRoot/lib/images/customization/m02.png";
+                                    data.data.orderState[1].icon =
+                                        "@@webRoot/lib/images/customization/m02.png";
+                                    data.data.orderState[2].icon =
+                                        "@@webRoot/lib/images/customization/m02.png";
+
+                                    if (data.data.serverStatus == 3) {
+                                        data.data.orderState[3].icon =
+                                            "@@webRoot/lib/images/customization/m02.png";
+                                    }
+
+                                }
+                            }
+                            var orderData = template("orderData", data.data); //模板渲染
+                            $(".pay_info").html(orderData);
+                            //选择支付方式的点击事件
+                            $(".pay_way_item").click(function () {
+                                $(".pay_way_item").find(".pay_way_item_desc")
+                                    .removeClass("active");
+                                $(this).find(".pay_way_item_desc").addClass(
+                                    "active");
+                                payType = $(this).find(".pay_way_item_desc").attr(
+                                    "payType");
+                            })
+                            //支付的点击事件
+                            $(".pay_btn").unbind('click');
+                            $(".pay_btn").click(function () {
+                                //判断订单的状态(未支付才可支付)
+                                var cheackPayState = checkOrderStatus();
+                                if (!cheackPayState) {
+                                    return;
+                                }
+
+                                //支付类型的拦截
+                                if (!payType) {
+                                    layer.open({
+                                        content: '请选择支付方式',
+                                        skin: 'msg',
+                                        time: 2 //2秒后自动关闭
+                                    });
+                                    return;
+                                }
+                                if (!payFlag) return;
+                                payFlag = false;
+                                //支付
+                                pay();
+                            })
+
+
+                            //我的定制的点击事件
+                            $(".zfsuccess_desc_btn").click(function () {
+                                if (user) {
+                                    if (type == "1" || type == "3") {
+                                        window.location.href = "./my_scheme.html";
+                                    } else {
+                                        window.location.href =
+                                            "./my_scheme.html?hospital=" + "true";
+                                    }
+                                } else {
+                                    return window.location.href = window.location.origin + "/m/index.html#/BDmobileHtml?type=2&redUrl=" + window.location.href;
+                                }
+                            })
+
+                            //完善信息的点击事件
+                            $(".zfsuccess_desc_wsxx").click(function () {
+                                if (user) {
+                                    window.location.href = "./srdz-questionList.html?id=" + orderId + "&supportType=" + supportType;
+                                } else {
+                                    return window.location.href = window.location.origin + "/m/index.html#/BDmobileHtml?type=2&redUrl=" + window.location.href;
+                                }
+                                window.location.href = "./srdz-questionList.html?id=" + orderId + "&supportType=" + supportType;
+                            })
+
+                            $(".lz-readys").hide();
+
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(textStatus);
+                        }
+                    });
+                }
+
+
+                //支付
+                function pay() {
+                    setTimeout(function () {
+                        payFlag = true;
+                    }, 1500);
+                    // 跳转支付流程
+                    var payInfo = new H5Pay();
+                    if ($.tools().isWtsNativeApp()) {
+                        payInfo = new AppPay();
+                    }
+                    payInfo.init({
+                        orderId: orderId,
+                        payWay: payType,
+                        orderType: 'fsServer',
+                        H5orderType: "fsServerChannel",
+                        paySuccessUrl: 'https://' + window.location.host + '/pay/lzpay/return?tradeNo=' + orderId + "&orderType=fsServer"
+                    }, function (r) {
+                        if (!r.code) {
+                            $.layerMsg(r.msg)
+                        }
+                        payFlag = true;
+                    })
+                }
+
+                //检查订单状态
+                function checkOrderStatus() {
+                    //已支付
+                    if (orderStatus == 2) {
+                        layer.open({
+                            content: '您的订单已支付，请勿重复支付',
+                            skin: 'msg',
+                            time: 2 //2秒后自动关闭
+                        });
+                        return false;
+                    } else if (orderStatus == 3) {
+                        //订单失效
+                        layer.open({
+                            content: '您的订单已支付，请完善资料',
+                            skin: 'msg',
+                            time: 2 //2秒后自动关闭
+                        });
+                        return false;
+                    } else if (orderStatus == 4) {
+                        //订单失效
+                        layer.open({
+                            content: '您已成功定制,请等待工作人员联系',
+                            skin: 'msg',
+                            time: 2 //2秒后自动关闭
+                        });
+                        return false;
+                    }
+                    return true;
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

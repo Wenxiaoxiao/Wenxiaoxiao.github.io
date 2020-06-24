@@ -1,0 +1,163 @@
+.srdz-index{
+    padding-bottom: r(140);
+    background: #69a9ff;
+    .img-box{
+        width: 100%;
+        img{
+            width: 100%;
+            display: block;
+        }
+    }
+    .my_scheme_btn{
+        position: fixed;
+        top: 40%;
+        right: 0;
+        display: none;
+        img{
+            width: r(132);
+            display: block;
+        }
+    }
+    .animate-btn {
+        animation: commonScale 1s infinite ease-in-out;
+    }
+    @keyframes commonScale{
+        0%{
+            transform:scale(0.9);
+        }
+        50%{
+            transform:scale(1.1);
+        }
+        100%{
+            transform:scale(0.9);
+        }
+    }
+    .payBtn_bottom{
+        width: 100%;
+        background-image: linear-gradient(#156adf, #0036cf);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: none;
+        .payBtn_content{
+            width: 100%;
+            .top{
+                width: 100%;
+                padding: r(20) r(26);
+                border-bottom: 1px solid #e5e5e5;
+                .price{
+                    color: #fff;
+                    font-size: r(50);
+                    font-weight: 900;
+                    float: left;
+                }
+                .activity{
+                    float: left;
+                    margin-left: r(30);
+                    height: r(80);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    .activity_desc{
+                        font-size: r(28);
+                        line-height: r(40);
+                        border-radius: r(15);
+                        padding: 0 r(15);
+                        color: #fff;
+                        background: #f53003;
+                    }
+                    .old_price{
+                        font-size: r(25);
+                        color: #fff;
+                        margin-top: r(12);
+                        line-height: 1.2;
+                        text-decoration: line-through;
+                    }
+                }
+                .payBtn{
+                    float: right;
+                    span{
+                        display: block;
+                        padding: 0 r(40);
+                        border-radius: r(40);
+                        line-height: r(80);
+                        font-size: r(34);
+                        color: #f53003;
+                        background: #f8ff3b;
+                        font-weight: 900;
+                        letter-spacing: 1px;
+                    }
+                }
+            }
+        }
+    }
+    .payBtn_top{
+        width: 100%;
+        padding: r(20) r(26);
+        background: #67a7fe;
+        .payBtn_content{
+            width: 100%;
+            border-radius: r(10);
+            background: #fff;
+            .top{
+                width: 100%;
+                padding: r(20) r(26);
+                border-bottom: 1px solid #e5e5e5;
+                .price{
+                    color: #fc5c3c;
+                    font-size: r(50);
+                    font-weight: 900;
+                    float: left;
+                }
+                .activity{
+                    float: left;
+                    margin-left: r(30);
+                    .activity_desc{
+                        font-size: r(28);
+                        color: #fc5c3c;
+                    }
+                    .old_price{
+                        font-size: r(25);
+                        color: #979797;
+                        text-decoration: line-through;
+                    }
+                }
+                .payBtn{
+                    float: right;
+                    span{
+                        display: block;
+                        padding: r(15) r(40);
+                        font-size: r(34);
+                        color: #fff;
+                        background: #fc5c3c;
+                        font-weight: 900;
+                        border-radius: r(15);
+                    }
+                }
+            }
+            .bottom{
+                padding: r(20) r(26);
+                .left{
+                    width: r(127);
+                    vertical-align: middle;
+                }
+                .desc,.people{
+                    vertical-align: middle;
+                    font-size: r(24);
+                    color: #000;
+                    padding-top: r(4);
+                    i{
+                        color: #fc5c3c;
+                    }
+                }
+                .people{
+                    float: right;
+                    // padding-top: r(4);
+                    font-size: r(26);
+                    color: #000;
+                }
+            }
+        }
+    }
+}

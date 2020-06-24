@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8"> @@include("include/header.htm",{ "title":"联系我们", "keywords": "联系我们", "description": "" })
+</head>
+<body>
+<div class="body-container contactUs">
+    <div class="contact-head">
+        <a onclick="window.history.go(-1)" class="iconfont icon-jiantouzuo head-left"></a>
+        <span>联系我们</span>
+        <a  href="index.html" class="head-right">首页</a>
+    </div>
+    <div class="contact-top">
+        <div class="contact-phone">电话客服</div>
+        <div class="contact-img1"><img src="@@webRoot/lib/images/d_phone_service.png" alt=""/></div>
+        <div class="wts-btn-big-01">
+            <a href="tel://400-9955-788" class="contact-btn-top" >
+                <img src="@@webRoot/lib/images/d_phone.png" alt=""  class="contact-btn-img"/>
+                <span>拨打热线400-9955-788</span>
+            </a>
+        </div>
+    </div>
+    <div class="contact-center">
+        <div class="contact-phone">QQ客服</div>
+        <div class="contact-img2 ">
+            <ul>
+                <li><img src="@@webRoot/lib/images/d_contact_us_01.png" alt="" class="clickQidian"/></li>
+                <li><img src="@@webRoot/lib/images/d_contact_us_02.png" alt="" class="img2 clickQidian"/></li>
+                <li><img src="@@webRoot/lib/images/d_contact_us_03.png" alt="" class="img3 clickQidian"/></li>
+                <li><img src="@@webRoot/lib/images/d_contact_us_04.png" alt="" class="clickQidian"/></li>
+                <li><img src="@@webRoot/lib/images/d_contact_us_05.png" alt="" class="img2 clickQidian"/></li>
+                <li><img src="@@webRoot/lib/images/d_contact_us_06.png" alt="" class="img3 clickQidian"/></li>
+            </ul>
+        </div>
+        <div class="wts-btn-big-01 clickQidian">
+            <img src="@@webRoot/lib/images/d_qq.png" alt="" class="contact-btn-img"/>
+            <span>点我咨询</span>
+        </div>
+    </div>
+    <div class="contact-bottom">
+        <ul>
+            <li>家庭保险规划</li>
+            <li>家庭风险管控</li>
+            <li>保险理赔服务</li>
+        </ul>
+        <!--<div class="contact-logo"><img src="@@webRoot/lib/images/logo-1.png" alt="" /></div>-->
+        <!--<span class="contact-bottom-logo">您身边权威的家庭保险配置专家</span>-->
+    </div>
+</div>
+
+</body>
+<script src="@@webRoot/lib/js/wtsLogin.1.0.js"></script>
+<script>
+    wtsLogin.init(0,function(e){
+        console.log(e);
+    })
+</script>
+</html>

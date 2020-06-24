@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"使用人信息", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container phone-doctor-userinfo">
+        <div class="title">使用人信息</div>
+        <div class="form-box">
+            <div class="row line">
+                <span>姓名</span>
+                <input class="right-input" type="text" placeholder="点击输入姓名" id="inspectPersonName" maxlength="14">
+            </div>
+            <div class="row line">
+                <span>性别</span>
+                <ul id="inspectPersonSex">
+                    <li data="1">男</li>
+                    <li data="2">女</li>
+                </ul>
+            </div>
+            <div class="row line">
+                <span>证件类型</span>
+                <ul id="inspectPersonCardtype">
+                    <li data="1">身份证</li>
+                    <li data="2">护照</li>
+                    <li data="3">出生证</li>
+                </ul>
+            </div>
+            <div class="row">
+                <span>证件号码</span>
+                <input class="right-input" type="text" placeholder="点击输入证件号码" id="inspectPersonCardid" maxlength="25">
+            </div>
+        </div>
+
+        <div class="button" id="submit">保存</div>
+
+    </div>
+</body>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+<script>
+    $(function(){
+        var key = $.getQueryString("key")||'phoneDoctorData';
+        var formData = sessionStorage[key];
+
+        if (formData) {
+            formData = JSON.parse(formData);
+            console.log(formData)
+            $("#inspectPersonSex li[data=" + formData.inspectPersonSex + "]").addClass("active");
+            $("#inspectPersonCardtype li[data=" + formData.inspectPersonCardtype + "]").addClass("active");
+            $("#inspectPersonCardid").val(formData.inspectPersonCardid);
+            $("#inspectPersonName").val(formData.inspectPersonName);
+        } else {
+            formData = {};
+            $("#inspectPersonSex li[data=1]").addClass("active");
+            $("#inspectPersonCardtype li[data=1]").addClass("active");
+            $("#inspectPersonCardid").val("");
+            $("#inspectPersonName").val("");
+        }
+
+        $("#submit").click(function() {
+            var inspectPersonSex = $("#inspectPersonSex .active").attr("data");
+            var inspectPersonCardtype = $("#inspectPersonCardtype .active").attr("data");
+            var inspectPersonCardid = $("#inspectPersonCardid").val();
+            var inspectPersonName = $("#inspectPersonName").val();
+            if(!inspectPersonName){
+                return $.layerAlert('请输入姓名');
+            }
+            if(!inspectPersonSex){
+                return $.layerAlert('请选择性别');
+            }
+            if(!inspectPersonCardtype){
+                return $.layerAlert('请选择证件类型');
+            }
+            if(!inspectPersonCardid){
+                return $.layerAlert('请输入证件号码');
+            }
+            if (inspectPersonCardtype == 1 && !$.regular().issfz(inspectPersonCardid)) {
+                return $.layerAlert('身份证号码格式有误');
+            }
+            if (inspectPersonCardtype == 1 && inspectPersonCardid.charAt(16) % 2 != inspectPersonSex % 2) {
+                return $.layerAlert('身份证号码与性别不一致');
+            }
+            formData.inspectPersonSex = inspectPersonSex;
+            formData.inspectPersonCardtype = inspectPersonCardtype;
+            formData.inspectPersonCardid = inspectPersonCardid;
+            formData.inspectPersonName = inspectPersonName;
+            sessionStorage[key] = JSON.stringify(formData);
+            console.log(formData)
+            console.log(sessionStorage[key])
+            history.back();
+        });
+        $("li").click(function() {
+            $(this).addClass("active").siblings().removeClass("active");
+        });
+
+    })
+</script>
+</html

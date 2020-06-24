@@ -1,0 +1,106 @@
+.level-detail {
+  background: url(~@/points/bg.jpg) no-repeat;
+  background-size: 100%;
+  background-color: #fff;
+  .top-box {
+    text-align: center;
+    height: r(255);
+    .user-box {
+      display: inline-block;
+      border-radius: 50%;
+      border: r(45) solid #efdaac;
+      margin-top: -2px;
+      .user-box-inner {
+        border-radius: 50%;
+        border: 7px solid #edd59f;
+        .user-img {
+          width: r(106);
+          vertical-align: middle;
+          border: 1px solid #f6eacf;
+          &.circular {
+            width: r(100);
+            height: r(100);
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+    .username {
+      font-size: r(34);
+      margin-top: r(-40);
+    }
+  }
+  .my-level {
+    width: r(690);
+    margin: auto;
+    padding: r(30) 0;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #b1afaf;
+    text-align: center;
+    .item {
+      width: r(120);
+      display: inline-block;
+      vertical-align: middle;
+      .level-img {
+        width: r(52);
+      }
+      .text {
+        font-size: r(26);
+      }
+    }
+    .progress-box {
+      width: r(400);
+      .text2 {
+        color: #999;
+        font-size: r(24);
+        margin-top: 5px;
+      }
+      .progress {
+        margin: 0 -7px;
+        height: 4px;
+        border-radius: 2px;
+        background-color: #dfdfdf;
+        div {
+          width: 50%;
+          background-color: #e2bf71;
+          height: inherit;
+          border-radius: inherit;
+        }
+      }
+    }
+  }
+  .detail-box {
+    margin-top: r(20);
+    .detail-title {
+      line-height: r(100);
+      border-bottom: 1px solid #ececec;
+      padding-left: r(30);
+      font-size: r(30);
+    }
+    .detail-list {
+      text-align: center;
+      font-size: 0;
+      padding: r(30) 0;
+      &.line {
+        border-bottom: 1px solid #ececec;
+      }
+      .detail-item {
+        width: 33.333%;
+        display: inline-block;
+        .item-text1 {
+          font-size: r(30);
+        }
+        .item-text2 {
+          font-size: r(26);
+          color: #999;
+        }
+        .level-img {
+          width: r(67);
+          margin-bottom: 3px;
+        }
+      }
+
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>授权</title>
+
+</head>
+
+<body>
+</body>
+<script src="@@webRoot/lib/js/jquery.min.js"></script>
+<script>
+    $(function() {
+        var code = getQueryString('code');
+        var comes = getQueryString('comeFrom');
+        if (!code) return;
+        $.ajax({
+            type: "get",
+            url: "/uc/login/gzhlogin?code=" + code,
+            success: function(data, textStatus, jqXHR) {
+                var userId = data.userId;
+                alert(data.data);
+                window.location.href = "https://bx.wts999.com/m/plan/planBookList.html?userId=" + userId + "&comeFrom=" + comes;
+            },
+            error: function(data, textStatus, errorThrown) {
+                console.log(data);
+                console.log(data.status);
+                console.log(textStatus);
+                var isError = errordata(data, textStatus);
+                paramList.error(data, isError);
+            }
+        });
+
+
+        /*
+         * 获取
+         * */
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+    })
+</script>
+
+
+</html>

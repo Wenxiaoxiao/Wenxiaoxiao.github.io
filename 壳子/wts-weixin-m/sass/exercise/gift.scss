@@ -1,0 +1,160 @@
+.gift-container{
+    height: 100vh;
+    padding-top: r(570);
+    position: relative;
+    background-color: #ffe5cc;
+    .gift-bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    .gift-btn-box{
+        width: r(690);
+        height: r(155);
+        background-color: #fff;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        margin: 0 auto;
+        position: relative;
+        padding: r(33) r(25) r(33) r(25);
+        box-shadow: 0 0 8px rgba(254, 162, 74, .5);
+        .gift-tag{
+            position: absolute;
+            width: r(96);
+            height: r(96);
+            left: 0;
+            top: 0;
+        }
+        .icon-yiliao{
+            width: r(77);
+            height: r(88);
+        }
+        .gift-text{
+            .p1{
+                font-size: r(36);
+                font-weight: 900;
+                color: #ff6e07;
+            }
+            .p2{
+                font-size: r(30);
+                color: #333;
+            }
+        }
+        .gift-btn{
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: r(-35);
+            width: r(170);
+            height: r(70);
+            border-radius: r(35);
+            -webkit-border-radius: r(35);
+            -moz-border-radius: r(35);
+            -ms-border-radius: r(35);
+            -o-border-radius: r(35);
+            background-color: #ff6e07;
+            color: #fff;
+            line-height: r(73);
+            font-size: r(32);
+            text-align: center;
+            
+        }
+    }
+    .help-msg{
+        position: absolute;
+        top: r(40);
+        right: r(10);
+        .help{
+            width: r(44);
+            height: r(44);
+            >img{
+                width: 100%;
+                display: block;
+            }
+        }
+        
+    }
+}
+
+.gift-layer{
+     background-color: #fff;
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+     -ms-border-radius: 10px;
+     -o-border-radius: 10px;
+     padding: 8px;
+     height: r(800);
+     box-sizing: border-box;
+     .gift-layer-line{
+         height: 100%;
+         border:1px solid #FE5046;
+         border-radius: 10px;
+         -webkit-border-radius: 10px;
+         -moz-border-radius: 10px;
+         -ms-border-radius: 10px;
+         -o-border-radius: 10px;
+         padding: 15px;
+         box-sizing: border-box;
+         font-size: 16px;
+         overflow-x:auto ;
+        .gift-layer-title{
+            font-size:22px;
+            font-weight: 900;
+            text-align: center;
+            color: #FE5046;
+            padding-bottom: 5px;
+            span{
+                display: inline-block;
+                position: relative;
+                &::after,&::before{
+                    content: '';
+                    position: absolute;
+                    width: 5px;
+                    height: 5px;
+                    border:2px solid #FE5046;
+                    top: 50%;
+                    margin-top: -2px;
+                    transform: rotate(45deg);
+                    -webkit-transform: rotate(45deg);
+                    -moz-transform: rotate(45deg);
+                    -ms-transform: rotate(45deg);
+                    -o-transform: rotate(45deg);
+                }
+                &::after{
+                    left: -20px;
+                }
+                &::before{
+                    right: -20px;
+                }
+            }
+        }
+        .gift-subtitle{
+            border-left: 4px solid #FE5046;
+            padding-left: 10px;
+            color: #FE5046;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+        p{
+            line-height: 1.5;
+            margin: 5px 0 10px;
+        }
+        
+     }
+     
+}
+.gift-layer-btn{
+    width: r(400);
+    height: r(80);
+    border-radius: r(40);
+    background: linear-gradient(to left , rgb(255, 246, 5) 29% , rgb(255, 192, 0) 96%);
+    font-size: 18px;
+    line-height: r(80);
+    text-align: center;
+    margin: r(40) auto r(20);
+}

@@ -1,0 +1,91 @@
+/*底部公共栏*/
+.footer{
+  background-color: white;
+  padding-top: r(80);
+  position: relative;
+  margin-top: r(15);
+  padding-bottom: r(20);
+  .foot-top{
+    width: 100%;
+    position: absolute;
+    color: #333;
+    left: 0;
+    top: 0;
+    text-align: center;
+    @include remCalc(height,80);
+    @include remCalc(line-height,80);
+    @include remCalc(font-size,32);
+    .img-footer-top{
+      display: inline-block;
+      margin-right: 5px;
+      vertical-align: middle;
+      @include remCalc(width,46);
+      margin-top:-2px;
+    }
+  }
+  ul.foot-ul{
+    li{
+      width: 20%;
+      float: left;
+      box-sizing: border-box;
+      text-align: center;
+      line-height: r(28);
+      @include remCalc(font-size,26);
+      a{
+        color: #666;
+      }
+    }
+    li:not(:first-child){
+      border-left: 1px solid #999;
+    }
+  }
+  a.foot-p{
+    margin: 0 auto;
+    border-radius: r(39);
+    margin-top: r(30);
+    border:1px solid #999;
+    width:r(578);
+    display: block;
+    @include remCalc(font-size,34);
+    color: #000;
+    text-align: center;
+    @include remCalc(height,78);
+    @include remCalc(line-height,78);
+    .foot-p-kfphone{
+      display: inline-block;
+      width: r(110);
+
+      line-height: r(26);
+      margin-top: r(13);
+      font-size: r(22);
+      color: #666;
+    }
+    .foot-tell{
+      position:relative;
+      bottom: r(9);
+      font-size: r(34);
+      letter-spacing: r(1);
+      color: #333;
+      margin: 0 r(30);
+      margin-top:r(-39) ;
+    }
+    i{
+      position: relative;
+      bottom: 1px;
+      color: $cpBaseCol;
+      @include remCalc(font-size,48);
+      @include remCalc(line-height,78);
+      color: #000;
+    }
+  }
+}
+
+.bom-blank{
+  width: 100%;
+  @include remCalc(height,104);
+}
+@media screen and (max-width: 320px) {
+  .foot-p-kfphone{
+    width: r(120) !important;
+  }
+}

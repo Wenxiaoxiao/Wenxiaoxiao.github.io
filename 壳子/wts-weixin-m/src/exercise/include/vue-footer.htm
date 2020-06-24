@@ -1,0 +1,13 @@
+<!--底部公共js-->
+<!--模板引擎-->
+<script src="@@webRoot/lib/layer/layer.js"></script>
+<script src="@@webRoot/lib/js/vue.min.js"></script>
+<script src="@@webRoot/lib/js/jweixin-1.4.0.js"></script>
+@@if (name === 'build') {
+    <script src="https://libs.wts999.com/wtsLogin.min.js?r=@@time"></script>
+    <script src="https://libs.wts999.com/nativeApp.min.js?r=@@time"></script>
+}
+@@if(name === 'dev'){
+    <script src="https://libs.wts999.com/wtsLogin.js?r=@@time"></script>
+    <script src="https://libs.wts999.com/nativeApp.js?r=@@time"></script>
+}

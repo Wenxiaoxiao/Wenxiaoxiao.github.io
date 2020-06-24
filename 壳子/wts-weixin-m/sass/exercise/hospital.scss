@@ -1,0 +1,290 @@
+.hospital{
+      height: 100%;
+  //弹框
+  .hospital_mask{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+  }
+ .userinfos_mask{
+     display: none;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 13;
+    background: #fff;
+    padding-bottom: r(90);
+    .usersInfo{
+      width: 100%;
+      box-sizing: border-box;
+      padding:r(60) r(30);
+      .username,.usermobile{
+        box-sizing: border-box;
+        width:100%;
+        font-size: r(28);
+        line-height: r(100);
+        border-bottom: 1px solid #d9eafe;
+        .input_dev_span{
+          display: inline-block;
+          width: 20%;
+          vertical-align: middle;
+          text-align: left;
+        }
+        input{
+          box-sizing: border-box;
+          border: none;
+          width: 70%;
+          line-height: r(100);
+          vertical-align: middle;
+        }
+      }
+      .codeNumber{
+        input{
+          width: r(250);
+        }
+        .codeBtn{
+          float: right;
+          color: #2979e7;
+          text-align: center;
+          line-height: r(100);
+          &.active{
+            color: #ccc;
+          }
+        }
+      }
+      .usersInfo_desc{
+         width:100%;
+        font-size: r(25);
+        padding: r(20) 0;
+      }
+    }
+    .userbtn_mask{
+      width: 100%;
+      height: r(90);
+      line-height: r(90);
+      background: #1266fd;
+      text-align: center;
+      color: #fff;
+      font-size: r(32);
+      letter-spacing: 2px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      span{
+        float: left;
+        width: 50%;
+      }
+      .cel{
+        background: #ffba35;
+      }
+    }
+  }
+  .hospital_mask_content{
+    display: none;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 11;
+    background: #fff;
+    padding-bottom: r(90);
+    .djs{
+        line-height: r(65);
+        font-size: r(33);
+        text-align: center;
+        color: #fff;
+        background: rgba(0,0,0,0.8)
+      }
+    .mask_content_title{
+      box-sizing: border-box;
+      padding: 0 r(30);
+      font-size: r(32);
+      color: #000;
+      line-height: r(86);
+      font-weight: 900;
+    }
+    .mask_content_btn{
+      width: 100%;
+      height: r(90);
+      line-height: r(90);
+      background: #1266fd;
+      text-align: center;
+      color: #fff;
+      font-size: r(32);
+      letter-spacing: 2px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      span{
+        float: left;
+        width: 50%;
+      }
+      .cel{
+        background: #ffba35;
+      }
+    }
+    .mask_content_list{
+      width: 100%;
+       box-sizing: border-box;
+      padding: 0 r(30);
+      .item.active{
+        border: 1px solid #6aa9ff;
+      }
+      .item{
+        width: 100%;
+        background: #f0f6ff;
+        border-radius: r(15);
+        box-sizing: border-box;
+        padding:0 r(30);
+        margin-bottom: r(20);
+        border: 1px solid #f0f6ff;
+        .item_title{
+          width: 100%;
+          line-height: r(69);
+          height: r(70);
+          .desc{
+            font-size: r(30);
+            font-weight: 900;
+            color: #2979e7;
+            float: left;
+          }
+          .original_price{
+              font-size: r(28);
+              color: #666;
+              float: right;
+              margin-left: r(25);
+              text-decoration:line-through;
+            }
+          .price{
+            font-size: r(30);
+            font-weight: 900;
+            color: #f50015;
+            float: right;
+          }
+        }
+        .item_content{
+          width: 100%;
+          border-top: 1px solid #6aa9ff;
+          padding-bottom: r(16);
+          display: none;
+          .item_content_title{
+            margin-top: r(16);
+            .item_content_title_icon{
+              float: left;
+              width: 6%;
+              img{
+                width: r(26);
+                display: block;
+                vertical-align: middle;
+              }
+            }
+            .item_content_title_info{
+              float: left;
+              width: 94%;
+              font-size: r(27);
+              color: #000;
+               vertical-align: middle;
+               letter-spacing: r(1);
+              span{
+                color: #2979e7;
+                margin-right: r(5);
+                
+                
+              }
+            }
+          }
+          .item_content_title::after{
+             clear:both;content:'';display:block;width:0;height:0;visibility:hidden;
+          }
+        }
+      }
+    }
+  }
+  .hospital_content{
+    width: 100%;
+    padding-bottom: r(90);
+    .hospital_content_info_desc{
+      width: 100%;
+      position: relative;
+      .hospital_content_info_item{
+        width: r(460);
+        text-indent:r(56);
+        position: absolute;
+        font-size: r(28);
+        color: #000;
+        span{
+          color: #036bff;
+        }
+      }
+      .item1{
+        top: r(520);
+        left: r(48);
+      }
+      .item2{
+        top: r(870);
+        right: r(48);
+      }
+      .item3{
+        top: r(1155);
+        left: r(48);
+      }
+    }
+    img{
+      width: 100%;
+      display: block;
+    }
+  }
+  .hospital_swiper{
+    width: 100%;
+    height: r(270);
+    .swiper-container{
+      width: 100%;
+      height:100%;
+      background: red;
+      .swiper-slide {
+       text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+      }
+    }
+  }
+  .hospital_footer{
+    width: r(750);
+    position: fixed;
+    height: r(90);
+    bottom: 0;
+    left: 50%;
+    margin-left: r(-375);
+    .hospital_footer_btn{
+      width: 50%;
+      float: left;
+      background: #ffba35;
+      color: #fff;
+      font-size: r(30);
+      font-weight: 900;
+      text-align: center;
+      line-height: r(90);
+    }
+    .hospital_footer_btn.active{
+      background: #1366ff;
+    }
+  }
+}

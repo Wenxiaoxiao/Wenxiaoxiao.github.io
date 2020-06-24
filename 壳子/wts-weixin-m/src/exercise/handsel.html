@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <!--测试环境-->
+    @@include("include/header.htm",{ "title":"赠险专题", "keywords": "", "description": "" })
+</head>
+
+<body>
+    @@include("include/ready-ani.htm")
+    <div class="body-container handsel-box">
+        <img src="@@webRoot/lib/images/exercise/handsel/handsel-1.jpg" class="banner" alt="">
+        <div class="product-box">
+            
+        </div>
+    </div>
+    <div class="birth-tips">
+        <div class="showMask"></div>
+        <div class="tips-box">
+            <div class="tips-list">
+                <div class="tips-icon tips-icon2 tips-close">
+                    <i class="iconfont icon-cha"></i>
+                    <img src="@@webRoot/lib/images/birther-icon-2.png" class="icon-img" alt="">
+                </div>
+                <div class="tips-content">
+                    赠险只对梧桐树保险网客户开放<br>请联系您的保险顾问！
+                </div>
+                <div class="btnInfo">
+                    <a href="./kefu.html"><div class="tips-btn">联系客服</div></a>
+                    <div class="tips-btn tips-close tips-btn-close">返回</div>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <!--底部公共部分-->
+    @@include("include/footer.htm")
+<!--模板引擎-->
+<script src="@@webRoot/lib/js/lodash.js"></script>
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+ 
+</body>
+<script type="text/html" id="spikeListTml">
+    {{each promission as val i}}
+    <div class="playLis">
+        <div class="playLis_content">
+            <h2>{{val.insuranceProductName}}</h2>
+            <p class="desc">{{val.insuranceShort}}</p>
+            <div class="playLis_js clearfix ">
+                <div class="profile fl">
+                    <span class="ldea">保障理念</span> {{val.designIdea}}
+                </div>
+                <div class="introduce fr">  
+                        {{#val.productCharactor | typeCodeubb}}   
+                </div>
+            </div>
+            <div class="count-box clearfix">
+                <p class="price fl"><span>￥</span>0.00 <s>售价{{val.productPrice}}</s> </p>
+            </div>
+            <span class="tag">精品</span>
+        </div>
+        <div class="playLis_bottom clearfix">
+            {{if val.source == "policyBase"}}
+                <a href="/m/product/{{val.productCode}}" class="btn" target="_blank">
+                    <img src="@@webRoot/lib/images/exercise/handsel/handsel-btn.png" alt="">
+                </a> 
+            {{else}}
+            <a href="../market/pros-detail.html?id={{val.insuranceProductId}}" class="btn" target="_blank">
+                <img src="@@webRoot/lib/images/exercise/handsel/handsel-btn.png" alt="">
+            </a>  
+            {{/if}}    
+        </div>
+    </div>
+    {{/each}}
+</script>
+<script>
+$(function () {
+    handleLayerPopup()
+    var login = wtsLogin
+    login.init({env:$.globedata.environment},function(user){
+        var token = $.getQueryString("WTS_TOKEN") || user.token;
+        var paramList = {
+        url: "/present/presentActivity/api/present/activityList",
+        data: "{}",
+        headers:{token:token},
+        contentType: "application/json;charset=UTF-8",
+        success: function (data, isError) {
+                console.log(data);
+                $('.lz-readys').hide();
+                if (!isError) {
+                    return;
+                }
+                if(!data.promission || data.promission.length == 0) {
+                    return $(".birth-tips").show()
+                }
+                var html = template("spikeListTml", data);
+                $(".product-box").html(html);
+            }
+        }
+        $.ajaxPackage(paramList);
+    })
+    function handleLayerPopup(){
+        $(".tips-close").click(function(){
+        if($.tools().user.indexOf("wtsbxwApp")>-1){
+                location.href = "index.html#/"
+            }else if($.tools().isWtsNativeApp()){
+                nativeApp.general.deviceready(function () {
+                    nativeApp.general.closeWebView();
+                })
+            }else{
+                window.history.go(-1);
+            }
+        })
+    }
+})
+</script>
+</html>

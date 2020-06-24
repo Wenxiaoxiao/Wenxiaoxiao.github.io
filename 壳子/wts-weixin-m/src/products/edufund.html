@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"介绍投保送教育金券", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container edufund">
+        <img class="top" src="@@webRoot/lib/images/educationfund/1.1.png"/>
+        <div class="title">
+            <img src="@@webRoot/lib/images/educationfund/1.2.png"/>
+            <span>教育金券怎么用</span>
+            <div class="addLink goprodetail">查看详情 ></div>
+        </div>
+        <div class="how">
+            <img src="@@webRoot/lib/images/educationfund/1.3.png"/>
+        </div>
+        <div class="title">
+            <img src="@@webRoot/lib/images/educationfund/1.2.png"/>
+            <span>介绍好友投保得教育金券</span>
+        </div>
+        <div class="invitebox">
+            <div class="part1">
+                <div class="per-left">
+                    <img src="@@webRoot/lib/images/educationfund/1.4.png" class="headimgurl"/>
+                    <span>当前教育金券可用额度：<b class="orange available"></b></span>
+                </div>
+                <div class="per-right gofundrecord">详情 ></div>
+            </div>
+            <div class="part2">
+                <img src="@@webRoot/lib/images/educationfund/1.5.png"/>
+            </div>
+        </div>
+        <div class="activerules">
+            <div class="center-title">活动规则</div>
+            <div class="left-title">1.活动时间</div>
+            <div class="left-text">
+                活动时间为即日起至2020年6月30号。在活动有效期内，您参与活动推荐好友投保单单得奖励。
+            </div>
+            <div class="left-title">2.活动方式</div>
+            <div class="left-text">
+                此活动仅针对梧桐树已投保的会员。介绍好友在梧桐树保险网投保成功，即可享受奖励（详细规则咨询保险顾问或者客服专员）
+            </div>
+            <div class="left-title">3.奖励发放及说明</div>
+            <div class="left-text">
+                好友投保赠送给您的教育金券奖励将在投保产品过犹豫期的次日发放。好友如在犹豫期内退保，奖励将取消发放。梧桐树有权根据国家法律法规/监管规定/市场风险/运营策略的变化，调整本活动的运营规则，延长或提前终止本活动。
+            </div>
+        </div>
+    </div>
+</body>
+@@include("include/footer.htm")
+@@if (name === 'build') {
+    <script src="https://libs.wts999.com/wtsLogin.min.js"></script>
+    <script src="https://libs.wts999.com/nativeApp.min.js"></script>
+}
+@@if(name === 'dev'){
+    <script src="https://libs.wts999.com/wtsLogin.js"></script>
+    <script src="https://libs.wts999.com/nativeApp.js"></script>
+}
+<script>
+$(function(){
+    var login = wtsLogin;
+    login.init({env:$.globedata.environment},function(user){
+        if(user && user.token)sessionStorage.setItem("token",user.token);
+        if(!user || !user.id){
+            if($.tools().isWtsNativeApp()){
+                nativeApp.general.deviceready(function () {
+                    nativeApp.general.closeWebView();
+                    var url = encodeURIComponent(window.location.href);
+                    nativeApp.general.router({url:"wts://web?force=1&url="+url});
+                    return;
+                })
+            }
+            window.location.href= "http://" + $.domain.replace(/www/,"bx") + "/index.html#/BDmobileHtml?type=2&redUrl="+ window.location.href;
+            return;
+        }
+        var token = $.getQueryString("WTS_TOKEN") || user.token;
+        //判断该用户是否首投
+        //var InsurederList =  AjaxList("/policy/education/api/insureder/list","post",{},"InsurederList");
+        //教育金账户余额
+        var AccountAmount =  AjaxList("/policy/education/api/accountInfo","post",{},"AccountAmount");
+        if(user){
+            if(user.headimgurl){
+                $(".headimgurl").attr("src",user.headimgurl);
+            }
+        }
+    })
+    $(".goprodetail").on("click",function(){
+        window.location.href="/products/educationfund.html";
+    })
+    $(".gofundrecord").on("click",function(){
+        window.location.href="/products/edufundRecord.html";
+    })
+})
+function AjaxList(url,method,params,name){
+  var startAxList = {
+    type:method,
+    url:url,
+    contentType: "application/json;charset=UTF-8",
+    data: JSON.stringify(params?params:{}),
+    success: function (ajaxData, isError) {
+        if (!isError) {
+            return;
+        }
+        return_result(ajaxData,name);
+    }
+  }
+  $.ajaxPackage(startAxList);
+}
+function return_result(ajaxData,name){
+    if(name === "AccountAmount"){
+        var Num = Number(ajaxData.data.curNum) - Number(ajaxData.data.freezeNum);
+        $(".available").html(Num+'元');
+    }
+    if(name === "InsurederList"){
+        console.log("ajaxData",ajaxData);
+        if(ajaxData.data.length>0){//非首投
+            var link = /bx.wts999.com/g.test(window.location.origin)?"https://bx.wts999.com":"https://bx.wts9999.net";
+            var url = link+"/products/educationfund.html";
+            window.location.replace(url);
+        }
+    }
+}
+</script>
+</html

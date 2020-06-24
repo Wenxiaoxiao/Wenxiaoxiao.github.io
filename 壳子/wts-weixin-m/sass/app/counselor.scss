@@ -1,0 +1,138 @@
+.counselor {
+    height: 100%;
+    background-color: #fff;
+    .bg-box {
+        background: #fff url(../images/counselor-bg.png) no-repeat;
+        background-size: contain;
+        padding-top: r(65);
+        .lecturer-icon {
+            width: r(260);
+            height: r(260);
+            border-radius: 50%;
+            background-color: #ffe3cb;
+            margin: 0 auto;
+            padding: r(15);
+            >img {
+                width: r(230);
+                height: r(230);
+                border-radius: 50%;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+        .name {
+            color: #000;
+            text-align: center;
+            font-size: r(36);
+            line-height: r(100)
+        }
+        .des {
+            font-size: r(28);
+            padding: 0 r(70);
+            color: r(777);
+            text-align: center
+        }
+    }
+    .button-box {
+        background-color: #fff;
+        padding: r(30) 0;
+        >a {
+            display: block;
+            color: #fff;
+            width: r(586);
+            height: r(90);
+            font-size: r(32);
+            line-height: r(90);
+            border-radius: r(45);
+            padding-left: r(160);
+            margin: 0 auto;
+            .iconfont {
+                height: r(90) !important;
+                font-size: r(58);
+                margin-right: r(30);
+                display: inline-block;
+                vertical-align: middle;
+            }
+            span {
+                margin-left: r(10);
+                display: inline-block;
+            }
+            &:first-child {
+                background: linear-gradient(to top, rgb(255, 191, 21) 1%, rgb(255, 145, 18) 80%);
+                background: -o-linear-gradient(to top, rgb(255, 191, 21) 1%, rgb(255, 145, 18) 80%);
+                background: -ms-linear-gradient(to top, rgb(255, 191, 21) 1%, rgb(255, 145, 18) 80%);
+                background: -moz-linear-gradient(to top, rgb(255, 191, 21) 1%, rgb(255, 145, 18) 80%);
+                background: -webkit-linear-gradient(to top, rgb(255, 191, 21) 1%, rgb(255, 145, 18) 80%);
+                margin-bottom: r(30);
+            }
+            &:last-child {
+                background: linear-gradient(to top, rgb(255, 148, 21) 1%, rgb(255, 92, 1) 89%);
+                background: -o-linear-gradient(to top, rgb(255, 148, 21) 1%, rgb(255, 92, 1) 89%);
+                background: -ms-linear-gradient(to top, rgb(255, 148, 21) 1%, rgb(255, 92, 1) 89%);
+                background: -moz-linear-gradient(to top, rgb(255, 148, 21) 1%, rgb(255, 92, 1) 89%);
+                background: -webkit-linear-gradient(to top, rgb(255, 148, 21) 1%, rgb(255, 92, 1) 89%);
+            }
+        }
+    }
+    .QR-code-box {
+        padding-left: r(28);
+        text-align: center;
+        font-size: r(30);
+        line-height: r(40);
+        color: #000;
+        img {
+            display: block;
+            margin: 10px auto;
+            width: 50%;
+        }
+    }
+    .add-friend {
+        background-color: #fff;
+        padding-top: r(40);
+        
+        .code-des {
+            padding-top: r(20);
+            padding-left: r(15);
+            p {
+                color: #000;
+                font-size: r(24);
+                padding-bottom: r(14);
+                &:first-child {
+                    padding-bottom: r(18);
+                    font-size: r(30)
+                }
+                .iconfont {
+                    font-size: r(28);
+                    color: #ff7a02;
+                }
+            }
+        }
+    }
+    .img-box {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+        background-color: rgba($color: #000000, $alpha: .9);
+        .evtTop {
+            height: r(90);
+            line-height: r(90);
+            color: #fff;
+            text-align: center;
+            .iconfont {
+                font-size: r(80);
+                width: r(100);
+                height: r(100);
+                display: block;
+                margin-right: r(40);
+            }
+        }
+        >img {
+            display: block;
+            width: 100%;
+            margin: 15% auto;
+        }
+    }
+}

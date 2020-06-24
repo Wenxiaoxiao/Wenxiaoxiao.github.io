@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{
+    "title":"20万元防“疫”保障免费领",
+    "keywords": "20万元防“疫”保障免费领",
+    "description": "扩展承保新型冠状病毒，身故可赔20万元，重症住院每日领取津贴150元，最高可领20天；一般意外身故/伤残也可赔，最高1万元。"
+    })
+    <link rel="stylesheet" type="text/css" href="../lib/css/date.css" />
+    <link rel="stylesheet" type="text/css" href="../lib/css/city-picker.css" />
+</head>
+<body>
+    @@include("include/ready-ani.htm")
+    <div class="body-container pros-4">
+        <div class="content-wrapper">
+        <div class="top">
+            <img src="@@webRoot/lib/images/products/4/banner1.png" alt="" class="banner">
+            <div class="center">
+                <div class="t1"><span>20万元</span>防“疫”保障<span>免费</span>领</div>
+                <div class="p1">新型冠状病毒身故给付20万<br/>新型冠状病毒重症监护病房津贴150元/天</div>
+                <div class="p2">
+                    <span>价格低至<span class="money_info">&nbsp;<span class="large-letter">0</span>&nbsp;元</span></span> 
+                </div>
+                <div class="p1">仅剩 <span class="pro-num"></span> 份</div>
+                <div class="processes"><div class="rate"></div></div>
+                <button class="btn-get move" data="#formBox"><span>立即领取</span></button>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="active firstNav" >产品特色</div>
+            <div class="move" data="#panel6">理赔说明</div>
+            <div class="move" data="#formBox">我要领取</div>
+        </div>
+        <div class="box-bg panel1">
+            <div class="info-img1">
+                <img src="@@webRoot/lib/images/products/4/1.png">
+            </div>
+            <div class="info-img1">
+                <img src="@@webRoot/lib/images/products/4/2.2.png">
+            </div>
+            <div class="info-img1">
+                <img src="@@webRoot/lib/images/products/4/3.png">
+            </div>
+            <div class="info-img1">
+                <img src="@@webRoot/lib/images/products/4/4.2.png">
+            </div>
+            <div class="info-img1">
+                <img src="@@webRoot/lib/images/products/4/5.png">
+            </div>
+        </div>
+        <!-- <div class="box-fff panel2">
+            <div class="item">
+                <div class="title">恶性肿瘤住院医疗：</div>
+                <div class="text">包括床位费、重症监护室床位费、膳食费、护理费、诊疗费、检查检验费、治疗费、药品费、手术费、救护车使用费等</div>
+            </div>
+            <div class="item">
+                <div class="title">恶性肿瘤特殊门诊医疗：</div>
+                <div class="text">包括化学疗法、放射疗法、肿瘤免疫疗法、肿瘤内分泌疗法、肿瘤靶向疗法</div>
+            </div>
+            <div class="item">
+                <div class="title">恶性肿瘤门急诊医疗：</div>
+                <div class="text">住院前30天和后30天内，与该次住院原因相同的恶性肿瘤门急诊（不包括恶性肿瘤特殊门诊医疗）</div>
+            </div>
+        </div> -->
+        <div class="box-fff panel6" id="panel6">
+            <div class="title3">
+                <img src="@@webRoot/lib/images/products/1/right-icon.png"> 
+                理赔小贴士
+                <img src="@@webRoot/lib/images/products/1/left-icon.png"> 
+            </div>
+            <div class="row1">
+                <div class="yuan">1</div>
+                <div class="row-title">第一步：理赔报案</div>
+            </div>
+            <div class="text">1.梧桐树保险网平台在线报案</div>
+            <div class="text">2.拨打24小时客服热线：400-9955-788</div>
+            <div class="row1">
+                <div class="yuan">2</div>
+                <div class="row-title">第二步：提交理赔资料</div>
+            </div>
+            <div class="text">1.理赔专员全程协助您理赔，准备理赔资料</div>
+            <div class="text">2.梧桐树会员享VIP理赔绿色通道</div>
+            <div class="row1">
+                <div class="yuan">3</div>
+                <div class="row-title">第三步：理赔资料审核</div>
+            </div>
+            <div class="text">事故责任明确，理赔资料齐全的案件，审核周期为：小额快赔类一般为1-3个工作日，普通类一般5-7个工作日，重大类一般为20-22个工作日。</div>
+            <div class="row1">
+                <div class="yuan">4</div>
+                <div class="row-title">第四步：领取理赔款</div>
+            </div>
+            <div class="text">理赔款一般在结案后的1-2个工作日可以到达投保人指定的账户中。</div>
+        </div>
+        <div class="box-bg panel6" id="showBox">
+            <div class="title3">
+                <img src="@@webRoot/lib/images/products/1/right-icon.png"> 
+                常见问题
+                <img src="@@webRoot/lib/images/products/1/left-icon.png"> 
+            </div>
+            <div class="row1 row2">
+                <div class="yuan min-font">问</div>
+                <div class="row-title">本产品的投保区域有哪些？</div>
+            </div>
+            <div class="row2">
+                <div class="yuan min-font">答</div>
+                <div class="row-title">本产品承保区域为中国境内（不包含港、澳、台地区），但保险事故发生地为湖北地区的，“新型冠状病毒疾病身故保险金额”“新型冠状病毒重症监护病房每日住院津贴”为列表保险金额的30%；</div>
+            </div>
+            <div class="row1 row2">
+                <div class="yuan min-font">问</div>
+                <div class="row-title">在哪些医院住院治疗可以申请住院津贴理赔？</div>
+            </div>
+            <div class="row2">
+                <div class="yuan min-font">答</div>
+                <div class="row-title">在国家卫生部医院等级分类中二级及以上公立医院或卫生健康委员会指定的新型冠状病毒感染的肺炎诊治定点医院确诊罹患新型冠状病毒感染的肺炎，并因该种疾病入住医院的重症监护病房接受治疗的，可以申请住院津贴理赔。住院津贴将按住院日数赔偿该被保险人，最可给付20天。</div>
+            </div>
+            <div class="row1 row2">
+                <div class="yuan min-font">问</div>
+                <div class="row-title">哪些人群可以投保这个产品？</div>
+            </div>
+            <div class="row2">
+                <div class="yuan min-font">答</div>
+                <div class="row-title">16周岁至65周岁投保时身体健康的人群均可投保该产品。本保险不承保在投保前经相关医院确诊，或疑似感染新冠肺炎，或有新冠肺炎病人接触史正在医学隔离或医学观察中，或近2周内有发烧症状且接受了肺部CT检查的人员。</div>
+            </div>
+            <div class="row1 row2 hide">
+                <div class="yuan min-font">问</div>
+                <div class="row-title">出险后，需要提供什么材料证实自己感染新型冠状病毒？</div>
+            </div>
+            <div class="row2 hide">
+                <div class="yuan min-font">答</div>
+                <div class="row-title">需提供符合保单约定的医疗机构出具的对被保险人的疾病诊断证明书以及由医院出具的与该疾病诊断证明书相关的病理显微镜检查、血液检验及其他科学方法检验报告以及呼吸道冠状病毒核酸阳性的检测报告；如果申请住院津贴理赔，还需要提供完整的门、急诊病历及出院小结、住院医疗正式收据（复印件）等相关材料。更多索赔资料请参加相关条款。</div>
+            </div>
+            <div class="row1 row2 hide">
+                <div class="yuan min-font">问</div>
+                <div class="row-title">投保过程中有疑问如何处理？</div>
+            </div>
+            <div class="row2 hide">
+                <div class="yuan min-font">答</div>
+                <div class="row-title">请拨打梧桐树保险保险网客服电话：400-9955-788，会有专人为您服务。</div>
+            </div>
+            <div class="show-btn"><span>查看更多</span></div>
+        </div>
+        <div class="box-fff form-box bottom0 scrollIntoView" id="formBox">
+            <div class="text1">请填写投保信息</div>
+            <div class="text2">为谁投保</div>
+            <ul class="list flex form-input" id="insuredRelationship" data-name="为谁投保" data-type="2">
+                <li data="1">本人</li>
+                <li data="4">配偶</li>
+                <li data="2">父母</li>
+                <li data="3">子女</li>
+            </ul>
+            <div class="input-box">
+                <div class="name">被保人姓名</div>
+                <input type="text" class="form-input text-area-blur-flag changes" id="insurederName" data-name="被保人姓名" data-type="1" placeholder="输入被保人姓名">
+            </div>
+            <div class="input-box">
+                <div class="name">身份证号码</div>
+                <input type="text" class="form-input text-area-blur-flag changes" id="insurederIdCard" data-name="身份证号码" data-type="1" placeholder="输入被保人身份证号码，仅用于投保">
+            </div>
+            <div class="input-box">
+                <div class="name">投保人邮箱</div>
+                <input type="text" class="form-input text-area-blur-flag changes inputMailList" id="holderEmail" data-name="投保人邮箱" data-type="1" placeholder="输入投保人邮箱，仅用于投保">
+            </div>
+            <div class="input-box">
+                <div class="name">投保地区</div>
+                <input readonly="readonly" data-type='1' class="cityDom form-input text-area-blur-flag changes" data-name="投保地区" placeholder="请选择投保地区" id="holderHomeAddress"/>
+            </div>
+            <div class="input-box">
+                <div class="name">详细地址</div>
+                <input type="text" placeholder="请输入详细地址" data-name="详细地址" data-type="1" id="holderAddress" class="form-input text-area-blur-flag changes"/>
+            </div>
+            <!-- <div class="input-box occupaCheck" >
+                <div class="name">被保人职业</div>
+                <input type="text" class="form-input" data-name="职业" data-type="3" readonly placeholder="选择被保人职业" id="insurederOccupation">
+                <img src="@@webRoot/lib/images/products/1/arr2.png" class="arr">
+            </div> -->
+            <div class="input-box holder-hide">
+                <div class="name">投保人手机</div>
+                <input type="number" class="input_phone text-area-blur-flag changes" id="phone" data-name="手机号" data-type="1" placeholder="输入投保人手机号，仅用于投保">
+            </div>
+            <div class="input-box holder-hide">
+                <div class="name">验证码</div>
+                <input type="number" class=" min input-yzm text-area-blur-flag" data-name="验证码" data-type="1" placeholder="输入验证码">
+                <div class="button getYZM">获取验证码</div>
+            </div>
+        </div>
+        <div class="box-fff form-box holder scrollIntoView hide" >
+            <div class="alert-text">为家人投保，需填写投保人信息（您的信息）</div>
+            <div class="input-box">
+                <div class="name">投保人姓名</div>
+                <input type="text" class="form-input hide text-area-blur-flag changes" id="holderName" data-name="投保人姓名" data-type="1" placeholder="输入投保人姓名">
+            </div>
+            <div class="input-box">
+                <div class="name">身份证号码</div>
+                <input type="text" class="form-input hide text-area-blur-flag changes" id="holderIdCard" data-name="投保人身份证号码" data-type="1" placeholder="输入投保人身份证号码，仅用于投保">
+            </div>
+            <div class="input-box">
+                <div class="name">投保人手机</div>
+                <input type="number" class="input_phone text-area-blur-flag changes" id="phone" data-name="手机号" data-type="1" placeholder="输入投保人手机号，仅用于投保">
+            </div>
+            <div class="input-box">
+                <div class="name">验证码</div>
+                <input type="number" class="min input-yzm text-area-blur-flag" data-name="验证码" data-type="1" placeholder="输入验证码">
+                <div class="button getYZM">获取验证码</div>
+            </div>
+        </div>
+        <!-- <div class="box-fff form-box" >
+            <div class="text2">被保人有无社保</div>
+            <ul class="list form-input list2" id="level" data-name="有无社保" data-type="2" >
+                <li data="1">有社保（含新农合）</li>
+                <li data="0">无社保</li>
+            </ul>
+        </div> -->
+        <div class="ios-input-space ios-input-space-no">
+            <div class="copyright-box box-fff"> 
+                Copyright © 2019梧桐树保险经纪有限公司 <br> All Rights Reserved. ICP备案：鄂ICP备17019444号
+            </div>
+        </div>
+        <div class="file-box fixed-btn hide">
+            <div class="text">
+                <div class="check-box active"></div>
+                <div class="check-text">
+                    我已阅读并同意
+                </div>
+                <div class="check-text">
+                    <a href="javascript:;" data="保险条款">《保险条款》</a>
+                </div>
+                <div class="check-text">
+                    <a href="javascript:;" data="投保须知">《投保须知》</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-box box-fff"> 
+            Copyright © 2019梧桐树保险经纪有限公司 <br> All Rights Reserved. ICP备案：鄂ICP备17019444号
+        </div>
+        
+        <div class="fixed-btn box-fff hide">
+            <a class="service" href="javascript:;">
+                <img src="@@webRoot/lib/images/products/1/msg.png" class="icon">客服
+            </a>
+            <span class="money">
+                <div class="text">保费：0元</div>
+                <!-- <div class="text2" id="money_info2"></div>
+                <div class="text3" id="money_info3"></div> -->
+            </span>
+            <span href="javascript:;" class="insure" id="immediately">
+                立即领取
+            </span>
+        </div>
+
+        <div class="float-box move hide" data="#formBox">
+            <span>立即领取</span>
+        </div>
+        <!-- 客服 -->
+        <div id="kefuModal" class="modal">
+            <div class="cover">
+                <div class="title"><img src="@@webRoot/lib/images/products/1/close.png" class="close"><span>客服</span></div>
+                <div class="products-customer">
+                    <div class="top">
+                        <div class="top-li clearfix">
+                            <img src="@@webRoot/lib/images/products/zxkf@2x.png" alt="">
+                            <span class="n">在线客服</span>
+                            <a href="../exercise/kefu.html" class="n">立即咨询</a>
+                        </div>
+                        <div class="top-li clearfix">
+                            <img src="@@webRoot/lib/images/products/kfrx@2x.png" alt="">
+                            <span class="n">客服热线</span>
+                            <a class="n">400-9955-788</a>
+                            <a href="tel://400-9955-788" class="btn">立即拨打</a>
+                        </div>
+                    </div>
+                    <div class="title">常见问题</div>
+                    <div class="questions">
+                        <div class="titles">1.如何查看我的保单？</div>
+                        <div class="content">
+                            您可以使用领取时填写的手机号登录梧桐树保险网app或者关注梧桐树保险网微信公众号查看
+                        </div>
+                    </div>
+                    <div class="questions">
+                        <div class="titles">2.不知道是否符合健康告知怎么办？</div>
+                        <div class="content">
+                            联系我们，安排核保专员为您免费提供专业的核保服务
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 文件预览 -->
+        <div id="fileModal" class="modal">
+            <div class="cover">
+                <div class="title"><img src="@@webRoot/lib/images/products/1/close.png" class="close"><span></span></div>
+                <div class="text"></div>
+                <div class="btn-list">
+                    <div class="error-btn">部分情况有</div>
+                    <div class="ok-btn">以上情况全无</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fix-btn-space"></div>
+    </div>
+    <div class="lz-layers">
+        <div class="layer-06" id="occupationScroll">
+            <div class="shadeBox"></div>
+            <div class="occupationBox">
+                <div class="treeSecrch">
+                    <input type="search" class="search" id="searchTree"/>
+                </div>
+                <ul class="tree">
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<!-- 职业 -->
+<script id="occupa_box" type="text/html">
+    {{each data as value i}}
+    <li data-code="{{value.value}}"><span>{{value.name}}</span>
+        <ul>
+            {{each value.child as child n}}
+            <li data-code="{{child.value}}" data-type="{{child.type}}">
+                {{if child.child}}
+                <span>{{child.name}}</span>
+                <ul>
+                    {{each child.child as item m}}
+                    <li data-code="{{item.value}}" data-type="{{item.type}}">
+                        <a href="javascript:;" class="click-tree-a">{{item.name}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+                {{else}}
+                <a href="javascript:;" class="click-tree-a">{{child.name}}</a>
+                {{/if}}
+            </li>
+            {{/each}}
+        </ul>
+    </li>
+    {{/each}}
+</script>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/js/city-picker.js?456"></script>
+<script src="@@webRoot/lib/units/lz_cityPicker.js?456"></script>
+<script src="@@webRoot/lib/js/lodash.js"></script>
+<script src="@@webRoot/lib/js/setProcess.js"></script>
+<script src="@@webRoot/lib/units/lz_cityPicker.js"></script>
+<script src="@@webRoot/lib/js/jquery.treemenu.js"></script>
+<script src="@@webRoot/lib/units/products.js?r=@@time"></script>
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+<script src="@@webRoot/lib/units/H5Pay.js?r=@@time"></script>
+<script src="@@webRoot/lib/monitor/extend_route.js"></script>
+<script src="@@webRoot/lib/data/156005/job.js"></script>
+<script>
+    $(function () {
+        var addressData=sessionStorage.service_address?JSON.parse(sessionStorage.service_address):{};
+        if(addressData){
+            for(var k in addressData){
+                if(k=='recipientAddress' && addressData[k]){
+                    var city=addressData[k].length>12?addressData[k].slice(0, 12) + "...":addressData[k];
+                    $('.cityDom').val(city);
+                }else if(addressData[k]){
+                    $("input[id='"+k+"']").val(addressData[k]);
+                }
+            }
+        }
+        //当页面布局中，有多个输入框，且输入框位于页面底部的时候 软键盘弹起 盖住输入框问题处理
+        //判断设备类型
+        var judgeDeviceType = function () {
+        var ua = window.navigator.userAgent.toLocaleLowerCase();
+        var isIOS = /iphone|ipad|ipod/.test(ua);
+        var isAndroid = /android/.test(ua);
+        return {
+            isIOS: isIOS,
+            isAndroid: isAndroid
+        }
+        }()
+        // 监听输入框的软键盘弹起和收起事件
+        function listenKeybord($input){
+        const judgeApp = $.tools().isWtsNativeApp();//判断是否是APP
+        if(judgeDeviceType.isIOS && $.tools().isWeiXin()){
+            console.log(HTMLElement);
+            window.addEventListener("touchmove",function(event){//滑动就让输入框失去焦点
+                if(document.hasFocus){
+                    var textAreaClass = document.getElementsByClassName('text-area-blur-flag');
+                    for(var m = 0;m<textAreaClass.length;m++){
+                        textAreaClass[m].blur();
+                    }
+                }
+            });
+            $input.addEventListener("focusout",function(event){
+                window.scrollTo(0,$(document).scrollTop());//让页面滚动到当前位置；这个点之前一直没想到，所以微信端会有切换输入框，页面问题；
+            },false)
+        }
+        else if(judgeDeviceType.isIOS && judgeApp) {
+            // IOS 键盘弹起：IOS 和 Android 输入框获取焦点键盘弹起
+            $input.addEventListener('focus', function (event) {
+                // IOS 键盘弹起后操作
+                //判断手机尺寸；
+                //console.log(window.innerWidth);
+                if(window.innerWidth>375){
+                    $(".ios-input-space").removeClass("ios-input-space-no");
+                    activeElementScrollIntoView($input,0);
+                    event.stopPropagation();
+                }
+            }, false)
+            // IOS 键盘收起：IOS 点击输入框以外区域或点击收起按钮，输入框都会失去焦点，键盘会收起，
+            $input.addEventListener('blur', function () {
+                if(window.innerWidth>375){
+                    $(".ios-input-space").addClass("ios-input-space-no");
+                }
+                // IOS 键盘收起后操作
+                // 微信浏览器版本6.7.4+IOS12会出现键盘收起后，视图被顶上去了没有下来
+                var wechatInfo = window.navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i);
+                if (!wechatInfo) return;
+                var wechatVersion = wechatInfo[1];
+                var version = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+                if (+wechatVersion.replace(/\./g, '') >= 674 || version[1] >= 12) {
+                    setTimeout(function () {
+                        window.scrollTo(0,$(document).scrollTop());
+                    },0)
+                }
+            },false)
+            window.addEventListener("touchmove",function(event){
+                if(document.hasFocus){
+                    var textAreaClass = document.getElementsByClassName('text-area-blur-flag');
+                    for(var m = 0;m<textAreaClass.length;m++){
+                        textAreaClass[m].blur();
+                    }
+                }
+            });
+        }
+        // Andriod 键盘收起：Andriod 键盘弹起或收起页面高度会发生变化，以此为依据获知键盘收起
+        else if (judgeDeviceType.isAndroid) {
+                var originHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                window.addEventListener('resize', function () {
+                    var resizeHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                    if (originHeight < resizeHeight) {
+                        $(".ios-input-space").addClass("ios-input-space-no");
+                    } else {
+                        $(".ios-input-space").addClass("ios-input-space-no");
+                    }
+                    originHeight = resizeHeight;
+                }, false)
+            }
+        }
+        
+        // 获取到焦点元素滚动到可视区
+        function activeElementScrollIntoView(activeElement, delay) {
+            var editable = activeElement.getAttribute('contenteditable')
+            // 输入框、textarea或富文本获取焦点后没有将该元素滚动到可视区
+            if (activeElement.tagName == 'INPUT' || activeElement.tagName == 'TEXTAREA' || editable === '' || editable) {
+                setTimeout(function () {
+                    activeElement.scrollIntoView();
+                    activeElement.scrollIntoViewIfNeeded();
+                }, delay)
+            }
+        }
+        var $inputs = document.querySelectorAll('.text-area-blur-flag');
+        
+        for (var i = 0; i < $inputs.length; i++) {
+            listenKeybord($inputs[i]);
+        }
+        
+
+        var appid = $.globedata.environment==1?"wx3bbb18bc95bc7cff":"wx04452e22173121e5";
+        new H5Pay().getOpenId({
+            appid: appid,
+            ajaxType: 1,
+        });
+        new ProductFn().init({
+            id:156005,
+            needPay:2
+        });
+        setNum();
+        function setNum(){
+            var allNum=4320;
+            var startTime = new Date();
+            startTime.setHours(0, 0, 0, 0);//设为当天0点0分0秒0毫秒。
+            startTime=startTime.valueOf();
+            var endTime = new Date();
+            endTime.setHours(23, 59, 59, 59);//设为当天0点0分0秒0毫秒。
+            endTime=endTime.valueOf();
+            var nowTime= (new Date()).valueOf();
+            console.log(startTime);
+            console.log(nowTime);
+            var now_number=Math.floor((nowTime-startTime)/20000);//当前消费数量
+            var percentage=now_number/allNum;//当前消费百分比
+            console.log(Math.floor((nowTime-startTime)/20000));
+            $(".pro-num").text(allNum-now_number);
+            $(".processes .rate").animate({ 
+                width: (1-percentage)*100+'%',
+            }, 1000 );
+        }
+        new CityPicker().init({
+            cityData: cityData3,
+            intoDom: '.cityDom',
+            templateId: "city_templates",
+            itemNum: 3,
+            symbol: "",
+            subtring: 12
+        }, function(value, item) {
+            console.log(value);
+            var tmp = [];
+            for(var m=0;m<value.length;m++){
+                tmp.push(value[m].name);
+            }
+            var city_val = tmp.toString().replace(/,/g,'-');
+            $('.cityDom').val(city_val);
+        });
+        //微信分享
+        $.shareWx({
+            img: location.origin + "/m/lib/images/products/4/share.jpg",
+            title: "20万元防“疫”保障免费领",
+            desc: '扩展承保新型冠状病毒，身故可赔20万元，重症住院每日领取津贴150元，最高可领20天；一般意外身故/伤残也可赔，最高1万元。'
+        });
+    })
+</script>
+
+</html>

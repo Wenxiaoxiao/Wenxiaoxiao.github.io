@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"邀请投保", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container invite">
+        <img src="@@webRoot/lib/images/invite-banner.jpg" class="banner">
+        <button class="btn">每次最高可得<span></span>积分<br>在京东积分商城兑换对应<span></span>元商品</button>
+        <div class="info-box">
+            <div class="title">活动规则</div>
+            <div class="text">1.邀请好友投保，重疾保额30万及以上，得<span class="point">500</span>积分。</div>
+            <div class="text">2.邀请好友投保，短期医疗险及意外险客户，得20积分（保费100元以下保险不参与此次活动）。</div>
+            <div class="text">3.积分奖励生效日期为20天，如20天内客户退保，积分奖励将被取消。</div>
+            <div class="text">4.领取积分或了解活动详情可<a class="red" href="https://bx.wts999.com/app.html?goto=hxkefu">联系客服</a>咨询。</div>
+            <div class="text">5.活动期间，如果出现违规作弊行为，梧桐树有权收回给予客户的积分奖励。</div>
+        </div>
+    </div>
+    @@include("include/footer.htm")
+    
+    <script>
+        $(function () {
+            var paramList = {
+                    type: "post",
+                    url: "/jdweigo/integral/api/activity/detail",
+                    data: '{sceneType: 303}',
+                    contentType: "application/json;charset=UTF-8",
+                    success: function (ajaxData, isError) {
+                        if (!isError) {
+                            return;
+                        }
+                        console.log(ajaxData);
+                        var value = parseInt(ajaxData.data.value);
+                        $(".invite .btn span").html(value);
+                        $(".text .point").html(value);
+                    }
+                }
+                $.ajaxPackage(paramList);
+        })
+    </script>
+    
+</body>
+</html>

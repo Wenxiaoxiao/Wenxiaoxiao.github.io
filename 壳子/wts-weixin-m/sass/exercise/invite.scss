@@ -1,0 +1,55 @@
+.invite {
+    background: #de050d;
+    min-height: 100%;
+    .banner {
+        width: 100%;
+        vertical-align: top;
+    }
+    .btn {
+        font-size: r(36);
+        background: linear-gradient(to bottom,#fff1d6, #ffd170);
+        color: #e6181c;
+        text-align: center;
+        padding: 5px 0;
+        margin: 0 10px;
+        width: calc(100% - 20px);
+        border-radius: 15px;
+        border: 5px solid #fd433f;
+        span {
+            font-weight: 700;
+        }
+    }
+    .info-box {
+        padding: 15px;
+        margin: 20px 10px 0;
+        width: calc(100% - 20px);
+        background: #fff3cd;
+        border-radius: 15px;
+        border: 5px solid #fd433f;
+        color: #650806;
+        font-size: r(28);
+        .title {
+            text-align: center;
+            vertical-align: middle;
+            font-size: r(34);
+            margin-bottom: 10px;
+            &::after,
+            &::before{
+                content: "";
+                display: inline-block;
+                height: 1px;
+                width: r(100);
+                background: #650806;
+                vertical-align: middle;
+                margin: 0 7px;
+            }
+        }
+        .text {
+            padding-left: r(30);
+            text-indent: r(-25);
+        }
+    }
+    .red {
+        color: #ff3e33;
+    }
+}

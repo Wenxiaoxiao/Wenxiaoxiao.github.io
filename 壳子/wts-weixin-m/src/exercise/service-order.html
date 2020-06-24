@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"下单", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container service-order">
+        <div class="top">
+            <div class="input-menus">
+                <div class="menu" id="addressBox">
+                    <span class="rol-left"></span>
+                    <span class="rol-right"></span>
+                    <div class="menus-input goToLink hide" data-link="1">
+                        <i class="iconfont icon-diqu icon-big-left"></i>
+                        <span class="txt">请填写收货地址</span>
+                        <i class="iconfont icon-jiantouzuo-copy"></i>
+                    </div>
+                    <div class="menus-txt hide padding-bottom-20 goToLink" data-link="1"></div>
+                </div>
+                <div class="menu" id="inspectsBox">
+                    <div class="menus-input goToLink hide" data-link="2">
+                        <i class="iconfont icon-baodanyangben icon-big-left"></i>
+                        <span class="txt">请填写受检人信息</span>
+                        <i class="iconfont icon-jiantouzuo-copy"></i>
+                    </div>
+                    <div class="menus-txt hide goToLink" data-link="2"></div>
+                </div>
+            </div>
+            <div class="order-menu">
+                <img src="@@webRoot/lib/images/adds-service/userImg.png" alt="">
+                <p class="title">男性防癌基因检测</p>
+                <p class="price">￥<span class="originalPrice"></span>元</p>
+            </div>
+        </div>
+        <div class="info-list">
+            <div class="info-li">
+                <span class="left">商品总额</span>
+                <span class="fr">￥<span class="originalPrice"></span>元</span>
+            </div>
+            <div class="info-li">
+                <span class="left">商品折扣</span>
+                <span class="fr">-￥<span id="currPrice"></span>元</span>
+            </div>
+        </div>
+        <div class="info-list hide" id="activityBox">
+            <div class="info-li">
+                <span class="left">优惠券</span>
+                <span class="fr">￥<span id="activityPrice"></span>元</span>
+            </div>
+        </div>
+        <div class="pay-list hide">
+            <div class="pay-li">
+                <img src="@@webRoot/lib/images/wx-pay.png" alt="" class="payImg">
+                <span class="name">微信</span>
+                <input type="radio" class="lz-radio" name="pay" checked value="1">
+            </div>
+            <div class="pay-li">
+                <img src="@@webRoot/lib/images/zfb-pay.png" alt="" class="payImg">
+                <span class="name">支付宝</span>
+                <input type="radio" class="lz-radio" name="pay" value="2">
+            </div>
+            <div class="pay-li">
+                <img src="@@webRoot/lib/images/yinlian.png" alt="" class="payImg">
+                <span class="name">银联</span>
+                <input type="radio" class="lz-radio" name="pay" value="4">
+            </div>
+        </div>
+        <div class="blank-box" style="width:100%;height:50px;"></div>
+        <div class="pay-bottom clearfix">
+            <span class="fl">实付金额：<span id="payMoney"></span> 元</span>
+            <span class="fr" id="payBtn">提交订单</span>
+        </div>
+    </div>
+
+</body>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/units/H5Pay.js"></script>
+<script id="inspectsXml" type="text/html">
+    <div class="text-1 clearfix">
+        <span>{{data.inspectPersonName}}</span>
+        <span>{{data.inspectPersonSex==1?"男":"女"}}</span>
+        <span>{{data.inspectPersonBirthday}}</span>
+        <i class="iconfont icon-jiantouzuo-copy"></i>
+    </div>
+</script>
+<script id="addressXml" type="text/html">
+    <div class="text-1 clearfix">
+        <span>{{data.recipientName}} {{data.recipientMobile}}</span>
+        <i class="iconfont icon-jiantouzuo-copy"></i>
+    </div>
+    <div class="text-2">
+        <i class="iconfont icon-diqu icon-hui-left"></i>
+        <span>{{data.recipientAddress+data.recipientSecondAddress}}</span>
+    </div>
+    <!-- <div class="text-2">
+        <i class="iconfont icon-4dianziyoujian icon-hui-left"></i>
+        <span>{{data.recipientEmail}}</span>
+    </div> -->
+</script>
+<script>
+    $(function() {
+        var secondServerType;//业务类型
+        var address, inspected, payWay;
+        var payFlag = true;
+        var wxPayApi = null;
+        var payType = 1;
+        var queryServerInfo;
+        var product = $.getQueryString('product');
+        var urlOrderNo = $.getQueryString('orderNo');
+        var orderId = $.getQueryString('orderId');
+        var inspects = sessionStorage.service_inspects ? JSON.parse(sessionStorage.service_inspects) : null;
+        var addresses = sessionStorage.service_address ? JSON.parse(sessionStorage.service_address) : null;
+        //获取支付授权
+        new H5Pay().getOpenId({
+            belongTo: 3,
+        })
+        initData();
+        pay();
+        // 初始化数据
+        function initData() {
+            if (orderId) {
+                $.ajaxPackage({
+                    url: "/addedservices/serverOrders/api/orderFrontDetail/" + orderId,
+                    contentType: "application/json;charset=UTF-8",
+                    success: function(data, isError) {
+                        // console.log(data);
+                        if (!isError) return;
+                        var result = data.data.data
+                        $("#inspectsBox .menus-txt").html(template('inspectsXml', {
+                            data: result
+                        })).removeClass('hide')
+                        $("#addressBox .menus-txt").html(template('addressXml', {
+                            data: result
+                        })).removeClass('hide')
+                        inspects = {
+                            "inspectPersonBirthday": result.inspectPersonBirthday,
+                            "inspectPersonName": result.inspectPersonName,
+                            "inspectPersonSex": result.inspectPersonSex,
+                        };
+                        addresses = {
+                            "recipientAddress": result.recipientAddress,
+                            "recipientEmail": result.recipientEmail,
+                            "recipientMobile": result.recipientMobile,
+                            "recipientName": result.recipientName,
+                            "recipientSecondAddress": result.recipientSecondAddress,
+                        };
+                        sessionStorage.setItem('service_inspects', JSON.stringify(inspects))
+                        sessionStorage.setItem('service_address', JSON.stringify(addresses))
+                    }
+                });
+            } else {
+                if (inspects) {
+                    $("#inspectsBox .menus-txt").html(template('inspectsXml', {
+                        data: inspects
+                    })).removeClass('hide')
+                } else {
+                    $("#inspectsBox .menus-input").removeClass('hide');
+                }
+                if (addresses) {
+                    $("#addressBox .menus-txt").html(template('addressXml', {
+                        data: addresses
+                    })).removeClass('hide')
+                } else {
+                    $("#addressBox .menus-input").removeClass('hide');
+                }
+            }
+
+        }
+        $.ajaxPackage({
+            url: "/addedservices/upmarketServer/api/queryServerInfo",
+            data: "{'serverId':'" + product + "'}",
+            contentType: "application/json;charset=UTF-8",
+            success: function(data, isError) {
+                // console.log(data);
+                if (!isError) return;
+                // var data={"data":{"activityPrice":0,"originalPrice":1288.00,"hasQunification":true,"currPrice":998.00},"httpCode":200,"msg":"请求成功","timestamp":1561688048296};
+                queryServerInfo = data.data;
+                secondServerType = queryServerInfo.secondServerType;
+                $(".originalPrice").html(queryServerInfo.originalPrice);
+                $(".order-menu .title").html(queryServerInfo.serverName);
+                $("#currPrice").html(queryServerInfo.discountPrice);
+                var currentPrice = queryServerInfo.activityPrice ? queryServerInfo.activityPrice : queryServerInfo.currPrice;
+                if (queryServerInfo.hasQunification) {
+                    $('#activityPrice').html(currentPrice);
+                    $('#activityBox').removeClass('hide');
+                    $("#payMoney").html('￥0')
+                    payWay = 3;
+                } else {
+                    $("#payMoney").html('￥' + currentPrice);
+                    $(".pay-list").removeClass('hide');
+                }
+            }
+        });
+
+        // 跳转链接
+        $(".goToLink").on('click', function() {
+            var link = $(this).attr('data-link');
+            var href = '';
+            if (link == 1) {
+                href = './service-address.html';
+            } else if (link == 2) {
+                href = './service-bind.html?name=' + queryServerInfo.serverName;
+            }
+            location.href = href;
+        })
+
+        function pay() {
+            // 点击支付事件
+            $("#payBtn").on('click', function() {
+                if (!payFlag) return;
+                payFlag = false;
+                if (!inspects && !urlOrderNo) {
+                    payFlag = true;
+                    return $.layerAlert('请先填写受检人信息')
+                }
+                if (!addresses && !urlOrderNo) {
+                    payFlag = true;
+                    return $.layerAlert('请先填写收货地址信息')
+                }
+                payWay = payWay == 3 ? payWay : $('.lz-radio:checked').val();
+                var payData = {
+                    "inspectPersonBirthday": inspects.inspectPersonBirthday,
+                    "inspectPersonName": inspects.inspectPersonName,
+                    "inspectPersonSex": inspects.inspectPersonSex,
+                    "payType": payWay,
+                    "recipientAddress": addresses.recipientAddress,
+                    "recipientEmail": addresses.recipientEmail,
+                    "recipientMobile": addresses.recipientMobile,
+                    "recipientName": addresses.recipientName,
+                    "recipientSecondAddress": addresses.recipientSecondAddress,
+                    "serverId": product,
+                    "secondServerType": secondServerType
+                }
+                if (urlOrderNo) payData.orderNo = urlOrderNo;
+                $.ajaxPackage({
+                    url: "/addedservices/serverOrders/api/createServerOrder",
+                    data: JSON.stringify(payData),
+                    contentType: "application/json;charset=UTF-8",
+                    success: function(data, isError) {
+                        console.log(data);
+                        if (!isError) {
+                            payFlag = true;
+                            return;
+                        };
+                        // urlOrderNo = data.data.orderNo;
+                        if (payWay == 3) {
+                            window.location.href = './service-result.html?id=' + data.data.orderNo;
+                        } else {
+                            goPay(data.data.orderNo);
+                        }
+                    }
+                });
+            })
+        }
+
+        function goPay(orderNo) {
+            setTimeout(function(){
+                payFlag=true;
+            },500);
+            // 跳转支付流程
+            new H5Pay().init({
+                orderId: orderNo,
+                payWay: payWay,
+                orderType: 'zhonganZZService',
+                // H5orderType: "zhonganZZServiceChannel",
+                paySuccessUrl: 'https://' + window.location.host + '/pay/lzpay/return?tradeNo=' + orderNo + "&orderType=zhonganZZService"
+            }, function(r) {
+                if (!r.code) {
+                    $.layerMsg(r.msg)
+                }
+                payFlag = true;
+            })
+        }
+
+        reloadIos();
+        //解决ios返回不刷新问题
+        function reloadIos() {
+            var isPageHide = false;
+            window.addEventListener('pageshow', function() {
+                if (isPageHide) {
+                    window.location.reload();
+                }
+            });
+            window.addEventListener('pagehide', function() {
+                isPageHide = true;
+            });
+        }
+    })
+</script>
+
+</html

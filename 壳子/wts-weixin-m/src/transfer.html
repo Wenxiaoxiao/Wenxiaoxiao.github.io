@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>授权</title>
+
+</head>
+<body>
+<script src="@@webRoot/lib/js/jquery.min.js"></script>
+<script>
+    $(function () {
+        var code = getQueryString('code');
+        var comes=getQueryString('comeFrom');
+        if(code){
+            if(comes="xcx"){
+                window.location.href = "https://bdm.wts999.com/index/index.html?code="+code+"&comeFrom=xcx"; 
+            }else{
+                window.location.href = "https://bdm.wts999.com/index/index.html?code="+code; 
+            }
+           
+        }else{
+            if(comes="xcx"){
+                window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3bbb18bc95bc7cff&redirect_uri=https%3A%2F%2Fbx.wts999.com%2Ftransfer.html?comeFrom=xcx&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"; 
+            }else{
+                window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3bbb18bc95bc7cff&redirect_uri=https%3A%2F%2Fbx.wts999.com%2Ftransfer.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"; 
+            }
+        }
+        
+
+        /*
+        * 获取
+        * */
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    })
+
+</script>
+</body>
+</html>

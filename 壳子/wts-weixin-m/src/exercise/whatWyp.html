@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"梧优理赔", "keywords": "", "description": "" })
+    <link rel="stylesheet" href="@@webRoot/lib/css/swiper-4.3.3.min.css">
+</head>
+
+<body>
+    <div class="body-container whatWyp">
+        <img src="@@webRoot/lib/images/whatWyp/bac-top.png" alt="" class="bac">
+        <div class="center">
+            <h1>什么是梧优理赔</h1>
+            <div class="tags clearfix">
+                <span class="tag">理赔绿通</span>
+                <span class="tag">安心理赔</span>
+                <span class="tag">快捷理赔</span>
+            </div>
+            <div class="claim-settlement">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+                <a class="btn" href="https://www.wts999.com/wyp/">更多理赔动态 &gt;</a>
+
+            </div>
+        </div>
+        <div class="bottom clearfix">
+            <a href="@@admain/index.html#/personal/policyMyList" class="fl bottom-li">
+                <img src="@@webRoot/lib/images/whatWyp/icon-1.png" alt="">
+                <p>在线理赔</p>
+            </a>
+            <a href="@@admain/index.html#/personal/myClaimsList" class="fr bottom-li">
+                <img src="@@webRoot/lib/images/whatWyp/icon-2.png" alt="">
+                <p>我的理赔</p>
+            </a>
+            <div class="line"></div>
+        </div>
+    </div>
+</body>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/js/swiper-4.3.3.min.js"></script>
+<script type="text/html" id="TrendsTml">
+    {{each data as value n}}
+    <div class="swiper-slide">
+        <p>
+            <img src="@@webRoot/lib/images/whatWyp/dian-l.png" alt="" class="dh fl margin-right-20"> {{value.content | cutString:258}}
+            <img src="@@webRoot/lib/images/whatWyp/dian-r.png" alt="" class="dh fr margin-left-20">
+        </p>
+    </div>
+    {{/each}}
+</script>
+<script>
+    var paramList = {
+        url: "/app/infoConfig/api/getInfoByCode",
+        data: '{"code":"claimInfo"}',
+        contentType: "application/json;charset=UTF-8",
+        success: function(data, isError) {
+            console.log(data);
+            if (!isError) {
+                return;
+            }
+            var html = template("TrendsTml", data);
+            $(".swiper-wrapper").html(html);
+            var swiper = new Swiper('.swiper-container', {
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+            });
+        }
+    }
+    $.ajaxPackage(paramList);
+</script>
+</html

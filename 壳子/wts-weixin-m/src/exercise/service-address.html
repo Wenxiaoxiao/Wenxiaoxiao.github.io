@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"填写地址", "keywords": "", "description": "" })
+    <link rel="stylesheet" href="@@webRoot/lib/css/city-picker.css">
+</head>
+
+<body>
+    <div id="datePlugin"></div>
+    <div class="body-container checkDetial">
+        <div class="desContent">
+            <div class="checkMsg">
+                <div class="checkMsgList">
+                    <span>收货人姓名</span>
+                    <div class="fr rigDiv">
+                        <input type="text" placeholder="请输入收货人姓名" name="收货人姓名" id="recipientName" class="inp checkName">
+                    </div>
+                </div>
+                <div class="checkMsgList">
+                    <span>手机号</span>
+                    <div class="fr rigDiv">
+                        <input type="text" placeholder="请输入手机号" name="手机号" id="recipientMobile" class="inp checkName">
+                    </div>
+                </div>
+                <div class="checkMsgList">
+                    <span>省市选择</span>
+                    <div class="fr rigDiv cityDom">
+                        请选择
+                    </div>
+                </div>
+                <div class="checkMsgList">
+                    <span>详细地址</span>
+                    <div class="fr rigDiv">
+                        <input type="text" placeholder="请输入详细地址" name="详细地址" id="recipientSecondAddress" class="inp checkName">
+                    </div>
+                </div>
+                <!-- <div class="checkMsgList">
+                    <span>邮箱</span>
+                    <div class="fr rigDiv">
+                        <input type="text" placeholder="请输入邮箱" name="邮箱" id="recipientEmail" class="inp checkName">
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="bindClick">确认</div>
+    </div>
+</body>
+@@include("include/footer.htm")
+<!-- 时间选择器 -->
+<script src="@@webRoot/lib/js/city-anbang.js?456"></script>
+<script src="@@webRoot/lib/units/lz_cityPicker.js?456"></script>
+<script>
+    $(function(){
+        var addressData=sessionStorage.service_address?JSON.parse(sessionStorage.service_address):{};
+        if(addressData){
+            for(var k in addressData){
+                if(k=='recipientAddress' && addressData[k]){
+                    var city=addressData[k].length>12?addressData[k].slice(0, 12) + "...":addressData[k];
+                    $('.cityDom').text(city);
+                }else if(addressData[k]){
+                    $("input[id='"+k+"']").val(addressData[k]);
+                }
+            }
+        }
+        var regular = $.regular();
+        $(".bindClick").click(function() { //绑定
+            if(getInputValue() && checkValue()){
+                $.layerMsg("绑定成功!2秒后调回订单页面！")
+                sessionStorage.service_address=JSON.stringify(addressData);
+                setTimeout(function(){
+                    window.history.go(-1);
+                },2000)
+            }
+        });
+        function getInputValue(){
+            var writeAll=true;
+            $('input').each(function(){
+                var value=$(this).val();
+                var name=$(this).attr('name');
+                var id=$(this).attr('id');
+                if(!value){
+                    $.layerAlert(name+'尚未填写，请您填写完后再绑定！')
+                    writeAll=false;
+                    return false;
+                }
+                addressData[id]=value?value:'';
+            })
+            if(!addressData.recipientAddress && writeAll){
+                $.layerAlert('省市尚未填写，请您填写完后再绑定！')
+                writeAll=false;
+            }
+            return writeAll;
+        }
+        function checkValue(){
+            var writeAll=true;
+            if (!regular.isPhone(addressData.recipientMobile)) {
+                $.layerMsg("手机号输入有误，请修改后提交！")
+                writeAll=false;
+            }
+            // else if (!regular.isEmail(addressData.recipientEmail)) {
+            //     $.layerMsg("邮箱输入有误，请修改后提交！")
+            //     writeAll=false;
+            // }
+            return writeAll;
+        }
+        new CityPicker().init({
+            cityData: city_new,
+            intoDom: '.cityDom',
+            templateId: "city_templates",
+            itemNum: 3,
+            symbol: "",
+            subtring: 12
+        }, function(value, item) {
+            console.log(value);
+            var tmp = [];
+            for(var m=0;m<value.length;m++){
+                tmp.push(value[m].name);
+            }
+            var city_val = tmp.toString().replace(/,/g,'');
+            addressData.recipientAddress=city_val;
+        });
+    })
+</script>
+</html

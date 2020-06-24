@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="@@webRoot/lib/js/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    $(function () {
+        var url = getQueryString('url');
+        if(url){
+            window.location.replace(url) ;
+        }else{
+            alert("页面报错了，请检查访问地址或参数");
+        }
+
+
+        /*
+         * 获取
+         * */
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    })
+
+</script>
+</body>
+</html>

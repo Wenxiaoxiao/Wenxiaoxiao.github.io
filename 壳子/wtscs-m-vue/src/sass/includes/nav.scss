@@ -1,0 +1,190 @@
+/*底部公共栏*/
+.footer{
+    background-color: white;
+    padding-top: r(80);
+    position: relative;
+    margin-top: r(15);
+    padding-bottom: r(20);
+    .foot-top{
+      width: 100%;
+      position: absolute;
+      color: #333;
+      left: 0;
+      top: 0;
+      text-align: center;
+      @include remCalc(height,80);
+      @include remCalc(line-height,80);
+      @include remCalc(font-size,32);
+      .img-footer-top{
+        display: inline-block;
+        margin-right: 5px;
+        vertical-align: middle;
+        @include remCalc(width,46);
+        margin-top:-2px;
+      }
+    }
+    ul.foot-ul{
+      li{
+        width: 20%;
+        float: left;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: r(28);
+        @include remCalc(font-size,26);
+        a{
+          color: #666;
+        }
+      }
+      li:not(:first-child){
+        border-left: 1px solid #999;
+      }
+    }
+    a.foot-p{
+      margin: 0 auto;
+      border-radius: r(39);
+      margin-top: r(30);
+      border:1px solid #999;
+      width:r(578);
+      display: block;
+      @include remCalc(font-size,34);
+      color: #000;
+      text-align: center;
+      @include remCalc(height,78);
+      @include remCalc(line-height,78);
+      .foot-p-kfphone{
+        display: inline-block;
+        width: r(110);
+  
+        line-height: r(26);
+        margin-top: r(13);
+        font-size: r(22);
+        color: #666;
+      }
+      .foot-tell{
+        position:relative;
+        bottom: r(9);
+        font-size: r(34);
+        letter-spacing: r(1);
+        color: #333;
+        margin: 0 r(30);
+        margin-top:r(-39) ;
+      }
+      i{
+        position: relative;
+        bottom: 1px;
+        color: $cpBaseCol;
+        @include remCalc(font-size,48);
+        @include remCalc(line-height,78);
+        color: #000;
+      }
+    }
+  }
+  
+  
+  /*底部导航栏*/
+  /*底部导航栏*/
+  .nav{
+    width: 100%;
+    max-width: r(750);
+    height: 55px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    z-index: 999;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border-top: 1px solid #ececec;
+    .nav-lis{
+      position: relative;
+      float: left;
+      width: 16.6%;
+      height: 100%;
+      text-align: center;
+      @include remCalc(font-size,22);
+      color: #3c3c3c;
+    }
+    .nav-img1{
+      background-image: url("~@/home1.png");
+    }
+    .nav-img2{
+      background-image: url("~@/community1.png");
+    }
+    .nav-img3{
+      background-image: url("~@/mine1.png");
+    }
+    .nav-img4{
+      background-image: url("~@/product1.png");
+    }
+    .nav-img5{
+      background-image: url("~@/ask1.png");
+    }
+    .nav-img6{
+      background-image: url("~@/share1.png");
+    }
+    .img{
+      display: inline-block;
+      width: 20px !important;
+      height: 20px !important;
+      position: absolute;
+      top: 9px;
+      left: 50%;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      transform: translateX(-50%);
+    }
+  
+    //i{
+    //  position: absolute;
+    //  top: r(5);
+    //  left: 50%;
+    //  @include transform(translateX(-50%));
+    //  @include remCalc(font-size,38);
+    //  color: #3c3c3c;
+    //}
+    .icon-gerenzhongxin{
+      @include remCalc(font-size,36);
+    }
+  
+    span{
+      width: 100%;
+      position: absolute;
+      font-size: 14px;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .active{
+        color: #ff6e07;
+      .nav-img1{
+        background-image: url("~@/home2.png");
+      }
+      .nav-img2{
+        background-image: url("~@/community2.png");
+      }
+      .nav-img3{
+        background-image: url("~@/mine2.png");
+      }
+      .nav-img4{
+        background-image: url("~@/product2.png");
+      }
+      .nav-img5{
+        background-image: url("~@/ask2.png");
+      }
+      .nav-img6{
+        background-image: url("~@/share2.png");
+      }
+    }
+  }
+  
+  
+  
+  .bom-blank{
+    width: 100%;
+    @include remCalc(height,104);
+  }
+  @media screen and (max-width: 320px) {
+    .foot-p-kfphone{
+      width: r(120) !important;
+    }
+  }
+  

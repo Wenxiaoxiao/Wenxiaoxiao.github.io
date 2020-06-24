@@ -1,0 +1,174 @@
+.stricken-passageway {
+    background-color: #91ffdc;
+    padding-bottom: r(30);
+    .img {
+        width: 100%;
+    }
+    .content {
+        position: relative;
+        top: r(-100);
+    }
+    .box {
+        border-radius: r(15);
+        padding: r(10) r(20) r(20);
+        margin: r(40) r(20);
+        background: #00dda7;
+        box-shadow: 0 0 5px #eee;
+    }
+    .title {
+        text-align: center;
+        -webkit-filter: drop-shadow(2px 2px 2px #666);
+        filter: drop-shadow(2px 2px 2px #666);
+        color: #fff;
+        font-size: r(50);
+        font-weight: bold;
+        margin-bottom: r(30);
+    }
+    .table-box {
+        line-height: r(80);
+        background: #fff;
+        border-radius: r(20);
+        overflow: hidden;
+        .first {
+            width: 35%;
+            border-right: 1px solid #ccc;
+            text-align: right;
+            padding-right: r(50);
+        }
+        .last {
+            width: 65%;
+            text-align: left;
+            padding-left: r(50);
+        }
+        .top {
+            font-size: 0;
+            border-radius: r(20);
+            background: #efefef;
+            text-align: center;
+            span {
+                font-size: r(35);
+                display: inline-block;
+                border-right: 0;
+                color: #008464;
+                font-weight: bold;
+                vertical-align: top;
+            }
+        }
+        table {
+            font-size: r(30);
+            width: 100%;
+            text-align: center;
+            td {
+                text-align: center;
+                line-height: 1.4;
+                padding: r(30) 0;
+                border-top: 1px solid #ccc;
+            }
+            .d1 {
+                td {
+                    border-top: 0;
+                }
+            }
+        }
+    }
+    .info-text {
+        color: #008464;
+        font-size: r(25);
+        margin-left: r(20);
+        margin-top: r(15);
+    }
+    .info-box {
+        line-height: 1.3;
+        padding: r(30);
+        font-size: r(30);
+        .img2 {
+            width: r(230);
+            vertical-align: middle;
+        }
+        .text {
+            display: inline-block;
+            width: r(350);
+            vertical-align: middle;
+            text-align: justify;
+            span {
+                color: #16c499;
+            }
+        }
+    }
+    .info-box2 {
+        .text {
+            width: auto;
+            margin: r(10) 0;
+            .text-div {
+                vertical-align: top;
+                display: inline-block;
+                width: r(500);
+            }
+        }
+    }
+    .info-box3 {
+        padding-right: 0;
+        .img3 {
+            width: r(130);
+            vertical-align: top;
+        }
+        .panel {
+            display: inline-block;
+            width: r(470);
+            vertical-align: top;
+            margin-left: r(20);
+            .item-title {
+                font-size: r(40);
+                margin-bottom: r(10);
+            }
+            .item {
+                font-size: r(25);
+                .item-title {
+                    font-weight: bold;
+                }
+            }
+            .item2 {
+                margin-top: r(70);
+                margin-bottom: r(70);
+            }
+        }
+    }
+    .img4 {
+        width: r(490);
+        margin: auto;
+        display: block;
+    }
+    .bottom-box {
+        line-height: r(100);
+        height: r(100);
+        background: #fff;
+        padding-left: r(30);
+        position: fixed;
+        bottom: 0;
+        width: 10rem;
+        .money-box {
+            display: inline-block;
+            font-size: r(40);
+            color: #ff6c00;
+            font-weight: bold;
+            .old {
+                height: 100%;
+                text-decoration: line-through;
+                font-size: r(25);
+                font-weight: initial;
+                color: #999999;
+            }
+        }
+        .button {
+            font-size: r(30);
+            background: #008d6b;
+            color: #fff;
+            width: 45%;
+            text-align: center;
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+        }
+    }
+}

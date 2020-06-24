@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"家庭保险规划调查问卷", "keywords": "", "description": "" })
+    <link rel="stylesheet" type="text/css" href="@@webRoot/lib/css/mint-ui.css" />
+    <link rel="stylesheet" type="text/css" href="@@webRoot/lib/css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="@@webRoot/lib/css/pages/questionnaire.css" />
+</head>
+
+<body>
+    <!-- 加载动画 -->
+    <div class="body-container" id="app" v-cloak>
+        <div class="page-0 page-wrapper" v-if="page==0">
+            <div class="bac">
+                <div class="topview">
+                    <div class="p1">第1步</div>
+                    <div class="p1">填写问卷需求</div>
+                    <span class="heng"></span>
+                    <div class="p3">只有收到您的问卷需求，规划师才会给您配置精准方案哦，来填写吧！</div>
+                </div>
+                <div class="btnBxo">
+                    <button class="btn2" @click="startPage">开始填写</button>
+                    <p>预计花费2分钟完成</p>
+                </div>
+            </div>
+        </div>
+        <div class="page-1 page-wrapper" v-else-if="page==1">
+            <div class="page-title">点击头像添加</div>
+            <div class="appPersonList">
+                <span class="person" v-for="(item, index) in persons" @click="item.choose=!item.choose">
+                    <div :class="[{choose:item.choose},'auther']">
+                        <img v-if="item.type==1 && user && user.headimgurl" :src="user.headimgurl"
+                            class="personal-img" alt="">
+                        <img v-else-if="item.type==1" src="@@webRoot/lib/images/questionnaire/personal-default.png"
+                            class="personal-img" alt="">
+                        <img v-else :src='"@@webRoot/lib/images/questionnaire/personal-"+item.type+".png"'
+                            class="personal-img" alt="">
+                        <img v-show="item.choose" src="@@webRoot/lib/images/questionnaire/select.png" alt=""
+                            class="selected animated bounceIn">
+                    </div>
+                    <span>{{item.name}}</span>
+                </span>
+            </div>
+            <div class="notice">
+                    家人是我们永远的支柱，同时他们也需要最好的保障。把您的家庭成员告诉我，让我帮您规划爱的保障计划！
+            </div>
+            <div class="friendTips">
+                <h2>友情提示：</h2>
+                <p>填写真实有效的信息，才能更准确的给您定制最合适的方案哦!</p>
+            </div>
+            <button class="btn2" @click="page_1_click">下一步</button>
+        </div>
+        <div class="page-2 page-wrapper" v-if="page==2">
+            <div class="top">
+                <div class="page-title">家庭保障</div>
+                <div class="appPersonList">
+                    <span class="person" v-for="(item, index) in selectPerson">
+                        <img v-if="item.type==1 && user && user.headimgurl" :src="user.headimgurl"
+                            class="personal-img" alt="">
+                        <img v-else-if="item.type==1 || !item.type" src="@@webRoot/lib/images/questionnaire/personal-default.png"
+                            class="personal-img" alt="">
+                        <img v-else :src='"@@webRoot/lib/images/questionnaire/personal-"+item.type+".png"'
+                            class="personal-img" alt="">
+                        <span>{{item.name}}</span>
+                    </span>
+                </div>
+            </div>
+            <div class="listInfos">
+                <div class="fillModule" v-for="(item, index) in selectPerson">
+                    <div class="topModule clearfix" @click="showPerson=index">
+                        <div class="name">
+                            {{item.name}}
+                            <img src="@@webRoot/lib/images/questionnaire/fangx.png" alt=""
+                                :class="[{active:item.show},'fangx']">
+                        </div>
+                        <img src="@@webRoot/lib/images/questionnaire/close.png" @click.stop="delitePerson(index)"
+                            class="close">
+                    </div>
+                    <div class="fillContent" v-show="showPerson==index">
+                        <div class="c-title">基本信息</div>
+                        <sub-from v-for="(ele, i) in item.children" :fromdata="ele" :parentdata="item" :parentselect="selectPerson" @checkrole="checkRole(index,$event)" @selectforself="selectforself(index,$event)"></sub-from>
+                    </div>
+                </div>
+            </div>
+            <button class="btn3" @click="addPerson">继续添加成员信息<img src="@@webRoot/lib/images/questionnaire/add.png" alt=""></button>
+            <div class="friendTips">
+                <h2>友情提示：</h2>
+                <p>填写真实有效的信息，梧桐树才能更准确的给您定制合适的方案哦~</p>
+            </div>
+            <button class="btn2" @click="page_2_click">下一步</button>
+        </div>
+        <div class="page-3 page-wrapper" v-if="page==3">
+            <div class="topview">
+                <div class="p1">第2步</div>
+                <div class="p2">完善家庭经济状况获取合理规划</div>
+                <span class="heng"></span>
+            </div>
+            <div class="listInfos">
+                <div class="fillContent">
+                    <div class="c-title">家庭经济状况<span>（必填项）</span></div>
+                    <sub-from v-for="(ele, i) in familyEconomy" :fromdata="ele" @inputback="inputBack"></sub-from>
+                </div>
+            </div>
+            <div class="listInfos">
+                <div class="fillContent">
+                    <div class="c-title">家庭责任</div>
+                    <sub-from v-for="(ele, i) in responsibility" :fromdata="ele"></sub-from>
+                </div>
+            </div>
+            <div class="btn-two-box">
+                <div class="btn-two" @click="page--">上一步</div>
+                <div class="btn-two btn-next" @click="page_3_click">下一步</div>
+            </div>
+        </div>
+        <div class="page-4 page-wrapper" v-if="page==4">
+            <div class="topview">
+                <div class="p1">第3步</div>
+                <div class="p2">匹配适合您的保险规划师</div>
+                <span class="heng"></span>
+            </div>
+            <div class="questionList">
+                <sub-from v-for="(ele, i) in getRightPlanner" :fromdata="ele" :indextitle="i" @selectedback="selectedback(i,$event)"></sub-from>
+            </div>
+            <div class="btn-two-box">
+                <div class="btn-two" @click="page--">上一步</div>
+                <div class="btn-two btn-next" @click="page_4_click">下一步</div>
+            </div>
+        </div>
+        <div class="page-5 page-wrapper" v-if="page==5">
+            <div class="page-title">确认您要保障的人员信息</div>
+            <div class="sureList" v-for="(ele, i) in selectPerson">
+                <span class="sure-title">{{ele.name}}</span>
+                <div class="sure-item" v-for="(item, n) in ele.children" v-if="item.name && item.value">
+                    <span class="sure-name">{{item.name}}</span>
+                    <span class="sure-value">{{item.value}}</span>
+                </div>
+            </div>
+            <div class="sureList from-2">
+                <span class="sure-title from-2">家庭经济</span>
+                <div class="sure-item" v-for="(item, n) in familyEconomy" v-if="item.name && item.value">
+                    <span class="sure-name">{{item.name}}</span>
+                    <span class="sure-value">{{item.value}}{{item.tips}}</span>
+                </div>
+                <div class="sure-item" v-for="(item, n) in responsibility" v-if="item.name && item.value">
+                    <span class="sure-name">{{item.name}}</span>
+                    <span class="sure-value">{{item.value}}{{item.tips}}</span>
+                </div>
+            </div>
+            <div class="btn-two-box">
+                <div class="btn-two" @click="page--">上一步</div>
+                <div class="btn-two btn-next" @click="showTell=true">下一步</div>
+            </div>
+        </div>
+        <div class="tell-layer-box" v-show="showTell">
+            <div class="mask"></div>
+            <div class="mainContent">
+                <img src="@@webRoot/lib/images/questionnaire/complate.png" alt="" class="complate">
+                <h2>问卷填写完成</h2>
+                <p class="d1">您的定制保障方案只差最后一步,留下您的联系方式，规划师会在半小时内联系您</p>  
+                <input type="text" v-model="tell" class="tell-input" placeholder="请输入您的手机号码"> 
+                <div class="btn-sure-tell" @click="submitBtn">确认</div>
+            </div>
+        </div>
+    </div>
+    @@include("include/vue-footer.htm")
+    <script src="@@webRoot/lib/js/mint-ui.js"></script>
+    <script src="@@webRoot/lib/data/questionnaire_data.js"></script>
+    <script src="@@webRoot/lib/js/city-picker.js"></script>
+    <script src="@@webRoot/lib/units/questionnaire.js"></script>
+
+
+</body>
+</html>

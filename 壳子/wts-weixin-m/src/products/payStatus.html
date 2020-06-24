@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"支付结果", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container products-payStatus hide" id="okPanel">
+        <div class="panel">
+            <img src="@@webRoot/lib/images/products/payStatus/ok.png" class="icon">
+            <div class="text1" id="text">投保成功</div>
+        </div>
+        <div class="bottom-box">
+            <div class="text2">关注公众号查看<span>电子保单</span></div>
+            <div class="text3">还可享受在线理赔、专属保险顾问等服务</div>
+            <div class="box">
+                <div class="text4">长按保存下方二维码 <br> 微信内识别并关注“梧桐树保险网” </div>
+                <img src="@@webRoot/lib/images/products/payStatus/code.png" class="code">
+                <div class="text5">如需帮助，请联系24小时客服热线</div>
+                <a href="tel://400-9955-788" class="a">400-9955-788</a>
+            </div>
+        </div>
+    </div>
+    <div class="body-container products-payStatus error hide" id="errorPanel">
+        <div class="panel">
+            <img src="@@webRoot/lib/images/products/payStatus/error.png" class="icon">
+            <div class="text1">支付失败</div>
+            <div class="text2">尊敬的用户，您的订单支付失败，请重新支付</div>        
+        </div>
+        <div class="bottom-box">
+            <div class="btn" id="submit">重新支付</div>
+            <div class="text3">如需帮助，请联系24小时客服热线<a href="tel://400-9955-788" class="a">400-9955-788</a> </div>
+        </div>
+        
+    </div>
+</body>
+@@include("include/footer.htm")
+<script>
+    $(function(){
+        var isError = $.getQueryString('error');
+        var renewals = $.getQueryString('renewals');
+        var tradeNo = $.getQueryString('tradeNo');
+        var orderType = $.getQueryString('orderType');
+        if(isError){
+            $("#errorPanel").removeClass("hide")
+        }else{
+            $("#okPanel").removeClass("hide")
+        }
+        if(renewals == 1){
+            $("#text").text("续费成功");
+        }
+        $("#submit").click(function(){
+            var url = "https://" + location.host + "/payment-html/cashier_route.html?tradeNo="+tradeNo;
+            if(orderType) {
+                url += "&orderType="+orderType;
+            }
+            location.href = url;
+        });
+    });
+</script>
+</html

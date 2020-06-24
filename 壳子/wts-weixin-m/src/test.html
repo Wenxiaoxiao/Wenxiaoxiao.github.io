@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="@@webRoot/lib/js/jquery.min.js"></script>
+    <script src="@@webRoot/lib/units/global.js"></script>
+    <link rel="stylesheet" href="@@webRoot/lib/css/main.css">
+    <link rel="stylesheet" href="@@webRoot/lib/css/webuploader.css">
+    <link rel="stylesheet" href="@@webRoot/lib/iconfont/iconfont.css">
+    <script src="@@webRoot/lib/js/vconsole.min.js"></script>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+    <style>
+        .imgUploding {
+            width: 100%;
+            padding-bottom: 0 !important;
+            height: auto;
+            border: 1px solid #eee
+        }
+
+        .imgUploding .active {
+            display: block
+        }
+
+        .imgUploding .imgUploding-msg {
+            background: #ff6e07;
+            padding: .13333rem .66667rem;
+            line-height: .53333rem;
+            font-size: .4rem
+        }
+
+        .imgUploding .imgUploding-msg p {
+            color: #fff
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox {
+            background: #fff
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox .imgcheckbox-title {
+            font-weight: 500;
+            display: block;
+            padding: .26667rem;
+            line-height: .56rem;
+            font-size: .4rem;
+            color: #000;
+            background-color: #eee
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox .imgcheckbox-title:before {
+            content: "";
+            width: 3px;
+            height: .53333rem;
+            background: #ff6e07;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: .2rem;
+            position: relative;
+            margin-top: -.06667rem
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox .imgUploding-top {
+            border-top: 1px solid #e5e5e5;
+            padding: 0 0 .4rem;
+            width: 100%;
+            height: auto;
+            text-align: left;
+            position: relative;
+            box-sizing: border-box
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox .imgUploding-top .uploader-list {
+            width: auto;
+            height: auto;
+            float: left;
+            margin-right: 5px
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox .imgUploding-top .uploader-list .file-item {
+            width: 100px;
+            height: 100px;
+            float: left;
+            position: relative;
+            margin-right: .06667rem;
+            margin-bottom: .06667rem
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox .imgUploding-top .uploader-list .file-item .delet {
+            width: .66667rem;
+            height: .66667rem;
+            display: inline-block;
+            background: rgba(0, 0, 0, .5);
+            font-size: .66667rem;
+            color: #fff;
+            border-bottom-left-radius: .13333rem;
+            text-align: center;
+            position: absolute;
+            line-height: .66667rem;
+            right: 0;
+            top: 0;
+            z-index: 200
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox .imgUploding-top .uploader-list .file-item img {
+            width: 100%
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox .imgUploding-top .imgload {
+            width: 2.4rem;
+            height: 2.4rem;
+            float: left;
+            position: relative;
+            color: #cbcbcb;
+            line-height: 2.66667rem;
+            text-align: center;
+            margin: .26667rem;
+            font-size: 2.4rem
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox .imgUploding-top .imgload1 {
+            float: left
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox .successError {
+            color: red;
+            font-size: .37333rem;
+            padding-left: .4rem;
+            padding-bottom: .2rem
+        }
+
+        .imgUploding .imgUploding-center .imgcheckbox:last-child {
+            border: none
+        }
+
+        .imgUploding .imgUploding-btn,
+        .imgUploding .imgUploding-delite {
+            display: inline-block;
+            position: absolute;
+            right: 50%;
+            bottom: 15px;
+            z-index: 11
+        }
+
+        .imgUploding .imgUploding-btn {
+            margin-right: -4.13333rem
+        }
+
+        .imgUploding .imgUploding-delite {
+            left: 50%;
+            margin-left: -4.13333rem;
+            background-color: #8f8d8d
+        }
+
+        .webuploader-pick,
+        .webuploader-pick-hover {
+            background: transparent
+        }
+
+        .webuploader-container {
+            position: relative
+        }
+
+        .webuploader-element-invisible {
+            position: absolute !important;
+            clip: rect(1px 1px 1px 1px);
+            clip: rect(1px, 1px, 1px, 1px)
+        }
+
+        .webuploader-pick {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px 15px;
+            width: 100px;
+            height: 100px;
+            color: #fff;
+            text-align: center;
+            border-radius: 3px;
+            background-color: #eee;
+        }
+
+        .webuploader-pick-disable {
+            opacity: .6;
+            pointer-events: none
+        }
+    </style>
+    <style>
+        .img{
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="imgUploding">
+        <ul class="imgUploding-center">
+            <li class="imgcheckbox">
+                <p class="imgcheckbox-title">测试111</p>
+                <div class="imgUploding-top clearfix" id="uploader_0">
+                    <div class="uploader-list"></div>
+                    <span class="iconfont icon-tianjiazhaopian imgload1 imgload"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <img id="J_imageViewer" class="img" />
+</body>
+<script>
+    $(function () {
+        var vConsole = new VConsole();
+        var imgDatas = [
+            {
+                elementCode: "img1",
+                name: "111",
+                url: ""
+            },
+        ];
+        imgUpload(imgDatas, function (value, response) {
+            console.log("完成1");
+            console.log(value);
+        }, function (value) {
+            console.log("全部完成");
+            console.log(value);
+        }, function (id) {
+            console.log("删除" + id);
+        })
+        function imgUpload(data, success, allBack, deleteBack) {
+            $(".imgUploding .imgload").on("click", function () {
+                var index = $(this).parent(".imgUploding-top").attr("data-num");
+                console.log(index);
+                ap.chooseImage(1, function (res) {
+                    console.log("选择图片回调", res);
+                    getImg(res.apFilePaths)
+                    return;
+                    var file = res.apFilePaths[0];
+                    var param = new FormData(); //创建form对象
+                    param.append('file', file);//通过append向form对象添加数据
+                    
+                });
+
+            })
+        }
+
+        function getImg(apFilePath) {
+            // 如下演示如何拿到base64格式的数据，可用于上传到服务器端的场景
+            var eImage = document.querySelector('#J_imageViewer');
+            var image = new Image();
+            image.crossOrigin = 'anonymous';
+            image.onload = function () {
+                var canvas = document.createElement('CANVAS');
+                var context = canvas.getContext('2d');
+                canvas.height = image.height;
+                canvas.width = image.width;
+                context.drawImage(image, 0, 0);
+                try {
+                    var dataURL = canvas.toDataURL('image/jpeg');
+                    console.log(dataURL);
+                    eImage.src = dataURL;
+                    uploadImg(dataURL)
+                } catch (e) {
+                    eImage.src = apFilePath[0];
+                }
+                canvas = null;
+            }
+            image.src = apFilePath[0];
+        }
+        function uploadImg(data){
+            $.ajax({
+                url: "/tools/api/base64ToImage",
+                type:"POST",
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify({
+                    images:[data]
+                }),
+                async: true,
+                success: function (data, isError) {
+                    console.log(data);
+
+                }
+            })
+        }
+    })
+
+
+</script>
+
+</html>

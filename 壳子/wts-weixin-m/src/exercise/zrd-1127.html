@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+        <meta charset="UTF-8">
+        @@include("include/header.htm",{ "title":"信泰特区", "keywords": "", "description": "" })
+    <style>
+        .zrd-1127 .search{
+            width:100%;
+            background:#0084ff;
+            padding:.2rem .3rem
+        }
+        .zrd-1127 .search input{
+            border:none;
+            outline:0;
+            height:.8rem;
+            width:90%;
+            border-radius:.4rem;
+            padding:0 .2rem;
+            font-size:.4rem
+        }
+        .zrd-1127 .search span{
+            display:inline-block;
+            text-align:center;
+            width:10%;
+            line-height:.8rem;
+            color:#fff;
+            font-size:.4rem
+        }
+        .zrd-1127 .tab{
+            background:#fff;
+            margin-top:.3rem
+        }
+        .zrd-1127 .tab .tabItem{
+            float:left;
+            width:50%;
+            text-align:center;
+            color:#333;
+            font-size:.4rem
+        }
+        .zrd-1127 .tab .tabItem span{
+            padding:0 .3rem;
+            line-height:.8rem;
+            display:inline-block
+        }
+        .zrd-1127 .tab .active span{
+            border-bottom:2px solid #0084ff
+        }
+        .zrd-1127 .bbrqrBox,.zrd-1127 .znhbBox{
+            background:#fff;
+            margin-top:.3rem
+        }
+        .zrd-1127 .bbrqrBox .item,.zrd-1127 .znhbBox .item{
+            padding:.3rem .3rem;
+        }
+        .zrd-1127 .bbrqrBox .item .name,.zrd-1127 .znhbBox .item .name{
+            color:#000;font-size:.46rem
+        }
+        .zrd-1127 .bbrqrBox .item .info,.zrd-1127 .znhbBox .item .info{
+            margin-top:.2rem;margin-bottom:.2rem
+        }
+        .zrd-1127 .bbrqrBox .item p,.zrd-1127 .znhbBox .item p{
+            font-size:.4rem;color:#333
+        }
+        .zrd-1127 .znhbBox .item .btngr{
+            display: flex;
+            justify-content: space-between;
+        }
+        .zrd-1127 .znhbBox .item .canceBtn{
+            padding:.2rem .5rem;
+            border-radius:.1rem;
+            font-size: 0.4rem;
+            background:#0084ff;
+            color:#fff;
+        }
+        .zrd-1127 .znhbBox .item .yi{
+            background:#ccc;
+        }
+        .zrd-1127 .bbrqrBox .item .btn,.zrd-1127 .znhbBox .item .btn{
+            padding:.2rem .5rem;
+            border-radius:.1rem;
+            font-size: 0.4rem;
+            background:#0084ff;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="body-container zrd-1127">
+        <div class='search'>
+            <input type="text" class="searchContent" placeholder="请输入保单号或投保单号"><span class="searchBtn">搜索</span>
+        </div>
+        <!-- <div class="tab clearfix">
+            <div class="tabItem active" dataNum='1'>
+                <span>被保人确认</span>
+            </div>
+            <div class="tabItem" dataNum='2'>
+                <span>智能核保结论</span>
+            </div>
+        </div> -->
+        <div class="bbrqrBox">
+           
+        </div>
+        <div class="znhbBox">
+            
+        </div>
+    </div>
+    @@include("include/footer.htm")
+    <script type="text/html" id="bbrqrHtml">
+        <div class="item">
+            <p class="name">{{data.productName}}</p>
+            <div class="info">
+                <p><span>投保人姓名：</span><span>{{data.holderName}}</span></p>
+                <p><span>被保人姓名：</span><span>{{data.insurederName}}</span></p>
+                <p><span>投被保人关系：</span><span>{{data.insuredRelationship}}</span></p>
+                <p><span>确认结果：</span><span>{{data.result}}</span></p>
+                {{if data.valiDate}}
+                <p><span>生效日期：</span><span>{{data.valiDate}}</span></p>
+                {{/if}}
+                {{if data.deadLine}}
+                <p><span>截止日期：</span><span>{{data.deadLine}}</span></p>
+                {{/if}}
+            </div>
+            {{if data.confirm=='in'||data.confirm=='fail'}}
+                <span class="btn">重发被保人确认短信</span>
+            {{/if}}
+        </div>
+    </script>
+    <script type="text/html" id="znhbHtml">
+        <div class="item">
+            <p class="name">{{data.productName}}</p>
+            <div class="info">
+                <p><span>投保人姓名：</span><span>{{data.holderName}}</span></p>
+                <p><span>被保人姓名：</span><span>{{data.insurederName}}</span></p>
+                <p><span>投被保人关系：</span><span>{{data.insuredRelationship}}</span></p>
+                <p><span>结论内容：</span><span>{{data.result}}</span></p>
+            </div>
+            <div class='btngr'>
+                {{if data.manual=="true"}}
+                    <span class="btn">下载核保决定通知书</span>
+                {{/if}}
+                {{if data.orderCancel==0}}
+                    <span data-orderCancel='0' class='canceBtn'>撤单</span>
+                {{else if data.orderCancel==1}}
+                    <span data-orderCancel='1' class='canceBtn yi'>撤单</span>
+                {{/if}}
+            </div>
+        </div>
+    </script>
+</body>
+<script src="@@webRoot/lib/js/layer.js"></script>
+<script>
+    $(function() {
+        var active = 1;
+        var load = null
+        var policyNo = '';
+        var dingId = $.getQueryString("ddId")||1;
+        var channel = $.getQueryString("channel")||1;
+        $('.znhbBox').hide();
+        //搜索点击
+        $('.searchBtn').click(function(){
+            $('.bbrqrBox').html('')
+            $('.znhbBox').html('')
+            var num = $('.searchContent').val()
+            if(num){
+                load = layer.msg('加载中...', {
+                    icon: 16
+                    ,shade: 0.01
+                });
+                validPolicy(num)
+                
+            }else{
+                layer.msg('请输入搜索内容')
+            }
+        })
+        // 判断是保单还是订单
+        function validPolicy (num){
+            $.ajax({
+                url: '/tools/ding/xintai/validPolicy',
+                data: {
+                    policyNo:num,
+                    dingId:dingId,
+                    channel:channel
+                },
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    if(data.httpCode==200){
+                        if(data.policy){
+                            policyNo = $('.searchContent').val()
+                            bbrqr(num)
+                            $('.bbrqrBox').show()
+                            $('.znhbBox').hide()
+                        }else if(data.order){
+                            policyNo = $('.searchContent').val()
+                            znhb()
+                            $('.bbrqrBox').hide()
+                            $('.znhbBox').show()
+                        }else{
+                            layer.msg('单号不存在');
+                        }
+                    }else{
+                        if(load){
+                            layer.close(load);
+                        }
+                        if(data.data&&data.data.errorMsg){
+                            layer.msg(data.data.errorMsg||data.msg);
+                        }else{
+                            layer.msg(data.msg);
+                        }
+                    }
+                },
+                error: function() {
+                    if(load){
+                        layer.close(load);
+                    }
+                    layer.msg("服务器异常");
+                }
+            });
+        }
+        //撤单接口
+        function cancel(num){
+            load = layer.msg('加载中...', {
+                    icon: 16
+                    ,shade: 0.01
+                });
+            $.ajax({
+                url: '/tools/ding/xintai/cancel ',
+                data: JSON.stringify({
+                    policyNo:num,
+                    dingId:dingId,
+                    channel:channel
+                }),
+                type: "POST",
+                contentType: "application/json",
+                success: function(data) {
+                    if(data.httpCode==200){
+                        layer.msg('撤销成功')
+                        $('.canceBtn').addClass('yi')
+                    }else{
+                        if(load){
+                            layer.close(load);
+                        }
+                        if(data.data&&data.data.errorMsg){
+                            layer.msg(data.data.errorMsg||data.msg);
+                        }else{
+                            layer.msg(data.msg);
+                        }
+                    }
+                },
+                error: function() {
+                    if(load){
+                        layer.close(load);
+                    }
+                    layer.msg("服务器异常");
+                }
+            });
+        }
+        //tab点击
+        // $('.tab .tabItem').click(function(){
+        //     var value = $('.searchContent').val()
+        //     $(this).siblings().removeClass('active')
+        //     $(this).addClass('active')
+        //     if(active==$(this).attr('dataNum')){
+        //         return 
+        //     }
+        //     active = $(this).attr('dataNum')
+        //     if(active==1){
+        //         if(value){
+        //             load = layer.msg('加载中...', {
+        //                 icon: 16
+        //                 ,shade: 0.01
+        //             });
+        //             policyNo = $('.searchContent').val()
+        //             bbrqr()
+        //         }else{
+        //             $('.bbrqrBox').html('')
+        //         }
+        //         $('.bbrqrBox').show()
+        //         $('.znhbBox').hide()
+        //     }else{
+        //         if(value){
+        //             load = layer.msg('加载中...', {
+        //                 icon: 16
+        //                 ,shade: 0.01
+        //             });
+        //             policyNo = $('.searchContent').val()
+        //             znhb()
+        //         }else{
+        //             $('.znhbBox').html('')
+        //         }
+        //         $('.znhbBox').show()
+        //         $('.bbrqrBox').hide()
+        //     }
+        // })
+        //被保人确认数据
+        function bbrqr(){
+            $.ajax({
+                url: '/tools/ding/xintai/queryConfirm',
+                data: {
+                    policyNo:policyNo,
+                    dingId:dingId,
+                    channel:channel
+                },
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    if(data.httpCode==200){
+                        var html = template('bbrqrHtml',data)
+                        $('.bbrqrBox').html('')
+                        $('.bbrqrBox').html(html)
+                        if(load){
+                            layer.close(load);
+                        }
+                        $('.bbrqrBox .btn').click(function(){
+                            $.layerinquiry('是否确认重发短信？', ['确认', '取消'], function () {
+                                sendInfo()
+                            }, function () {
+                                
+                            });
+                        })
+                    }else{
+                        $('.bbrqrBox').html('')
+                        if(load){
+                            layer.close(load);
+                        }
+                        if(data.data&&data.data.errorMsg){
+                            layer.msg(data.data.errorMsg||data.msg);
+                        }else{
+                            layer.msg(data.msg);
+                        }
+                    }
+                },
+                error: function() {
+                    $('.bbrqrBox').html('')
+                    if(load){
+                        layer.close(load);
+                    }
+                    layer.msg("服务器异常");
+                }
+            });
+        }
+        //重新发送
+        function sendInfo(){
+            $.ajax({
+                url: '/tools/ding/xintai/sendConfirm',
+                data: JSON.stringify({
+                    policyNo:policyNo,
+                    dingId:dingId,
+                    channel:channel
+                }),
+                type: "POST",
+                contentType:'application/json',
+                dataType: "JSON",
+                success: function(data) {
+                    if(data.httpCode==200){
+                        layer.msg("发送成功");
+                    }else{
+                        layer.msg(data.data.errorMsg);
+                    }
+                },
+                error: function() {
+                    layer.msg("服务器异常");
+                }
+            });
+        }
+        //智能核保结论
+        function znhb(){
+            $.ajax({
+                url: '/tools/ding/xintai/queryIntelligentConclusion',
+                data: {
+                    policyNo:policyNo,
+                    dingId:dingId,
+                    channel:channel
+                },
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    if(data.httpCode==200){
+                        var html = template('znhbHtml',data)
+                        $('.znhbBox').html('')
+                        $('.znhbBox').html(html)
+                        if(load){
+                            layer.close(load);
+                        }
+                        $('.znhbBox .btn').click(function(){
+                            $.layerinquiry('是否确认下载？', ['确认', '取消'], function () {
+                                downloadMatter()
+                            }, function () {
+                                
+                            });
+                        })
+                        $('.canceBtn').click(function(){
+                            if($(this).hasClass('yi')){
+                                return
+                            }
+                            $.layerinquiry('是否确认撤销此单？', ['确认', '取消'], function () {
+                                cancel(policyNo)
+                            }, function () {
+                                
+                            });
+                        })
+                    }else{
+                        $('.znhbBox').html('')
+                        if(load){
+                            layer.close(load);
+                        }
+                        if(data.data&&data.data.errorMsg){
+                            layer.msg(data.data.errorMsg||data.msg);
+                        }else{
+                            layer.msg(data.msg);
+                        }
+                       
+                    }
+                },
+                error: function() {
+                    $('.znhbBox').html('')
+                    if(load){
+                        layer.close(load);
+                    }
+                    layer.msg("服务器异常");
+                }
+            });
+        }
+        //下载决定通知书
+        function downloadMatter(){
+            window.open('https://' + window.location.host+'/tools/ding/xintai/downloadMatter?policyNo='+policyNo+'&dingId='+dingId+'&channel='+channel)
+        }
+    })
+</script>
+
+</html>

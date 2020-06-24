@@ -1,0 +1,40 @@
+.veriCode{
+    padding: r(30);
+    .title{
+        color: $baseColor;
+        font-size: r(38);
+    }
+    .box{
+        padding:r(30) 0;
+        .froms{
+            background-color: #fff;
+            height: r(90);
+            margin-bottom: r(30);
+            .sendCodeBtn{
+                height: r(90);
+                line-height: r(90);
+                font-size: r(32);
+                width: 30%;
+                text-align: center;
+                background-color: $baseColor;
+                color: #fff;
+                border: 0;
+                &.disableds{
+                    background-color: #ccc;
+                }
+            }
+            .input-t{
+                height: r(90);
+                line-height: r(90);
+                width: 70%;
+                padding-left: r(40);
+                border:0;
+                font-size: r(32);
+                color: #333;
+                &.tell{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

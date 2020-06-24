@@ -1,0 +1,52 @@
+.phone-doctor-userinfo {
+    font-size: r(28);
+    .title {
+        padding: r(20) r(30) r(10);
+    }
+    .form-box {
+        padding: 0 r(30);
+        background: #fff;
+        .row {
+            line-height: r(80);
+        }
+        .line {
+            border-bottom: 1px solid #d2d2d2;
+        }
+        input {
+            border: 0;
+            float: right;
+            width: r(400);
+            text-align: right;
+            margin-top: r(20);
+            font-size: r(25);
+        }
+        ul {
+            float: right;
+            li {
+                display: inline-block;
+                line-height: 2;
+                width: r(100);
+                font-size: r(25);
+                text-align: center;
+                border-radius: r(10);
+                background: #ddd;
+                &.active {
+                    background: #4580f6;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .button {
+        line-height: r(100);
+        height: r(100);
+        background: #4580f6;
+        color: #fff;
+        padding-left: r(30);
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        width: 10rem;
+        font-size: r(45);
+    }
+}

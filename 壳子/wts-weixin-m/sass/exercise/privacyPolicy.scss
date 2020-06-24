@@ -1,0 +1,31 @@
+.privacyPolicy{
+    width: 100%;
+    padding: r(18);
+    font-size: r(24);
+    color: #333;
+    line-height: r(40);
+    letter-spacing: 1px;
+}
+.privacyPolicy .title{
+    line-height: r(70);
+    font-size: r(30);
+    color: #000;
+    font-weight: 900;
+    text-align: center;
+}
+.privacyPolicy .item{
+    margin-bottom: r(30);
+}
+.privacyPolicy .item_title{
+    font-size: r(28);
+    color: #000;
+    font-weight: 900;
+    line-height: r(60);
+}
+
+.privacyPolicy .p1{
+    font-size: r(27);
+    text-indent:r(55);
+    line-height: r(40);
+    color:#333;
+}

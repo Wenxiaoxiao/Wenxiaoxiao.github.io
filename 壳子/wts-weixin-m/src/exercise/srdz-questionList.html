@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    @@include("include/header.htm",{ "title":"完善信息", "keywords": "", "description": "" })
+    <link rel="stylesheet" type="text/css" href="@@webRoot/lib/css/mobileSelect.css" />
+</head>
+
+<body>
+    <!--页面加载动画-->
+    <div class="body-container qusetionList">
+        <div class="wrapper">
+            <div class="center1"><img src="@@webRoot/lib/images/srdz/questionList01.jpg" /></div>
+            <!-- 姓名 -->
+            <div class="part1 part">
+                <div class="title">您的姓名<span class="require-mark">*</span></div>
+                <input class="design-input" />
+            </div>
+            <!-- 电话 -->
+            <div class="part2 part">
+                <div class="title">您的电话<span class="require-mark">*</span></div>
+                <input class="design-input" />
+            </div>
+            <!-- 家庭成员情况 -->
+            <div class="part3 part"> </div>
+            <!-- 添加家庭成员 -->
+            <div class="addFamilyMem"><span></span> 添加家庭成员<div id="addMember"></div>
+            </div>
+            <!-- 家庭年收入水平 -->
+            <div class="part4 part">
+            </div>
+            <!-- 负债情况 -->
+            <div class="part5 part">
+            </div>
+            <!-- 所在城市 -->
+            <div class="part6 part">
+                <div class="title">所在城市</div>
+                <div><span>中国</span><select class="province down_select" id="province"
+                        placeholder="请选择"></select><select class="city down_select" id="city"
+                        aria-placeholder="请选择"></select></div>
+            </div>
+            <!-- 是否有社保 -->
+            <!-- <div class="part7 part"> -->
+            <!-- </div> -->
+            <!-- 是否有商业保险 -->
+            <div class="part8 part">
+            </div>
+            <!-- 预约时间 -->
+            <div class="part9 part">
+                <div class="title">预约时间<span class="require-mark">*</span></div>
+                <input readonly class="design-input1" id="chose_time" placeholder="YYYY-MM-DD hh:mm" disabled />
+            </div>
+            <div class="submit"></div>
+            <div class="footer">安全声明：您提供的个人信息将被严格保密，仅用于我司保险咨询<br />及设计服务，不会泄露给任何第三方或其他用途。</div>
+        </div>
+    </div>
+
+</body>
+<!-- 家庭成员情况 -->
+<script id="member" type="text/html">
+    <div class="title">{{title}}<span class="require-mark">*</span></div>
+    {{each list as value i}}
+    <div>
+        <div class="design-checkbox"><div class="checkbox checkbox{{i}}" id="checkbox{{i}}"></div>{{value.member}}</div>
+        {{if !value.sex}}
+        <div class="design-sexchose">
+            <div>性别</div>
+            <div class="sexSelect" id="sexSelect{{i}}"><input placeholder="请选择" readonly disabled/></div>
+        </div>
+        {{/if}}
+        <div class="design-agechose">
+            <div>年龄</div>
+            <div class="ageselect" id="ageselect{{i}}"><input placeholder="请选择" readonly disabled/></div>
+        </div>
+        <div class="design-socialSecuritychose">
+            <div>社保</div>
+            <div class="socialSecurityselect" id="socialSecurityselect{{i}}">
+                <div class="socialSecurity-chose"><div types="1" class="design-radio"></div>有</div>
+                <div class="socialSecurity-chose"><div types="0" class="design-radio"></div>无</div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</script>
+<!-- 复选框 -->
+<script id="checkbox" type="text/html">
+    <div class="title">{{title}}</div>
+    <div>
+        {{each list as value i}}
+        <div class="design-checkbox"><div class="checkbox"></div>{{value}}</div>
+        {{/each}}
+    </div>
+</script>
+<!-- 下拉选择 -->
+<script id="down-select" type="text/html">
+    {{each list as value i}}
+    <option>{{value.value}}</option>
+    {{/each}}
+</script>
+<!-- 单选框 -->
+<script id="radio-chose" type="text/html">
+    <div class="title">{{title}}</div>
+    <div>
+        {{each list as value i}}
+        <div class="security-chose"><div class="design-radio"></div>{{value}}</div>
+        {{/each}}
+    </div>
+</script>
+@@include("include/footer.htm")
+<script type="text/javascript" src="@@webRoot/lib/js/mobileSelect.js"></script>
+<script type="text/javascript" src="@@webRoot/lib/js/jdate.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //家庭年收入水平
+        var incomelist = {
+            title: '家庭年收入水平',
+            list: ['10万以内', '10万-20万', '20万-30万', '30万-50万', '50万以上']
+        };
+        var html_incomelist = template('radio-chose', incomelist);
+        $(".wrapper .part4").html(html_incomelist);
+        //是否有社保
+        // var securitylist ={
+        //     title:'是否有社保',
+        //     list:['新农合','城镇职工医保','城乡居民医保','无社保']
+        // };
+        // var html_securitylist = template('radio-chose', securitylist);
+        // $(".wrapper .part7").html(html_securitylist);
+        // 家庭成员情况
+        var memberlist = {
+            title: '家庭成员情况',
+            list: [
+                { member: "自己", sex: "", socialSecurity: "" },
+                { member: "配偶", sex: "", socialSecurity: "" },
+                { member: "儿子", sex: "男", socialSecurity: "" },
+                { member: "女儿", sex: "女", socialSecurity: "" },
+                { member: "父亲", sex: "男", socialSecurity: "" },
+                { member: "母亲", sex: "女", socialSecurity: "" }
+            ],
+        };
+        var html_memberlist = template('member', memberlist);
+        $(".wrapper .part3").html(html_memberlist);
+        //家庭负债
+        var deCome = {
+            title: '家庭负债情况',
+            list: ['房贷', '车贷', '其他负债', '无负债']
+        };
+        var html_deCome = template('checkbox', deCome);
+        $(".wrapper .part5").html(html_deCome);
+        //商业保险
+        var inSurance = {
+            title: '是否有商业保险',
+            list: ['重疾险', '医疗险', '意外险', '寿险', '无']
+        };
+        var html_inSurance = template('checkbox', inSurance);
+        $(".wrapper .part8").html(html_inSurance);
+        // 所在城市
+        Province_City();
+        City_Json($("#province").val());
+        $("#province").on("change", function (event) {
+            City_Json($("#province").val());
+        });
+        // 居住地方
+        function City_Json(province) {
+            var cityArry = [],
+                citydata = { "请选择": ["请先选择省份"], "安徽": ["合肥", "芜湖", "蚌埠", "淮南", "马鞍山", "淮北", "铜陵", "安庆", "黄山", "阜阳", "宿州", "滁州", "六安", "宣城", "池州", "亳州", "其他"], "北京": ["北京"], "重庆": ["重庆"], "福建": ["福州", "厦门", "莆田", "三明", "泉州", "漳州", "南平", "龙岩", "宁德", "平潭", "其他"], "甘肃": ["兰州", "嘉峪关", "金昌", "白银", "天水", "酒泉", "张掖", "武威", "定西", "陇南", "平凉", "庆阳", "临夏回族自治州", "甘南藏族自治州", "其他"], "广东": ["广州", "深圳", "珠海", "汕头", "佛山", "韶关", "湛江", "肇庆", "江门", "茂名", "惠州", "梅州", "汕尾", "河源", "阳江", "清远", "东莞", "中山", "潮州", "揭阳", "云浮", "其他"], "广西": ["南宁", "柳州", "桂林", "梧州", "北海", "防城港", "钦州", "贵港", "玉林", "百色", "贺州", "河池", "来宾", "崇左", "南宁", "柳州", "其他"], "贵州": ["贵阳", "六盘水", "遵义", "安顺", "毕节", "铜仁", "黔西南", "黔东南", "黔南", "其他"], "海南": ["海口", "三亚", "三沙", "儋州", "其他"], "河北": ["石家庄", "唐山", "秦皇岛", "邯郸", "邢台", "保定", "张家口", "承德", "沧州", "廊坊", "衡水", "定州", "辛集", "其他"], "黑龙江": ["哈尔滨", "齐齐哈尔", "鸡西", "鹤岗", "双鸭山", "大庆", "伊春", "佳木斯", "七台河", "牡丹江", "黑河", "绥化", "大兴安岭", "绥芬河", "抚远", "其他"], "河南": ["郑州", "开封", "洛阳", "平顶山", "安阳", "鹤壁", "新乡", "焦作", "濮阳", "许昌", "漯河", "三门峡", "南阳", "商丘", "周口", "信阳", "驻马店", "济源", "其他"], "湖北": ["武汉", "黄石", "十堰", "宜昌", "襄阳", "鄂州", "荆门", "孝感", "荆州", "黄冈", "咸宁", "随州", "恩施土家族苗族自治州", "仙桃", "潜江", "天门", "神农架", "其他"], "湖南": ["长沙", "株洲", "湘潭", "衡阳", "邵阳", "岳阳", "常德", "张家界", "益阳", "郴州", "永州", "怀化", "娄底", "湘西土家族苗族自治州", "其他"], "内蒙古": ["呼和浩特", "包头", "乌海", "赤峰", "通辽", "鄂尔多斯", "呼伦贝尔", "巴彦淖尔", "乌兰察布盟", "兴安盟", "锡林郭勒盟", "阿拉善盟", "其他"], "江苏": ["南京", "无锡", "徐州", "常州", "苏州", "南通", "连云港", "淮安", "盐城", "扬州", "镇江", "泰州", "宿迁", "其他"], "江西": ["南昌", "九江", "上饶", "抚州", "宜春", "吉安", "赣州", "景德镇", "萍乡", "新余", "鹰潭", "其他"], "吉林": ["长春", "吉林", "四平", "辽源", "通化", "白山", "白城", "松原", "延边朝鲜族自治州", "吉林省长白山保护开发区", "梅河口", "公主岭", "其他"], "辽宁": ["沈阳", "大连", "鞍山", "抚顺", "本溪", "丹东", "锦州", "营口", "阜新", "辽阳", "盘锦", "铁岭", "朝阳", "葫芦岛", "其他"], "宁夏": ["银川", "石嘴山", "吴忠", "固原", "中卫", "其他"], "青海": ["西宁", "海东", "海北", "黄南", "海南", "果洛", "玉树", "海西"], "山西": ["太原", "大同", "阳泉", "长治", "晋城", "朔州", "晋中", "运城", "忻州", "临汾", "吕梁", "其他"], "山东": ["济南", "青岛", "淄博", "枣庄", "东营", "烟台", "潍坊", "济宁", "泰安", "威海", "日照", "莱芜", "临沂", "德州", "聊城", "滨州", "菏泽", "其他"], "上海": ["上海"], "四川": ["成都", "绵阳", "自贡", "攀枝花", "泸州", "德阳", "广元", "遂宁", "内江", "乐山", "资阳", "宜宾", "南充", "达州", "雅安", "阿坝", "甘孜", "凉山", "眉山", "广安", "巴中", "其他"], "天津": ["天津"], "西藏": ["拉萨", "昌都", "山南", "日喀则", "那曲", "阿里", "林芝", "其他"], "新疆": ["乌鲁木齐", "克拉玛依", "吐鲁番", "哈密", "阿克苏", "喀什", "和田", "昌吉", "博尔塔拉", "巴音郭楞", "克孜勒苏", "伊犁", "其他"], "云南": ["昆明", "曲靖", "玉溪", "昭通", "保山", "丽江", "普洱", "临沧", "德宏", "怒江", "迪庆", "大理", "楚雄", "红河", "文山", "西双版纳", "其他"], "浙江": ["杭州", "宁波", "温州", "嘉兴", "湖州", "绍兴", "金华", "衢州", "舟山", "台州", "丽水", "其他"], "陕西": ["西安", "宝鸡", "铜川", "咸阳", "渭南", "延安", "汉中", "榆林", "安康", "商洛", "杨凌示范区", "其他"] };
+            citydata[province].forEach(function (item, index, arr) {
+                var tmpItem = { id: item, value: item };
+                cityArry.push(tmpItem);
+            })
+            var _Citys = {
+                title: '城市',
+                list: cityArry
+            };
+            var html_city = template('down-select', _Citys);
+            $("#city").html(html_city);
+        };
+        function Province_City() {
+            var province_city = [],
+                citydata = { "请选择": ["请先选择省份"], "安徽": ["合肥", "芜湖", "蚌埠", "淮南", "马鞍山", "淮北", "铜陵", "安庆", "黄山", "阜阳", "宿州", "滁州", "六安", "宣城", "池州", "亳州", "其他"], "北京": ["北京"], "重庆": ["重庆"], "福建": ["福州", "厦门", "莆田", "三明", "泉州", "漳州", "南平", "龙岩", "宁德", "平潭", "其他"], "甘肃": ["兰州", "嘉峪关", "金昌", "白银", "天水", "酒泉", "张掖", "武威", "定西", "陇南", "平凉", "庆阳", "临夏回族自治州", "甘南藏族自治州", "其他"], "广东": ["广州", "深圳", "珠海", "汕头", "佛山", "韶关", "湛江", "肇庆", "江门", "茂名", "惠州", "梅州", "汕尾", "河源", "阳江", "清远", "东莞", "中山", "潮州", "揭阳", "云浮", "其他"], "广西": ["南宁", "柳州", "桂林", "梧州", "北海", "防城港", "钦州", "贵港", "玉林", "百色", "贺州", "河池", "来宾", "崇左", "南宁", "柳州", "其他"], "贵州": ["贵阳", "六盘水", "遵义", "安顺", "毕节", "铜仁", "黔西南", "黔东南", "黔南", "其他"], "海南": ["海口", "三亚", "三沙", "儋州", "其他"], "河北": ["石家庄", "唐山", "秦皇岛", "邯郸", "邢台", "保定", "张家口", "承德", "沧州", "廊坊", "衡水", "定州", "辛集", "其他"], "黑龙江": ["哈尔滨", "齐齐哈尔", "鸡西", "鹤岗", "双鸭山", "大庆", "伊春", "佳木斯", "七台河", "牡丹江", "黑河", "绥化", "大兴安岭", "绥芬河", "抚远", "其他"], "河南": ["郑州", "开封", "洛阳", "平顶山", "安阳", "鹤壁", "新乡", "焦作", "濮阳", "许昌", "漯河", "三门峡", "南阳", "商丘", "周口", "信阳", "驻马店", "济源", "其他"], "湖北": ["武汉", "黄石", "十堰", "宜昌", "襄阳", "鄂州", "荆门", "孝感", "荆州", "黄冈", "咸宁", "随州", "恩施土家族苗族自治州", "仙桃", "潜江", "天门", "神农架", "其他"], "湖南": ["长沙", "株洲", "湘潭", "衡阳", "邵阳", "岳阳", "常德", "张家界", "益阳", "郴州", "永州", "怀化", "娄底", "湘西土家族苗族自治州", "其他"], "内蒙古": ["呼和浩特", "包头", "乌海", "赤峰", "通辽", "鄂尔多斯", "呼伦贝尔", "巴彦淖尔", "乌兰察布盟", "兴安盟", "锡林郭勒盟", "阿拉善盟", "其他"], "江苏": ["南京", "无锡", "徐州", "常州", "苏州", "南通", "连云港", "淮安", "盐城", "扬州", "镇江", "泰州", "宿迁", "其他"], "江西": ["南昌", "九江", "上饶", "抚州", "宜春", "吉安", "赣州", "景德镇", "萍乡", "新余", "鹰潭", "其他"], "吉林": ["长春", "吉林", "四平", "辽源", "通化", "白山", "白城", "松原", "延边朝鲜族自治州", "吉林省长白山保护开发区", "梅河口", "公主岭", "其他"], "辽宁": ["沈阳", "大连", "鞍山", "抚顺", "本溪", "丹东", "锦州", "营口", "阜新", "辽阳", "盘锦", "铁岭", "朝阳", "葫芦岛", "其他"], "宁夏": ["银川", "石嘴山", "吴忠", "固原", "中卫", "其他"], "青海": ["西宁", "海东", "海北", "黄南", "海南", "果洛", "玉树", "海西"], "山西": ["太原", "大同", "阳泉", "长治", "晋城", "朔州", "晋中", "运城", "忻州", "临汾", "吕梁", "其他"], "山东": ["济南", "青岛", "淄博", "枣庄", "东营", "烟台", "潍坊", "济宁", "泰安", "威海", "日照", "莱芜", "临沂", "德州", "聊城", "滨州", "菏泽", "其他"], "上海": ["上海"], "四川": ["成都", "绵阳", "自贡", "攀枝花", "泸州", "德阳", "广元", "遂宁", "内江", "乐山", "资阳", "宜宾", "南充", "达州", "雅安", "阿坝", "甘孜", "凉山", "眉山", "广安", "巴中", "其他"], "天津": ["天津"], "西藏": ["拉萨", "昌都", "山南", "日喀则", "那曲", "阿里", "林芝", "其他"], "新疆": ["乌鲁木齐", "克拉玛依", "吐鲁番", "哈密", "阿克苏", "喀什", "和田", "昌吉", "博尔塔拉", "巴音郭楞", "克孜勒苏", "伊犁", "其他"], "云南": ["昆明", "曲靖", "玉溪", "昭通", "保山", "丽江", "普洱", "临沧", "德宏", "怒江", "迪庆", "大理", "楚雄", "红河", "文山", "西双版纳", "其他"], "浙江": ["杭州", "宁波", "温州", "嘉兴", "湖州", "绍兴", "金华", "衢州", "舟山", "台州", "丽水", "其他"], "陕西": ["西安", "宝鸡", "铜川", "咸阳", "渭南", "延安", "汉中", "榆林", "安康", "商洛", "杨凌示范区", "其他"] };
+            for (city in citydata) {
+                var tmpItem = { id: city, value: city };
+                province_city.push(tmpItem);
+            }
+            var _Province = {
+                title: '省份',
+                list: province_city
+            };
+            var html_province = template('down-select', _Province);
+            $("#province").html(html_province);
+        };
+        //年龄选择
+        var agedata = [];
+        for (var m = 0; m < 71; m++) {
+            agedata.push(m + '岁');
+        };
+        var sexdata = ['男', '女'];
+        var targetEle = $(".ageselect");
+        var targetEle1 = $(".sexSelect");
+        for (var q = 0; q < targetEle.length; q++) {
+            var targetId = '#' + $(targetEle[q]).attr('id');
+            new MobileSelect({
+                trigger: targetId,
+                title: '年龄选择',
+                wheels: [{ data: agedata }],
+                position: [29] //初始化定位
+            });
+            var targetId1 = '#' + $(targetEle1[q]).attr('id');
+            if ($(targetId1).length > 0) {
+                new MobileSelect({
+                    trigger: targetId1,
+                    title: '性别选择',
+                    wheels: [{ data: sexdata }],
+                    position: [0] //初始化定位
+                });
+            }
+        }
+        //时间选择器
+        var now_date = new Date();
+        var now_month = Number(now_date.getMonth()) + 1 > 9 ? Number(now_date.getMonth()) + 1 : '0' + Number(now_date.getMonth() + 1);
+        var now_day = now_date.getDate() > 9 ? now_date.getDate() : '0' + now_date.getDate();
+        var now_hour = now_date.getMinutes() > 0 ? (now_date.getHours() + 1) : now_date.getHours();
+        new Jdate({
+            el: '#chose_time',
+            format: 'YYYY-MM-DD hh',
+            confirm: function (date) {
+                var d1 = new Date(date + ':00:00').getTime(),
+                    d2 = new Date().getTime();
+                if (d1 < d2) {
+                    layer.open({
+                        content: '预约时间不能早于当前时间!',
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
+                    return false;
+                }
+                else {
+                    return date + ':00';
+                }
+            },
+            beginYear: now_date.getFullYear(),
+            value: now_date.getFullYear() + '-' + now_month + '-' + now_day + ' ' + now_hour + ':00'
+        })
+        //点击添加成员按钮
+        var addFamilyMemMobileSelect = new MobileSelect({
+            trigger: '#addMember',
+            title: '选择家庭成员',
+            wheels: [
+                {
+                    data: [
+                        { id: "男", value: "配偶父亲" },
+                        { id: "女", value: "配偶母亲" },
+                        { id: "男", value: "儿子" },
+                        { id: "女", value: "女儿" },
+                        { id: "女", value: "姐姐" },
+                        { id: "女", value: "妹妹" },
+                        { id: "男", value: "哥哥" },
+                        { id: "男", value: "弟弟" }]
+                }
+            ],
+            callback: function (indexArr, data) {
+                console.log(data);
+                //家庭成员去重(配偶父亲,配偶母亲 只能选择一次)
+                for (var i = 0; i < memberlist.list.length; i++) {
+                    if ((data[0].value == "配偶父亲" || data[0].value == "配偶母亲") && data[0].value == memberlist.list[i].member) {
+                        layer.open({
+                            content: '已存在该成员请重新选择!',
+                            skin: 'msg',
+                            time: 2 //2秒后自动关闭
+                        });
+                        return;
+                    }
+                }
+                var initialMember = getAllmember();
+                var obj = { member: data[0].value, sex: data[0].id, socialSecurity: "" };
+                memberlist.list.push(obj);
+                var indexCheck = memberlist.list.length - 1;
+                initialMember['checkbox' + indexCheck] = true;
+                var html_memberlist = template('member', memberlist);
+                $(".wrapper .part3").html(html_memberlist);
+                for (var e = 0; e < memberlist.list.length; e++) {
+                    //checkbox选中
+                    if (initialMember['checkbox' + e]) {
+                        $('#checkbox' + e).addClass('active');
+                    }
+
+                    //radio选中
+                    if (initialMember['socialSecurityselect' + e]) {
+                        $('#socialSecurityselect' + e + " .design-radio").eq(initialMember['socialSecurityselect' + e]).addClass('active-design-radio');
+                    }
+                }
+                //初始化
+                var agedata = [];
+                for (var m = 0; m < 71; m++) {
+                    agedata.push(m + '岁');
+                };
+                var targetEle3 = $(".ageselect");
+                var targetEle1 = $(".sexSelect");
+                var sexdata = ['男', '女'];
+
+                //年龄
+                for (var q = 0; q < targetEle3.length; q++) {
+                    var targetId3 = '#' + $(targetEle3[q]).attr('id');
+                    new MobileSelect({
+                        trigger: targetId3,
+                        title: '年龄选择',
+                        wheels: [{ data: agedata }],
+                        position: [29] //初始化定位
+                    });
+                    //初始化
+                    initMember($(targetEle3[q]).attr('id'), initialMember);
+                };
+
+                //性别
+                for (var q = 0; q < targetEle.length; q++) {
+                    var targetId1 = '#' + $(targetEle1[q]).attr('id');
+                    new MobileSelect({
+                        trigger: targetId1,
+                        title: '性别选择',
+                        wheels: [{ data: sexdata }],
+                        position: [0] //初始化定位
+                    });
+                    //初始化
+                    initMember($(targetEle1[q]).attr('id'), initialMember);
+                }
+            }
+        });
+
+
+        function getAllmember() {//获取所有已经选择的成员情况
+            var tmpsexSelect = $('.part3 .sexSelect'),
+                tmpageselect = $('.part3 .ageselect'),
+                tmsocialSecurityselect = $('.part3 .socialSecurityselect'),
+                tmpcheckboxSelect = $('.part3 .design-checkbox .checkbox'),
+                chosedMember = {};
+            for (var a = 0; a < tmpsexSelect.length; a++) {
+                var tmpIda = '#' + $(tmpsexSelect[a]).attr('id'), tmpkeya = $(tmpsexSelect[a]).attr('id');
+                chosedMember[tmpkeya] = $(tmpIda).text() || $(tmpIda).find('input').val();
+            }
+            for (var b = 0; b < tmpageselect.length; b++) {
+                var tmpIdb = '#' + $(tmpageselect[b]).attr('id'), tmpkeyb = $(tmpageselect[b]).attr('id');
+                chosedMember[tmpkeyb] = $(tmpIdb).text() || $(tmpIdb).find('input').val();
+            }
+            for (var c = 0; c < tmsocialSecurityselect.length; c++) {
+                var tmpIdc = '#' + $(tmsocialSecurityselect[c]).attr('id'), tmpkeyc = $(tmsocialSecurityselect[c]).attr('id');
+                chosedMember[tmpkeyc] = "";
+                for (var i = 0; i < $(tmpIdc).find(".socialSecurity-chose .design-radio").length; i++) {
+                    if ($(tmpIdc).find(".socialSecurity-chose .design-radio").eq(i).hasClass("active-design-radio")) {
+                        chosedMember[tmpkeyc] = String(i);
+                        break;
+                    }
+                }
+            }
+            for (var d = 0; d < tmpcheckboxSelect.length; d++) {
+                var tmpIdd = '#' + $(tmpcheckboxSelect[d]).attr('id'), tmpkeyd = $(tmpcheckboxSelect[d]).attr('id');
+                chosedMember[tmpkeyd] = $(tmpIdd).hasClass('active');
+            }
+            console.log("chosedMember", chosedMember);
+            return chosedMember;
+        };
+        //赋值操作
+        function initMember(id, chosedMember) {
+            $('#' + id + ' input').val(chosedMember[id]);
+        };
+        //点击提交
+        $('.submit').on('click', function () {
+            var UserName = $.trim($('.part1 .design-input').val());
+            var UserPhone = $.trim($('.part2 .design-input').val());
+            if (!$.regular().isName(UserName)) {
+                layer.open({
+                    content: '请输入正确的姓名！',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
+                return
+            }
+            if (!$.regular().isPhone(UserPhone)) {
+                layer.open({
+                    content: '请输入正确的电话号码！',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
+                return
+            }
+
+            //家庭成员
+            var members = [];
+            var tmpMember = getAllmember();
+
+            for (var y = 0; y < memberlist.list.length; y++) {
+                if (tmpMember['checkbox' + y]) {
+                    try {
+                        if (tmpMember['sexSelect' + y].length == 0) {
+                            layer.open({
+                                content: memberlist.list[y].member + '的性别还未选择！',
+                                skin: 'msg',
+                                time: 2 //2秒后自动关闭
+                            });
+                            return
+                        }
+                    } catch (error) {
+
+                    }
+
+                    if (tmpMember['ageselect' + y].length == 0) {
+                        layer.open({
+                            content: memberlist.list[y].member + '的年龄还未选择！',
+                            skin: 'msg',
+                            time: 2 //2秒后自动关闭
+                        });
+                        return
+                    }
+
+                    if (tmpMember['socialSecurityselect' + y].length == 0) {
+                        layer.open({
+                            content: "还未选择" + memberlist.list[y].member + '是否有无社保！',
+                            skin: 'msg',
+                            time: 2 //2秒后自动关闭
+                        });
+                        return
+                    }
+
+                    if(!tmpMember['sexSelect' + y]){
+                        tmpMember['sexSelect' + y] =  memberlist.list[y].sex;
+                    }
+                    members.push({ role: memberlist.list[y].member, age: tmpMember['ageselect' + y], sex: tmpMember['sexSelect' + y],socialSecurity: tmpMember['socialSecurityselect' + y] ==0?"有":"无"});
+                }
+            }
+            if (members.length === 0) {
+                layer.open({
+                    content: '请选择家庭成员情况！',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
+                return
+            }
+
+
+            //家庭收入
+            var familyIncome = "";
+            if ($('.part4 .design-radio').hasClass('active-design-radio')) {
+                familyIncome = $('.part4 .active-design-radio').parent().text();
+            }
+            //家庭负债情况
+            var familyDecome = [];
+            if ($('.part5 .checkbox').hasClass('active')) {
+                var tmpArr1 = $('.part5 .active');
+                for (var n = 0; n < tmpArr1.length; n++) {
+                    var tmpItem1 = $(tmpArr1[n]).parent().text();
+                    familyDecome.push(tmpItem1);
+                }
+            }
+            //所在城市
+            var _province_city = $("#province").val() + ' ' + $("#city").val();
+            if(_province_city.indexOf("请选择")>-1){
+                _province_city = "";
+            }
+            //是否有社保
+            // var securityType = "";
+            // if($('.part7 .design-radio').hasClass('active-design-radio')){
+            //     securityType = $('.part7 .active-design-radio').parent().text();
+            // }
+            //是否有商业保险
+            var inSuranceType = [];
+            if ($('.part8 .checkbox').hasClass('active')) {
+                var tmpArr2 = $('.part8 .active');
+                for (var p = 0; p < tmpArr2.length; p++) {
+                    var tmpItem2 = $(tmpArr2[p]).parent().text();
+                    inSuranceType.push(tmpItem2);
+                }
+            }
+            //预约时间
+            var _booktime = $("#chose_time").val();
+            if (_booktime === '') {
+                layer.open({
+                    content: '预约时间必选！',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
+                return
+            }else {
+                var d1 = new Date(_booktime).getTime(),
+                    d2 = new Date().getTime();
+                if (d1 < d2) {
+                    layer.open({
+                        content: '预约时间不能早于当前时间!',
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
+                    return false;
+                }
+            }
+            var orderId = $.getQueryString("id");
+            var submitData = {
+                "orderId": orderId,
+                "name": UserName,
+                "mobile": UserPhone,
+                "income":familyIncome,
+                "liabilities":familyDecome,
+                "homeAddress":_province_city,
+                "hasInsurance":inSuranceType,
+                "reserveTime": _booktime,
+                "content": members
+            };
+            var load = $.layerLoad("正在提交信息...");
+            $.ajaxPackage({
+                type: "post",
+                url: "/fsservers/serversOrder/api/addContent",
+                contentType: "application/json",
+                async: true,
+                data: JSON.stringify(submitData),
+                success: function (data, isError) {
+                    layer.close(load);
+                    if (!isError) {
+                        return;
+                    };
+                    if (data.httpCode != 200) {
+                        return;
+                    }
+                    layer.open({
+                        content: '资料提交成功!',
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
+                    setTimeout(function(){
+                        window.location.href = "./my_scheme.html";
+                    },1500)
+                    
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(textStatus);
+                }
+            });
+        })
+
+        //点击复选框
+        $(document).on('click', '.checkbox', function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+            }
+            else {
+                if ($(this).parent().text() === '无' || $(this).parent().text() === '无负债') {
+                    $(this).addClass('active');
+                    $(this).parent().siblings().find('.checkbox').removeClass('active');
+                }
+                else if ($(this).parent().siblings().find('.active').parent().text().indexOf('无') !== -1 || $(this).parent().siblings().find('.active').parent().text().indexOf('无负债') !== -1) {
+                    $(this).addClass('active');
+                    for (var f = 0; f < $(this).parent().siblings().length; f++) {
+                        console.log($(this).parent().siblings()[f]);
+                        if ($($(this).parent().siblings()[f]).text() === '无' || $($(this).parent().siblings()[f]).text() === '无负债') {
+                            $($(this).parent().siblings()[f]).find('.checkbox').removeClass('active');
+                        }
+                    }
+                }
+                else {
+                    console.log();
+                    $(this).addClass('active');
+                }
+            }
+        })
+        //点击单选框
+        $(document).on('click', '.design-radio', function () {
+            if (!$(this).attr("disabled")) {
+                $(this).addClass('active-design-radio');
+                $(this).parent().siblings().find('.design-radio').removeClass('active-design-radio');
+            }
+        })
+        //家庭成员情况 radio 本都不可点击
+        $(".part3 .age-chose .design-radio").map((index, item) => {
+            $(item).attr("disabled", true);
+        })
+    })
+</script>
+
+</html>

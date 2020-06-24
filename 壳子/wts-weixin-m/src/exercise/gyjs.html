@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"梧桐树公益基金", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <!-- 加载动画 -->
+    <!-- @@include("include/ready-ani.htm") -->
+    <div class="body-container gyjs">
+        <div class="gyjsContent">
+            <div class="content">
+            <div class="item">
+                <div class="title"><span>爱心基金数据</span></div>
+                <div class="desc">截止<span class="time"></span><br>梧桐树爱心公益基金已累计捐助<span class="price"></span>元。</div>
+            </div>
+
+            <div class="item">
+                <div class="title"><span>爱心基金成立</span></div>
+                <div class="desc">2018年1月11日，梧桐树保险经纪与武汉市青少年发展基金会合作，成立“梧桐树爱心公益基金”。针对因病致贫、因病返贫的人群进行帮助，旨在传递保险关爱，传播保险希望。</div>
+            </div>
+
+            <div class="item">
+                <div class="title"><span>公益行动小组成立</span></div>
+                <div class="desc">2018年8月1日起成立“梧桐树爱心公益基金行动小组—爱心万里行”。梧桐树保险经纪党支部书记王春梅女士担任组长。</div>
+            </div>
+
+            <div class="item">
+                <div class="title"><span>爱心基金捐赠范围</span></div>
+                <div class="desc">(1)罹患重大疾病（限中国保险行业协会公布的25种重大疾病），无商业保险保障，经济贫困，年龄在0-45岁之间，经梧桐树保险经纪人推荐的特定人群。实际捐赠对象按推荐先后顺序确认。<br>(2)捐助标准为人民币20000元整（由梧桐树爱心公益基金提供)。</div>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+    @@include("include/footer.htm")
+    
+    <script>
+        $(function () {
+            var paramList = {
+                    type: "post",
+                    url: "/app/infoConfig/api/getInfoByCode",
+                    data: '{"code":"gongyiField"}',
+                    contentType: "application/json;charset=UTF-8",
+                    success: function (ajaxData, isError) {
+                        if (!isError) {
+                            return;
+                        }
+                        console.log(ajaxData);
+                        $(".content .time").html(ajaxData.data[0].date);
+                        $(".content .price").html(ajaxData.data[0].amount);
+                    }
+                }
+                $.ajaxPackage(paramList);
+        })
+    </script>
+</body>
+
+</html>

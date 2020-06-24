@@ -1,0 +1,80 @@
+
+.body{
+    width:r(750);
+    height: r(1333);
+    background: #fff;
+    box-sizing: border-box;
+    padding-bottom: r(20);
+    .header{
+        .login{
+            width:r(750);
+            height:auto;
+            box-sizing: border-box;
+            padding-top:r(42);
+            padding-left: r(27);
+            dt{
+                width:100%;
+                height:r(110);
+                line-height: r(110);
+                font-size: r(36);
+                color:#0c0b0f;
+            }
+            dd{
+                width:100%;
+                height: r(100);
+                position: relative;
+                line-height: r(100);
+                font-size: r(31);
+                color:#797c7e;
+                input{
+                    height: r(77);
+                    box-sizing: border-box;
+                    border: r(3) solid #cecece;
+                    border-radius: r(5);
+                    
+                }
+                .mobile{
+                    width:r(485);
+                    margin-left: r(38);
+                    padding-left: r(12);
+                }
+                .message{
+                  width:r(257);
+                  margin-left: r(38);
+                  padding-left: r(12);
+                }
+                .verification{
+                    display: inline-block;
+                    width:r(210);
+                    height: r(77);
+                    margin-left: r(18);
+                    border:r(3) solid #0490f7;
+                    color:#0490f7;
+                    top:r(0);
+                    right:r(30);
+                    position: absolute;
+                    box-sizing: border-box;
+                    border-radius: r(8);
+                    text-align: center;
+                    margin-top:r(12);
+                    padding:0;
+                }
+                .endTime{
+                      width:r(189);
+                      height: r(77);
+                      line-height: r(77);
+                      position: absolute;
+                      top:r(10);
+                      right:r(30);
+                      text-align: center;
+                      color: #ff5704;
+                      margin-left: r(38);
+                      display: none;
+                }
+            }
+        }
+    }
+    .wts-btn-big-blue{
+        margin-top:r(45);
+    }
+}

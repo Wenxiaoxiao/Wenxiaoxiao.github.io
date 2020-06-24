@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--顶部css-->
+
+    @@include("include/header.htm",{ "title":"电子签名", "keywords": "电子签名", "description": "" })
+    <style>
+        #signatureparent {
+		color:darkblue;
+		background-color:darkgrey;
+		/*max-width:600px;*/
+		padding:10px;
+	}
+	
+	/*This is the div within which the signature canvas is fitted*/
+	#signature {
+		border: 2px dotted black;
+		background-color:lightgrey;
+	}
+
+	/* Drawing the 'gripper' for touch-enabled devices */ 
+	html.touch #content {
+		float:left;
+		width:92%;
+	}
+	html.touch #scrollgrabber {
+		float:right;
+		width:4%;
+		margin-right:2%;
+		background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAFCAAAAACh79lDAAAAAXNSR0IArs4c6QAAABJJREFUCB1jmMmQxjCT4T/DfwAPLgOXlrt3IwAAAABJRU5ErkJggg==)
+	}
+	html.borderradius #scrollgrabber {
+		border-radius: 1em;
+	}
+    </style>
+</head>
+
+<body>
+
+    <div class="body-container">
+        <div id="content">
+            <div id="signatureparent">
+                <div id="signature"></div></div>
+            <div id="tools"></div>
+            <div><p>Display Area:</p><div id="displayarea"></div></div>
+        </div>
+        <div id="scrollgrabber"></div>
+        <button class="wts-btn-middle" id="getSign">获取签名</button>
+    </div>
+    <div class="svg-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="280" height="87"><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 24 21 c 0 0.28 -0.43 10.85 0 16 c 0.22 2.65 0.97 5.56 2 8 c 1.56 3.71 3.56 7.79 6 11 c 3.73 4.9 8.58 9.82 13 14 c 1.35 1.28 4.27 1.84 5 3 c 0.62 1 0.68 4.09 0 5 c -0.91 1.22 -3.94 2.27 -6 3 c -2.53 0.9 -5.37 1.6 -8 2 c -1.59 0.25 -3.89 0.47 -5 0 c -0.8 -0.34 -2.15 -2.12 -2 -3 c 0.65 -3.88 2.57 -10.65 5 -15 c 3.63 -6.49 8.91 -13.32 14 -19 c 3.37 -3.76 12 -10 12 -10"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 1 28 c 0.18 -0.04 6.66 -1.76 10 -2 c 5.89 -0.42 18 0 18 0"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 77 13 c 0.1 0.35 4.41 13.12 6 20 c 2.48 10.73 4.33 21.41 6 32 c 0.31 1.95 0 6 0 6"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 66 48 l -2 9"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 111 39 l 1 1"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 112 31 l 17 21"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 130 13 c 0.28 -0.02 12.37 -1.91 16 -1 c 1.63 0.41 4 6 4 6"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 158 17 c -0.47 0.51 -17.73 19.45 -27 29 c -1.83 1.88 -6 5 -6 5"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 145 42 l -1 34"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 148 36 l 7 4"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 171 21 c -0.05 0.32 -2.75 12.02 -3 18 c -0.41 9.83 1 30 1 30"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 174 2 c 0.26 0.04 10.58 1.02 15 2 c 1.05 0.23 2.41 1.17 3 2 c 0.89 1.24 1.96 3.36 2 5 c 0.27 11.27 -0.42 24.63 -1 37 c -0.09 2.03 -1 4.12 -1 6 c 0 1.58 1 3.39 1 5 c 0 2.86 -1 6.03 -1 9 c 0 3.95 1 12 1 12"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 167 32 c 0.11 -0.02 3.98 -0.92 6 -1 c 5.96 -0.25 18 0 18 0"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 176 54 l 13 0"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 155 77 l 48 2"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 210 11 c 0.04 0.05 1.75 2 2 3 c 0.34 1.38 0.46 3.52 0 5 c -2.05 6.65 -6.86 14.53 -8 21 c -0.67 3.79 -0.05 10.59 2 13 c 2.58 3.04 9.84 4.97 15 7 c 4.24 1.66 8.75 2.5 13 4 c 1.4 0.49 3 1.16 4 2 c 0.81 0.67 2.28 2.31 2 3 c -0.7 1.76 -3.75 5.17 -6 7 c -2.84 2.31 -6.54 4.43 -10 6 c -3.75 1.7 -12 4 -12 4"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 229 13 l 3 4"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 234 1 c 0.23 0.04 8.89 0.97 13 2 c 2.38 0.59 6.09 1.79 7 3 c 0.61 0.81 -0.32 3.65 -1 5 c -0.85 1.7 -2.46 3.69 -4 5 c -2.61 2.21 -9.19 6.03 -9 6 c 0.29 -0.05 9.95 -5.11 15 -7 c 2.81 -1.05 9 -2 9 -2"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 232 43 l 2 3"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 232 33 c 0.23 -0.04 8.63 -1.7 13 -2 c 5.32 -0.37 12.85 -0.74 16 0 c 0.81 0.19 1.38 3.06 1 4 c -0.71 1.78 -3.15 4.15 -5 6 c -3.86 3.86 -12.6 10.95 -12 11 c 0.92 0.08 23 -10 23 -10"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 251 23 c -0.03 0.12 -1.89 4.68 -2 7 c -0.53 11.47 0 36 0 36"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 242 74 c 0.25 -0.12 9.19 -5.04 14 -7 c 4.18 -1.7 13 -4 13 -4"/><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="rgb(0, 0, 139)" fill="none" d="M 274 51 l 5 16"/></svg>
+    </div>
+</body>
+<!--底部js-->
+@@include("include/footer.htm",{ "common":"evaluation.js?r=@@time" })
+
+<script src="@@webRoot/lib/js/base64js.min.js"></script>
+<script src="@@webRoot/lib/js/jSignature.min.noconflict.js"></script>
+
+<script>
+    $(function() {
+        var _signature=$("#signature");//签名dom
+        var datapair;//签名结果
+        _signature.jSignature()
+        $("#getSign").click(function(){
+            datapair = _signature.jSignature("getData", "svgbase64");
+            console.log(datapair[1]);
+            
+        })
+        var svgXml = $('.svg-wrap').html();
+
+        var image = new Image();
+        image.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml))); //给图片对象写入base64编码的svg流
+
+        var canvas = document.createElement('canvas');  //准备空画布
+        canvas.width = $('.svg-wrap svg').width();
+        canvas.height = $('.svg-wrap svg').height();
+
+        var context = canvas.getContext('2d');  //取得画布的2d绘图上下文
+        context.drawImage(image, 0, 0);
+
+        var a = document.createElement('a');
+        a.href = canvas.toDataURL('image/png');  //将画布内的信息导出为png图片数据
+        a.download = "MapByMathArtSys";  //设定下载名称
+        a.click(); //点击触发下载
+    });
+</script>
+</html>

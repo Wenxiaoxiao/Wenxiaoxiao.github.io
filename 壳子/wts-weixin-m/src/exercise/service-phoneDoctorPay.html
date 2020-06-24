@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"填写订单", "keywords": "", "description": "" })
+</head>
+<!-- 电话医生 -->
+
+<body>
+    <div class="body-container phone-doctor-pay hide">
+        <div class="form-box">
+            <div class="row one">
+                <div class="info">请仔细核对保单号，作为申请服务时享受权益的依据</div>
+                <div class="input-box">
+                    <div class="title inline">保单号</div>
+                    <div class="fr inline">
+                        <input type="text" placeholder="点击输入保单号" id="policyNo" maxlength="50">
+                        <div class="button inline hide" id="check">验证</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row two">
+                <div class="info">使用人信息</div>
+                <div class="empty-box hide" id="userinfoEmpty">填写保单号验证后获取使用人信息</div>
+                <div class="empty-box hide" id="userinfoInput">
+                    填写使用人信息
+                    <img src="@@webRoot/lib/images/exercise/phoneDoctor/icon4.png" class="arr">
+                </div>
+                <div class="input-box hide" id="userinfo">
+                    <div class="title"><span id="inspectPersonName"></span> <span style="margin-left: 1em" id="inspectPersonSex"></span></div>
+                    <div><span id="inspectPersonCardtype"></span>：<span id="inspectPersonCardid"></span></div>
+                    <img src="@@webRoot/lib/images/exercise/phoneDoctor/icon4.png" class="arr">
+                </div>
+            </div>
+            <div class="row three">
+                <div class="info">商品信息</div>
+                <div class="input-box">
+                    <img src="@@webRoot/lib/images/exercise/phoneDoctor/icon3.png" class="icon">
+                    <div class="input inline content-box">
+                        <div class="name"></div>
+                        <div class="money">￥<span class="originalPrice"></span>元</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-box">
+            <div class="row show-line">
+                <div class="title">商品总额</div>
+                <div class="text">￥<span class="originalPrice"></span>元</div>
+            </div>
+            <div class="row">
+                <div class="title">商品折扣</div>
+                <div class="text">-￥<span class="discountPrice"></span>元</div>
+            </div>
+        </div>
+        <div class="info-text">支付方式</div>
+        <div class="info-box hide pay-list">
+            @@include("include/payTemplate.htm")
+        </div>
+        <div class="info-box hide" id="activityBox">
+            <div class="row">
+                <div class="title">优惠券</div>
+                <div class="text">-￥<span id="activityPrice"></span>元</div>
+            </div>
+        </div>
+        <div class="info-text">*服务自开通之日起有效期1年</div>
+
+        <div class="bottom-box">
+            <div class="money-box">
+                实付金额：
+                <span id="payMoney"></span>
+            </div>
+            <div class="button" id="payBtn">立即购买</div>
+        </div>
+    </div>
+</body>
+@@include("include/footer.htm")
+
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+<script src="@@webRoot/lib/units/H5Pay.js"></script>
+ 
+
+<script>
+    $(function(){
+        var login = wtsLogin
+        login.init({
+            env: $.globedata.environment
+        }, function(user) {
+            // if (!$.tools().hasPhonrNumber(user)) {
+            //     return window.location.href = window.location.origin + "/m/index.html#/BDmobileHtml?type=2&redUrl=" + window.location.href;
+            // }
+            var id = $.getQueryString("id");
+            // var id = "1145255547524734976";
+            var orderNo = $.getQueryString('orderNo');
+            var orderId = $.getQueryString('orderId');
+            var queryServerInfo = {};
+            var userInfo = {};
+            var payWay = 0;
+            var payFlag = true;
+
+            //获取授权
+            new H5Pay().getOpenId({
+                belongTo: 3,
+            })
+            getData();
+            // 获取金额相关信息
+            function getData() {
+                var loading = $.layerLoad();
+                $.ajaxPackage({
+                    url: "/addedservices/upmarketServer/api/queryServerInfo",
+                    data: "{'serverId':'" + id + "'}",
+                    contentType: "application/json;charset=UTF-8",
+                    success: function(data, isError) {
+                        layer.close(loading);
+                        $(".body-container").removeClass("hide");
+                        if (!isError) return;
+                        queryServerInfo = data.data;
+                        $(".originalPrice").html(queryServerInfo.originalPrice);
+                        $(".row.three .name").html(queryServerInfo.serverName);
+                        $(".discountPrice").html(queryServerInfo.discountPrice);
+                        var currentPrice = queryServerInfo.activityPrice ? queryServerInfo.activityPrice : queryServerInfo.currPrice;
+                        if (queryServerInfo.hasQunification) {
+                            $('#activityPrice').html(currentPrice);
+                            $('#activityBox').removeClass('hide');
+                            $("#check").removeClass("hide");
+                            $("#payMoney").html('￥0元');
+                            payWay = 3;
+                            userInfo.needCheck = 1;
+                        } else {
+                            $("#check").addClass("hide");
+                            $("#payMoney").html('￥' + currentPrice + '元');
+                            $(".pay-list").removeClass('hide');
+                        }
+                        getSessioData();
+                    }
+                });
+            }
+
+            // 加载session数据
+            function getSessioData() {
+                var data = sessionStorage.phoneDoctorData;
+                console.log(data);
+                if(data){
+                    data = JSON.parse(data);
+                    setUserinfoData(data);
+                }
+                if (data && data.inspectPersonCardid) {
+                    $("#userinfo").removeClass("hide");
+                } else if((data && data.isCode) || payWay !== 3) {
+                    $("#userinfoInput").removeClass("hide");
+                } else {
+                    $("#userinfoEmpty").removeClass("hide");
+                }
+            }
+            //进入设置用户信息页面
+            $("#userinfo,#userinfoInput").click(function() {
+                console.log(userInfo)
+                userInfo.policyNo = $.trim($("#policyNo").val());
+                sessionStorage.phoneDoctorData = JSON.stringify(userInfo);
+                location.href = "./service-phoneDoctorUserInfo.html"
+
+            });
+            //验证保单号
+            $("#check").click(function() {
+                var policyNo = $.trim($("#policyNo").val());
+                if (policyNo == "") {
+                    return $.layerAlert('请先填写保单号')
+                }
+                var loading = $.layerLoad();
+                $.ajaxPackage({
+                    url: "/addedservices/serverOrders/api/policyInfo",
+                    data: JSON.stringify({
+                        "policyNo": policyNo,
+                        "serverType": "2"
+                    }),
+                    contentType: "application/json;charset=UTF-8",
+                    success: function(ajaxData, isError) {
+                        layer.close(loading);
+                        if (!isError) {
+                            return;
+                        }
+                        if(ajaxData.data.hasOwnProperty("valid")) {
+                            userInfo.isCode = 1;
+                            if(ajaxData.data.valid) {//邀请码有效
+                                $("#userinfoEmpty").addClass("hide");
+                                if(userInfo.inspectPersonCardid || userInfo.inspectPersonName || userInfo.inspectPersonSex || userInfo.inspectPersonCardtype){
+                                    $("#userinfoInput").addClass("hide");
+                                    $("#userinfo").removeClass("hide");
+                                }else{
+                                    $("#userinfoInput").removeClass("hide");
+                                    $("#userinfo").addClass("hide");
+                                }
+                            }
+                        }else{
+                            if (ajaxData.data.inspectPersonCardtype > 3 || ajaxData.data.inspectPersonCardtype < 1) {
+                                return $.layerAlert('暂不支持该保单被保人的证件类型，如有疑问请联系您的保险顾问')
+                            }
+                            userInfo = ajaxData.data;
+                            $("#userinfoEmpty").addClass("hide");
+                            $("#userinfo").removeClass("hide");
+                            $("#userinfoInput").addClass("hide");
+                        }
+                        userInfo.needCheck = 0;
+                        userInfo.policyNo = policyNo;
+                        setUserinfoData(userInfo);
+                        
+                    }
+                });
+            });
+
+            // 设置选取的用户信息
+            function setUserinfoData(data) {
+                userInfo = data;
+                $("#inspectPersonCardid").text(data.inspectPersonCardid);
+                $("#policyNo").val(data.policyNo);
+                $("#inspectPersonName").text(data.inspectPersonName);
+                $("#inspectPersonSex").text(Number(data.inspectPersonSex) == 1 ? "男" : "女");
+                if (Number(data.inspectPersonCardtype) == 1) {
+                    $("#inspectPersonCardtype").text("身份证号码");
+                } else if (Number(data.inspectPersonCardtype) == 2) {
+                    $("#inspectPersonCardtype").text("护照");
+                } else if (Number(data.inspectPersonCardtype) == 3) {
+                    $("#inspectPersonCardtype").text("出生证");
+                }
+                sessionStorage.phoneDoctorData = JSON.stringify(data);
+                //sessionStorage.removeItem("phoneDoctorData");
+            }
+            $("#policyNo").on("input",function(){
+                if(payWay == 3){
+                    userInfo.needCheck = 1;
+                }
+                userInfo.policyNo = $.trim($("#policyNo").val());
+                sessionStorage.phoneDoctorData = JSON.stringify(userInfo);
+            });
+
+            // 点击支付事件
+            $("#payBtn").on('click', function() {
+                if (!payFlag) return;
+                payFlag = false;
+                var policyNo = userInfo.policyNo;
+                if (policyNo == "") {
+                    payFlag = true;
+                    return $.layerAlert('请输入保单号')
+                }
+                if(!$.regular().isNumOrStr(policyNo)){
+                    payFlag = true;
+                    return $.layerAlert('保单号格式有误，请检查')
+                }
+                if(userInfo.needCheck == 1){
+                    payFlag = true;
+                    return $.layerAlert('请验证保单号信息')
+                }
+                if (!userInfo.inspectPersonCardid || !userInfo.inspectPersonName || !userInfo.inspectPersonSex || !userInfo.inspectPersonCardtype) {
+                    payFlag = true;
+                    return $.layerAlert('请完善使用人信息')
+                }
+                payWay = payWay == 3 ? payWay : $('.lz-radio:checked').val();
+                var payData = {
+                    "inspectPersonCardid": userInfo.inspectPersonCardid,
+                    "inspectPersonCardtype": userInfo.inspectPersonCardtype,
+                    "inspectPersonName": userInfo.inspectPersonName,
+                    "inspectPersonSex": userInfo.inspectPersonSex,
+                    "payType": payWay,
+                    "serverId": id,
+                    "policyNo": policyNo,
+                }
+                if (orderNo && orderNo != null) {
+                    payData.orderNo = orderNo;
+                }
+                $.ajaxPackage({
+                    url: "/addedservices/serverOrders/api/createServerOrder",
+                    data: JSON.stringify(payData),
+                    contentType: "application/json;charset=UTF-8",
+                    success: function(data, isError) {
+                        if (!isError) {
+                            payFlag = true;
+                            return;
+                        };
+                        // orderNo = data.data.orderNo;
+                        if (payWay == 3) {
+                            location.replace('./service-result.html?id=' + orderNo);
+                        } else {
+                            goPay(data.data.orderNo);
+                        }
+                    }
+                });
+            });
+
+            function goPay(orderNo) {
+                setTimeout(function(){
+                    payFlag=true;
+                },500);
+                // 跳转支付流程
+                new H5Pay().init({
+                    orderId: orderNo,
+                    payWay: payWay,
+                    orderType: 'zhonganZZService',
+                    // H5orderType: "zhonganZZServiceChannel",
+                    paySuccessUrl: 'https://' + window.location.host + '/pay/lzpay/return?tradeNo=' +
+                        orderNo + "&orderType=zhonganZZService"
+                }, function(r) {
+                    if (!r.code) {
+                        $.layerMsg(r.msg)
+                    }
+                    payFlag = true;
+                })
+            }
+            reloadIos();
+            //解决ios返回不刷新问题
+            function reloadIos() {
+                var isPageHide = false;
+                window.addEventListener('pageshow', function() {
+                    if (isPageHide) {
+                        window.location.reload();
+                    }
+                });
+                window.addEventListener('pagehide', function() {
+                    isPageHide = true;
+                });
+            }
+        })
+    });
+    
+</script>
+
+</html

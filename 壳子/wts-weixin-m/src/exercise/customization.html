@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        @@include("include/header.htm",{
+        "title":"保险方案专家1对1量身定制",
+        "keywords": "",
+        "description": ""
+        })
+        <link rel="stylesheet" href="@@webRoot/lib/css/mobileSelect_bx.css">
+    </head>
+
+    <body>
+        <!-- 加载动画 -->
+        @@include("include/ready-ani.htm")
+        <!-- 向上弹出层 -->
+        <div class="mobileSelect">
+            <div class="content">
+                <div class="btnBar">
+                    <div class="fixWidth">
+
+                    </div>
+                </div>
+                <div class="panel">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="body-container customization">
+            <div class="customization_content_box">
+
+                <div class="customization_item">
+                    <div class="customization_item_title">1.您的性别<span>(性别差异,风险不同)</span></div>
+                </div>
+
+                <div class="customization_item">
+                    <div class="customization_item_title">2.选择居住地<span>(填好居住地也很重要哦)</span></div>
+                </div>
+
+                <div class="customization_item">
+                    <div class="customization_item_title">3.设置家庭收入<span>(准确选择年收入,有助于精确的设计保障额度)</span></div>
+                </div>
+
+                <div class="customization_item">
+                    <div class="customization_item_title">4.选择为谁投保<span></span></div>
+                </div>
+
+                <div class="customization_item">
+                    <div class="customization_item_title">5.被保险人年龄<span>(年龄是保费多少的先决条件)</span></div>
+                </div>
+
+                <div class="customization_item">
+                    <div class="customization_item_title">6.是否有社保<span>(农村医保也算社保)</span></div>
+                </div>
+
+                <div class="customization_item">
+                    <div class="customization_item_title">7.被保险人是否有既往病史<span>(选择既往病史,可以淘汰掉不合适的投保产品)</span></div>
+                </div>
+
+                <div class="customization_item">
+                    <div class="customization_item_title">8.设置您的职业<span>(准确选择职业,将为您淘汰掉不合适的投保产品)</span></div>
+                </div>
+
+                <div class="customization_item">
+                    <div class="customization_item_title">9.您的生活状况<span>(小习惯里也有大隐患)</span></div>
+                </div>
+
+            </div>
+        </div>
+
+
+        @@include("include/footer.htm")
+        <script src="@@webRoot/lib/js/newDate.js?r=@@time"></script>
+        <script src="@@webRoot/lib/js/jsonData.js?r=@@time"></script>
+        <script src="@@webRoot/lib/js/mobileSelect_bx.js?r=@@time"></script>
+         
+        <script>
+            //获取url参数id
+            var orderId = $.getQueryString("id");
+            var supportType = $.getQueryString("supportType");
+            //获取选择项数据
+            var jsonData = JSON.parse(JSON.stringify(data));
+            //初始化渲染
+            var index = 0;
+            //传入数据
+            selectData = [];
+            var maxLength = supportType == 1?1:4;
+            sessionStorage.channel = $.getQueryString("c") || "";
+
+            //三级联动的表格数据
+            displayJsonData = [];
+            showQuestion();
+            initChoose(jsonData[index]);
+            mobileSelect1.show();
+
+            $(".lz-readys").hide();
+
+            //初始化选择项;
+            function initChoose(dataList) {
+                mobileSelect1 = new MobileSelect({
+                    wheels: dataList,
+                });
+            }
+
+            //显示对应的题目
+            function showQuestion() {
+                $(".customization_item").eq(index).show();
+            }
+
+            Array.prototype.indexOf = function (val) {
+                for (var i = 0; i < this.length; i++) {
+                    if (this[i] == val) return i;
+                }
+                return -1;
+            };
+
+            Array.prototype.remove = function (val) {
+                var index = this.indexOf(val);
+                if (index > -1) {
+                    this.splice(index, 1);
+                }
+                return index;
+            };
+
+            //电话号码
+            function isPhone(phone) {
+                var pattern = /^1[3,4,5,6,7,8,9]\d{9}$/;
+                return pattern.test(phone);
+            };
+
+
+            $(".customization_item").click(function () {
+                var idxx = $(this).index(".customization_item");
+                $(".customization_item").find(".customization_item_answer").hide();
+                $(this).find(".customization_item_answer").show(200);
+                index = idxx;
+                mobileSelect1.hide();
+                setTimeout(function () {
+                    showQuestion();
+                    initChoose(jsonData[index]);
+                    mobileSelect1.show();
+                }, 100);
+            })
+        </script>
+
+    </body>
+
+</html>

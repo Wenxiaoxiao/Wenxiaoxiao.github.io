@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <!--测试环境-->
+    @@include("include/header.htm",{ "title":"0元投保—梧桐树保险网", "keywords": "提供各种0元保险，覆盖疫苗意外保障、防癌保障、自驾保障、出现保障等。", "description": "" })
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    @@include("include/ready-ani.htm")
+    <div class="body-container gift-container">
+        <img src="@@webRoot/lib/images/usersLoves/gift-bg.jpg" onload="(function(){$('.lz-readys').remove()})()" alt="" class="gift-bg">
+        <div class="gift-btn-box clearfix margin-bottom-30">
+            <div class="gift-text fl">
+                <p class="p1">领取10万包含新冠病毒保障</p>
+                <p class="p2">扩展新冠病毒重症病房津贴及身故</p>
+            </div>
+            <a href="/m/products/5.html" class="gift-btn">0元投保</a>
+        </div>
+        <div class="gift-btn-box clearfix margin-bottom-30">
+            <div class="gift-text fl">
+                <p class="p1">0免赔万元防癌医疗保障</p>
+                <p class="p2">恶性肿瘤医疗0免赔，报销无门槛</p>
+            </div>
+            <a href="../market/pros-detail.html?id=1135737355945242624" class="gift-btn">0元投保</a>
+        </div>
+        <div class="gift-btn-box clearfix margin-bottom-30">
+            <div class="gift-text fl">
+                <p class="p1">少儿疫苗接种身故保障计划</p>
+                <p class="p2">专保疫苗接种身故，不限疫苗种类</p>
+            </div>
+            <a href="../market/pros-detail.html?id=982908069800828928" class="gift-btn">0元投保</a>
+        </div>
+        <div class="gift-btn-box clearfix margin-bottom-30">
+            <div class="gift-text fl">
+                <p class="p1">自驾车意外专属保障计划</p>
+                <p class="p2">高龄可投保，全面覆盖自驾车意外</p>
+            </div>
+            <a href="../market/pros-detail.html?id=1136200438564081664" class="gift-btn">0元投保</a>
+        </div>
+        <div class="help-msg">
+            <div class="fr help"><img src="@@webRoot/lib/images/usersLoves/icon-wenhao.png" alt=""></div>
+        </div>
+    </div>
+</body>
+<!--模板引擎-->
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/js/lodash.js"></script>
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+ 
+
+<script>
+    var load;
+    $(function () {
+        //登录逻辑
+        var login = wtsLogin
+        login.init({env:$.globedata.environment},function(user){
+            $(".help-msg").click(function(){
+            //    $.layerAlert('本产品30天-50周岁可投保，保障期间为1年; 一人一天只能领取一次; 一人一次最多领取1000元保额，可累计领取10次;')
+            load = layer.open({
+                    type: 1
+                    ,content: 
+                    '<div class="gift-layer">'+
+                        '<div class="gift-layer-line">'+
+                        '<p class="gift-layer-title"><span>本产品免费领取规则</span></p>'+
+                        '<p>1.本页面的保险产品都可免费领取，请您根据个人情况和需求领取相对应的保障。</p>'+
+                        '<p>2.在免费领取保障之前请您先仔细查看产品的介绍页面，了解对应产品的适用人群：如投/被保人关系、投/被保人年龄限制、职业范围、健康状况等，是否符合领取要求；确认您是否已了解产品保障权益：如保障期限、保障额度、保障范围、具体保障内容等。</p>'+
+                        '<p>3.如有疑问，请随时拨打我公司客户服务热线:<a href="tel://400-9955-788" style="color:red;">400-9955-788</a>，或联系您的专属保险顾问咨询。</p>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="gift-layer-btn" onClick="closeLayer()">我知道了</div>'
+                    ,anim: 'up'
+                    ,style: 'position:fixed; bottom:0; left:0; width: 100%;padding:10px; border:none;font-size:14px;line-height:1.7;box-sizing:border-box;overflow-y:scroll;background-color: #FE5046; border-radius:10px 10px 0 0 ;padding:8px'
+                });
+            })
+            $.shareWx({
+                title:"0元投保—梧桐树保险网",
+                desc:'提供各种0元保险，覆盖疫苗意外保障、防癌保障、自驾保障、出现保障等。'
+            }); //微信分享
+
+            // if($.tools().user.indexOf("wtsbxwApp")>-1){
+            //     var obj={
+            //         href:location.href,
+            //         title:'快来领取免费保险',
+            //         content:'送你一份免费保障，一分钱不花，就可获得高额保障，大家都在领，还不赶快进来看看？',
+            //         thumbs:'https://bx.wts999.com/lib/images/logo-3.jpg'
+            //     };
+            //     setTimeout(function(){
+            //         location.href="https://bx.wts999.com/app.html?share="+encodeURI(JSON.stringify(obj));
+            //     },1000)
+                
+            // }
+        })
+       
+    })
+   
+    function closeLayer(){
+        layer.close(load)
+    }
+</script>
+
+</html>

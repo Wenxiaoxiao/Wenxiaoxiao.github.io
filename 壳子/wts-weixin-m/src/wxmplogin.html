@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    @@include("include/header.htm",{
+    "title":"登录",
+    "keywords": "",
+    "description": ""
+    })
+    
+
+    <!--全局js-->
+    <script src="@@webRoot/lib/js/jquery.min.js"></script>
+    <script src="@@webRoot/lib/units/global.js?r=@@time"></script>
+    <script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+    <script src="https://libs.wts999.com/wtsTools.min.js"></script>
+    @@if (name === 'dev') {
+        <script src="https://libs.wts999.com/wtsLogin.js"></script>
+      }
+      @@if (name === 'build') {
+        <script src="https://libs.wts999.com/wtsLogin.min.js"></script>
+      }
+   
+    <script>
+        var login = wtsLogin
+        login.init({env:$.globedata.environment},function(user){
+            //如果登录成功了
+            if (typeof(user) != "undefined" && user && typeof(user.id) != "undefined") {
+                //则带着token跳转到源地址
+                jumpToUrl = decodeURIComponent(goto()); 
+                location.href = jumpToUrl;
+            }
+        })
+        function goto(){
+            var jumpToUrl =  $.getQueryString("jumpToUrl");
+            var sessionHash = wtsTools.tools.getcookie("sessionHash");
+            if(jumpToUrl){
+                return jumpToUrl
+            }
+            if(sessionHash){
+                return sessionHash
+            }
+            return ''
+        }
+    </script>
+
+</head>
+
+<body>
+<div class="centerLoading">
+    <!--页面加载动画-->
+    <div class="lz-readys">
+        <div class="loadText">
+            <img src="./lib/images/reload.gif" alt="" class="gifLoad"/>
+            正在登录...
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
+
+

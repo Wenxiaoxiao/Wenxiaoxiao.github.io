@@ -1,0 +1,70 @@
+.claimCase-container{
+  height: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 45px;
+  background:#f5f5f5;
+  padding-bottom:r(40);
+  .claimCaseList{
+    .claimCaseItem{
+      margin:r(20) r(20) r(0) r(20);
+      border-radius:r(10);
+      padding:r(20) r(26) r(30);
+      background:#fff;
+      .top{
+        height:r(134);
+        border-bottom:r(2) solid #ededed;
+        .img{
+            width:r(90);
+            height:r(90);
+            border-radius:50%;
+            float:left;
+            margin-top:r(20);
+        }
+        .info{
+            float:left;
+            margin-top:r(20);
+            margin-left:r(20);
+            .nickname{
+                font-size:r(34);
+                font-weight:bold;
+                color:#000;
+            }
+            .proname{
+                font-size:r(26);
+                color:#636363;
+            }
+        }
+      }
+      .bottom{
+        font-size:r(28);
+        color:#000;
+        margin-top:r(20);
+        margin-bottom:r(15);
+        .effectTime,.effectMoney{
+            overflow: hidden;
+            .s1{
+                float:left;
+            }
+            .s2{
+                float:right;
+            }
+            .orange{
+                color:#fc7205;
+                font-weight:bold;
+            }
+        }
+      }
+      .footer{
+        font-size:r(28);
+        line-height:r(40);
+        background:#f5f5f5;
+        padding:r(20);
+        border-radius:r(10);
+        color:#3e3e3e;
+        word-break: break-all;
+      }
+    }
+  }
+}

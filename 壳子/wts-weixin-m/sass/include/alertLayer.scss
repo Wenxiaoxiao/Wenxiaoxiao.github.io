@@ -1,0 +1,304 @@
+.layers-box{
+  .lz-layers-01{
+    display: none;
+    input[type="text"]{
+      display: block;
+      margin: 20px auto 10px;
+      width: 70%;
+      @include remCalc(height,70);
+      line-height: r(50);
+      @include remCalc(font-size,30);
+      padding: 0 5px;
+      border: 1px solid #ccc;
+      box-shadow: 1px 1px 5px rgba(0,0,0,.1) inset;
+      color: #000;
+    }
+  }
+  .lz-layers-02{
+    display: none;
+    .radio-box{
+      margin: 10px 0;
+      text-align: center;
+      @include remCalc(font-size,30);
+      .lz-radio{
+        margin-left: 5px;
+        margin-right: 3px;
+      }
+    }
+  }
+  .lz-layers-03{
+    // display: none;
+    background-color: #fff; 
+    
+    @include remCalc(padding,30);
+    >a{
+      display: block;
+    }
+    p{
+      color:#000;
+    }
+  }
+  .lz-layers-04{
+    display: none;
+    @include remCalc(padding,30);
+    >a{
+      display: block;
+    }
+  }
+  .lz-layers-05{
+    display: none;
+    @include remCalc(padding,30);
+    p{
+      color: #000;
+    }
+    >a{
+      display: block;
+    }
+  }
+  .lz-layers-06{
+    display: none;
+    @include remCalc(padding,30);
+    >a{
+      display: block;
+    }
+    p{
+      color:#000;
+    }
+  }
+
+  .layers-espress{
+    display: none;
+    padding:r(50);
+      p{
+        font-size: r(32);
+        color:#000;
+        line-height: r(55);
+        .oddNum{
+          color:$font-color-ff6e06
+        }
+      }
+  }
+}
+
+.layer-app{
+  background-color: #fff;
+  width: 200px;
+  padding: 10px;
+  .downloadImg{
+    width: 100%;
+  }
+  p{
+    line-height: 2;
+    font-size: r(30);
+    text-align: center;
+  }
+}
+
+.layer_btn_box{
+  .layui-layer-btn{
+    text-align: center;
+    >a{
+      padding: 0 r(50);
+    }
+  }
+  .layui-layer-btn0{
+    background-color: $baseColor!important;
+    border-color: $baseColor!important;
+  }
+}
+
+.layer_img {
+  z-index: 300;
+  display: none;
+  .QR-code {
+    width: r(623);
+    height: r(554);
+    box-sizing: border-box;
+    background: url("../images/bgsao.png") no-repeat;
+    background-size: cover;
+    z-index: 99;
+    padding-top: r(135);
+    text-align: center;
+    position: relative;
+    .weixin {
+      width: r(555);
+      height: r(290);
+      display: block;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      .ewmcodes {
+        width: r(550);
+        position: relative;
+        z-index: 2;
+      }
+      .bac_finger{
+        width: r(550);
+        position: absolute;
+        left: r(10);
+        top: 0;
+      }
+    }
+    p {
+      margin-top: r(30);
+    }
+  }
+}
+.layer_img-box {
+  background-color: transparent!important;
+  box-shadow:none!important;
+  .layui-layer-content{
+    background-color: transparent!important;
+  }
+}
+.marketing-style{
+  display: inline-block;
+  z-index: 100;
+  background-color: #ff6e07;
+  @include remCalc(font-size,26);
+  color: #fff;
+  width: r(210);
+  height: r(42);
+  @include remCalc(line-height,42);
+  padding-left: 20px;
+  @include border-radius(3px);
+  margin-right: 5px;
+  white-space: nowrap;
+  position: relative;
+}
+.marketing-style:before{
+  content:"";
+  display: inline-block;
+  width: r(30);
+  height: r(30);
+  background-image: url(../images/d_qq.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  margin-top: r(-15);
+
+}
+.layer-exp-ku,.layer-exp-duigou{
+  
+  &:before{
+    content:"";
+    display: inline-block;
+    width: r(50);
+    height: r(50);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top:50%;
+    left: 5px;
+    margin-top: r(-25);
+  }
+  .layui-layer-content{
+    padding-left: r(70) !important;
+  }
+}
+.layer-exp-ku{
+  &:before{
+    background-image: url(../images/icon-kulian.png);
+  }
+}
+.layer-exp-duigou{
+  &:before{
+    background-image: url(../images/icon-duigou.png);
+  }
+}
+//ios形式弹窗
+.layer-ios{
+  .layui-layer-btn{
+    padding: 0;
+    text-align: center;
+    >a{
+      width: 50%;
+      margin: 0;
+      height: r(75);
+      line-height: r(75);
+      text-align: center;
+      font-size: r(30);
+      box-sizing: border-box;
+    }
+  }
+  .layui-layer-btn0{
+    background-color: $baseColor!important;
+    border-color: $baseColor!important;
+    float: right;
+  }
+}
+
+//订单附件类型弹出层
+.layerEnclosure{
+  display: none;
+  width: r(750);
+  .titles{
+    width: 100%;
+    height: r(90);
+    line-height: r(90);
+    color: #000;
+    font-size: r(36);
+    text-align: center;
+  }
+  table{
+    width: r(750);
+    font-size: r(30);
+    tr{
+
+    }
+    td,th{
+      min-height: r(90);
+      padding: 3px 5px;
+      border: 1px solid #eee;
+    }
+    .td-2{
+      width: 50%;
+    }
+    .td-46{
+      &:first-child{
+        width: 40%;
+      }
+      &:last-child{
+        width: 60%;
+      }
+    }
+    .table-input{
+      border: none;
+      //border-bottom: 1px solid #eee;
+    }
+  }
+}
+
+//alert形式弹出层
+.layer-alert{
+  .layui-layer-btn{
+    text-align: center;
+  }
+  .layui-layer-btn0{
+    background-color: $baseColor!important;
+    border-color: $baseColor!important;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+.layers-actives{
+  position: relative;
+  // display: none;
+  img{
+    width: 80%;
+    max-width: r(650);
+    display: block;
+    margin: 0 auto;
+    min-height: r(400);
+  }
+  >a{
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+  }
+}

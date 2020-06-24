@@ -1,0 +1,180 @@
+.paycomplete{
+    background: #e5e5e5;
+    .paycomplete-top{
+      background:linear-gradient(to right, #ff9205, #ff6e07);
+      width: 100%;
+      color: white;
+      .complete-top{
+          padding-top: r(40);
+          display: block;
+          font-size: r(160);
+          text-align: center;
+          line-height: r(200);                  
+      }
+      .comp1{
+          text-align: center;
+          font-size: r(36); 
+          line-height: r(56); 
+          padding-bottom: r(40); 
+          color: white;
+                
+      }
+    }
+    .paycomplete-center{
+        padding-bottom: r(40);
+        border-bottom: 1px solid #dcdcdc;
+        background: white;
+        .paycomp{
+            width: 100%;
+            padding: r(40);
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            justify-content: space-around;
+            .wts-btn-cp{
+                display: inline-block;
+                width: r(250);
+            }          
+        }
+        .paycomp1{
+            width: 100%;
+            padding: 0 r(70);
+            p{
+              line-height: r(46);  
+              font-size: r(28);
+              color: #000000;
+            }
+        }
+        .failurehtml-center{
+            padding: r(40) r(50) r(20) r(90);
+            p{
+                font-size: 12px;
+                color: black;
+            }
+        }
+    }
+    .paycomplete-bottom{                          
+        background: white;
+        margin-top: r(15);
+        padding-bottom: r(40);
+        .bottom-worm{
+            height: r(66);
+            border-bottom: 1px solid #dcdcdc;
+            position: relative;
+            .bottom-title{
+                position: absolute;
+                background: white;
+                font-size: r(30);
+                width: r(250);
+                line-height: r(50);
+                left: 50%;
+                margin-left: r(-125);
+                bottom: 0;
+                margin-bottom: r(-25);
+                text-align: center;
+            }
+        }
+        .complete-worm{
+            margin-top: r(30);
+            padding: 0 r(30);
+            line-height: r(44);
+            font-size: r(26);
+            color: #666;
+            li{
+                p{
+                color: #666;
+                font-size: r(26);
+                }
+                span{
+                    color: $baseColor;
+                    font-family: "microsoft yahei";
+                }
+                .iconfont{
+                    vertical-align: middle;
+                    position: relative;
+                    top: -1px;
+                    margin-right: 3px;
+                }
+            }
+        }
+    }
+    
+}
+
+.plan-save{
+    background: white;
+    height:100%;
+}
+
+
+.submit-success{
+    height: 100vh;
+    background-color: #fff;
+    .top-colo{
+        width: 100%;
+        height: r(300);
+        background:linear-gradient(top left, #ff8b00, #ff6100);
+        text-align: center;
+        i{
+            @include remCalc(font-size,150);
+            color: #fff;
+            @include remCalc(line-height,200);
+            position: relative;
+            left: 5px;
+        }
+        p{
+            @include remCalc(font-size,36);
+            @include remCalc(line-height,50);
+            color: #fff;
+        }
+    }
+    .center-box{
+        font-size: r(30);
+        @include remCalc(width,500);
+        margin: 10px auto;
+
+        p{
+            color: #000;
+        }
+    }
+    .btns{
+        width: 100%;
+        @include remCalc(height,200);
+        margin-top: 10px;
+        padding-top: r(40);
+        text-align: center;
+        .wts-btn-cp{
+            display: inline-block;
+            margin: 0 5px;
+        }
+    }
+    .notices{
+        position: relative;
+        .notices-title{
+            text-align: center;
+            width: 120px;
+            @include remCalc(font-size,36);
+            position: absolute;
+            top: r(-30);
+            left: 50%;
+            margin-left: -60px;
+            background-color: #fff;
+            i{
+                margin-right: 5px;
+                @include remCalc(font-size,42);
+                position: relative;
+            }
+        }
+        .notices-text{
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 20px r(30);
+            p{
+                @include remCalc(font-size,30);
+                @include remCalc(line-height,50);
+                color: #666;
+            }
+        }
+    }
+}

@@ -1,0 +1,146 @@
+.person-box {
+
+  .person-top {
+    width: 100%;
+    @include remCalc(height, 180);
+    @include remCalc(padding, 25, 30);
+    background-color: $cpBaseCol;
+    @include remCalc(line-height, 130);
+    @include remCalc(font-size, 30);
+    color: #fff;
+    .authers-img {
+      height: 100%;
+      @include border-radius(50%);
+      margin-right: 10px;
+
+    }
+    a {
+      color: #fff;
+    }
+    .userInfo {
+      width: 100%;
+      height: r(130);
+      margin-left: r(140);
+      display: none;
+      .userName {
+        height: r(70);
+        line-height: r(75);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .userNumber {
+        height: r(60);
+        line-height: r(30);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      #userNumberName{
+          margin-top:r(43);
+      }
+    }
+    .myNumber {
+      display: none;
+    }
+  }
+  .person-center {
+    .mui-table-view {
+      .mui-table-view-cell {
+        padding: 0;
+        @include remCalc(font-size, 32);
+        @include remCalc(height, 102);
+        @include remCalc(line-height, 102);
+        border-bottom: 1px solid #e7e7e7;
+        padding-left: r(100);
+        padding-right: r(30);
+        color: #3c3c3c;
+        a {
+          position: relative;
+          margin: 0;
+          padding: 0;
+          i {
+            font-size: r(40);
+            color: #BBBBBB;
+          }
+          .icon-zhen_news{
+            @include remCalc(font-size,42);
+          }
+          .feedback {
+            margin-left: r(12);
+          }
+          .aboutUs {
+            margin-left: r(11);
+          }
+        }
+        .left {
+          position: absolute;
+          left: r(30);
+          top: 50%;
+          @include transform(translateY(-50%));
+          margin-right: 10px;
+          color: $cpBaseCol;
+        }
+        .icon-baodan {
+          @include remCalc(font-size, 36);
+        }
+        .icon-lipeiguanli, .icon-youhuiquan {
+          @include remCalc(font-size, 40);
+        }
+        .share {
+          position: relative;
+          border: none;
+          text-align: left;
+          font-size: r(32);
+        }
+      }
+    }
+  }
+  .person-bot {
+    width: 100%;
+    margin-top: r(30);
+    background-color: #fff;
+    li {
+      width: 50%;
+      float: left;
+      box-sizing: border-box;
+      border: 1px solid #e2e2e2;
+      border-left: none;
+      margin-top: -1px;
+      @include remCalc(height, 102);
+      @include remCalc(line-height, 62);
+      @include remCalc(font-size, 28);
+      padding: r(20) r(30);
+      color: #3c3c3c;
+      i {
+        color: #999;
+        @include remCalc(font-size, 36);
+        margin-right: 5px;
+      }
+    }
+  }
+
+}
+
+.setup {
+  .logOut {
+    width: 90%;
+    line-height: r(80);
+    text-align: center;
+    font-size: r(30);
+    color: #fff;
+    margin: 0 auto;
+    display: inline-block;
+    background: #3aaaf8;
+    border-radius: r(10);
+    margin-left: 5%;
+    margin-top: r(50);
+  }
+}
+
+//.icons-left{
+//  width: r(50)!important;
+//  height: r(50)!important;
+//}
+
+

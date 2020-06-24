@@ -1,0 +1,40 @@
+.service-test-pay {
+  .order-input {
+    padding: 0 r(20);
+    margin-bottom: r(20);
+    background-color: #fff;
+    border-radius: 5px;
+    .input-box {
+      height: r(80);
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+      -webkit-align-items: center;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+      font-size: r(30);
+      &:first-child {
+        border-bottom: 1px solid #eee;
+      }
+    }
+  }
+  .info-text {
+    font-size: 12px;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+  .code-btn {
+    display: inline-block;
+    color: #4580f6;
+    margin-left: 10px;
+    min-width: r(150);
+    text-align: center;
+  }
+  input {
+    border: 0;
+    text-align: right;
+    height: r(50);
+    line-height: r(50);
+    width: r(270);
+  }
+}

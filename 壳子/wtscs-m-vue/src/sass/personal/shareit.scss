@@ -1,0 +1,200 @@
+.shareit{
+  width:r(750);
+  background: #ffd782;
+  padding-bottom:r(86) ;
+  &>.img{
+    width: r(750);
+    position: relative;
+    &>img{
+      width: r(750);
+    }
+    &>.header{
+      width: r(690);
+      height: r(184);
+      background: #fffefc;
+      border-radius: r(10);
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 r(30) rgba(0,0,0,0.3);
+      &>.red-title{
+        font-size: r(29);
+        color: #ff4808;
+        font-weight: bold;
+        text-align: center;
+        line-height: r(70);
+      }
+      &>.txt{
+        font-size: r(26);
+        color: #333;
+        line-height: r(32);
+        padding: r(0) r(48) r(0) r(45);
+      }
+    }
+  }
+  &>.total{
+    box-shadow: 0 0 r(30) rgba(0,0,0,0.3);
+    width: r(690);
+    height: r(124);
+    background: #fff;
+    margin: r(26) auto;
+    border-radius: r(10);
+    line-height: r(124);
+    padding: r(0) r(48) r(0) r(45);
+    overflow: hidden;
+    font-size: r(30);
+    .left{
+      float: left;
+      .orange{
+        color: #ff7200;
+      }
+      &>img{
+        width: r(74);
+        height: r(70);
+        border-radius: r(10);
+        vertical-align: middle;
+      }
+    }
+    .right{
+      float: right;
+      color: #666;
+    }
+  }
+  &>.content{
+    box-shadow: 0 0 r(30) rgba(0,0,0,0.3);
+    width: r(690);
+    background: #fff;
+    min-height: r(300);
+    margin: 0 auto;
+    border-radius: r(10);
+    padding: r(26);
+    &>.title{
+      width: r(430);
+      height: r(70);
+      margin: 0 auto;
+      &>img{
+        width: r(430);
+        height: r(70);
+      }
+    }
+    &>.lists{
+      width: 100%;
+      &>.item{
+        margin-top: r(26);
+        overflow: hidden;
+        &>.left{
+          float:left;
+          width: r(150);
+          height: r(166);
+          position: relative;
+          &>img{
+            width: r(150);
+            height: r(166);
+          }
+          &>.txt{
+            text-align: center;
+            width: r(93);
+            font-size: r(26);
+            color: #ff0000;
+            position: absolute;
+            top:r(44);
+            left:r(31);
+            font-weight: bold;
+          }
+        }
+        &>.leftrate{
+          float:left;
+          width: r(150);
+          height: r(166);
+          position: relative;
+          &>img{
+            width: r(150);
+            height: r(166);
+          }
+          &>.txt{
+            text-align: center;
+            width: r(130);
+            line-height: r(24);
+            font-size: r(20);
+            color: #ff0000;
+            position: absolute;
+            top:r(30);
+            left:r(14);
+            font-weight: bold;
+            &>.red{
+              &>span{
+                white-space: nowrap;
+                &>b{
+                  font-size: r(26);
+                }
+              }
+              display: block;
+            }
+            &>.black{
+              color: #000;
+            }
+          }
+        }
+        &>.right{
+          width: r(460);
+          float: right;
+          &>.protitle{
+            font-size: r(31);
+            font-weight: bold;
+            color: #000;
+          }
+          &>.des{
+            font-size: r(26);
+            color: #666;
+            line-height: r(28);
+          }
+          &>.price{
+            color: #ff7e00;
+            font-size: r(26);
+            overflow: hidden;
+            &>.left{
+              float: left;
+              max-width: r(138);
+              line-height: r(40);
+            }
+            &>.right{
+              max-width: r(330);
+              float: left;
+            }
+            &>.type{
+              line-height:r(28);
+            }
+          }
+        }
+      }
+    }
+  }
+  &>.rules{
+    margin: r(86) auto r(0);
+    background: #fff1d3;
+    width: r(690);
+    border-radius: r(10);
+    position: relative;
+    padding: r(55) r(16) r(35) r(14);
+    &>img{
+      width: r(311);
+      height: r(70);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top:r(-35);
+    }
+    &>.ruleitem{
+      &>.item{
+        &>.title{
+          font-size: r(30);
+          font-weight: bold;
+        }
+        &>.txt{
+          font-size: r(26);
+        }
+      }
+    }
+  }
+}

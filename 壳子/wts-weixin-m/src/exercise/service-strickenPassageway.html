@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"重疾绿通", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container stricken-passageway">
+        <img src="@@webRoot/lib/images/exercise/phoneDoctor/img1.png" class="img">
+        <div class="content">
+            <div class="box">
+                <div class="title">- 服务内容 -</div>
+                <div class="table-box">
+                    <div class="top">
+                        <span class="first">服务项目</span>
+                        <span class="last">服务方式</span>
+                    </div>
+                    <table>
+                        <tr class="d1">
+                            <td class="first">远程问诊</td>
+                            <td class="last">电话沟通，1次/年</td>
+                        </tr>
+                        <tr>
+                            <td class="first">专家门诊</td>
+                            <td class="last">分诊电话沟通，门诊线下 <br> 安排，1次/年</td>
+                        </tr>
+                        <tr>
+                            <td class="first" style="line-height: 2">住院安排<br>手术安排<br>住院探视<br>医后随访<br>中医理疗<br>营养方案</td>
+                            <td class="last">此6项为打包服务， <br>线下安排，<br> 每项服务1次/年</td>
+                        </tr>
+                        <tr>
+                            <td class="first">专家复诊</td>
+                            <td class="last">线下安排，1次/年</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="info-text">有效期：自开通日起1年</div>
+
+            </div>
+            <div class="box">
+                <div class="title">- 服务范围 -</div>
+                <div class="table-box info-box">
+                    <img src="@@webRoot/lib/images/exercise/phoneDoctor/img2.jpg" class="img2">
+                    <div class="text">
+                        覆盖全国<span>31</span>个省份、<span>100</span>个城市、<span>967</span>家医院，包含三甲医院、专科医院，为<span>100</span>种重疾提供服务。
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="title">- 申请条件 -</div>
+                <div class="table-box info-box info-box2">
+                    <div class="text">
+                        <span>1.</span>
+                        <div class="text-div">首次罹患重疾的被保险人本人使用</div>
+                    </div>
+                    <div class="text">
+                        <span>2.</span>
+                        <div class="text-div">在保单等待期满后申请，重疾绿通等待期与保单一致</div>
+                    </div>
+                    <div class="text">
+                        <span>3.</span>
+                        <div class="text-div">首次罹患重疾的被保险人本人使用</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="title">- 申请流程 -</div>
+                <div class="table-box info-box info-box3">
+                    <img src="@@webRoot/lib/images/exercise/phoneDoctor/img3.png" class="img3">
+                    <div class="panel">
+                        <div class="item">
+                            <div class="item-title">申请重疾绿通服务</div>
+                            <div>致电热线，选择所需服务内容进行咨询，<br> 服务时间：工作日9：00~18：00</div>
+                        </div>
+                        <div class="item item2">
+                            <div class="item-title">审核资料</div>
+                            <div>收到申请材料后审核决定是否启动重疾<br>绿通并通知客户</div>
+                        </div>
+                        <div class="item">
+                            <div class="item-title">启动重疾绿通服务</div>
+                            <div>审核通过后，专人联系提供服务</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <img src="@@webRoot/lib/images/exercise/phoneDoctor/img4.png" class="img4 openPDF">
+
+        </div>
+        <div class="bottom-box">
+            <div class="money-box">
+                <span class="money"></span>
+                <span class="old oldMoney"></span>
+            </div>
+            <div class="button" id="submit">立即购买</div>
+        </div>
+    </div>
+
+</body>
+@@include("include/footer.htm")
+
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+ 
+
+<script>
+    var login = wtsLogin
+    login.init({
+        env: $.globedata.environment
+    }, function(user) {
+        if (!$.tools().hasPhonrNumber(user)) {
+            return window.location.href = window.location.origin + "/m/index.html#/BDmobileHtml?type=2&redUrl=" + window.location.href;
+        }
+        var id = $.getQueryString("id");
+        // var id = "1148896944286867456";
+        var data = {};
+
+        $("#submit").click(function() {
+            location.href = "./service-strickenPassagewayPay.html?id=" + data.id;
+        });
+
+        $(".openPDF").click(function() {
+            var url = location.origin + "/m/pdf/viewer.html?file=https://static.wts999.com/FILE/重疾绿通服务详情介绍及具体医院网点---6月18号.pdf";
+            location.href = url;
+        });
+
+        getData();
+
+        function getData() {
+            var paramList = {
+                url: "/addedservices/upmarketServer/api/real/list",
+                data: JSON.stringify({}),
+                contentType: "application/json;charset=UTF-8",
+                success: function(ajaxData, isError) {
+                    if (!isError) {
+                        return;
+                    }
+                    ajaxData.data.forEach(function(item) {
+                        if (id == item.id) {
+                            data = item;
+                        }
+                    });
+                    if (data.realMoney) {
+                        $(".money").text("￥" + Number(data.realMoney) + "元");
+                    }
+                    if (data.originalMoney) {
+                        $(".oldMoney").text("原价 ￥" + Number(data.originalMoney) + "元");
+                    }
+                    if (Number(data.realMoney) == Number(data.originalMoney)) {
+                        $(".oldMoney").hide();
+                    }
+                }
+            }
+            $.ajaxPackage(paramList);
+        }
+    })
+</script>
+</html

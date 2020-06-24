@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{
+    "title":"保险问答-保险问答",
+    "keywords": "便民保险知识，在线保民，买家庭保险，意外伤害险",
+    "description": "梧桐树便民社区，保险T博士为广大用户专业解答家庭投保、理赔等各种保险问题，并普及各种保险相关知识。"
+    })
+</head>
+
+<body>
+
+<div class="body-container myZone community">
+    <ul class="claimsLine2">
+        <li class="active">我的发表</li>
+        <li>我的评论</li>
+    </ul>
+    <div class="contents mainContent">
+        <ul class="mainContent-left active"></ul>
+        <ul class="mainContent-right"></ul>
+    </div>
+
+</div>
+<!--底部公共部分-->
+</body>
+@@include("include/footer.htm",{
+"common":"common_all.js?r=@@time"
+})
+<script id="test" type="text/html">
+    {{each data as value i}}
+    <li class="mainList" data-num={{value.id}}>
+        <dl>
+            <dt>
+                <a href="{{value.id | myZoneDetails}}">
+                    {{if value.userId==0}}
+                    <img src="@@webRoot/lib/images/miniLogo.jpg" alt="" class="img-auther"/>
+                    {{else if value.headimgurl=="" || value.headimgurl=="/0"}}
+                    <img src="@@webRoot/lib/images/default_auther.png" alt="" class="img-auther"/>
+                    {{else}}
+                    <img src="{{value.headimgurl}}" alt="" class="img-auther"/>
+                    {{/if}}
+                    <div class="textBox">
+                        <div class="top_box emojiCheck">
+                            {{value.nickname}}
+                            {{if value.userId==0}}
+                            <img src="@@webRoot/lib/images/manage.png" class="level">
+                            {{/if}}
+                        </div>
+                    </div>
+                </a>
+            </dt>
+            <dd class="problemBox">
+                <div class="problem">
+                    <a href="{{value.id | myZoneDetails}}">
+                        {{if value.userId == 0}}
+                        <p class="text text3 emojiCheck">{{#value.intro | fmtContent_T}}<span class="click-more">点击阅读全文&gt;</span></p>
+                        {{else}}
+                        <p class="text text2 emojiCheck">{{#value.content | fmtContent}}</p>
+                        {{/if}}
+                    </a>
+                    <div class="stop">{{value.admin}}</div>
+
+                    <div class="imgBox">{{value.imgUrls}}</div>
+                    <div class="videoBox">
+                        {{if value.vedioUrl!=""}}
+                        <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width=""
+                               height=""
+                               poster="" data-setup="{}">
+                            <source src="{{value.vedioUrl}}" type="video/mp4">
+                            <source src="{{value.vedioUrl}}" type="video/webm">
+                            <source src="{{value.vedioUrl}}" type="video/ogg">
+                        </video>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="problemTip">
+                    <a class="problemTip-lib dianzan-box" data-postId="{{value.id}}">
+                        <span class="dianzan"></span>
+                        {{if value.ups==null}}
+                        <span class="problemname"><span class="dz-num">0</span></span>
+                        {{else}}
+                        <span class="problemname">点赞 <span class="dz-num">{{value.ups}}</span></span>
+                        {{/if}}
+                    </a>
+                    <a class="problemTip-lib" href="{{value.id | myZoneDetails}}">
+                        <i class="iconfont icon-pinglun"></i>
+                        <span class="problemname">评论 {{value.commentNum}}</span>
+                    </a>
+                </div>
+            </dd>
+            {{if value.replys.length!=0}}
+            <dd class="answer">
+                <ul class="answerList" id="answerList">
+                    {{each value.replys as item i}}
+                    <li><span class="emojiCheck">{{item.nickname}}：</span>
+                        <div class="answerText">{{#item.content | fmtContent}}</div>
+                    </li>
+                    {{/each}}
+                    {{if value.commentNum>2}}
+                    <span class="more-a" onclick="javascript:location.href='{{value.id | myZoneDetails}}'">查看更多回复 &gt;</span>
+                    {{/if}}
+                </ul>
+            </dd>
+            {{/if}}
+
+
+
+        </dl>
+
+
+
+    </li>
+    {{/each}}
+</script>
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+<script>
+    var csAnimates = $.csAnimates();
+    csAnimates.myZone()
+
+</script>
+
+</html>

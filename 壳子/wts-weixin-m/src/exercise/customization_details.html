@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"", "keywords": "", "description": "" })
+    <link rel="stylesheet" href="@@webRoot/lib/css/swiper-4.3.3.min.css">
+</head>
+
+<body>
+    
+
+    @@include("include/footer.htm")
+    <script>
+        $(function() {
+            var orderId = $.getQueryString("id");
+            //获取订单信息
+            getOrderDetail();
+
+            function getOrderDetail() {
+                $.ajaxPackage({
+                    type: "post",
+                    url: "/fsservers/serversOrder/api/detail",
+                    contentType: "application/json",
+                    async: true,
+                    data: JSON.stringify({id:orderId}),
+                    success: function(data, isError) {
+                        if (!isError) {
+                            return;
+                        };
+                        if (data.httpCode != 200) {
+                            return;
+                        }
+                        window.location.href=data.data.resultUrl;
+                        // if(data.data.type == 1){
+                        //     window.location.href = window.location.origin+"/pdf/viewer.html?file="+data.data.resultUrl;
+                        // }else{
+                        //     window.location.href=data.data.resultUrl;
+                        // }
+                        
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(textStatus);
+                    }
+                });
+            }
+        })
+    </script>
+</body>
+
+</html>

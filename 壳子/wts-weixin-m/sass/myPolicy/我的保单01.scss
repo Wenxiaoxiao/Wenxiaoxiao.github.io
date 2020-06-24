@@ -1,0 +1,721 @@
+/*我的保单*/
+
+/*第一部分*/
+.policy-01 {
+  @include remCalc(line-height, 70);
+  text-align: center;
+  background-color: $baseColor;
+  color: #fff;
+  font-size: r(30);
+  height:r(70) ;
+}
+.pol-02{
+  position: relative;
+  .policy-btn-close{
+    position: absolute;
+    line-height: r(70);
+    top: 0;
+    left: r(30);
+  }
+}
+
+.checkPolicy_list_mask{
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display: none;
+  }
+  .checkPolicy_list{
+    width: r(680);
+    display: none;
+    background: #fff;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    margin-left: r(-340);
+    text-align: center;
+    color: #000;
+    z-index: 101;
+    .checkPolicy_list_title{
+      font-size: r(35);
+      font-weight: 900;
+      line-height: r(90);
+      border-bottom: 1px solid #ccc;
+    }
+    .checkPolicy_list_item{
+      padding: 0 r(20);
+      .item{
+        line-height: r(90);
+         border-bottom: 1px solid #ccc;
+        &:nth-last-of-type(1){
+          border:none;
+        }
+      }
+    }
+  }
+
+
+.policy-02 {
+  text-align: left;
+  color: #000;
+  overflow: hidden;
+  width: 100%;
+  background-color: #fff;
+  .IDBox {
+    margin-left: r(20);
+    display: inline-block;
+    width: 70%;
+    margin-top: 0;
+    line-height: r(70);
+    position: absolute;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    .IDInfo {
+      margin-left: r(19);
+    }
+  }
+  .orderForm {
+    position: absolute;
+    right: r(24);
+    line-height: r(70);
+    margin-top: 0;
+  }
+  .img-compangs{
+    position: absolute;
+    right: 5px;
+    top: r(210);
+    height: r(100);
+    z-index: 1;
+    opacity: .8;
+  }
+  .NoPoint {
+    width: 100%;
+    @include remCalc(height,150);
+    @include remCalc(line-height,150);
+    margin-top: r(70);
+    background-color: #fff;
+    text-align: center;
+    > i {
+      font-size: r(50);
+      margin-left: 5px;
+      color: $cpBaseCol;
+    }
+  }
+}
+
+/*表单部分*/
+.policy-02 {
+  .tishi-01 {
+    @include remCalc(height, 75);
+    @include remCalc(line-height, 75);
+    background-color: $bg-base;
+    padding-left: r(30);
+    p {
+      @include remCalc(line-height, 75);
+      color: #888;
+    }
+
+  }
+  .tishi-02 {
+    @include remCalc(height, 120);
+    @include remCalc(line-height, 120);
+    background-color: #fff;
+    display: none;
+    text-align: center;
+    font-size: r(38);
+    a {
+      color: #fe6d04;
+      text-decoration: underline;
+    }
+    .icon-14052218 {
+      color: #fe6d04;
+    }
+  }
+
+  .list-block {
+    margin: 0;
+    ul {
+      background-color: transparent;
+    }
+    .item-content {
+      @include remCalc(height, 90);
+      @include remCalc(line-height, 90);
+      background-color: #fff;
+      .borderLeft {
+        @include remCalc(font-size, 56);
+        color: #b2b2b2;
+      }
+
+    }
+    .item-input {
+      @include remCalc(font-size, 34);
+      height: r(90);
+    }
+    .lz-radio {
+      //    @include remCalc(top,10);
+      margin-right: r(20);
+      margin-left: r(20);
+    }
+    .send {
+      color: #fd7006;
+      background: #fff;
+      border-left: 1px solid #e7e7e7;
+      border-radius: 0;
+    }
+  }
+  .list-block .item-media + .item-inner {
+    margin-left: 0;
+  }
+  .item-title {
+    @include remCalc(font-size, 34);
+  }
+  .list-block input[type="text"],
+  .list-block input[type="password"],
+  .list-block input[type="search"],
+  .list-block input[type="email"],
+  .list-block input[type="tel"],
+  .list-block input[type="url"],
+  .list-block input[type="date"],
+  .list-block input[type="datetime-local"],
+  .list-block input[type="time"],
+  .list-block input[type="number"],
+  .list-block select,
+  .list-block textarea {
+    @include remCalc(font-size, 34);
+    height: 100%;
+  }
+  .list-block .item-title.label {
+    width: 25%;
+  }
+  .list-block .yzm .label {
+    width: 20%;
+  }
+  .list-block .yzm .send {
+    width: 35%;
+    @include remCalc(height, 90);
+    height: r(60);
+    line-height: r(40);
+    margin-left: r(20);
+    padding-left: r(10);
+  }
+  .send {
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+
+
+/*保单04*/
+.listInfoBox {
+  font-size: r(34);
+  .policy-04-list {
+    .dlBox {
+      z-index: 3;
+      .dlheader {
+        @include remCalc(height, 90);
+        @include remCalc(line-height, 90);
+        position: relative;
+        font-size: r(38);
+        background: #f5f5f5;
+        .item-title {
+          margin-left: r(30);
+          border-left: 5px solid $bg-color-ff6e06;
+          padding-left: 5px;
+        }
+        div {
+          position: absolute;
+          top: r(26);
+          width: r(6);
+          height: r(36);
+          line-height: r(36);
+          margin-left: r(30);
+          display: inline-block;
+          background: $cpBaseCol;
+        }
+
+      }
+      dd {
+        padding-left: r(30);
+        box-sizing: border-box;
+        .ulListBox {
+          padding: 5px 0;
+          li {
+            @include remCalc(min-height, 46);
+            @include remCalc(line-height, 64);
+            position: relative;
+            word-break: break-all;
+            span {
+              margin-left: r(23);
+              padding-right: 5px;
+            }
+            .policyIdleft{
+              margin: 0;
+              display: inline-block;
+              width: r(150);
+              min-width: r(150);
+            }
+            .IDInfo{
+              margin-left: 0;
+            }
+            .IDType{
+              margin-left: r(52);
+              min-width: r(300);
+              text-align: right;
+            }
+            .btn {
+              display: inline-block;
+              text-align: center;
+              border: 1px solid #ff6f07;
+              background: #fff;
+              color: #ff6f07;
+              margin: 0 3px;
+              border-radius: r(9);
+              font-size: r(28);
+              height: r(60);
+              line-height: r(58);
+              padding: 0 8px;
+            }
+          }
+          .lastList {
+            margin: r(10) 0;
+            padding-right: r(30);
+            text-align: right;
+            min-height: 0;
+          }
+        }
+      }
+    }
+  }
+  .policy-04-list:first-of-type{
+      .dlBox{
+        position: relative;
+        z-index: 3;
+      }
+  }
+
+  .lists1 {
+    .dlBoxDown1 {
+      dd {
+        span {
+          position: absolute;
+          right: r(32);
+          color: #6a6a6a;
+        }
+      }
+    }
+  }
+  .lists2 {
+    .dlBoxDown2 {
+      dd {
+        span {
+          position: absolute;
+          right: r(32);
+          color: #6a6a6a;
+        }
+      }
+    }
+  }
+  .lists3 {
+    padding-bottom: 0;
+    .dlBoxDown3 { 
+      dd {
+        span {
+          position: absolute;
+          right: r(32);
+          color: #6a6a6a;
+        }
+      }
+    }
+  }
+  .listspolicy{
+    margin-top: r(15);
+    height: r(120);
+    position: relative;
+    background: #f5f5f5;
+    .cancellation{
+      box-sizing: border-box;
+      line-height: r(76);
+      background: #f5f5f5;
+      color:#ff6d06;
+      border:1px solid #ff6d06;
+      border-radius: r(10);
+      display: inline-block;
+      position: absolute;
+      top:r(15);
+      right:r(20);
+      .phone-tel{
+        font-size: r(42);
+      }
+    }
+  }
+}
+
+
+
+
+.premium-us {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  .policy-shenf{
+    display: none;
+    color: #000;
+    overflow: hidden;
+    width: 100%;
+    height: r(70);
+    font-size: r(28);
+    border-bottom: 1px solid #ddd;
+    .list{
+      display: inline-block;
+      width: 33.33%;
+      height: r(70);
+      line-height: r(70);
+      text-align: center;
+      border-right: 1px solid #ddd;
+      float: left;
+    }
+    .list:last-of-type{
+      border-right: 0;
+    }
+    //.IDBox {
+    //  margin-left: r(20);
+    //  display: inline-block;
+    //  width: 70%;
+    //  margin-top: 0;
+    //  line-height: r(70);
+    //  position: absolute;
+    //  text-overflow: ellipsis;
+    //  overflow: hidden;
+    //  white-space: nowrap;
+    //  .IDInfo {
+    //    margin-left: r(19);
+    //    font-size: r(30);
+    //  }
+    //}
+    //.orderForm {
+    //  position: absolute;
+    //  right: r(30);
+    //  line-height: r(70);
+    //  margin-top: 0;
+    //}
+  }
+  .lz-ul-head {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    // margin-bottom: r(-15);
+    li {
+      width: 33.3%;
+      text-align: center;
+      line-height: r(90);
+      box-sizing: border-box;
+      font-size: r(34);
+      float: left;
+    }
+    .active {
+      color: $cpBaseCol;
+      border-bottom: 2px solid $cpBaseCol;
+    }
+    .last {
+      border-right: none;
+    }
+  }
+  .not-find{
+    display: none;
+    text-align: center;
+    .noClaims {
+      text-align: center;
+      width: 100%;
+      height: auto;
+      margin-top: r(243);
+      img {
+        width: r(238);
+      }
+    }
+    .newNotFind{
+      display: none;
+      @include remCalc(font-size,28);
+      @include remCalc(height,75);
+      @include remCalc(line-height,75);
+      text-align: center;
+      color: $cpBaseCol;
+      color: #888;
+      text-decoration: underline;
+    }
+  }
+  .NoPoint{
+    width: 100%;
+    height: r(75);
+    @include remCalc(line-height,75);
+    background-color: #f5f5f5;
+    a{
+      @include remCalc(font-size,30);
+      color: #989898;
+      text-align: center;
+      width: 100%;
+      display: block;
+    }
+  }
+  .not-more{
+    font-size: r(34);
+    text-align: center;
+    line-height: r(80);
+  }
+  .policyMark {
+    position: relative;
+    padding-bottom: r(20);
+    box-sizing: border-box;
+    text-align: left;
+    background-color: #fff;
+    margin-bottom: r(15);
+    dl {
+      dt {
+        color: #000;
+        @include remCalc(padding,0,20);
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        @include remCalc(height,90);
+        @include remCalc(line-height,90);
+        @include remCalc(font-size,30);
+        .icon-baodanguanli {
+          @include remCalc(font-size, 42);
+        }
+        .marks {
+          margin-left: r(10);
+          overflow: hidden;
+          @include remCalc(font-size, 32);
+          @include remCalc(height, 40);
+          position: relative;
+          top: -2px;
+          .IDInfo {
+            margin-left: r(10);
+            font-size: r(32);
+          }
+        }
+        .icon-gengduo {
+          color: #c9c8cd;
+        }
+        .hasDone {
+          position: absolute;
+          right: r(30);
+          top: 0;
+          color: #666;
+          @include remCalc(font-size, 32);
+          &.active{
+            color: $cpBaseCol;
+          }
+        }
+        .IDInfoMain {
+          width: 100%;
+          position: absolute;
+          background: red;
+          opacity: 0;
+        }
+      }
+    }
+    .policyBox {
+      width: 100%;
+      .policyContent {
+        position: relative;
+        text-align: left;
+        padding-left: r(20) !important;
+        li {
+          @include remCalc(min-height, 48);
+          @include remCalc(line-height, 48);
+          color: #000;
+          font-size: r(32);
+        }
+        .reason-li{
+          color: $bg-color-ff6e06;
+          @include remCalc(font-size,30);
+          padding-right: r(10);
+
+        }
+        .policyHeader {
+          position: relative;
+          margin-top: r(4);
+          @include remCalc(height, 72);
+          @include remCalc(line-height, 72);
+          color: #000;
+          font-size: r(36);
+
+        }
+      }
+      .img-compangs{
+        position: absolute;
+        right: 5px;
+        top: r(60);
+        height: r(100);
+        z-index: 1;
+        opacity: .8;
+      }
+    }
+  }
+  .policys {
+    width: 100%;
+    height: auto;
+    > li {
+      display: block;
+      text-align: center;
+      p {
+        color: #000;
+      }
+
+      .NoPointFirst {
+        display: none;
+      }
+      #policyBox {
+        height: r(140);
+        background: #eee;
+        line-height: r(140);
+        text-align: center;
+        font-size: r(34);
+        a {
+          color: #fd7007;
+          text-decoration: underline;
+        }
+        i {
+          font-size: r(38);
+        }
+      }
+
+    }
+    .active {
+      display: block;
+
+    }
+
+  }
+  #policyBoxs {
+    height: auto;
+  }
+  .policyInfo {
+    height: r(206);
+    line-height: r(206);
+    position: relative;
+    box-sizing: border-box;
+    background: #eee;
+    padding-bottom: r(16);
+    .policyInfoList {
+      line-height: r(120);
+      position: absolute;
+      top: r(70);
+      text-align: center;
+      background: #fff;
+      width: 100%;
+      a {
+        font-size: r(36);
+        color: #ff6e07;
+        text-decoration: underline;
+      }
+      i {
+        font-size: r(40);
+        color: #ff6e07;
+      }
+    }
+  }
+  #actives {
+    display: block;
+  }
+}
+.apend-html{
+  font-family: Arial;
+}
+.bind-before {
+  height: 100%;
+}
+.protect-right{
+  background: #f5f5f5;
+  .protect-right-ul{
+    color: #666;
+    margin-top: r(15);
+    font-size: r(34);
+    background-color: #fff;
+    li{
+      padding-left: r(80);
+      line-height: r(90);
+      position: relative;
+      p{
+        border-bottom: 1px solid #ddd;
+        font-size: r(34);
+        color: #666;
+      }
+      .protect-col-height{
+        position: absolute;
+        top: r(20);
+        left: r(80);
+        line-height: 0;
+      }
+      .protect-height{
+        padding: r(20) r(30) r(20) r(230);
+        line-height: r(50);
+        display: inline-block;
+        width: 100%;
+      }
+      i{
+        position: absolute;
+        left:r(26);
+        color: #ff6e07;
+        font-size: r(45);
+        line-height: r(90);
+      }
+      .icon-jine{
+        font-size: r(50);
+        left: r(25);
+      }
+      .protect-col{
+        color: #000;
+        margin-right: r(20);
+        line-height: r(50);
+      }
+      .protect-explain{
+        position: relative;
+        display: block;
+      }
+      .protect-explain:after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        right: 0;
+        margin-top: r(-14);
+        width: r(18);
+        height: r(18);
+        border-right: 1px solid #b5b5b5;
+        border-top: 1px solid #b5b5b5;
+        transform: rotate(45deg);
+      }
+      .protect-explain-hid{
+        display: none;
+      }
+
+    }
+    li:last-of-type{
+      padding: r(20) r(20) r(20) r(80);
+      line-height: r(50);
+      i{
+        margin-top: r(-20);
+        font-size: r(76);
+        left: r(12);
+      }
+      p{
+        border-bottom: 0;
+      }
+    }
+  }
+}
+.add-protect-explain-hid{
+  .protect-explain-hid{
+    display: block!important;
+  }
+  .protect-explain:after{
+    transform: rotate(135deg)!important;
+}
+}

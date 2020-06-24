@@ -1,0 +1,198 @@
+{
+    "data": [
+        {
+            "content": "广发广泛撒",
+            "createBy": 1,
+            "createTime": "2017-07-04 00:00:00",
+            "id": 5,
+            "isChecked": false, 
+            "isHot": true,
+            "nickname": "T博士",
+            "headimgurl":"http://pic.qiantucdn.com/58pic/17/81/89/12N58PICuyf_1024.jpg",
+            "imgUrls":["http://img05.tooopen.com/images/20150202/sy_80219211654.jpg",
+            		   "http://img07.tooopen.com/images/20170703/tooopen_sy_215265449285.jpg"
+                      ],
+            "videoUrls":"http://vjs.zencdn.net/v/oceans.mp4",
+            "replys": [
+				            {
+				                "content": "fdafdasfdafdas464465464",
+				                "enable": true,
+				                "id": 4,
+				                "isBest": true,
+				                "isChecked": true,
+				                "nickname": "T博士",
+				                "postId": 1,
+				                "updateBy": 1,
+				                "updateTime": 1498579200000,
+				                "userId": 0
+				            },
+				            {
+				                "content": "fdafdasfdafdas爱爱爱",
+				                "enable": true,
+				                "id": 1,
+				                "isBest": false,
+				                "isChecked": true,
+				                "nickname": "郭德纲",
+				                "postId": 1,
+				                "updateBy": 1,
+				                "updateTime": 1498579200000,
+				                "userId": 1
+				            },
+				            {
+				                "content": "1111111111111爱爱爱",
+				                "enable": true,
+				                "id": 2,
+				                "isBest": false,
+				                "isChecked": true,
+				                "nickname": "法国代购",
+				                "postId": 1,
+				                "updateBy": 1,
+				                "updateTime": 1498579200000,
+				                "userId": 1
+				            },
+				            {
+				                "content": "fdafdasfdafdas爱爱爱",
+				                "enable": true,
+				                "id": 3,
+				                "isBest": false,
+				                "isChecked": true,
+				                "nickname": "7878",
+				                "postId": 1,
+				                "updateBy": 1,
+				                "updateTime": 1498579200000,
+				                "userId": 1
+				            }
+				        ],
+            "updateBy": 1,
+            "updateTime": 1498665600000,
+            "userId": 0
+        },
+        {
+            "content": "本意是稳妥可靠保障；后延伸成一种保障机制，是用来规划人生财务的一种工具，是市场经济条件下风险管理的基本手段，是金融体系和社会保障体系的重要的支柱。保险是指投保人根据合同约定，向保险人支付保险费，保险人对于合同约定的可能发生的事故因其发生所造成的财产损失承担赔偿保险金责任，或者被保险人死亡、伤残、疾病或者达到合同约定的年龄、期限等条件时承担给付保险金责任的商业保险行为。从经济角度看，保险是分摊意外事故损失的一种财务安排；从法律角度看，保险是一种合同行为，是一方同意补偿另一方损失的一种合同安排；从社会角度看，保险是社会经济保障制度的重要组成部分，是社会生产和社会生活“精巧的稳定器”；从风险管理角度看，保险是风险管理的一种方法",
+            "createBy": 1,
+            "createTime": "2017-07-04 00:00:00",
+            "id": 4,
+            "isChecked": false, 
+            "isHot": false,
+            "nickname": "T博士",
+            "headimgurl":"http://pic.qiantucdn.com/58pic/17/81/89/12N58PICuyf_1024.jpg",
+            "imgUrls":["http://img05.tooopen.com/images/20150202/sy_80219211654.jpg",
+            		   "http://img07.tooopen.com/images/20170703/tooopen_sy_215265449285.jpg"
+                      ],
+            "videoUrls":"http://vjs.zencdn.net/v/oceans.mp4",
+            "replys": [
+				            {
+				                "content": "fdafdasfdafdas464465464",
+				                "enable": true,
+				                "id": 4,
+				                "isBest": true,
+				                "isChecked": true,
+				                "nickname": "T博士",
+				                "postId": 1,
+				                "updateBy": 1,
+				                "updateTime": 1498579200000,
+				                "userId": 0
+				            },
+				            {
+				                "content": "fdafdasfdafdas爱爱爱",
+				                "enable": true,
+				                "id": 1,
+				                "isBest": false,
+				                "isChecked": true,
+				                "nickname": "郭德纲",
+				                "postId": 1,
+				                "updateBy": 1,
+				                "updateTime": 1498579200000,
+				                "userId": 1
+				            },
+				            {
+				                "content": "1111111111111爱爱爱",
+				                "enable": true,
+				                "id": 2,
+				                "isBest": false,
+				                "isChecked": true,
+				                "nickname": "法国代购",
+				                "postId": 1,
+				                "updateBy": 1,
+				                "updateTime": 1498579200000,
+				                "userId": 1
+				            },
+				            {
+				                "content": "fdafdasfdafdas爱爱爱",
+				                "enable": true,
+				                "id": 3,
+				                "isBest": false,
+				                "isChecked": true,
+				                "nickname": "7878",
+				                "postId": 1,
+				                "updateBy": 1,
+				                "updateTime": 1498579200000,
+				                "userId": 1
+				            }
+				        ],
+            "updateBy": 1,
+            "updateTime": 1498665600000,
+            "userId": 0
+        },
+        {
+            "content": "798798465465465",
+            "createBy": 1,
+            "createTime": "2017-7-4 00:00:00",
+            "id": 3,
+            "isChecked": false, 
+            "isHot": true,
+            "nickname": "T博士",
+            "headimgurl":"http://pic.qiantucdn.com/58pic/17/81/89/12N58PICuyf_1024.jpg",
+            "replys": [
+				            {
+				                "content": "fdafdasfdafdas464465464",
+				                "enable": true,
+				                "id": 4,
+				                "isBest": true,
+				                "isChecked": true,
+				                "nickname": "T博士",
+				                "postId": 1,
+				                "updateBy": 1,
+				                "updateTime": 1498579200000,
+				                "userId": 0
+				            },
+				            {
+				                "content": "fdafdasfdafdas爱爱爱",
+				                "enable": true,
+				                "id": 1,
+				                "isBest": false,
+				                "isChecked": true,
+				                "nickname": "郭德纲",
+				                "postId": 1,
+				                "updateBy": 1,
+				                "updateTime": 1498579200000,
+				                "userId": 1
+				            },
+				            {
+				                "content": "fdafdasfdafdas爱爱爱",
+				                "enable": true,
+				                "id": 2,
+				                "isBest": false,
+				                "isChecked": true,
+				                "nickname": "法国代购",
+				                "postId": 1,
+				                "updateBy": 1,
+				                "updateTime": 1498579200000,
+				                "userId": 1
+				            }
+				        ],
+            "updateBy": 1,
+            "updateTime": 1498665600000,
+            "userId": 0
+        }
+    ],
+    "current": 1,
+    "size": 1,
+    "pages": 3,
+    "total": 3,
+    "iTotalRecords": 3,
+    "iTotalDisplayRecords": 3,
+    "httpCode": 200,
+    "msg": "请求成功",
+    "timestamp": 1498705335668
+}

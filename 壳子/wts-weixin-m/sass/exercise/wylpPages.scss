@@ -1,0 +1,146 @@
+.wylppages{
+    width:r(750);
+    overflow: hidden;
+    background: #2235cd;
+    margin:0 auto;
+    &>.wylpldfwContent{
+        width:r(750);
+        height: 100%;
+        overflow-x:hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        &>img{
+            width:r(750);
+            display:block;
+        }
+    }
+}
+.wylppages1{
+    width:r(750);
+    overflow: hidden;
+    background: #f1f1f1;
+    margin:0 auto;
+    &>.wylpldfwContent1{
+        width:r(750);
+        height: 100%;
+        overflow-x:hidden;
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+        &>.top{
+            background:url('../images/wylp/top.png') no-repeat;
+            background-size: 100% 100%;
+            width:r(750);
+            height:r(327);
+        }
+        &>.content{
+            width:r(682);
+            margin:r(-170) r(34) r(27) r(34);
+            background:#fff;
+            min-height:r(300);
+            border-radius:r(10);
+            position: relative;
+            font-size:r(20);
+            padding:r(20) r(0);
+            &>.header{
+                padding:r(0) r(20);
+                &>.title{
+                    font-size:r(24);
+                    color:#000;
+                    font-weight:bold;
+                }
+                &>.d1,&>.d2{
+                    font-size:r(20);
+                    text-indent:r(40);
+                    line-height:r(30);
+                }
+                &>.d2{
+                    margin-top:r(30);
+                }
+            }
+            &>.fwcn{
+                &>.title{
+                    font-size:r(24);
+                    color:#000;
+                    text-align:center;
+                    line-height:r(69);
+                    font-weight:bold;
+                }
+                &>.box{
+                    padding:r(0) r(18) r(0) r(13);
+                    &>.boxline{
+                        overflow: hidden;
+                        height:100%;
+                        display:flex;
+                        &>.boxitem{
+                            min-height:100%;
+                            width:r(320);
+                            background:#eaf0ff;
+                            margin-bottom:r(9);
+                            padding:r(20);
+                            border-radius:r(10);
+                            position: relative;
+                            &>.index{
+                                font-size:r(47);
+                                color:#dae5ff;
+                                position: absolute;
+                                left:r(0);
+                                top:r(0);
+                                font-weight:bold;
+                                line-height: r(50);
+                            }
+                            &>.title{
+                                font-size:r(24);
+                                color:#1e68ed;
+                                font-weight:bold;
+                                position: absolute;
+                                left:r(20);
+                                top:r(20);
+                            }
+                            &>.des{
+                                font-size:r(18);
+                                color:#666;
+                                margin-top:r(52);
+                            }
+                            &>img{
+                                width:r(305);
+                                margin-left:r(-12);
+                            }
+                        }
+                        &>.left{
+                            float:left;
+                            height:auto;
+                            margin-right:r(10);
+                        }
+                        &>.right{
+                            float:right;
+                            height:auto;
+                        }
+                    }
+                }
+            }
+            &>.bottom{
+                font-size:r(20);
+                text-indent:r(40);
+                line-height:r(30);
+                padding:r(22) r(20) r(105) r(20);
+            }
+            &>.gongzhang{
+                min-width:r(260);
+                height:r(178);
+                position: absolute;
+                bottom:r(-27);
+                right:r(27);
+                text-align:center;
+                background:url('../images/wylp/bottom.png') center no-repeat;
+                background-size:r(182) r(180);
+                line-height:r(178);
+                white-space:nowrap;
+                &>span{
+                    font-size:r(23);
+                    color:#000;
+                    font-weight:bold;
+                }
+            }
+        }
+    }
+}

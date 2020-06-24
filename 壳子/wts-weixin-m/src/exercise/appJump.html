@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"", "keywords": "", "description": "" })
+</head>
+<body>
+</body>
+<script src="https://libs.wts999.com/nativeApp.min.js?r=@@time"></script>
+    <script>
+        $(function(){
+            var appUrl=$.getQueryString("appUrl");
+            var h5Url=$.getQueryString("h5Url");
+            if($.tools().isWtsNativeApp() && appUrl){
+                nativeApp.general.deviceready(function(){
+                    nativeApp.general.router({url:appUrl});
+                })
+            }else if(h5Url){
+                location.replace(h5Url)
+            }
+        })
+    </script>
+</html>

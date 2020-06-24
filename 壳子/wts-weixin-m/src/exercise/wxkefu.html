@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        @@include("include/header.htm",{ "title":"微信客服", "keywords": "", "description": "" })
+    </head>
+
+    <body>
+        <!-- @@include("include/ready-ani.htm") -->
+        <div class="body-container wxkefu">
+
+        </div>
+    </body>
+    @@include("include/footer.htm",{ "common":"common_all.js?v=@@hash" })
+    <script type="text/html" id="wxkefu">
+        <div class="erweima">
+            <div class="title">添加您的专属微信客服</div>
+            {{if !isWtsNativeApp}}
+            <div class="title">长按识别二维码</div>
+            {{/if}}
+            <div class="pic">
+                <img src="{{ossUrl}}" alt />
+            </div>
+            <div class="title wxNumber">微信号:{{wechatNumber}}</div>
+            <div class="time">服务时间:9:00~21:00</div>
+        </div>
+        <div class="bottom">
+            {{if isWtsNativeApp}}
+                <div class="downloadEwm">保存二维码至相册</div>
+            {{/if}}
+            <div class="copyWx" id="copyBtn" data-clipboard-text="{{wechatNumber}}">复制微信号</div>
+        </div>
+    </script>
+    <script src="@@webRoot/lib/js/clipboard.min.js"></script>
+    <script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+     
+    <script>
+        $(function () {
+            var login = wtsLogin;
+            login.init({env:$.globedata.environment}, function(user){
+                if(user && user.token)sessionStorage.setItem("token",user.token);
+                if(!user || !user.id){
+                    if($.tools().isWtsNativeApp()){
+                        nativeApp.general.deviceready(function () {
+                            nativeApp.general.closeWebView();
+                            var url = encodeURIComponent(window.location.href);
+                            nativeApp.general.router({url:"wts://web?force=1&url="+url});
+                        })
+                        return;
+                    }
+                    window.location.href= "http://" + $.domain.replace(/www/,"bx") + "/index.html#/BDmobileHtml?type=2&redUrl="+ window.location.href;
+                    return;
+                }
+                getWxkefuInfo();
+                //获取微信客服信息
+                function getWxkefuInfo() {
+                    var WxkefuInfo = {
+                        type: "get",
+                        url: "/app/common/api/crmWxServer",
+                        success: function (data, isError) {
+                            if (!isError) {
+                                return;
+                            }
+                            data.data.isWtsNativeApp = $.tools().isWtsNativeApp();
+                            var html = template("wxkefu", data.data);
+                            $(".wxkefu").html(html);
+
+                            //保存二维码的点击事件
+                            $(".downloadEwm").click(function () {
+                                if (!data.data.ossUrl) {
+                                    return;
+                                }
+                                nativeApp.general.deviceready(function () {
+                                    nativeApp.general.download({
+                                        url:data.data.ossUrl,
+                                        type:"image"
+                                    });
+                                });
+                            })
+
+                            var btn = document.getElementById('copyBtn');
+                            var clipboard = new ClipboardJS(btn);
+
+                            clipboard.on('success', function (e) {
+                                $.layerMsg("复制成功!");
+                            });
+
+                            clipboard.on('error', function (e) {
+                                console.log(e);
+                            });
+                        }
+                    };
+                    $.ajaxPackage(WxkefuInfo);
+                }
+            });
+            
+        })
+    </script>
+
+</html

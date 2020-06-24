@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"保单详情", "keywords": "", "description": "" })
+</head>
+
+<body>
+    @@include("include/ready-ani.htm")
+    <div class="body-container products-detail" id="detailMain">
+
+        <div class="modal hide" id="modalBox">
+            <div class="cover">
+                <img src="@@webRoot/lib/images/products/1/close.png" class="close">
+                <div class="text1">微信内搜索并关注<br>“<span class="red">梧桐树保险网</span>”公众号</div>
+                <div class="text2">可免费获得<span class="red">价值99元</span>的专属理赔指引<br>也可享受在线理赔、查保单等服务</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script id="detailTemp" type="text/html">
+    {{if (needAutoPay == 4 || needAutoPay == 5) && effectiveStatus == 1}}
+    <div class="error-box margin-bottom-20">
+        <div class="icon" id="payBtn">补缴保费</div>
+        <div class="tx3">请补缴第<span class="red">{{overdueInfo.overduePeriod}}</span>期保费<span class="red">{{overdueInfo.overduePremium}}</span>元</div>
+        <div class="tx4">保障将于<span class="red">{{overdueInfo.overdueDays||'今'}}</span>天后失效，请补缴逾期保费</div>
+    </div>
+    {{else if (needAutoPay == 2 || needAutoPay == 5) && effectiveStatus == 1}}
+    <div class="error-box margin-bottom-20">
+        <div class="icon" id="openPay">立即开通</div>
+        <img src="@@webRoot/lib/images/products/detail/icon3.png" class="img">
+        <div class="tx1">请开通自动续费</div>
+        <div class="tx2">为保证保单持续有效，请开通自动续费</div>
+    </div>
+    {{else if needAutoPay == 6 && effectiveStatus == 1}}
+    <div class="error-box margin-bottom-20">
+        <div class="tx3">请补缴第<span class="red">{{overdueInfo.overduePeriod}}</span>期保费<span class="red">{{overdueInfo.overduePremium}}</span>元</div>
+        <div class="tx4">将在<span class="red">{{overdueInfo.overdueDate}}</span>前通过微信自动扣费，请保证余额充足</div>
+    </div>
+    {{/if}}
+    {{if effectiveStatus != 1}}
+    <div class="error-box margin-bottom-20">
+        <div class="icon" id="backIndex">立即投保</div>
+        <div class="tx5">保单已失效</div>
+        <div class="tx2">您可再次投保重新获得保障</div>
+    </div>
+    {{/if}}
+    
+    <div class="top-box {{if effectiveStatus != 1}}gray{{/if}}">
+        {{if effectiveStatus == 1}}
+        <img src="@@webRoot/lib/images/products/detail/icon1.png" class="icon">
+        {{else}}
+        <img src="@@webRoot/lib/images/products/detail/icon0.png" class="icon">
+        {{/if}}
+        <div class="text1">{{insuranceProductName}}</div>
+        <div class="text2">{{policyNo}}</div>
+        <div class="text3">由安联财产保险（中国）有限公司承保并负责理赔</div>
+    </div>
+    <div class="info-box margin-top-20">
+        <img src="@@webRoot/lib/images/products/detail/icon2.png" class="icon">
+        <div class="text4"><span>免费</span>获得专属理赔指引</div>
+        <div class="text5">享受在线理赔、查保单等服务<span class="showModal">去看看></span></div>
+    </div>
+    <div class="detail-box margin-top-20">
+        <div class="top-title">保障内容</div>
+        {{each guarantees as data i}}
+        <div class="item">
+            <span class="key">{{data.premiseAttribute}}</span>
+            <span class="text">{{data.guaranteeMoney}}</span>
+        </div>
+        {{/each}}
+        <div class="item">
+            <span class="key">生效日期</span>
+            <span class="text">{{guaranteeStartTime}}</span>
+        </div>
+        <div class="item">
+            <span class="key">终止日期</span>
+            <span class="text">{{guaranteeEndTime}}</span>
+        </div>
+
+        <div class="item margin-top-20">
+            <span class="key">投保人</span>
+            <span class="text">{{policyholderName}}</span>
+        </div>
+        <div class="item margin-bottom-10">
+            <span class="key">被保险人</span>
+            <span class="text">{{insurederName}}</span>
+        </div>
+    </div>
+    <div class="detail-box margin-top-20">
+        <div class="item margin-bottom-10 margin-top-10" id="toList">
+            <span class="key2">实时保费</span>
+            {{if needAutoPay == 1}}
+            <span class="text2"><span>已缴{{premium}}元</span></span>
+            {{else if needAutoPay == 4 || needAutoPay == 5 || needAutoPay == 6}}
+            <span class="text2 red"><span>已欠费{{overdueInfo.overduePremium}}元</span> <img src="@@webRoot/lib/images/products/detail/arr.png" class="arr"></span>
+            {{else}}
+            <span class="text2"><span>已缴{{totalInfo.totalPayPremium}}元（{{totalInfo.paySuccssCount}}期）</span> <img src="@@webRoot/lib/images/products/detail/arr.png" class="arr"></span>
+            {{/if}}
+        </div>
+    </div>
+    <div class="text-btn" id="look">查看<span>电子保单</span></div>
+    <a href="tel://400-9955-788"><div class="submit-btn">我要理赔</div></a>
+</script>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/units/H5Pay.js?r=@@time"></script>
+<script>
+    $(function () {
+        var policyId = $.getQueryString("policyId");
+        var code = "";
+        var orderId = "";
+        var policyNo = "";
+        var overdueId = "";
+        var needAutoPay = "";
+        var CODE_KEY = {
+            "111038":"/m/products/1.html",
+            "111040":"/m/products/2.html",
+        }
+        $("#detailMain").on("click",".showModal", function () {
+            $("#modalBox").removeClass("hide");
+        });
+        $("#detailMain").on("click",".close", function () {
+            $("#modalBox").addClass("hide");
+        });
+        // 交费明细
+        $("#detailMain").on("click","#toList", function () {
+            if(needAutoPay==1){
+                return;
+            }
+            location.href = "./payList.html?policyId="+policyId;
+        });
+        // 返回首页
+        $("#detailMain").on("click","#backIndex", function () {
+            location.href = CODE_KEY[code];
+        });
+        // 打开自动续费
+        $("#detailMain").on("click","#openPay", function () {
+            var url = "/pay/wechat/h5contractonly?tradeNo=" + orderId;
+            if($.tools().isWeiXin()) {
+                url = "/pay/wechat/jsapicontractonly?tradeNo=" + orderId;
+            }
+            location.href = url;
+        });
+        // 交费
+        $("#detailMain").on("click","#payBtn", function () {
+            if(!overdueId) {
+                $.layerAlert("overdueId不存在");
+            }
+            if($.tools().isWeiXin()){//微信
+                new H5Pay().init({
+                    orderId: overdueId,
+                    payWay: 1,
+                    orderType: 'briefPappay',
+                    paySuccessUrl: './payStatus.html?renewals=1'
+                }, function(r) {
+                    if (!r.code) {
+                        $.layerMsg(r.msg);
+                        return;
+                    }
+                })
+            }else if($.tools().mobile){//手机浏览器
+                var url = "/pay/wechat/h5?orderType=briefPappay&tradeNo="+overdueId
+                location.href = url;
+            }else{//PC浏览器
+                var url = "/payment-html/cashier_web.html?orderType=briefPappay&tradeNo="+overdueId
+                location.href = url;
+            }
+        });
+        // 查看电子保单
+        $("#detailMain").on("click","#look", function () {
+            var startAxList = {
+                type: "post",
+                url: "/tools/bdurl/api/verifyBdurlExist",
+                contentType: "application/json;charset=UTF-8",
+                data: JSON.stringify({ policyNo: policyNo }),
+                success: function (ajaxData, isError) {
+                    console.log(ajaxData);
+                    if (!isError) {
+                        return;
+                    }
+                    location.href = "/tools/bdurl/api/downloadPolicy?policyNo=" + policyNo + "&channel=brief";
+                }
+            }
+            $.ajaxPackage(startAxList);
+        });
+
+        getData();
+
+        function getData() {
+            if(!policyId){
+                $.layerAlert("policyId不存在");
+                return;
+            }
+            var startAxList = {
+                type: "post",
+                url: "/bus/core/brief/api/policyDetail",
+                data: { policyId: policyId },
+                success: function (ajaxData, isError) {
+                    console.log(ajaxData);
+                    $(".lz-readys").remove();
+                    if (!isError) {
+                        return;
+                    }
+                    // if(ajaxData.data.needAutoPay == 2 || ajaxData.data.needAutoPay == 5){
+                    //     ajaxData.data.needAutoPay = 4;
+                    // }
+                    if(ajaxData.data.needAutoPay == 4 || ajaxData.data.needAutoPay == 5){
+                        var appid = $.globedata.environment==1?"wx3bbb18bc95bc7cff":"wx04452e22173121e5";
+                        new H5Pay().getOpenId({
+                            appid: appid,
+                            ajaxType: 1,
+                        });
+                    }
+                    if(ajaxData.data.overdueInfo){
+                        overdueId = ajaxData.data.overdueInfo.overdueId;
+                    }else{
+                        ajaxData.data.overdueInfo = {};
+                        console.log("data.overdueInfo 不存在");
+                    }
+                    orderId = ajaxData.data.orderId;
+                    policyNo = ajaxData.data.policyNo;
+                    code = ajaxData.data.code;
+                    needAutoPay = ajaxData.data.needAutoPay;
+                    var detailTemp = template("detailTemp", ajaxData.data);
+                    $("#detailMain").prepend(detailTemp);
+                }
+            }
+            $.ajaxPackage(startAxList);
+        }
+    });
+</script>
+
+</html

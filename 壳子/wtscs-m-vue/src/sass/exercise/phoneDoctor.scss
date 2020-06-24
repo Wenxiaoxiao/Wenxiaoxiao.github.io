@@ -1,0 +1,84 @@
+.phone-doctor {
+    background-color: #86ccff;
+    height: 100vh;
+    padding-bottom: r(100);
+    .panel {
+      height: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .img {
+        width: 100%;
+    }
+    .box {
+        width: 100%;
+        background: url("~@/exercise/phoneDoctor/box_bg.png") no-repeat;
+        background-size: 100% 100%;
+        padding: r(100) r(15) r(30);
+        font-size: r(28);
+        .line {
+            padding-left: r(80);
+            padding-right: r(60);
+            margin-bottom: r(15);
+            text-align: justify;
+            background: url("~@/exercise/phoneDoctor/icon1.png") no-repeat;
+            background-size: r(30) r(30);
+            background-position: r(40) r(10);
+        }
+        .bg-img {
+            background: url("~@/exercise/phoneDoctor/box_bg.png") no-repeat;
+            background-size: 100% 100%;
+            padding-left: r(200);
+        }
+    }
+    .info-box {
+        color: #18336b;
+        text-align: center;
+        padding: 0 r(40) r(40);
+        font-size: r(28);
+        .title-box {
+            font-size: r(30);
+            margin-bottom: r(10);
+            img {
+                vertical-align: middle;
+                width: r(40);
+            }
+            span {
+                vertical-align: middle;
+            }
+        }
+    }
+    .bottom-box {
+        line-height: r(100);
+        height: r(100);
+        background: #fff;
+        padding-left: r(30);
+        position: fixed;
+        bottom: 0;
+        width: 10rem;
+        .money-box {
+            display: inline-block;
+            font-size: r(40);
+            color: #ff6c00;
+            font-weight: bold;
+            .old {
+                height: 100%;
+                text-decoration: line-through;
+                font-size: r(25);
+                font-weight: initial;
+                color: #999999;
+            }
+        }
+        .button {
+            font-size: r(30);
+            background: #116ef9;
+            color: #fff;
+            width: 45%;
+            text-align: center;
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+        }
+    }
+}

@@ -1,0 +1,72 @@
+.myclaims{
+    .box{
+        position: relative;
+        width: 100%;
+        background-color: #fff;
+        padding: 5px r(30);
+        font-size: r(32);
+        p.t{
+            font-size: r(30);
+            line-height: 1.2;
+            padding: 3px 0;
+            word-break: break-all;
+        }
+        p.h{
+            font-size: r(32);
+            font-weight: 900;
+        }
+        .top{
+            position: relative;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ececec;
+            margin-bottom: 5px;
+            .done{
+                position: absolute;
+                right: 10px;
+                bottom: 5px;
+                color: $baseColor;
+            }
+        }
+        .prompt{
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+            &:last-child{
+                border: none;
+            }
+            .list-form{
+                font-size: r(34);
+                line-height: 1.8;
+                text-align: center;
+            }
+            .left-yuan{
+                position: relative;
+                font-size: r(30);
+                line-height: 25px;
+                color: #000;
+                padding-left: 10px;
+                &::before{
+                    content: '';
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                    background-color: #000;
+                    position: absolute;
+                    left: 0;
+                    top: 12px;
+                }
+            }
+        }
+        
+    }
+    .title{
+        font-size: r(36);
+        line-height: 1.2;
+        padding-left: 5px;
+        border-left: 2px solid $baseColor;
+        margin: 10px 0 10px r(30);
+        span{
+            font-size: r(28);
+            color: #666;
+        }
+    }
+}

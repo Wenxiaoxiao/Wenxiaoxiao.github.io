@@ -1,0 +1,83 @@
+<header class="layout-header">
+    <div class="header">
+        <a class="a_left">
+            <span class="icon iconfont icon-jiantouzuo drawer"></span>
+        </a>
+        <div class="logo-title">
+            @@title
+        </div>
+        <div class="btns">
+            <span id="icon-icon11" class="icon iconfont icon-gengduo2 drawer"></span>
+        </div>
+    </div>
+</header>
+<div class="xrk-header-pull-bg"></div>
+<div class="xrk-header-pull ">
+    <img content="img-t" src="https://www.wts999.com/r/cms/www/mobile/images/icon_up.png" class="pull-up">
+    <a href="https://www.wts999.com">
+        <div>官网首页</div>
+    </a>
+    <a href="http://bx.wts999.com/index.html#/">
+        <div>保险商城</div>
+    </a>
+    <a href="https://bx.wts999.com/m/index.html#/claim">
+        <div>梧优理赔</div>
+    </a>
+    <!-- <a href="https://bx.wts999.com/index.html#/strategy">
+        <div>投保攻略</div>
+    </a>
+    <a href="https://www.wts999.com/question/question.html">
+        <div>保险问答</div>
+    </a> -->
+    <a href="https://bx.wts999.com/m/#/exercise/counselor">
+        <div>保险顾问</div>
+    </a>
+    <a href="https://www.wts999.com/theme/m/bdfw.html">
+        <div>管家服务</div>
+    </a>
+    <a href="https://www.wts999.com/dz/dz.html">
+        <div>方案定制</div>
+    </a>
+    <!-- <a href="https://www.wts999.com/bxzzcx/bxzzcx.html">
+        <div>资质查询</div>
+    </a> -->
+    <!-- <a href="https://bx.wts999.com/m/exercise/customization_home.html?wtsCache=1560938542336">
+        <div>方案定制</div>
+    </a> -->
+    <a href="http://bx.wts999.com/index.html#/personal">
+        <div>个人中心</div>
+    </a>
+    <a href="https://webpage.qidian.qq.com/2/chat/h5/index.html?linkType=1&env=ol&kfuin=2852150563&fid=162&key=3635f50f03b5a57b7dbb7656c9868ee1&cate=7&type=10&ftype=1&_type=wpa&qidian=true&translateSwitch=0&roleValue=1&roleData=69">
+        <div>在线客服</div>
+    </a>
+</div>
+
+<script>
+    $(function () {
+        if($.tools().isAL() || $.tools().isWtsNativeApp()){
+            $(".layout-header").hide();
+        }
+        var $from = $.getQueryString("from"); //来自哪里
+        if($from == "app")$(".layout-header").hide()
+        //菜单
+        $("#icon-icon11").on("click", function () {
+            $(".xrk-header-pull-bg").show();
+            $(".xrk-header-pull").addClass("active");
+        });
+        $(".xrk-header-pull-bg").on("click", function () {
+            $(".xrk-header-pull-bg").hide();
+            $(".xrk-header-pull").removeClass("active");
+        });
+
+        $(".a_left").click(function(){
+            var history = window.history;
+            if (history.length > 1) {
+                window.history.go(-1)
+            } else {
+                location.href = "https://www.wts999.com/"
+            }
+        })
+
+
+    })
+</script>

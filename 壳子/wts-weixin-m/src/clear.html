@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+
+</head>
+<body>
+</body>
+<script src="@@webRoot/lib/js/jquery.min.js"></script>
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+
+<script>
+    var environment='/* @echo NODE_ENV */';//0-测试，1-正式，2-灰度
+    clearCookie()
+    function clearCookie(){
+        if(environment==1){
+            $.cookie("WTS_TOKEN_A", '',{expires: 1, path: "/", domain: "wts999.com", secure: true});
+            $.cookie("WTS_USER_3", '',{expires: 1, path: "/", domain: "wts999.com", secure: true});
+        }else{
+            $.cookie("WTS_TOKEN_A", '',{expires: 1, path: "/", domain: "wts9999.net", secure: true});
+            $.cookie("WTS_USER_3", '',{expires: 1, path: "/", domain: "wts9999.net", secure: true});
+        }
+        
+    }
+    localStorage.clear();
+    sessionStorage.clear();
+    // setTimeout(function(){
+    //     location.href = "https://bx.wts9999.net/index.html#/";
+    // },500)
+    
+    function setCookie(name, value) {
+        var Days = 30;
+        var exp = new Date();
+        //exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+        exp.setTime(exp.getTime() + +10*1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    }
+</script>
+</html>

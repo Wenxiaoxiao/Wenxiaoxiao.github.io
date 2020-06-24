@@ -1,0 +1,109 @@
+.shareReward{
+  width: r(750);
+  height: 100%;
+  overflow: hidden;
+  &>.header{
+    width: r(750);
+    height: r(336);
+    position: relative;
+    &>img{
+      width: r(750);
+      height: r(336);
+    }
+    &>.txt{
+      width: r(750);
+      height: r(336);
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #fff;
+      font-size: r(26);
+      &>.d1{
+        height: r(214);
+        text-align: center;
+        padding: r(54) 0;
+        .total{
+          font-size:r(48);
+          font-weight: bold;
+        }
+      }
+      &>.d2{
+        width: 100%;
+        height: r(120);
+        border-top: r(2) solid #ffb64b;
+        &>div{
+          width: 50%;
+          float: left;
+          text-align: center;
+          padding:r(20) 0;
+        }
+        .left{
+          border-right: r(2) solid #ffb64b;
+        }
+      }
+    }
+  }
+  &>.space{
+    background: #eee;
+    height: r(16);
+    width: r(750);
+  }
+  &>.content{
+    &>.tabtitle{
+      font-size: r(29);
+      color: #000;
+      width: 100%;
+      height: r(80);
+      &>.tab{
+        width:r(375);
+        height: r(80);
+        line-height: r(80);
+        text-align:center;
+        float: left;
+      }
+      &>.active{
+        background:url("~@/shareit/line.png") no-repeat center bottom;
+        background-size:r(149) r(5);
+      }
+    }
+    .tablist{
+      border-top: r(2) solid #ddd;
+      padding: r(0) r(30);
+      &>.nodata{
+        line-height:r(400);
+        font-size:r(30);
+        text-align:center;
+      }
+      &>.item{
+        // height: r(144);
+        border-bottom: r(2) solid #ddd;
+        padding: r(28) 0;
+        overflow: hidden;
+        &>.itemdetail{
+          overflow: hidden;
+          &>.left{
+            float: left;
+            &>.d1{
+              font-size: r(30);
+              &>.orange{
+                color: #ff9e0c;
+              }
+            }
+          }
+          &>.right{
+            float: right;
+            font-size: r(25);
+            color: #999;
+          }
+        }
+        &>.d2{
+          font-size: r(27);
+          &>.seemore{
+            color:#ff9e0c;
+            font-size: r(20);
+          }
+        }
+      }
+    }
+  }
+}

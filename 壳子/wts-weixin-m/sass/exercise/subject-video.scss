@@ -1,0 +1,138 @@
+.subject-video{
+    // 公共
+    .video-title-h3{
+        font-size: r(34);
+        font-weight: 900;
+        .iconfont{
+            color: $font-color-ff6e06;
+            font-size: r(40);
+            font-weight: 100
+        }
+    }
+    .radio-box-blank{
+        width: 100%;
+        height: 40px;
+    }
+    .radio-box{
+        background-color: #fff;
+        margin: 10px auto;
+        border-radius: 30px;
+        box-shadow: 0 0 5px 5px rgba(48,154,255,.1);
+        width: 90%;
+        z-index: 99;
+        text-align: center;
+        .audio{
+            position: absolute;
+            left: -9999px;
+            top: 0;
+        }
+    }
+    .video-fl{
+        height: r(36);
+        text-align: center;
+        line-height: r(36);
+        color: #999;
+        .iconfont {
+            font-size: r(38);
+            // vertical-align: middle;
+        }
+        .icon-yanjing{
+            font-size: r(40);
+        }
+        span{
+            font-size: r(28); 
+            padding: 0 r(10);
+            display: inline-block;
+            height: r(36);
+            line-height: r(36)
+        }
+        &.video-link{
+            &.active{
+                .iconfont{
+                    color: $font-color-ff6e06;
+                }
+            }
+        }
+    }
+    .video-ul{
+        .video-list{
+            display: block;
+            height: r(210);
+            padding: r(20) 0 0;
+            .video-list-left{
+                position: relative;
+                width: r(236);
+                height: r(132);
+                .video-cover{
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                }
+                .video-icon-start{
+                    position: absolute;
+                    width: r(68);
+                    height: r(68);
+                    left: 50%;
+                    top: 50%;
+                    @include transform(translate(-50%,-50%));
+                }
+                .pay-time{
+                    position: absolute;
+                    right: 3px;
+                    bottom: 0px;
+                    font-size: r(24);
+                    color: #fff;
+                }
+            }
+            .video-details-right{
+                width: r(420);
+                height: r(132);
+                font-size: r(30);
+                color: #000;
+            }
+            .video-function-bottom{
+                margin-top: r(10);
+                .video-fl{
+                    margin-right: r(20);
+                }
+            }
+        }
+    }
+// 公共 end
+    .video-pay-box{
+        background-color: #fff;
+        #AliPlay{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 97;
+        }
+        .video-describe{
+            font-size: r(30);
+            padding: r(25) r(15);
+            background-color: #fff;
+            color: #000;
+            display: block;
+            .video-details{
+                color: #666;
+                padding-right: r(15);
+                i{
+                    font:400 13px/13px simsun;
+                }
+            }
+        }
+        .video-function{
+            display: block;
+            height: r(66);
+            background-color: #fff;
+            padding-bottom: r(30);
+            .video-fl{
+                width: 33.33%;
+            }
+        }
+    }
+    .video-relevance{
+        background-color: #fff;
+        padding: r(20) r(20);
+    }
+}

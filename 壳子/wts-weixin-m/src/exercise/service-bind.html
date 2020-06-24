@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"绑定受检人", "keywords": "", "description": "" })
+    <link rel="stylesheet" href="@@webRoot/lib/css/date.css">
+</head>
+
+<body>
+    <div id="datePlugin"></div>
+    <div class="body-container checkDetial">
+        <div class="desContent">
+            <div class="desTitle">
+                受检人信息
+            </div>
+            <div class="checkMsg">
+                <div class="checkMsgList clearfix">
+                    <span>检测类型</span>
+                    <span class="fr" id="productName"></span>
+                </div>
+                <div class="checkMsgList clearfix">
+                    <span>姓名</span>
+                    <div class="fr rigDiv">
+                        <input type="text" placeholder="点击输入名字" class="inp checkName">
+                    </div>
+                </div>
+                <div class="checkMsgList clearfix">
+                    <span>性别</span>
+                    <div class="fr rigDiv" id="checkSex">
+                        <span class="checkList" data-type="1">男</span>
+                        <span class="checkList" data-type="2">女</span>
+                    </div>
+                </div>
+                <div class="checkMsgList clearfix">
+                    <span>出生日期</span>
+                    <div class="fr rigDiv timeValue">请选择</div>
+                </div>
+            </div>
+            <p class="lastP">
+                为了更好的检测效果请您核对后如实填写受检人信息，绑定成功后不可更改
+            </p>
+        </div>
+        <div class="bindClick">确认</div>
+    </div>
+</body>
+@@include("include/footer.htm")
+<!-- 时间选择器 -->
+<script src="@@webRoot/lib/js/iscroll.js"></script>
+<script src="@@webRoot/lib/js/date2.js"></script>
+<script>
+    $(function(){
+        var name=$.getQueryString('name',1);
+        var inspects=sessionStorage.service_inspects?JSON.parse(sessionStorage.service_inspects):'';
+        var checkAge='';
+        if(name)$('#productName').html(name);
+        if(inspects){
+            if(inspects.inspectPersonName)$('.checkName').val(inspects.inspectPersonName);
+            if(inspects.inspectPersonBirthday)$('.timeValue').text(inspects.inspectPersonBirthday);
+            checkAge=inspects.inspectPersonBirthday;
+        }
+        if(name.indexOf('男')>-1){
+            $('.checkList').eq(0).addClass('active');
+            $('.checkList').attr('data-disabled',true);
+        }else if(name.indexOf('女')>-1){
+            $('.checkList').eq(1).addClass('active');
+            $('.checkList').attr('data-disabled',true);
+        }
+        $(".checkList").click(function() {
+            var disabled=$(this).attr('data-disabled');
+            if(disabled){
+                return $.layerMsg('该产品仅支持当前性别受检人！')
+            };
+            $(this).addClass("active").siblings().removeClass("active");
+        });
+        var regular = $.regular();
+        $(".bindClick").click(function() { //绑定
+            var checkName = $(".checkName").val().trim(); //姓名
+            var checkSex = $("#checkSex").find(".active").attr("data-type"); //性别
+            if (!checkName || checkName.length>14) {
+                $.layerMsg("姓名尚未填写或输入有误");
+            } else if (!checkAge) {
+                $.layerMsg("出生日期尚未选择")
+            }else if (!checkSex) {
+                $.layerMsg("性别尚未选择")
+            } else {
+                $.layerMsg("绑定成功!2秒后调回订单页面！")
+                inspects={
+                    inspectPersonName:checkName,
+                    inspectPersonSex:checkSex,
+                    inspectPersonBirthday:checkAge,
+                }
+                sessionStorage.service_inspects=JSON.stringify(inspects);
+                setTimeout(function(){
+                    window.history.go(-1);
+                },2000)
+            }
+        });
+        if ($(".timeValue").length > 0) {
+            $(".timeValue").click(function() {
+                var begin = $(this).attr("data-begin") || "1950-01-01";
+                var end = $(this).attr("data-end") || "2030-12-31";
+                $(this).date("timeValue", {
+                    beginyear: begin.split("-")[0],
+                    endyear: end.split("-")[0]
+                }, function(time, dom) { //time 当前时间
+                    checkAge=time;
+                })
+            })
+        }
+    })
+</script>
+</html

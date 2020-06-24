@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        <!--测试环境-->
+        @@include("include/header.htm",{ "title":"梧桐树迎新礼包", "keywords": "梧桐树迎新礼包", "description": "" })
+        <style>
+            body,html{
+                background: #e62c28;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- @@include("include/ready-ani.htm") -->
+        <div class="body-container recommended_prize">
+            <!-- 领取成功弹窗 -->
+            <div class="lpcgMask">
+                <div class="lpcg_title">
+                    <div class="imgicon"><i class="iconfont icon-tijiaochenggong"></i></div>
+                    <div class="lpcg_title_desc">恭喜领取成功</div>
+                    <div class="lpcg_title_info">关注梧桐树保险网微信公众号或下载app<br>即可立即领取礼包</div>
+                </div>
+                <div class="lpcg_desc">
+                    <div class="desc_img"><img src="@@webRoot/lib/images/code.jpg" alt=""></div>
+                    <div class="desc_info">梧桐树保险网微信公众号</div>
+                </div>
+                <a class="lpcg_btn" href="https://android.myapp.com/myapp/detail.htm?apkName=com.wts.wtsbxw&ADTAG=mobile">前往下载app</a>
+            </div>
+
+
+            <div class="pic"><img src="@@webRoot/lib/images/exercise/tjyj/tjyj.jpg" alt=""></div>
+            <div class="content">
+                <div class="desc">
+                    <div class="mobile"><input type="text" placeholder="输入手机号"></div>
+                    <div class="code clearfix">
+                        <input type="text" placeholder="验证码">
+                        <span class="getCode">获取验证码</span>
+                    </div>
+                    <div class="submit">立即领取</div>
+                    <div class="activityDescription">
+                        <div class="title">一一一&nbsp;&nbsp;活动规则&nbsp;&nbsp;一一一</div>
+                        <div class="activityContent">
+                            <p>1.此礼包为首次注册梧桐树保险网用户专享,每位用户最多领取一次。</p>
+                            <p>2.梧桐树保险网对本次活动保留最终解释权。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--底部公共部分-->
+        <!--模板引擎-->
+        @@include("include/footer.htm")
+    </body>
+    <script src="@@webRoot/lib/js/layer.js"></script>
+    <script>
+        $(function () {
+            var codeTime = null;  //倒计时对象
+            var t = 60;
+            var userId = $.getQueryString("userId") || "";
+            //验证码状态重置
+            function codeInit() {
+                clearInterval(codeTime);
+                t = 120;
+                $(".getCode").removeClass('active');
+                $(".getCode").html('获取验证码');
+            }
+
+
+            //获取验证码的点击事件
+            $(".code .getCode").click(function () {
+                if ($(this).hasClass("active")) {
+                    return;
+                }
+                var phone = $.trim($(".mobile input").val());
+                if (!phone || phone.length == 0) {
+                    return layer.msg("请先填写手机号在获取验证码!");
+                }
+
+                if (!$.regular().isPhone(phone)) {
+                    return layer.msg("请输入正确的手机号");
+                }
+
+                //开启倒计时
+                $(".getCode").addClass('active');
+                $(".getCode").html(t + 's后重新发送');
+                codeTime = setInterval(function () {
+                    if (t > 1) {
+                        t--;
+                        $(".getCode").html(t + 's后重新发送');
+                    } else {
+                        codeInit();
+                    }
+                }, 1000)
+
+                //发送请求
+                $.ajaxPackage({
+                    type: "post",
+                    url: "/captcha/send/captext?phone=" + phone,
+                    contentType: "application/json",
+                    async: true,
+                    success: function (data, isError) {
+                        if (!isError) {
+                            codeInit();
+                            return;
+                        };
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        codeInit()
+                        console.log(textStatus);
+                    }
+                });
+            })
+
+            //立即领取的点击事件
+            $(".submit").click(function () {
+                var phone = $.trim($(".mobile input").val());
+                var code = $.trim($(".code input").val());
+                var ajaxUrl = "/uc/login/api/h5InviteRegister";
+                if (phone.length == 0) return layer.msg("请输入手机号!");
+                if (!$.regular().isPhone(phone)) return layer.msg("请输入正确的手机号!");
+                if (code.length == 0) return layer.msg("请输入验证码!");
+
+                //加载动画
+                var load = layer.msg('正在验证手机号...', {
+                    icon: 16
+                    , shade: 0.01
+                });
+
+                //绑定手机号请求
+                $.ajaxPackage({
+                    type: "post",
+                    url: ajaxUrl,
+                    contentType: "application/json",
+                    async: true,
+                    data: JSON.stringify({
+                        phone,
+                        captch: code,
+                        inviterId:userId,
+                        integralSceneCode:301
+                    }),
+                    success: function (result, isErrors) {
+                        if (!isErrors) {
+                            layer.close(load);
+                            return;
+                        };
+                        layer.close(load);
+                        if(!result.inviteSuccess){
+                            return layer.alert("你已注册过梧桐树保险网，无法领取新人礼包");
+                        }
+                        $(".lpcgMask").show();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(textStatus);
+                    }
+                });
+            })
+        })
+    </script>
+
+</html>

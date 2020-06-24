@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"家庭保险需求调查问卷", "keywords": "", "description": "三口之家如何投保更省钱？月收入1-2万的家庭如何投保？80后，90后如何买更省钱？这些问题，梧桐树保险专家统统为您规划好！" })
+    <link rel="stylesheet" type="text/css" href="@@webRoot/lib/css/pages/consult.css" />
+</head>
+
+<body>
+    <div class="body-container consult">
+        <img src="@@webRoot/lib/images/consult/banner.jpg" class="banner">
+        <div class="content" id="content">
+
+        </div>
+        <button id="submit" class="btn">限时免费，1对1咨询</button>
+    </div>
+
+</body>
+<script src="@@webRoot/lib/data/consult.js?v=@@time"></script>
+<script src="@@webRoot/lib/js/city-picker.js"></script>
+<script src="@@webRoot/lib/units/lz_cityPicker.js"></script>
+<script type="text/html" id="TrendsTml">
+    {{each data as value n}}
+    {{ if value.type==1}}
+    <div class="from-li">
+        <div class="from-name">{{value.name}}
+            {{if value.force}}
+            <span>*</span>
+            {{/if}}
+        </div>
+        <div class="from-ele" data-type="{{value.type}}" data-name="{{value.name}}" data-code="{{value.code}}">
+            <input type="text" class="input-txt" placeholder="{{value.desc || '请输入'}}">
+        </div>
+
+    </div>
+    {{else if value.type==2}}
+    <div class="from-li">
+        <div class="from-name">{{value.name}}
+            {{if value.force}}
+            <span>*</span>
+            {{/if}}
+        </div>
+        <div class="from-ele" data-type="{{value.type}}" data-name="{{value.name}}" data-code="{{value.code}}">
+            <input type="number" class="input-txt" placeholder="{{value.desc || '请输入'}}">
+        </div>
+
+    </div>
+    {{else if value.type==3}}
+    <div class="from-li">
+        <div class="from-name">{{value.name}}
+            {{if value.force}}
+            <span>*</span>
+            {{/if}}
+        </div>
+        <div class="from-ele" data-type="{{value.type}}" data-name="{{value.name}}" data-code="{{value.code}}">
+            <div class="select-ul">
+                {{each value.data as item i}}
+                <div class="select-li">{{item.name}}</div>
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+    {{else if value.type==4}}
+    <div class="from-li">
+        <div class="from-name">{{value.name}}
+            {{if value.force}}
+            <span>*</span>
+            {{/if}}
+        </div>
+        <div class="from-ele" data-type="{{value.type}}" data-name="{{value.name}}" data-code="{{value.code}}">
+            <div class="common-slec from-city">
+                {{value.desc || '请选择'}}
+            </div>
+        </div>
+
+    </div>
+    {{else if value.type==5}}
+    <div class="from-li">
+        <div class="from-name">{{value.name}} （可多选）
+            {{if value.force}}
+            <span>*</span>
+            {{/if}}
+        </div>
+        <div class="from-ele" data-type="{{value.type}}" data-name="{{value.name}}" data-code="{{value.code}}">
+            <div class="checkbox-ul">
+                {{each value.data as item i}}
+                <div class="checkbox-li">{{item.name}}</div>
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+    {{/if}}
+    {{/each}}
+</script>
+<script>
+    $(function () {
+        var html = template('TrendsTml', {
+            data: consult_infos
+        });
+        $("#content").html(html);
+        events();
+        function events(){
+            $(".checkbox-li").on('click',function(){
+                $(this).toggleClass('active');
+                var value='';
+                $(this).parents('.checkbox-ul').children().each(function(i,e){
+                    if($(this).hasClass('active')){
+                        value+=$(this).text()+',';
+                    }
+                })
+                if(value.length>0){
+                    value=value.substr(0, value.length - 1);
+                }
+                $(this).parents('.from-ele').attr('data-value',value);
+            })
+            $(".select-li").on('click',function(){
+                var value=$(this).text();
+                $(this).addClass('active').siblings().removeClass('active');
+                $(this).parents('.from-ele').attr('data-value',value);
+            })
+            new CityPicker().init({
+                cityData: cityData3,
+                intoDom: '.from-city',
+                templateId: "city_templates",
+                itemNum: 2,
+                symbol: " ",
+            }, function(value, item) {
+
+            });
+        }
+        function getValues(){
+            var result=[];
+            var err=false;
+            $(".from-ele").each(function(){
+                var _this=$(this);
+                var name=_this.attr('data-name');
+                var code=_this.attr('data-code');
+                var type=_this.attr('data-type');
+                var value;
+                if(type==3 || type==5){
+                    value=_this.attr('data-value');
+                }else if(type==4){
+                    value=_this.find('.from-city').text();
+                }else{
+                    return;
+                }
+                if(value)value=value.trim();
+                if(!check(name,code,_this.parents('.from-li'),value)){
+                    err=true;
+                    return false;
+                }
+                result.push({
+                    name:name,
+                    code:code,
+                    value:value,
+                })
+            })
+            if(err){
+                return false
+            }else{
+                return result;
+            }
+        }
+
+        function check(name,code,dom,value){
+            var err=false;
+            if(!value || !value.trim() || value=='请选择'){
+                $.layerAlert(name+'尚未填写');
+                err=true;
+            }else if(code=='tell'){
+                if(!$.regular().isPhone(value)){
+                    $.layerAlert(name+'填写有误！');
+                    err=true; 
+                }
+            }
+            if(err){
+                $("html,body").animate({scrollTop:$(dom).offset().top},1000);
+                return false;
+            }else{
+                return true;
+            }
+
+        }
+
+        $("#submit").on("click", function () {
+            var param=getValues();
+            if(!param)return;
+            var name=$('.from-ele[data-code="name"]').find('input').val();
+            var tell=$('.from-ele[data-code="tell"]').find('input').val();
+            if(!name){
+                $.layerAlert('您的姓名尚未填写');
+                $("html,body").animate({scrollTop:$('#content').offset().top},1000);
+                return;
+            }else if(!tell){
+                $.layerAlert('您的电话尚未填写');
+                $("html,body").animate({scrollTop:$('#content').offset().top},1000);
+                return;
+            }else if(!$.regular().isPhone(tell)){
+                $.layerAlert('您的电话填写有误！');
+                $("html,body").animate({scrollTop:$('#content').offset().top},1000);
+                return;
+            }
+            var postData = {
+                name: name,
+                mobile: tell,
+                url: location.href,
+                type: 6,
+                detail: JSON.stringify(param)
+            }
+            console.log(postData);
+            $.ajaxPackage({
+                url: "/policy/platAppointment/api/addUser",
+                data: JSON.stringify(postData),
+                contentType: "application/json;charset=UTF-8",
+                success: function (data, isError) {
+                    if (!isError) {
+                        return;
+                    }
+                    $.layerAlert('您的问卷已提交成功，请耐心等待规划师联系您！','我知道了',function(){
+                        if($.tools().isWeiXin() && wx){
+                                wx.closeWindow();
+                            }
+                    });
+                }
+            });
+        });
+        //微信分享
+        $.shareWx({
+            img: location.origin + "/m/lib/images/exercise/appointment/share.jpg",
+            title: "家庭保险需求调查问卷",
+            desc: '三口之家如何投保更省钱？月收入1-2万的家庭如何投保？80后，90后如何买更省钱？这些问题，梧桐树保险专家统统为您规划好！'
+        });
+    });
+</script>
+@@include("include/footer.htm")
+
+</html>

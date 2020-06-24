@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+        @@include("include/header.htm",{ "title":"家庭保单智能管家", "keywords": "", "description": "" })
+        <style>
+            .guanjia-bottom-share{
+                position: relative; 
+            }
+            .guanjia-xcx{
+                position: absolute;
+                top: 1rem;
+                right: .78rem;
+                height: 3.2rem;   
+            }
+        </style>
+</head>
+
+<body>
+    <div class="body-container guanjia-container" style="background:#FFFBF0;">
+        <img src="@@webRoot/lib/images/app/guanjia/guajia_bg_01.jpg" style="height:7.68rem" class="img-c">
+        <img src="@@webRoot/lib/images/app/guanjia/guajia_bg_02.jpg" style="height:8.667rem" class="img-c">
+        <div class="guanjia-bottom-share">
+            <img src="@@webRoot/lib/images/app/guanjia/guajia_bg_03.jpg" style="height:5.3067rem" class="img-c">
+            <img src="@@webRoot/lib/images/app/guanjia/guanjia_xcx_code.jpg" class="guanjia-xcx"> 
+        </div>
+    </div>
+</body>
+<script src="@@webRoot/lib/js/jweixin-1.4.0.js"></script>
+<script>
+$(function() {
+    $.shareWx({
+        title:"家庭保单智能管家",
+        desc:'智能化、数字化、系统化保单管理，您的专属管家。'
+    }); //微信分享
+})
+</script>
+
+</html

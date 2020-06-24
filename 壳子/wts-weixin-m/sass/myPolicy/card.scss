@@ -1,0 +1,183 @@
+.myCard{
+  width: r(750);
+  .card-box{
+    .tab-card{
+      width:100%;
+      overflow: hidden;
+      background: #fff;
+      .tab1{
+        width: 50%;
+        display: inline-block;
+        float: left;
+        height: r(90);
+        text-align: center;
+        line-height: r(90);
+        font-size: r(36);
+      }
+      .active{
+        background:#ff7506;
+        color: #fff;
+      }
+
+    }
+    .card-top{
+      height: r(70);
+      padding-right: r(40);
+      .top-p{
+        text-align: right;
+        color: #fe5346;
+        font-size: r(28);
+        line-height: r(70);
+        .card-ap{
+          color: #fe5346;
+          font-size: r(28);
+          line-height: r(70);
+        }
+      }
+    }
+    .card-content{
+      padding:0 r(30);
+      .list-card{
+        height: r(204);
+        width: 100%;
+        background: url("../images/d_kajuan_bg.png")no-repeat;
+        background-size: cover;
+        position: relative;
+        margin-bottom: r(23);
+      }
+      .list-card01{
+        display: none;
+        height: r(204);
+        width: 100%;
+        background: url("../images/d_kajuan_bg01.png")no-repeat;
+        background-size: cover;
+        position: relative;
+        margin-bottom: r(23);
+      }
+      .card-img{
+        position: absolute;
+        width: r(150);
+        height: r(150);
+        left: 70%;
+        top: 50%;
+        margin-left: r(-75);
+        margin-top: r(-75);
+
+      }
+      .list-left{
+        width: 100%;
+        padding: r(10) r(170) 0 r(22);
+        .title-left{
+          color: #000;
+          font-size: r(36);
+          line-height: r(70);
+        }
+        .time-left{
+          color: #999;
+          font-size: r(26);
+          line-height: r(46);
+        }
+        .des-left{
+          color: #999;
+          font-size: r(26);
+          line-height: r(33);
+          padding-right: r(40);
+        }
+
+      }
+      .list-right{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: r(170);
+        height: r(204);
+        text-align: center;
+        .money{
+          margin-top: r(46);
+          font-size: r(40);
+          color: #fff;
+          line-height: r(50);
+          padding-right: r(10);
+          word-break:break-all;
+        }
+        .des-money{
+          font-size: r(26);
+          color: #fff;
+          margin-top: 5px;
+
+        }
+      }
+
+      .list-card01,.list-card-black{
+        background: url("../images/d_kajuan_bg01.png")no-repeat;
+        background-size: cover;
+      }
+    }
+    .card-dess{
+      display: none;
+      text-align: center;
+      font-size: r(30);
+      color: #666;
+    }
+
+
+  }
+}
+
+.card-rule{
+  background-color: #fff;
+    .rule-list{
+      width: 100%;
+      border-bottom: 1px solid #eee;
+      .list-top{
+        background: #fff;
+        height: r(90);
+        line-height: r(90);
+        padding-left: r(30);
+        padding-right: r(90);
+        padding-right: r(90);
+        font-size: r(30);
+        font-size: r(30);
+        line-height: r(90);
+        position: relative;
+        .col-list{
+          color:#ff6f07 ;
+          font-weight: 600;
+        }
+      }
+      .list-top:after {
+        content: '';
+        position: absolute;
+        top: r(50);
+        right: r(40);
+        margin-top: r(-22);
+        width: r(22);
+        height: r(22);
+        border-right: r(3) solid #b5b5b5;
+        border-top: r(3) solid #b5b5b5;
+        //transform: rotate(135deg);
+        @include transform(rotate(135deg));
+      }
+      .list-des{
+        padding: r(23) r(50) r(27) r(60);
+        line-height:r(38);
+        font-size: r(26);
+        background: #fff;
+
+      }
+
+    }
+    .add-title-class{
+      .list-top{
+        background: #f6e0c5;
+      }
+        .list-top:after {
+          @include transform(rotate(-45deg));
+          margin-top: r(-15);
+        }
+        .list-des{
+          display: block;
+          background: #fff;
+        }
+    }
+}

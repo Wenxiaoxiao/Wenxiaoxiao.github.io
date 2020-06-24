@@ -1,0 +1,71 @@
+.memberExpense-container{
+    width:r(750);
+    .header{
+        background-color:#124fe1; /* 不支持线性的时候显示 */
+        background-image: linear-gradient(to right,#124fe1,#4497f6);
+        height:r(140);
+        width:r(750);
+        color:#fff;
+        font-size:r(35);
+        font-weight:bold;
+        line-height:r(140);
+        text-indent:r(57);
+    }
+    .member-list{
+        width:r(750);
+        padding:r(30) r(20) r(20);
+        .item{
+            width:r(690);
+            height:r(184);
+            background:#fff;
+            box-shadow:0 0 r(8) rgba(0,0,0,0.2);
+            border-radius:r(10);
+            margin:0 auto r(30);
+            padding:r(37) r(41) r(37) r(39);
+            .left{
+                width:r(450);
+                height:r(110);
+                float:left;
+                &>img{
+                    width:r(110);
+                    vertical-align: middle;
+                    margin-right:r(19);
+                }
+                &>span{
+                    font-size:r(32);
+                    font-weight:bold;
+                }
+                &>i{
+                    background:url("~@/reimbursement/edit.png") no-repeat;
+                    display: inline-block;
+                    width:r(36);
+                    height:r(36);
+                    background-size:100% 100%;
+                }
+            }
+            .right{
+                width:r(160);
+                height:r(60);
+                background:#4580f6;
+                color:#fff;
+                font-size:r(29);
+                float:left;
+                text-align:center;
+                line-height:r(60);
+                border-radius: r(10);
+                margin-top:r(25);
+            }
+        }
+    }
+    .addMember{
+        width:r(300);
+        height:r(60);
+        background:#4580f6;
+        color:#fff;
+        font-size:r(29);
+        text-align:center;
+        line-height:r(60);
+        border-radius: r(10);
+        margin:r(25) auto;
+    }
+}

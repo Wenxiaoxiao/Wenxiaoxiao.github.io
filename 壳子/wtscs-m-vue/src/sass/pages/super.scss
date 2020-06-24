@@ -1,0 +1,171 @@
+.super-container {
+    height: 100vh;
+    padding-top: 90px;
+    &.active{
+        padding-top: 45px;
+        .search-event-tap{
+            top: 0;
+        }
+        .index-nav-pro{
+            padding-top: 45px;
+        }
+    }
+    // .search-event-fixed{
+    //     height: r(90);
+    //     background-color: #fff;
+        .search-event-tap{
+            position: fixed;
+            top: 45px;
+            left: 0;
+            width: 100%;
+            height: r(90);
+            font-size: r(30);
+            line-height: r(90);
+            background-color: #fff;
+            padding: r(15) r(20);
+            z-index: 99;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
+            .company-tap{
+                color: $baseColor;
+                height: r(60);
+                line-height: r(60);
+                .icon-xiajiantou{
+                    font-size: r(22)
+                }
+            }
+            .pro-tap{
+                width: r(540);
+                height: r(60);
+                line-height: r(60);
+                font-size: r(28);
+                background-color: #f2f2f2;
+                padding-left: r(20);
+                border-radius:r(25);
+                -webkit-border-radius:r(25);
+                -moz-border-radius:r(25);
+                -ms-border-radius:r(25);
+                -o-border-radius:r(25);
+                color: #a2a2a2;
+            }
+        }
+    // }
+    .index-nav-pro {
+        position: fixed;
+        top: 0;
+        width: r(152);
+        background-color: #fff;
+        z-index: 97;
+        height: 100%;
+        padding-top: 90px;
+        &.andSearch {
+            height: r(180);
+        }
+        ul.ul-title {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: #fff;
+            li {
+                width: 100%;
+                @include remCalc(font-size,
+                32);
+                font-weight: 900;
+                text-align: center;
+                height: r(90);
+                line-height: r(90);
+                position: relative;
+                border-bottom: 1px solid #dcdcdc
+            }
+            li.active {
+                background-color: #f5f5f5;
+                color: $baseColor;
+                border-bottom: 0
+            }
+            li.active:after {
+                content: "";
+                display: inline-block;
+                width: r(7);
+                height: 100%;
+                background-color: $baseColor;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 888;
+            }
+            li.blank{
+                height: 25px;
+                border-bottom: 0;
+            }
+        }
+        .next_btn{
+            height: 20px;
+            width:100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            line-height: 20px;
+            text-align: center;
+            color: #c5c5c5;
+            background-color: #fff;
+            z-index: 10;
+            box-shadow: 0 -3px 5px rgb(188,223,255);
+            .iconfont{
+                font-size: r(36)
+            }
+        }
+    }
+
+    .productBox{
+        width: 100%;
+        padding-left: r(177);
+        height: 100%;
+        .typeBanner {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            .swiper-wrapper {
+                width: 100%;
+                height: r(225);
+                margin: r(10) 0;
+                background-color: #eee;
+            }
+            .swiper-slide {
+                display: block;
+                width: 100%;
+                height: 100%;
+                img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .swiper-pagination {
+                bottom: 8px !important;
+                .swiper-pagination-bullet {
+                    border-radius: 0 !important;
+                    width: 13px;
+                    height: 4px;
+                    background-color: rgba($color: #fff, $alpha: .4);
+                    &.swiper-pagination-bullet-active {
+                        background-color: rgba($color: #fff, $alpha: 1.0);
+                    }
+                }
+            }
+        }
+       
+        
+    }
+    .index-nav-groups {
+        width: 100%;
+        background: white;
+        overflow: hidden;
+        background-color: #f5f5f5;
+        .loading-wrapper{
+            width: 100%;
+            height: 55px;
+            line-height: 55px;
+            font-size: r(30);
+            text-align: center;
+          }
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"检测记录", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container checkHistory">
+        <div class="hisContent">
+            <!-- <div class="nonHis">
+                <img src="@@webRoot/lib/images/exercise/jjjc/checkHistory.png" alt="" class="nonHisImg">
+                <p class="nonHisP">暂无检测记录</p>
+            </div> -->
+            <div class="hisList">
+                <a href="./service-checkDetial.html">
+                    <p class="p1">张三 <span class="fr colRig">已下单</span></p>
+                    <p class="p2">男性防癌检测</p>
+                    <p class="p3">2019-05-29 12:34:56</p>
+                </a>
+            </div>
+            <div class="hisList">
+                <a href="./service-checkDetial.html">
+                    <p class="p1">张三 <span class="fr colRig">已下单</span></p>
+                    <p class="p2">男性防癌检测</p>
+                    <p class="p3">2019-05-29 12:34:56</p>
+                </a>
+            </div>
+            <div class="hisList">
+                <a href="./service-checkDetial.html">
+                    <p class="p1">张三 <span class="fr colRig">已下单</span></p>
+                    <p class="p2">男性防癌检测</p>
+                    <p class="p3">2019-05-29 12:34:56</p>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+ 
+<script>
+    var login = wtsLogin
+    login.init({
+        env: $.globedata.environment
+    }, function(user) {
+        var name = $.getQueryString('name', 1);
+        var imgUrl = $.getQueryString('img');
+        var inviteId = $.getQueryString('inviteId');
+        var checkKey = $.getQueryString('checkKey');
+        if (name) $('.name').text(name) //设置姓名
+        if (imgUrl) $('.auther').attr('src', imgUrl); //设置图片
+
+
+
+
+    })
+</script>
+</html
