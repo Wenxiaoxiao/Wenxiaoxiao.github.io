@@ -1,0 +1,383 @@
+
+/*公共部分*/
+body {
+  font: 12px/150% "Microsoft YaHei","iconfont",Verdana, "\5b8b\4f53"; /*宋体 unicode */
+  color: #000;
+  //background: #fbfbfb;
+}
+
+/*清除浮动*/
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1; /*IE/7/6*/
+}
+
+/*链接*/
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+ 
+  text-decoration: none;
+}
+
+a:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+a.unline{
+  color: $baseColor;
+}
+a.unline:hover,a.unline:focus{
+  text-decoration: underline;
+}
+
+.w {
+  /*版心 提取 */
+  width: $windom-w;
+  margin: 0 auto;
+  position: relative;
+}
+.w-100 {
+  /*100%版心 */
+  width: 100%;
+  background-color: #fff;
+}
+.body-container{
+  width: 100%;
+  min-width: 1200px;
+}
+.box{
+  min-width: 1200px;
+  overflow: hidden;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.hide {
+  display: none;
+}
+/*普通字号*/
+
+.cy-fs2{
+  font-size: 13px;
+  line-height: 20px;
+  color: #999;
+}
+.cy-fs_14{
+  font-size: 14px;
+  line-height: 20px;
+}
+.cy-fs_15{
+  font-size: 15px;
+  line-height: 21px;
+}
+.cy-fs_16{
+  font-size: 16px;
+  line-height: 22px;
+}
+.cy-fs_16_col999{
+  font-size: 16px;
+  line-height: 22px;
+  color: #999;
+}
+
+.cy-fs_17{
+  font-size: 17px;
+  line-height: 24px;
+}
+.cy-fs_18{
+  font-size: 18px;
+  line-height: 24px;
+}
+.cy-fs_18_yelow{
+  font-size: 18px;
+  line-height: 24px;
+  color: $baseColor;
+}
+.cy-fs_20{
+  font-size: 20px;
+  line-height: 26px;
+}
+.cy-fs_22{
+  font-size: 22px;
+  line-height: 28px;
+}
+.cy-fs_24{
+  font-size: 24px;
+  line-height: 30px;
+}
+.cy-fs_26{
+  font-size: 26px;
+  line-height: 34px;
+}
+.cy-fs_27{
+  font-size: 27px;
+  line-height: 35px;
+}
+
+.cy-fs_30{
+  font-size: 30px;
+  line-height: 38px;
+}
+.cy-fs_32{
+  font-size: 32px;
+  line-height: 42px;
+}
+.cy-fs_36{
+  font-size: 36px;
+  line-height: 42px;
+}
+.cy-fs_38{
+  font-size: 38px;
+  line-height: 44px;
+}
+.cy-fs_40{
+  font-size: 40px;
+  line-height: 50px;
+}
+.cy-fs_46{
+  font-size: 46px;
+  line-height: 60px;
+}
+.cy-fs_48{
+  font-size: 48px;
+  line-height: 60px;
+}
+
+/*字体颜色*/
+/*梧桐黄*/
+.col-red {
+  color: $baseColor !important;
+}
+
+.fc-tishi{
+  color: #666666;
+}
+.fc-000{
+  color: #000;
+}
+.fc-858585{
+  color: #858585;
+}
+.fc-fff{
+  color: #fff;
+}
+.fc-ff4400{
+  color: #ff4400;
+}
+.fc-ff7910{
+  color: #ff7910;
+}
+.fc-116690{
+  color: #116690;
+}
+.fc-a05118{
+  color: #a05118;
+}
+
+.fc-placeholder{
+  color: #b2b2b2;
+}
+
+
+/*首行缩进*/
+.t-indent {
+  text-indent: 40px;
+}
+
+/*文字排版*/
+.t-align-c {
+  text-align: center;
+}
+
+.t-align-r {
+  text-align: right;
+}
+
+.t-align-l {
+  text-align: left;
+}
+
+/*加粗*/
+.t-strong {
+  font-weight: 700;
+}
+
+/*padding值*/
+.cy-pad_l_r{
+   padding: 0 20px;
+ }
+.cy-pad_l_top{
+  padding:  20px 0;
+}
+
+
+.cy-border{
+  border: 1px solid $baseColor;
+}
+
+/*标题*/
+h4.cy_h4{
+  width: 100%;
+  font-size: 20px;
+  color: #000;
+}
+h2.cy_36{
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 50px;
+}
+h2.cy_32{
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 46px;
+}
+h2.cy_26{
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 40px;
+}
+h3.cy_22{
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 36px;
+}
+h3.cy_20{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 34px;
+}
+h2.cy_yellow{
+  font-size: 32px;
+  color: #ffff00;
+  line-height: 45px;
+  font-weight: 700;
+}
+
+
+
+
+/*边框*/
+.cy_bor{
+  border: 1px solid #ececec;
+}
+.cy_bor_l{
+  border-left: 1px solid #ececec;
+}
+.cy_bor_r{
+  border-right: 1px solid #ececec;
+}
+.cy_bor_t{
+  border-top: 1px solid #ececec;
+}
+.cy_bor_b{
+  border-bottom: 1px solid #ececec;
+}
+
+/*按钮*/
+button.checkin{
+  padding: 6px 15px;
+  background: -webkit-gradient(linear,left,right, color-stop(0.88, #f40), color-stop(0.00, #ff6e06));
+  background: -webkit-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: -moz-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: -o-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: -ms-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: linear-gradient(to right, #ff6e06 0%, #f40 88%);
+  background-color\0: $baseColor;
+  color: #fff;
+  border-radius: 5px;
+}
+.button-def{
+  padding: 6px 15px;
+  background: -webkit-gradient(linear,left,right, color-stop(0.88, #f40), color-stop(0.00, #ff6e06));
+  background: -webkit-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: -moz-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: -o-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: -ms-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: linear-gradient(to right, #ff6e06 0%, #f40 88%);
+  background-color\0: $baseColor;
+  color: #fff!important;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.3s ease-out;
+}
+.button-def:hover{
+  opacity: .8;
+}
+.button-def-block{
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  background: -webkit-gradient(linear,left,right, color-stop(0.88, #f40), color-stop(0.00, #ff6e06));
+  background: -webkit-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: -moz-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: -o-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: -ms-linear-gradient(left, #ff6e06 0%, #f40 88%);
+  background: linear-gradient(to right, #ff6e06 0%, #f40 88%);
+  background-color\0: $baseColor;
+  color: #fff!important;
+  border-radius: 5px;
+  display: block;
+  font-size: 24px;
+  margin: 10px auto;
+  cursor: pointer;
+  text-align: center;
+}
+.button-def-block:hover{
+  opacity: .8;
+}
+
+.bg1{
+  background-color: #FFFFFF;
+}
+.bg2{
+  background-color: #f9f9f9;
+}
+
+.a-line{
+  text-decoration: underline;
+}
+
+
+.img-center{
+  display: block;
+  margin: 0 auto;
+}
+
+.txt-ellipsis1{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+a.width-all{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 99;
+
+}

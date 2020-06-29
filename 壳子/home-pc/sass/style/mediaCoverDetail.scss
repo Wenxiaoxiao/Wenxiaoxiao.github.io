@@ -1,0 +1,53 @@
+.mediaCoverDetail {
+  .listBox {
+    width: 1000px;
+    margin: 0 auto;
+    .top {
+      text-align: center;
+      padding-bottom: 26px;
+      border-bottom: 1px dashed #d5d5d5;
+      .head {
+        margin-bottom: 4px;
+        font-size: 24px;
+        color: #000;
+        font-weight: bold;
+      }
+
+      .time {
+        font-size: 14px;
+        color: #a7a7a7;
+      }
+    }
+    .content {
+      padding: 32px 12px;
+    }
+    .bot {
+      position: relative;
+      .back {
+        position: absolute;
+        right: 0;
+        top: 28px;
+        color: #337bfc;
+        border: 1px solid #337bfc;
+        border-radius: 30px;
+        padding: 10px 50px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      div:nth-child(1),
+      div:nth-child(2) {
+        width: 582px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      > div:nth-child(1) {
+        margin-bottom: 20px;
+      }
+      color: #adadad;
+      padding-top: 25px;
+      border-top: 1px solid #e3e3e3;
+    }
+  }
+}

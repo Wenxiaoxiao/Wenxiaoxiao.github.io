@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{
+    "title":"企业保险一站式服务平台，企业老板的护身符，让HR省心-桐心保",
+    "keywords": "企业保险、雇主责任保险、团险、企业财产险、员工福利保险、桐心保",
+    "description": "企业保险一站式服务平台，企业老板的护身符，让HR省心，提供雇主责任险、企业团险、企业财产险、员工福利医疗险等，全程一站式服务企业投保、投保变更、理赔。"
+    })
+    <link rel="stylesheet" type="text/css" href="@@webRoot/lib/css/sprite-index.css" />
+    <link rel="stylesheet" href="@@webRoot/lib/css/idangerous.swiper.css">
+</head>
+
+<body>
+    <div class="body-container insureGl index">
+        @@include("include/top.htm")
+        @@include("include/banner.htm")
+        <div class="box targetBox" style="background-color: #f9f9f9;">
+            <div class="w">
+                <div class="title">
+                    <span>
+                        投保攻略
+                    </span>
+                </div>
+                <div class="listBox">
+
+                </div>
+            </div>
+            <div class="pagination"></div>
+        </div>
+
+        @@include("include/bottom.htm")
+    </div>
+</body>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/js/idangerous.swiper.min.js"></script>
+<script src="@@webRoot/lib/js/layer.js"></script>
+<script src="@@webRoot/lib/js/layui.js"></script>
+<script src="@@webRoot/lib/js/jquery.pagination.js"></script>
+<script src="@@webRoot/lib/js/artTemplate.min.js"></script>
+<!-- banner -->
+<script id="wzlist" type="text/html">
+    {{each list as value i}}
+    <div class="item clearfix">
+        <div class="leftBox">
+             <img src="{{value.imgUrl}}" alt="">
+        </div>
+        <div class="rightBox">
+            <div class="top">
+              {{value.title}}
+            </div>
+            <div class="bot clearfix">
+                  <div class="tag">
+                    {{each value.tag as value2 n}}
+                       <span>{{value2}}</span>
+                       {{/each}}
+                  </div>
+                  <div class="num">
+                         {{value.num}}阅读
+                  </div>
+            </div>
+        </div>
+
+   </div>
+    {{/each}}
+</script>
+<script>
+
+    var box = $('.listBox')
+    var list = [{
+        title: '标题11111111111111',
+        imgUrl: '@@webRoot/lib/images/ex.png',
+        tag: [
+            '等待期', '体检'
+        ],
+        num: 1000
+    },
+    {
+        title: '标题11111111111111',
+        imgUrl: '@@webRoot/lib/images/ex.png',
+        tag: [
+            '等待期2', '体检2'
+        ],
+        num: 1000
+    },
+
+    ]
+    var html = template('wzlist', {
+        list: list
+    })
+    box.html(html)
+    $('.listBox').on('click','.item',function () {
+        location.href = 'insureGlDetail.html'
+    })
+    $('.pagination').pagination({
+        pageCount: 50,
+        jump: true,
+        coping: true,
+        homePage: '首页',
+        endPage: '末页',
+        prevContent: '上页',
+        nextContent: '下页',
+        callback: function (api) {
+            console.log(api.getCurrent())
+        }
+    });
+
+</script>
+
+</html>

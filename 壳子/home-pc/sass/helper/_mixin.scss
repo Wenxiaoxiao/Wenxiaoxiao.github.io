@@ -1,0 +1,56 @@
+
+/*按钮纯色系*/
+@mixin button-variant($color, $background) {
+  $active-background: darken($background, 10%);
+  $active-color: darken($color, 10%);
+
+  color: $color;
+  background-color: $background;
+
+  // Hover and focus styles are shared
+  &:hover, &:focus{
+    color: $active-color;
+    background-color: $active-background;
+  }
+}
+/*按钮边框色系*/
+@mixin button-line($color) {
+  color: $color;
+  background-color: #fff;
+  border: 1px solid $color;
+
+  // Hover and focus styles are shared
+  &:hover, &:focus{
+    color: #fff;
+    background-color: $color;
+    border: 1px solid $color;
+  }
+}
+
+
+/*按钮大小*/
+@mixin button-size($width, $height, $font-size, $line-height, $border-radius) {
+  width: $width;
+  height: $height;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}
+
+@mixin title($color,$num,$afterColor:#edf0f2){
+   font-size: 28px;
+   color:$color;
+   text-align: center;
+   position: relative;
+   &:after{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    color: $afterColor;
+    font-size: 100px;
+    font-weight: bold;
+    content:'#{$num}';
+    z-index: 1;
+}
+}
