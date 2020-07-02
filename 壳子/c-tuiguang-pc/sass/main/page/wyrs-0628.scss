@@ -1,0 +1,86 @@
+@charset "utf-8";
+@import "../../helper/variables.scss";
+@import "../../helper/mixin.scss";
+.wyrs-0628{
+    background:#dcfef3;
+    padding-bottom:r(50);
+    &>.content{
+        .bar-left{
+            width: 712px!important;
+            background:#fff;
+            padding:0;
+            border-radius: 0;
+            border-radius:10px;
+            .img-center{
+                width:712px;
+            }
+        }
+        .bar-right{
+            .bars{
+                position: relative;
+                box-shadow: 0 0 5px 5px rgba($color: #54c0b5, $alpha: 0.7);
+                #fromPro{
+                    .fromTitle{
+                        background-image: linear-gradient(to bottom,#4cd2a2,#11a5a8);
+                        width: 380px;
+                        margin-left: -190px;
+                        .title{
+                            font-size: 22px;
+                            color: #fff;
+                        }
+                        .title-number{
+                            font-size: 18px;
+                            text-align:center;
+                            span{
+                                color: #c3e82d;
+                            }
+                        }
+                    }
+                    #getPremiums{
+                        width: 90%;
+                        background-color:#ff871c;
+                        border-bottom:4px solid #d72203;
+                        animation: commonScale 1s infinite ease-in-out;
+                        span{
+                            font-size: 16px;
+                            text-decoration:line-through;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &>.fixedfoot{
+        height:136px;
+        width:1920px;
+        overflow: hidden;
+        position:fixed;
+        bottom:0;
+        left:0;
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        // position: relative;
+        width: 100%;
+        min-width: 1200px;
+        .btn-wrapper{
+            width:1200px;
+            margin:0 auto;
+            text-align:right;
+            .btn1{
+                width:266px;
+                height:54px;
+                border-radius:40px;
+                background:#fdce51;
+                background-image: linear-gradient(to bottom,#fddd60,#feb238);
+                font-size:33px;
+                font-weight:bold;
+                color:#6c3500;
+                line-height:54px;
+                text-align:center;
+                margin-top:50px;
+                display: inline-block;
+                margin-right:20px;
+            }
+        }
+    }
+}

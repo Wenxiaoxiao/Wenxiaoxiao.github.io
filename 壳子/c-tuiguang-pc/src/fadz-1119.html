@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--测试环境-->
+    @@include("include/header.htm",{ "title":"4000元怎么配置保障全面的成人保险", "keywords": "", "description": "" })
+
+    <link rel="stylesheet" type="text/css" href="@@webRoot/lib/css/page/fadz-1119.css" />
+    <link rel="stylesheet" href="@@webRoot/lib/css/swiper.min.css">
+    <script src="/static/js/extend_route.js"></script>
+    <script src="@@webRoot/lib/js/swiper-3.4.2.jquery.min.js"></script>
+</head>
+<script>
+</script>
+
+<body>
+    <div class="bzjh box-fadz-1119">
+        <div class="box-fadz-1119-mask"></div>
+        <div class="box-fadz-1119-mask_info">
+            <div class="box-fadz-1119-mask-title">
+                <div class="title01"><span>4000元</span>成人保险方案</div>
+                <div class="title02">限时领取<span>(原价269元)</span></div>
+            </div>
+            <div class="box-fadz-1119-mask-content">
+                <div class="box-fadz-1119-mask-desc">
+                    <div class="mask-name">
+                        <img src="@@webRoot/lib/images/fadz-1119/21.png" alt="">
+                        <input placeholder="保险方案接收人姓名" type="text">
+                    </div>
+                    <div class="mask-phone">
+                            <img src="@@webRoot/lib/images/fadz-1119/22.png" alt="">
+                            <input placeholder="保险方案接收人手机" type="text">
+                        </div>
+                </div>
+                <div class="box-fadz-1119-mask-btn"><button type="button" id="getPremiums01" class="btn">立即领取</button></div>
+            </div>
+            <div class="time">限免倒计时:<span class="h">26</span>:<span class="m">59</span>:<span class="s">59</span></div>
+        </div>
+        <!-- 顶部banner -->
+        <div class="banner1 banner"
+            style="background-image: url('@@webRoot/lib/images/fadz-1119/banner.jpg');height:468px;"></div>
+        <div class="banner_title">
+            <div class="banner_content">
+                <div class="left">已有<span>200225</span>人定制成功</div>
+                <div class="right swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="item swiper-slide">黄**领取了价值269元保险定制方案</div>
+                        <div class="item swiper-slide">李**领取了价值269元保险定制方案</div>
+                        <div class="item swiper-slide">赵**领取了价值269元保险定制方案</div>
+                        <div class="item swiper-slide">谢**领取了价值269元保险定制方案</div>
+                        <div class="item swiper-slide">周**领取了价值269元保险定制方案</div>
+                        <div class="item swiper-slide">刘**领取了价值269元保险定制方案</div>
+                        <div class="item swiper-slide">钱**领取了价值269元保险定制方案</div>
+                        <div class="item swiper-slide">王**领取了价值269元保险定制方案</div>
+                        <div class="item swiper-slide">黄**领取了价值269元保险定制方案</div>
+                        <div class="item swiper-slide">吴**领取了价值269元保险定制方案</div>
+                        <div class="item swiper-slide">孙**领取了价值269元保险定制方案</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="content clearfix">
+            <div class="bar-left">
+                <a href="javascript:;">
+                <img src="@@webRoot/lib/images/fadz-1119/1.jpg" alt="" class="img-center">
+                </a>
+            </div>
+            <div class="bar-right">
+                <div class="bars">
+                    <div class="bar_title">限时免费</div>
+                    <div class="bar_desc">领取定制保障方案</div>
+                    <div class="bar_ordPrice">(原价269元)</div>
+                    <div class="time">限免倒计时:<span class="h">26</span>:<span class="m">59</span>:<span class="s">59</span></div>
+                    <form class="form form-horizontal" id="fromPro">
+                        <div class="fromTitle"></div>
+                        <button type="button" id="getPremiums" class="btn">立即免费领取</button>
+                        <div class="descript">安全声明：您的信息将被严格保密，您提供的个人信息授权我公司用于本次定制保险方案，我们不会泄露给任何第三方或其他用途。</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @@include("include/tell.htm")
+    @@include("include/from.htm")
+</body>
+
+@@include("include/footer.htm")
+<script type="text/javascript">
+    $(function () {
+        var fromsFn = $.fromsFn();
+        var swiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+            autoplay: 3000,
+            loop: true,
+        });
+        countdown()
+        var times = setInterval(countdown, 1000)
+        function countdown() {
+            var myDate = new Date();
+            var year = myDate.getFullYear();   //获取系统的年；
+            var month = myDate.getMonth() + 1;   //获取系统月份，由于月份是从0开始计算，所以要加1
+            var tian = myDate.getDate(); // 获取系统日
+            var endTime = new Date(year + '/' + month + '/' + (tian * 1 + 1) + ' 03:00:00')
+            var leftTime = endTime.getTime() - myDate.getTime()
+            h = Math.floor(leftTime / 1000 / 60 / 60);
+            if (h > 24) {
+                endTime = new Date(year + '/' + month + '/' + (tian * 1) + ' 23:59:59')
+                leftTime = endTime.getTime() - myDate.getTime()
+            }
+            var d, h, m, s;
+            if (leftTime >= 0) {
+                h = Math.floor(leftTime / 1000 / 60 / 60);
+                m = Math.floor(leftTime / 1000 / 60 % 60);
+                s = Math.floor(leftTime / 1000 % 60);
+                if (s < 10) {
+                    s = "0" + s;
+                }
+                if (m < 10) {
+                    m = "0" + m;
+                }
+                if (h < 10) {
+                    h = "0" + h;
+                }
+                $('.time .h').html(h)
+                $('.time .m').html(m)
+                $('.time .s').html(s)
+            } else {
+                clearInterval(times)
+            }
+        }
+        //每分钟+3人
+        var _n = parseInt((new Date().getTime() - new Date("2019-11-17").getTime()) / 1000) + 1;
+        $(".left span").text(_n);
+        var fromData = [
+        {
+                name: '您的姓名',
+                type: 2,
+                id: 'name',
+            },
+             {
+                name: '领取电话',
+                type: 3,
+                id: 'mobile',
+            },];
+        //初始化表单
+        fromsFn.setFroms(fromData, {
+            title: '4000元配置保障全面成人保险方案',
+            msg: '请保持电话畅通。为您提供更专业，更贴心的保险规划方案及产品咨询服务。'
+        });
+        function setNum(startNum) {
+            var timestamp = new Date().getTime();
+            console.log(timestamp);
+            var num = Math.floor((timestamp - startNum) / (1000 * 60 * 10)) + 26848;
+            return num
+        }
+
+
+
+        $(".bar-left").click(function(){
+            $(".box-fadz-1119-mask,.box-fadz-1119-mask_info").fadeIn();
+        })
+
+        $(".box-fadz-1119-mask").click(function(){
+            $(".box-fadz-1119-mask,.box-fadz-1119-mask_info").fadeOut();
+        })
+
+        $(".box-fadz-1119-mask_info #getPremiums01").click(function(){
+            var name = $(".box-fadz-1119-mask_info .mask-name input").val();
+            var phone = $(".box-fadz-1119-mask_info .mask-phone input").val();
+            if(!name){
+                layer.alert('姓名尚未填写')
+                return false;
+            }else if(!phone){
+                layer.alert('手机号尚未填写')
+                return false;
+            }else{
+                if(!$.regular().isPhone(phone)){
+                    layer.alert('您输入的不是正确的手机号码！')
+                    return false;
+                }
+            }
+
+            fromsFn.sendAjax('4000元配置保障全面成人保险方案',phone,name,"[]","请保持电话畅通。为您提供更专业，更贴心的保险规划方案及产品咨询服务。",function(){
+                $(".box-fadz-1119-mask").click();
+            });
+        })
+        
+    })
+</script>
+
+</html>

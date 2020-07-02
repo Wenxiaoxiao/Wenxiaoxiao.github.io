@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--测试环境-->
+    @@include("include/header.htm",{ "title":"最值得看的，2020年重疾险推荐度排名报告！", "keywords": "重疾险，保险排行，梧桐树重疾险，2020年重疾险", "description": "对比100+重疾险，结合5个维度全面分析，帮您获得精准保障" })
+
+    <link rel="stylesheet" type="text/css" href="@@webRoot/lib/css/page/insurerate-1119.css?v=@@time" />
+    <script src="/static/js/extend_route.js"></script>
+</head>
+<script>
+</script>
+
+<body>
+    <div class="bzjh box-insurerate-1119">
+        <!-- 顶部banner -->
+        <div class="banner1 banner" style="background-image: url('@@webRoot/lib/images/insurerate-1119/banner.jpg');height:418px;"></div>
+        <div class="w">
+            <img src="@@webRoot/lib/images/insurerate-1119/1.jpg" alt="" class="img-center">
+            <div class="products-1">
+                <div class="list clearfix list-1">
+                    <span class="li" style="width: 10%;">排名</span>
+                    <span class="li" style="width: 24%;">产品</span>
+                    <span class="li" style="width: 20%;">综合得分</span>
+                    <span class="li" style="width: 20%;">推荐等级</span>
+                    <span class="li" style="width: 25%;">产品名称</span>
+                </div>
+            </div>
+            <div class="btn showLayer">查看2020最新重疾险排名权威报告</div>
+            <img src="@@webRoot/lib/images/insurerate-1119/2.jpg" alt="" class="img-center">
+            <img src="@@webRoot/lib/images/insurerate-1119/3.jpg" alt="" class="img-center">
+            <div class="products-2">
+                <div class="list list-1">
+                    <div class="li-top clearfix">
+                        <span class="name">
+                            <span class="name-1">冠军</span>
+                            **人生*****
+                        </span>
+                        <span class="point">
+                            综合得分：
+                            <span>99.05分</span>
+                        </span>
+                        <span class="level">
+                            推荐等级
+                            <img src="@@webRoot/lib/images/insurerate-1119/level-2-5.png">
+                        </span>
+                    </div>
+                    <p class="li-content">
+                        <span class="title">精算师点评：</span>
+                        XXXX重大疾病的病种保障很充足，重疾、中症、轻症全部包含，且均可多次赔付，针对少儿疾病有额外保障，包含身故/全残保障及投被保人双豁免，满期可返还累计已交保费，可用于养老补充！
+                    </p>
+                    <p class="li-bottom">
+                        测评详情请点击链接： <span class="showLayer">**人生*****</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;height:80px;background-color: #eaedf2;"></div>
+    <div class="btn-flx showLayer">查看2020最新重疾险排名权威报告</div>
+    <img src="@@webRoot/lib/images/insurerate-1119/success.png" alt="" class="layerImg" style="display: none;">
+    <div class="insurerate-layer">
+        <div class="mask"></div>
+        <div class="mainLayer">
+            <form class="form form-horizontal" id="fromPro">
+                <div class="fromTitle">
+                    <p class="p1">推荐排名报告</p>
+                    <p class="p2">-将以短信的方式发送给您-</p>
+                </div>
+                <div class="form-group clearfix">
+                    <label for="name" class="col-sm-2 control-label"><img src="@@webRoot/lib/images/insurerate-1119/name.png" alt="" class="icon"></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" placeholder="报告接收人姓名">
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label for="mobile" class="col-sm-2 control-label"><img src="@@webRoot/lib/images/insurerate-1119/mobile.png" alt="" class="icon icon-mobile"></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="mobile" placeholder="报告接收人手机">
+                    </div>
+                </div>
+                <button type="button" id="getPremiums" class="btn-2">立即领取</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script id="products" type="text/html">
+    {{each data as val i}}
+    <div class="list clearfix">
+        <span class="li" style="width: 10%;">{{i+1}}</span>
+        <span class="li" style="width: 24%;text-align:left;padding-left:15px;">{{val.name}}</span>
+        <span class="li" style="width: 20%;">{{val.point}}</span>
+        <span class="li" style="width: 20%;">
+            {{if val.level=='5'}}
+            <img src="@@webRoot/lib/images/insurerate-1119/level-1-5.png" class="level">
+            {{else if val.level=='4'}}
+            <img src="@@webRoot/lib/images/insurerate-1119/level-1-4.png" class="level">
+            {{else if val.level=="4.5"}}
+            <img src="@@webRoot/lib/images/insurerate-1119/level-1-4.5.png" class="level">
+            {{/if}}
+        </span>
+        <span class="li" style="width: 25%;"><span class="tabName showLayer">查看产品名称</span></span>
+    </div>
+    {{/each}}
+</script>
+<script id="products_2" type="text/html">
+    {{each data as val i}}
+    {{if i>0}}
+    <div class="list">
+        <div class="li-top clearfix">
+            <span class="name">
+                {{if i==0}}
+                <span class="name-1">冠军</span>
+                {{else if i==1}}
+                <span class="name-1">亚军</span>
+                {{else if i==2}}
+                <span class="name-1">季军</span>
+                {{else}}
+                <span class="name-2">TOP{{i+1}}</span>
+                {{/if}}
+                {{val.name}}
+            </span>
+            <span class="point">
+                综合得分：
+                <span>{{val.point}}</span>
+            </span>
+            <span class="level">
+                推荐等级
+                {{if val.level=='5'}}
+                <img src="@@webRoot/lib/images/insurerate-1119/level-2-5.png">
+                {{else if val.level=='4'}}
+                <img src="@@webRoot/lib/images/insurerate-1119/level-2-4.png">
+                {{else if val.level=="4.5"}}
+                <img src="@@webRoot/lib/images/insurerate-1119/level-2-4.5.png">
+                {{/if}}
+            </span>
+        </div>
+        <p class="li-content">
+            <span class="title">精算师点评：</span>
+            {{val.desc}}
+        </p>
+        <p class="li-bottom">
+            测评详情请点击链接： <span class="showLayer">{{val.name}}</span>
+        </p>
+    </div>
+    {{/if}}
+    {{/each}}
+</script>
+@@include("include/footer.htm")
+<script type="text/javascript">
+    $(function() {
+        var fromsFn = $.fromsFn();
+        var list=[
+            {
+                name:'**人生*****',
+                point:'99.05分',
+                level:'5',
+                desc:'XXXX重大疾病的病种保障很充足，重疾、中症、轻症全部包含，且均可多次赔付，针对少儿疾病有额外保障，包含身故/全残保障及投被保人双豁免，满期可返还累计已交保费，可用于养老补充！'
+            },
+            {
+                name:'******星',
+                point:'97.75分',
+                level:'5',
+                desc:'市面上不分组多次赔付重疾的典范，轻中重症保障扎实多次赔付，中症和轻症多次赔付，无间隔期；赔付特定疾病，最高100%基本保额；主险和附件险搭配合理，可灵活规划自己的保障。'
+            },
+            {
+                name:'******一生',
+                point:'97.32分',
+                level:'5',
+                desc:'保障更全面，保费却依然良心，添加了额外重大疾病保障，针对目前高发和容易复发、转移的恶性肿瘤，可以2次赔付。'
+            },
+            {
+                name:'******贝',
+                point:'95.36分',
+                level:'5',
+                desc:'目前市面上数一数二的少儿重疾，除了重疾都保障的重疾、中症、轻症，还包含了少儿特定及罕见病的保障，儿童高发白血病、严重川崎病、严重哮喘等，最高可赔付300万；针对投保人，更有6重豁免，保证孩子的保障伴随一生。'
+            },
+            {
+                name:'******保',
+                point:'94.02分',
+                level:'5',
+                desc:'重疾、中症、轻症多次赔付，最多累计赔付基本保额的8倍，针对恶性肿瘤创新赔付3次；投保人豁免不仅可以豁免后续应交保费，保证被保险人保障可延续，还可以赔付投保人豁免险已交保费。'
+            },
+            {
+                name:'*****无忧',
+                point:'93.87分',
+                level:'5',
+                desc:'保障180种疾病，疾病种类创新高；60周岁前，首次罹患重大疾病，可获得1.5倍基本保额的赔付；中症和轻症累计6次赔付，多次赔付之间不分组；恶性肿瘤额外赔付。'
+            },
+            {
+                name:'****健康**',
+                point:'92.03分',
+                level:'5',
+                desc:'少儿特定疾病，额外赔付100%基本保额，保障包含重疾、中症、轻症及恶性肿瘤二次赔付；重大疾病医疗津贴， 更加缓解了重大疾病的巨额医疗费用。'
+            },
+            {
+                name:'****倍***',
+                point:'91.35分',
+                level:'5',
+                desc:'保障责任简单，除了重疾和身故，其他责任都可以根据自身情况进行灵活选择；重疾累计赔付6次，最高赔付150%基本保额，可选择定期保障和终身保障。'
+            },
+            {
+                name:'***心***',
+                point:'89.65分',
+                level:'4.5',
+                desc:'重疾二次赔付+前10年额外赔付，将发病与理赔率最高的恶性肿瘤单独分组；轻症中症累计最高7次赔付；恶性肿瘤二次赔付。'
+            },
+            {
+                name:'健康****',
+                point:'88.23分',
+                level:'4.5',
+                desc:'中老年重大疾病首次确诊更多赔付，在癌症高发年龄段，提高20%基本保额；可选择恶性肿瘤二次赔付；1-6类职业可投保，扩大职业范围。'
+            },
+            {
+                name:'****康**',
+                point:'87.02分',
+                level:'4.5',
+                desc:'针对男性、女性、儿童高发的特定疾病，额外赔付；重疾、轻症、中症都保障；等待期只需90天，可更快获得保障。'
+            },
+            {
+                name:'***福**',
+                point:'86.05分',
+                level:'4.5',
+                desc:'针对高发病种全部包含，轻微脑中风的理赔标准宽松。重疾和身故责任方面，重疾不分组多次赔付基础保障，提高杠杆率。'
+            },
+            {
+                name:'***保***',
+                point:'85.23分',
+                level:'4.5',
+                desc:'延续了之前版本的重大疾病医疗保障，相当于一份钱又购买了二份保障，恶性肿瘤和特定疾病，都给予了额外100%基本保额的赔付。'
+            },
+            {
+                name:'***瑞***',
+                point:'84.92分',
+                level:'4',
+                desc:'保障责任十分简单的纯重疾，可选择保多久交费交多久，30岁男性，30万保障终身，最低只需2000多元，轻症可选择是否附加，可以作为现有保障的补充。'
+            },
+            {
+                name:'****乐***',
+                point:'84.83分',
+                level:'4',
+                desc:'保障责任简单，但是基本的重疾、轻症、身故、豁免责任都包含，可作为基础保障。'
+            }
+        ]
+        
+        var html=template("products",{data:list});
+        $(".products-1").append(html);
+        var html2=template("products_2",{data:list});
+        $(".products-2").append(html2);
+
+        $(".showLayer").click(function(){
+            $(".insurerate-layer").show();
+        })
+        $(".insurerate-layer .mask").click(function(){
+            $(".insurerate-layer").hide();
+        })
+        $(".insurerate-layer .btn-2").click(function(){
+            var name=$("#name").val();
+            var mobile=$("#mobile").val();
+            if(!name || !mobile){
+                layer.alert('您还有未填写的内容');
+                return;
+            }else if(!$.regular().isPhone(mobile)){
+                layer.alert('您的手机号填写有误！');
+                return;
+            }
+            fromsFn.sendAjax('2020重疾险推荐度排名报告',mobile,name,'[]','2',function(){
+                $(".insurerate-layer").hide();
+                layer.open({
+                    title:false,
+                    type: 1,
+                    anim: 2,
+                    area: ['448px', '194px'],
+                    shadeClose: true, //开启遮罩关闭
+                    content: $(".layerImg")
+                });
+            })
+
+        })
+    })
+</script>
+
+</html>

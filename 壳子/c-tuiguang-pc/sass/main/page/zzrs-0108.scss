@@ -1,0 +1,95 @@
+@charset "utf-8";
+@import "../../helper/variables.scss";
+@import "../../helper/mixin.scss";
+.zzrs-0108 {
+    padding-bottom: 30px;
+    background-color: #233263;
+    .banner{
+        height: 580px;
+        background: url(../../images/zzrs-0108/banner.jpg) 50% 0 no-repeat;
+        width: 100%;
+        min-width: 1200px;
+    }
+    .flxed {
+        position: fixed;
+        bottom: 80px;
+        left: 50%;
+        margin-left: 610px;
+        cursor: pointer;
+        z-index: 1;
+    }
+    .bar-right{
+        position: absolute;
+        top: 37px;
+        left: 50%;
+        margin-left: 250px;
+        width: 330px;
+        .bars{
+            width: 330px;
+            height: 400px;
+            background: url('../../images/zzrs-0108/bac.png');
+            background-size: 100% 100%;
+        }
+        #fromPro{
+            width: 292px;
+            position: absolute;
+            left: 50%;
+            margin-left: -146px;
+            top: 130px;
+        }
+        .fromTitle{
+            display: none;
+        }
+        .form-group{
+            width: 292px;
+            height: 50px;
+            
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0;
+            margin-bottom: 14px;
+            label{
+                font-size: 18px;
+                line-height: 50px;
+                width: 100px;
+                padding: 0;
+                text-align: center;
+                float: left;
+            }
+            div{
+                height: 50px;
+                border: 0;
+                line-height: 50px;
+                font-size: 18px;
+                color: silver;
+                width: 190px;
+                input{
+                    width: 200%;
+                    height: 50px;
+                    border: none;
+                    line-height: 50px;
+                    font-size: 18px;
+                    color: #000;
+                    background: #fff;
+                    box-shadow: none;
+                }
+            }
+        }
+        #getPremiums{
+            width: 100%;
+            margin: 0 auto;
+            background-color: #f1585b;
+            color: #fff;
+            border-radius: 10px;
+            height: 60px;
+            font-size: 30px;
+            font-weight: 900;
+            border-bottom: 5px solid #d13a3e;
+        }
+        .descript{
+            margin-top: 10px;
+        }
+    }
+    
+}

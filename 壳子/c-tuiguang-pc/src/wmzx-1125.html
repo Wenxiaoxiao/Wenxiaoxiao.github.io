@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--测试环境-->
+    @@include("include/header.htm",{ "title":"2019完美人生守护尊享升级", "keywords": "", "description": "" })
+
+    <link rel="stylesheet" type="text/css" href="@@webRoot/lib/css/page/wmzx-0826.css" />
+    <script src="/static/js/extend_route.js"></script>
+    <style>
+        .bzjh{
+            background-color: #fe6440;
+        }
+        .bzjh .content .bar-left {
+            width: 740px;
+            margin-bottom: 30px;
+        }
+        .img-center {
+            margin-bottom: 30px;
+        }
+        
+    </style>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?0f282acf037481fb476240c192eee1a6";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+</head>
+<script>
+</script>
+
+<body>
+    <div class="bzjh box-wts-txsh">
+        <!-- 顶部banner -->
+        <div class="banner1 banner" style="background-image: url('@@webRoot/lib/images/wmzx-0826/banner.jpg');height:534px;"></div>
+        <div class="content clearfix">
+            <div class="bar-left">
+                <img src="@@webRoot/lib/images/wmzx-0826/1.jpg" alt="" class="img-center">
+                <img src="@@webRoot/lib/images/wmzx-0826/2.jpg" alt="" class="img-center">
+                <img src="@@webRoot/lib/images/wmzx-0826/3.jpg" alt="" class="img-center">
+                <img src="@@webRoot/lib/images/wmzx-0826/4.jpg" alt="" class="img-center">
+                <img src="@@webRoot/lib/images/wmzx-0826/5.jpg" alt="" class="img-center">
+                <img src="@@webRoot/lib/images/wmzx-0826/6.jpg" alt="" class="img-center">
+                <img src="@@webRoot/lib/images/wmzx-0826/7.jpg" alt="" class="img-center">
+                <img src="@@webRoot/lib/images/wmzx-0826/8.jpg" alt="" class="img-center">
+            </div>
+            <div class="bar-right">
+                <div class="bars">
+                    <form class="form form-horizontal" id="fromPro">
+                        <div class="fromTitle">
+                            测一测<span>保障全面的重疾险</span>需要多少钱
+                        </div>
+                        <button type="button" id="getPremiums" class="btn">免费测算保费<span>（原价169）</span></button>
+                        <div class="descript">安全声明：您的信息将被严格保密，您提供的个人信息授权我公司用于本次保费测算及投保，我们不会泄露给任何第三方或其他用途。</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    @@include("include/tell.htm")
+    @@include("include/from.htm")
+</body>
+
+@@include("include/footer.htm")
+
+<script id="comment" type="text/html">
+    {{each data as val i}}
+    <li>
+        {{if val.imgUrl}}
+        <img src="{{val.imgUrl}}" class="auther" alt=""> {{else}}
+        <img src="@@webRoot/lib/images/authers.png" class="auther" alt=""> {{/if}}
+        <div class="transverse">
+            {{#val.starLevel | levels}}
+        </div>
+        <div class="transverse col666">
+            {{val.userNickname}},{{val.insuranceProductName}}
+        </div>
+        <div class="transverse">
+            {{val.comment}}
+        </div>
+    </li>
+    {{/each}}
+</script>
+
+<script type="text/javascript">
+    $(function() {
+        var fromsFn = $.fromsFn();
+        var fromData = [
+        {
+            name: '被保人年龄',
+            type: 6,
+            id: 'age',
+            items: [
+            {
+                        value: '0-17岁',
+                        
+                    },
+                    {
+                        value: '18-30岁',
+                        selected: true
+                    },
+                    {
+                        value: '31-50岁'
+                    }
+            ]
+        }, 
+        {
+            name: '被保人性别',
+            type: 6,
+            id: 'sex',
+            items: [{
+                value: '男',
+                selected: true
+            }, {
+                value: '女'
+            }, ]
+        }, 
+        {
+            name: '基本保额',
+            type: 6,
+            id: 'jbbe',
+            items: [
+            {
+                    value: '5-20万'
+                },
+                {
+                    value: '21-50万'
+                },
+                {
+                    value: '51-83万',
+                    selected: true
+                },
+            ]
+        }, 
+         {
+            name: '您的姓名',
+            type: 2,
+            id: 'name',
+            desc:'您的信息将被严格保密'
+        }, {
+            name: '您的电话',
+            type: 3,
+            id: 'mobile',
+            desc:'用于精准接受保费测算结果'
+        }, ];
+        //初始化表单
+        fromsFn.setFroms(fromData, {
+            title: '新完美人生守护尊享版',
+            msg: '您的测算结果将会有专业保险规划师告知，请保持电话畅通。为您提供更专业，更贴心的保险规划方案及产品咨询服务。'
+        });
+        function setNum(startNum){
+            var timestamp=new Date().getTime();
+            console.log(timestamp);
+            var num=Math.floor((timestamp-startNum)/(1000*5))+26848;
+            return num
+        }
+        var start=new Date(new Date().toLocaleDateString()).getTime()
+        console.log(start)
+        var testNum=setNum(start);
+        $(".fromTitle").after('<div class="fromNumber">目前有<span>'+testNum+'</span>人已测算成功</div>')
+    })
+</script>
+
+</html>

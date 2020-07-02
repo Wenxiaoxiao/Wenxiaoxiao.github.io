@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.draw-contain{
+    width:200px;
+    height:200px;
+}
+.draw-btns{
+
+}
+.draw-btns>.draw-btn{
+    float: left;
+    margin:5px;
+    width:100px;
+    height:40px;
+    line-height:40px;
+    background:#4580F6;
+    color:#fff;
+    text-align:center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+/* 上三角 */
+.shape1{
+    width:0;
+    height:0;
+    border-left:50px solid transparent;
+    border-right:50px solid transparent;
+    border-bottom:100px solid red;
+}
+/* 下三角 */
+.shape2{
+    width:0;
+    height:0;
+    border-left:50px solid transparent;
+    border-right:50px solid transparent;
+    border-top:100px solid red;
+}
+/* 左三角 */
+.shape3{
+    width:0;
+    height:0;
+    border-top:50px solid transparent;
+    border-bottom:50px solid transparent;
+    border-right:100px solid red;
+}
+/* 右三角 */
+.shape4{
+    width:0;
+    height:0;
+    border-top:50px solid transparent;
+    border-bottom:50px solid transparent;
+    border-left:100px solid red;
+}
+/* 左上三角 */
+.shape5{
+    width:0;
+    height:0;
+    border:100px solid red;
+    border-bottom:100px solid transparent;
+    border-right:100px solid transparent;
+}
+/* 右上三角 */
+.shape6{
+    width:0;
+    height:0;
+    border:100px solid red;
+    border-bottom:100px solid transparent;
+    border-left:100px solid transparent;
+}
+/* 左下三角 */
+.shape7{
+    width:0;
+    height:0;
+    border:100px solid red;
+    border-top:100px solid transparent;
+    border-right:100px solid transparent;
+}
+/* 右下三角 */
+.shape8{
+    width:0;
+    height:0;
+    border:100px solid red;
+    border-top:100px solid transparent;
+    border-left:100px solid transparent;
+}
+/* 梯形 */
+.shape9{
+    width:100px;
+    height:0;
+    border-bottom:100px solid red;
+    border-left:50px solid transparent;
+    border-right:50px solid transparent;
+}
+/* 六角星 */
+.shape10{
+    width: 0;
+    height: 0;
+    position: relative;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+}
+.shape10:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 33px;/*1/3*/
+    left: -50px;/*1/2*/
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 100px solid red;
+}
+/* 平行四边形 */
+.shape11{
+    width:200px;
+    height:100px;
+    background-color:red;
+    transform:skew(20deg);
+    -webkit-transform:skew(20deg);
+    -moz-transform:skew(20deg)
+}
+/* 圆形 */
+.shape12{
+    width:100px;
+    height:100px;
+    background-color:red;
+    border-radius:50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+/* 同心圆 */
+.shape13{
+    width: 100px;
+    height: 100px;
+    border:20px solid red;
+    background: #6495ED;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+/* 上半圆 */
+.shape14{
+    width: 100px;
+    height: 0;
+    -moz-border-radius: 100px 100px 0 0;
+    -webkit-border-radius: 100px 100px 0 0;
+    border-radius: 100px 100px 0 0;
+    border: 0 solid transparent;
+    border-top: 100px solid red;
+    border-right: 100px solid red;
+}
+/* 下半圆 */
+.shape15{
+    width: 100px;
+    height: 0;
+    -moz-border-radius: 0 0 100px 100px;
+    -webkit-border-radius: 0 0 100px 100px;
+    border-radius: 0 0 100px 100px;
+    border: 0 solid transparent;
+    border-bottom: 100px solid red;
+    border-right: 100px solid red;
+}
+/* 左半圆 */
+.shape16{
+    width: 100px;
+    height: 0;
+    -moz-border-radius: 100px 0 0 100px;
+    -webkit-border-radius: 100px 0 0 100px;
+    border-radius: 100px 0 0 100px;
+    border: 0 solid transparent;
+    border-bottom: 100px solid red;
+    border-top: 100px solid red;
+}
+/* 右半圆 */
+.shape17{
+    width: 100px;
+    height: 0;
+    -moz-border-radius: 0 100px 100px 0;
+    -webkit-border-radius: 0 100px 100px 0;
+    border-radius: 0 100px 100px 0;
+    border: 0 solid transparent;
+    border-bottom: 100px solid red;
+    border-top: 100px solid red;
+}
+.shape18{
+    width: 100px;
+    height: 0px;
+    border: 0 solid transparent;
+    border-top: 100px solid red;
+    -moz-border-radius: 100px 0 0 0;
+    -webkit-border-radius: 100px 0 0 0;
+    border-radius: 100px 0 0 0;
+}
+.shape19{
+    width: 100px;
+    height: 0px;
+    border: 0 solid transparent;
+    border-top: 100px solid red;
+    -moz-border-radius: 0 100px 0 0;
+    -webkit-border-radius: 0 100px 0 0;
+    border-radius: 0 100px 0 0;
+}
+.shape20{
+    width: 100px;
+    height: 0px;
+    border: 0 solid transparent;
+    border-bottom: 100px solid red;
+    -moz-border-radius: 0 0 0 100px;
+    -webkit-border-radius: 0 0 0 100px;
+    border-radius: 0 0 0 100px;
+}
+.shape21{
+    width: 100px;
+    height: 0px;
+    border: 0 solid transparent;
+    border-bottom: 100px solid red;
+    -moz-border-radius: 0 0 100px 0;
+    -webkit-border-radius: 0 0 100px 0;
+    border-radius: 0 0 100px 0;
+}
+.shape22{
+    width:200px;
+    height:100px;
+    position:relative;
+    margin:10px 0 50px;
+    -moz-border-radius:20px;
+    -webkit-border-radius:20px;
+    border-radius:20px;
+    background:red;
+}
+.shape22:after{
+    content: '';
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 70px;
+    left: 45px;
+    border: 0 solid transparent;
+    border-bottom: 35px solid red;
+    -moz-border-radius: 0 0 0 200px;
+    -webkit-border-radius: 0 0 0 50px;
+    border-radius: 0 0 0 50;
+    transform:rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+}
+/* 文字底部网格效果 */
+.wangge{
+    font-size: 16px;
+    padding: 0 10px;
+    word-spacing: 0px;
+    word-break: break-word;
+    word-wrap: break-word;
+    text-align: left;
+    margin-top: -10px;
+    line-height: 1.75;
+    color: #595959;
+    font-family: Optima-Regular, Optima, PingFangTC-Light, PingFangSC-light, PingFangTC-light;
+    letter-spacing: 2px;
+    background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);
+    background-size: 20px 20px;
+    background-position: center center;
+}
+</style>
+<body>
+    <h2>CSS画各种形状</h2>
+    <div class="draw-contain" id="container">
+        <div id="container-shape"></div>
+    </div>
+    <div class="draw-btns">
+        <div class="draw-btn" id="btn1" onclick="draw('shape1')">上三角</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape2')">下三角</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape3')">左三角</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape4')">右三角</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape5')">左上三角</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape6')">右上三角</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape7')">左下三角</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape8')">右下三角</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape9')">梯形</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape10')">六角星</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape11')">平行四边形</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape12')">圆形</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape13')">同心圆</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape14')">上半圆</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape15')">下半圆</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape16')">左半圆</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape17')">右半圆</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape18')">左上1/4圆</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape19')">右上1/4圆</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape20')">左下1/4圆</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape21')">右下1/4圆</div>
+        <div class="draw-btn" id="btn1" onclick="draw('shape22')">气泡</div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+function draw(className){
+    console.log(className);
+    var lists = ['shape1','shape2','shape3','shape4','shape5','shape6','shape7','shape8','shape9','shape10','shape11','shape12','shape13','shape14','shape15','shape16','shape17','shape18','shape19','shape20','shape21','shape22'];
+    var container = document.getElementById('container-shape');
+    lists.forEach(function(item,i){
+        if(container.classList.contains(item)){
+            container.classList.remove(item);
+        }
+    })
+    container.classList.add(className);
+}
+</script>

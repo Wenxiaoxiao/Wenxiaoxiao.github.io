@@ -1,0 +1,84 @@
+/**
+     * 分页样式
+ */
+.paging {
+  margin: 20px 0;
+}
+.paging nav {
+  display: inline-block;
+}
+.paging nav > a {
+  width: 64px;
+  height: 34px;
+  line-height: 30px;
+  border: 1px solid #dddddd;
+  border-radius: 2px;
+  color: #000;
+  background-color: #fff;
+  margin: 1px 5px;
+  text-align: center;
+}
+.paging nav .pageNum {
+  position: relative;
+  top: 1px;
+  min-width: 72px;
+  max-width: 170px;
+  height: 34px;
+  overflow: hidden;
+}
+.paging nav .pageNum .pageline {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.paging nav .pageNum .pageline a {
+  display: inline-block;
+  float: left;
+  width: 30px;
+  height: 34px;
+  line-height: 34px;
+  color: #666;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  margin-left: 4px;
+  border-radius: 2px;
+  text-align: center;
+}
+.paging nav .pageNum .pageline a:focus,
+.paging nav .pageNum .pageline a:hover {
+  color: #e93030;
+  background-color: #f7f7f9;
+}
+.paging nav .pageNum .pageline a.active {
+  color: #ffffff;
+  background-color: #ff6e06;
+}
+.paging nav .jump {
+  display: inline-block;
+  font-size: 14px;
+  height: 34px;
+  line-height: 34px;
+  margin-left: 10px;
+}
+.paging nav .jump .pagebtn,
+.paging nav .jump .pagetext {
+  width: 60px;
+  height: 34px;
+  border-radius: 2px;
+  margin: 0 5px;
+  color: #666;
+}
+.paging nav .jump .pagetext {
+  border: 1px solid #dddddd;
+  text-align: center;
+}
+.paging nav .jump .pagebtn {
+  cursor: pointer;
+  background-color: #e93030;
+  color: #fff;
+  line-height: 34px;
+}
+.paging nav > * {
+  float: left;
+  display: inline-block;
+}

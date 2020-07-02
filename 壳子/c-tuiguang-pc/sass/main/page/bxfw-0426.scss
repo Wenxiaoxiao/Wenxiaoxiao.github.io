@@ -1,0 +1,47 @@
+@charset "utf-8";
+@import "../../helper/variables.scss";
+@import "../../helper/mixin.scss";
+.bxfw-0426{
+    background:#f0f0f0;
+    &>.content{
+        margin-top:42px;
+        .bar-left{
+            margin-top:20px;
+            width: 750px!important;
+            background:#fff;
+            padding:0;
+            border-radius:10px;
+            .img-center{
+                width:750px;
+            }
+        }
+        .bar-right{
+            .bars{
+                position: relative;
+                #fromPro{
+                    .fromTitle{
+                        background-color: #fa4b51;
+                    }
+                    #getPremiums{
+                        background-color:#61d9c1;
+                        border-bottom:4px solid #3ec2a8;
+                    }
+                }
+                .fromNumber{
+                    width:415px;
+                    height:72px;
+                    box-shadow:0 0 3px rgba(255,255,206,0.3);
+                    font-size:27px;
+                    color:#4d4d4d;
+                    font-weight:bold;
+                    text-align:center;
+                    line-height:72px;
+                    position: absolute;
+                    bottom:-92px;
+                    background:#fff;
+                    border-radius:10px;   
+                }
+            }
+        }
+    }
+}

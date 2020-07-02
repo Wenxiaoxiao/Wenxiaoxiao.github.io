@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--测试环境-->
+    @@include("include/header.htm",{ "title":"2020超省钱成人保障方案", "keywords": "", "description": "" })
+
+    <link rel="stylesheet" type="text/css" href="@@webRoot/lib/css/page/qfwbz-0120.css" />
+    <link rel="stylesheet" href="@@webRoot/lib/css/swiper.min.css">
+    <link rel="stylesheet" href="@@webRoot/lib/css/animate.min.css">
+    <script src="/static/js/extend_route.js"></script>
+    <script src="@@webRoot/lib/js/swiper-3.4.2.jquery.min.js"></script>
+</head>
+<script>
+</script>
+
+<body>
+    <div class="bzjh box-qfwbz-0120">
+        <!-- 顶部banner -->
+        <div class="banner1 banner"
+            style="background-image: url('@@webRoot/lib/images/qfwbz-0120/banner.jpg');height:451px;"></div>
+        <div class="banner_title">
+            <div class="banner_content">
+                <div class="left">已有<span>200225</span>人定制成功</div>
+                <div class="right swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="item swiper-slide">***领取了1岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了12岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了6岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了3岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了4岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了14岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了5岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了2岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了7岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了0岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了13岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了9岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了10岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了11岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了16岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了17岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了15岁成人保障方案</div>
+                        <div class="item swiper-slide">***领取了8岁成人保障方案</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="content clearfix">
+            <div class="bar-left">
+                <div class="contains">
+                    <img src="@@webRoot/lib/images/qfwbz-0120/1.jpg" alt="" class="img-center">
+                    <img src="@@webRoot/lib/images/qfwbz-0120/2.jpg" alt="" class="img-center">
+                    <a class="btn showWeight common-pluse" href="javascript:;">点击立即领取</a>
+                </div>
+                <div class="contains">
+                    <img src="@@webRoot/lib/images/qfwbz-0120/3.jpg" alt="" class="img-center">
+                    <img src="@@webRoot/lib/images/qfwbz-0120/4.jpg" alt="" class="img-center">
+                    <img src="@@webRoot/lib/images/qfwbz-0120/5.jpg" alt="" class="img-center">
+                    <a class="btn showWeight common-pluse" href="javascript:;">点击立即领取</a>
+                </div>
+                <div class="contains">
+                    <img src="@@webRoot/lib/images/qfwbz-0120/6.jpg" alt="" class="img-center">
+                </div>
+            </div>
+            <div class="bar-right" id="#forms">
+                <div class="bars">
+                    <div class="bar_title">限时免费</div>
+                    <div class="bar_desc">领取定制保障方案</div>
+                    <div class="bar_ordPrice">(原价269元)</div>
+                    <div class="time">限免倒计时:<span class="h">26</span>:<span class="m">59</span>:<span class="s">59</span></div>
+                    <form class="form form-horizontal" id="fromPro">
+                        <div class="fromTitle"></div>
+                        <button type="button" id="getPremiums" class="btn">
+                            立即免费领取
+                            <br>
+                            <span>（现在领取方案，还能免费获得万元保额防癌保险）</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @@include("include/tell.htm")
+    @@include("include/from.htm")
+</body>
+
+@@include("include/footer.htm")
+<script type="text/javascript">
+    $(function () {
+        var fromsFn = $.fromsFn();
+        var swiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+            autoplay: 3000,
+            loop: true,
+        });
+        countdown()
+        var times = setInterval(countdown, 1000)
+        function countdown() {
+            var myDate = new Date();
+            var year = myDate.getFullYear();   //获取系统的年；
+            var month = myDate.getMonth() + 1;   //获取系统月份，由于月份是从0开始计算，所以要加1
+            var tian = myDate.getDate(); // 获取系统日
+            var endTime = new Date(year + '/' + month + '/' + (tian * 1 + 1) + ' 03:00:00')
+            var leftTime = endTime.getTime() - myDate.getTime()
+            h = Math.floor(leftTime / 1000 / 60 / 60);
+            if (h > 24) {
+                endTime = new Date(year + '/' + month + '/' + (tian * 1) + ' 23:59:59')
+                leftTime = endTime.getTime() - myDate.getTime()
+            }
+            var d, h, m, s;
+            if (leftTime >= 0) {
+                h = Math.floor(leftTime / 1000 / 60 / 60);
+                m = Math.floor(leftTime / 1000 / 60 % 60);
+                s = Math.floor(leftTime / 1000 % 60);
+                if (s < 10) {
+                    s = "0" + s;
+                }
+                if (m < 10) {
+                    m = "0" + m;
+                }
+                if (h < 10) {
+                    h = "0" + h;
+                }
+                $('.time .h').html(h)
+                $('.time .m').html(m)
+                $('.time .s').html(s)
+            } else {
+                clearInterval(times)
+            }
+        }
+        //每分钟+3人
+        var _n = parseInt((new Date().getTime() - new Date("2019-11-17").getTime()) / 1000) + 1;
+        $(".left span").text(_n);
+        var fromData = [
+        {
+                name: '客户姓名',
+                type: 2,
+                id: 'name',
+            },
+             {
+                name: '领取电话',
+                type: 3,
+                id: 'mobile',
+            },];
+        //初始化表单
+        fromsFn.setFroms(fromData, {
+            title: '定制保险方案—2020超省钱成人保障方案',
+            msg: '请保持电话畅通。为您提供更专业，更贴心的保险规划方案及产品咨询服务。'
+        });
+        function setNum(startNum) {
+            var timestamp = new Date().getTime();
+            console.log(timestamp);
+            var num = Math.floor((timestamp - startNum) / (1000 * 60 * 10)) + 26848;
+            return num
+        }
+        var timor;
+        $(".showWeight").click(function(){
+            $('.bar-right .bars').addClass('animated tada');
+            clearTimeout(timor)
+            timor=setTimeout(function(){
+                $('.bar-right .bars').removeClass('animated tada');
+            }, 2000);
+        })
+    })
+</script>
+
+</html>

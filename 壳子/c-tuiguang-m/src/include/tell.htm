@@ -1,0 +1,21 @@
+<div class="copyright-m">
+    <div class="copyright-w">
+        <div class="copyright-left">
+            <img src="@@webRoot/lib/images/logom.png" alt="logo" class="copyright-logo">
+            <p class="tellName">24小时客服热线</p>
+            <a class="tell" href="tel://02796755">02796755</a>
+        </div>
+        <div class="copyright-right"></div>
+    </div>
+</div>
+<script>
+    $(function(){
+        var channel = $.getQueryString("channel") || "";
+        if(channel && channel == "qxjy"){
+            $(".copyright-w").html("Copyright © 2019青学教育科技（深圳）有限公司版权所有. 粤ICP备18049950号-1");
+            $(".copyright-w").addClass("center");
+        }else{
+            $(".copyright-right").html("Copyright © 2019梧桐树保险经纪有限公司 All Rights Reserved. 鄂ICP备17019444号&nbsp;&nbsp;保险业务经营许可证：260580000000800鄂公网安备42010302000447号");
+        }
+    })
+</script>
