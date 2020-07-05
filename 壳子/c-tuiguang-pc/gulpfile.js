@@ -44,14 +44,15 @@ gulp.task('copy:ico',function() {
 gulp.task('sass', function () {
     return gulp.src('./sass/main/**/*.scss')
     .pipe(plumber())
+    
+    //   .pipe(sass.sync().on('error', sass.logError))
+    .pipe(sass())
     .pipe(autoprefixer({
         browsers: ['last 2 versions'],
         cascade: false
     }))
-    //   .pipe(sass.sync().on('error', sass.logError))
-    .pipe(sass())
-      .pipe(cleanCSS())
-      .pipe(gulp.dest('dest/lib/css'));
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('dest/lib/css'));
   });
 
 gulp.task('task-name', function() {
