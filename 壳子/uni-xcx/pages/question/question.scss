@@ -1,0 +1,66 @@
+@import '../../sass/main.scss';
+.fx-question{
+    width:100%;
+    height:100%;
+    background: #eee;
+    .fx-content{
+        background: #fff;
+        overflow: hidden;
+        width:100%;
+        .wrapper{
+            height:100%;
+            width:100%;
+            padding-bottom:92rpx;
+            overflow: auto;
+            background: #eee;
+            .questionItems{
+                // padding: 20rpx;
+                // background-color: #fff;
+                //margin-bottom: 10px;
+				background: #eee;
+                .title{
+                    // height:48rpx; 
+                    line-height:48rpx;
+                    font-size:28rpx;
+                    color:#666;
+                    background: #fff;
+                } 
+            }
+        }
+    }
+    .fx-tips{
+        background: #fff;
+        height:88rpx;
+        line-height:88rpx;
+        font-size:28rpx;
+        border-bottom:1px solid #dddddd;
+        color:#4580f6;
+        font-weight: bold;
+        padding-left: 27rpx;
+    }
+    .fx-btns{
+        height:92rpx;
+        position:fixed;
+        bottom:0;
+        width:100%;
+        border-top:1px solid #ddd;
+        display:table-cell;
+        view{
+            width:50%;
+            height:100%;
+            float:left;
+            text-align: center;
+            font-size:30rpx;
+        }
+        .preBtn{
+            color:#000;
+            background:#fff;
+            line-height:92rpx;
+        }
+        .nextBtn{
+            background:#0084ff;
+            color:#fff;
+            line-height:92rpx;
+        }
+    }
+}

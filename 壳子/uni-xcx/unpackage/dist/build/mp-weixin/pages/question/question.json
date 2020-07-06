@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "梧桐树核保助手",
+  "usingComponents": {
+    "question-tree": "/components/questionTree/questionTree"
+  }
+}

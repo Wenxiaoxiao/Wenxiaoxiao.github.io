@@ -1,0 +1,163 @@
+@import '../../sass/main.scss';
+.apps{
+	width:100%;
+	height:100%;
+}
+@keyframes bigSmall
+{
+    from {
+        width:194rpx;
+        height:194rpx;
+    }
+    to {
+        width:210rpx;
+        height:210rpx;
+    }
+}
+
+@-moz-keyframes bigSmall /* Firefox */
+{
+    from {
+        width:194rpx;
+        height:194rpx;
+    }
+    to {
+        width:210rpx;
+        height:210rpx;
+    }
+}
+
+@-webkit-keyframes bigSmall /* Safari 和 Chrome */
+{
+    from {
+        width:194rpx;
+        height:194rpx;
+    }
+    to {
+        width:210rpx;
+        height:210rpx;
+    }
+}
+
+@-o-keyframes bigSmall /* Opera */
+{
+    from {
+        width:194rpx;
+        height:194rpx;
+    }
+    to {
+        width:210rpx;
+        height:210rpx;
+    }
+}
+
+.hb-index{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    background-color: #000;
+    position: relative;
+    // display: table-cell;
+    .indexBg{
+        width:100%;
+        height:100%;
+        position: absolute;
+    }
+    view{
+        height:auto;
+    }
+    .text1{
+        font-size:40rpx;
+        color:#fff;
+        text-align:center;
+        height:60rpx;
+        line-height:60rpx;
+        // margin-top:166rpx;
+        margin-top:146rpx;
+		position: relative;
+    }
+    .text2{
+        height:118rpx;
+        line-height:118rpx;
+        color:#fff;
+        font-size:64rpx;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom:7rpx;
+		position: relative;
+    }
+    .text3{
+        color:#fff;
+        height:42rpx;
+        line-height:42rpx;
+        font-size:28rpx;
+        text-align: center;
+		position: relative;
+    }
+    .bigsmall{
+        height:660rpx;
+        width:100%;
+        position: relative;
+        margin: 0 auto;
+    }
+    .text4{
+        width:194rpx;
+        height:194rpx;
+        background: rgba(60,124,255,0.3);
+        border-radius: 50%;
+        position: absolute;
+        left:0;
+        top:0;
+        bottom:0;
+        right:0;
+        margin:auto;
+        animation:bigSmall 1s infinite;
+        -moz-animation:bigSmall 1s infinite; /* Firefox */
+        -webkit-animation:bigSmall 1s infinite; /* Safari and Chrome */
+        -o-animation:bigSmall 1s infinite; /* Opera */
+    }
+    .text5{
+        border-radius:50%;
+        position: absolute;
+        left:0;
+        top:0;
+        bottom:0;
+        width:168rpx;
+        height:168rpx;
+        right:0;
+        margin:auto;
+        .btnImg{
+            position: absolute;
+            width:168rpx;
+            height:168rpx;
+        }
+        &>view{
+            width:100%;
+            height:100%;
+        }
+        &>view>.text{
+            background:none;
+            border:none;
+            width:168rpx;
+            height:168rpx;
+            border-radius:50%;
+            color:#fff;
+            font-size:40rpx;
+            font-weight: bold;
+            line-height:46rpx;
+        }
+    }
+
+    .text6{
+        color:#808080;
+        font-size:24rpx;
+        height:30rpx;
+        line-height:30rpx;
+        text-align: center;
+        position: absolute;
+        bottom:44rpx;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+    }
+}
