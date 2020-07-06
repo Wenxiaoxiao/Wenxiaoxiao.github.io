@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="debounce(consoleFn('aaa'),1000);">按钮1</button>
+    <button onclick="throttle(consoleFn('aaa'),1000);">按钮2</button>
+</body>
+</html>
+<script type="text/javascript">
+function debounce (f, wait) {
+  let timer
+  return (...args) => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      f(...args)
+    }, wait)
+  }
+}
+function throttle (f, wait) {
+  let timer
+  return (...args) => {
+    if (timer) { return }
+    timer = setTimeout(() => {
+      f(...args)
+      timer = null
+    }, wait)
+  }
+}
+function consoleFn(str){
+    console.log(str);
+}
+</script>
