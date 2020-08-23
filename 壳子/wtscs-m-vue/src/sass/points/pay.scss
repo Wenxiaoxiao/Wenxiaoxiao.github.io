@@ -1,0 +1,50 @@
+.points-pay-panel {
+  .gray {
+    color: #999;
+  }
+  .info-box {
+    background: #d2ebff;
+    padding: r(20) r(30);
+    span {
+      color: #4580f6;
+    }
+  }
+  .item {
+    font-size: r(30);
+    background: #fff;
+    border-bottom: 1px solid #ececec;
+    padding: r(30);
+    .name {
+      font-size: r(32);
+      margin-bottom: 10px;
+    }
+    .info {
+      display: inline-block;
+      span {
+        font-size: r(26);
+      }
+    }
+    .count {
+      float: right;
+      font-size: r(35);
+      font-weight: bold;
+      color: #ff6c00;
+      line-height: 1.2;
+    }
+  }
+  .submit {
+    position: fixed;
+    width: calc(100% - 40px);
+    bottom: 20px;
+    left: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: r(32);
+    line-height: r(100);
+    background: #aeaeae;
+    color: #fff;
+    &.active {
+      background: #4580f6;
+    }
+  }
+}

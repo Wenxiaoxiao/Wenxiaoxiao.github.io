@@ -1,0 +1,928 @@
+ .mui-table-view-cell.mui-collapse.mui-active a:after {
+   transform: rotate(135deg);
+ }
+
+ .mui-table-view-cell.mui-collapse.mui-active a {
+   background: #f6e0c5;
+ }
+
+ //修改选择器按钮颜色
+ .mui-dtpicker {
+   .mui-btn-blue {
+     background-color: $baseColor2;
+     border: 1px solid $baseColor2;
+   }
+ }
+
+ //新下拉框
+ .lz-drop-down {
+   .lz-drop-down-name {
+     display: inline-block;
+     min-width: r(150);
+     max-width: r(400);
+     height: 100%;
+     max-height: 200px;
+     padding-right: r(20);
+     border: none;
+     text-align: right;
+     -webkit-appearance: none;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+   }
+
+   .popupBox {
+     display: none;
+     z-index: 99999;
+     position: fixed;
+     left: 0;
+     top: 0;
+     width: 100%;
+     height: 100%;
+
+     &.active {
+       display: block;
+     }
+   }
+
+   .lz-drop-down-layer {
+     background-color: #fff;
+     position: absolute;
+     top: 30%;
+     left: 50%;
+     z-index: 22;
+     width: 70%;
+     max-width: 8rem;
+     text-align: left;
+     height: auto;
+     max-height: 300px;
+     padding: 10px 20px;
+     overflow: auto !important;
+     transform: translateX(-50%);
+
+     //overflow: scroll!important;
+     .lz-drop-down-option {
+       position: relative;
+       display: block;
+       padding-left: 25px;
+       min-height: 30px;
+       width: 100%;
+       font-size: 16px;
+       line-height: 30px;
+       margin: 5px 0;
+       color: #666;
+     }
+
+     i.lz-drop-yuan {
+       position: absolute;
+       width: 20px;
+       height: 20px;
+       left: 0;
+       top: 50%;
+       margin-top: -10px;
+       border: 1px solid #999;
+       border-radius: 20px;
+     }
+     
+
+     .lz-drop-down-option:hover,
+     .lz-drop-down-option:active {
+       i.lz-drop-yuan {
+         border-color: $baseColor2;
+         background-color: rgba($baseColor2, 0.3);
+       }
+     }
+
+     .lz-drop-down-option[data-check=true] {
+       i.lz-drop-yuan {
+         border-color: $baseColor2;
+         background-color: #fff;
+
+         &:after {
+           content: "";
+           display: inline-block;
+           width: 10px;
+           height: 10px;
+           background-color: $baseColor2;
+           position: absolute;
+           left: 50%;
+           top: 50%;
+           margin-top: -5px;
+           margin-left: -5px;
+           border-radius: 10px;
+         }
+       }
+     }
+   }
+
+   .lz-drop-check-box {
+     width: 100%;
+     height: 100%;
+   }
+
+   .lz-drop-check {
+     text-align: center;
+     min-width: r(100);
+     height: 100%;
+     line-height: r(60);
+     padding: 0 10px;
+     color: #666;
+     display: inline-block;
+     margin: 0 2px;
+     background-color: #ddd;
+     border-radius: 5px;
+
+     &[data-check="true"] {
+       color: #fff;
+       background-color: $baseColor2;
+     }
+   }
+ }
+
+ .shadeBox {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   left: 0;
+   top: 0;
+   background-color: rgba($color: #000000, $alpha: .4);
+ }
+
+ .history-box {
+   .history-msg {
+     background-color: #fff;
+   }
+
+   .history-items {
+     @include remCalc(padding, 10, 0);
+     @include remCalc(line-height, 45);
+     min-height: r(45);
+     border-top: 1px solid #eeeeee;
+     @include remCalc(font-size, 28);
+     position: relative;
+
+     &:first-child {
+       border-top: none;
+     }
+
+     .history-lables {
+       @include remCalc(line-height, 45);
+       height: r(45);
+       color: #000;
+       margin-top: 3px;
+     }
+
+     .history-option {
+       text-align: center;
+       min-width: r(100);
+       height: 100%;
+       line-height: r(45);
+       padding: 0 10px;
+       color: #666;
+       display: inline-block;
+       margin: 3px 2px;
+       background-color: #ddd;
+       border-radius: 5px;
+
+       &.active {
+         color: #fff;
+         background-color: $baseColor2;
+       }
+     }
+   }
+ }
+
+ /*保费试算*/
+ .premium {
+   min-height: 100vh;
+
+   input,
+   select {
+     padding: 0;
+     margin: 0;
+     border: none;
+   }
+
+   h2 {
+     color: $baseColor2;
+     @include remCalc(font-size, 40);
+     line-height: 1.5;
+     padding: 5px;
+     text-align: center;
+     font-weight: 900;
+   }
+
+   .premium-from {
+     padding: 0 r(20);
+   }
+
+   .box {
+     background-color: #fff;
+     position: relative;
+   }
+
+   .failmsg {
+     @include remCalc(font-size, 26);
+     color: #ed393b;
+     @include remCalc(padding, 10, 20);
+     @include remCalc(line-height, 36);
+     background-color: #ebeff2;
+
+     span {
+       color: #222;
+     }
+   }
+
+   .title-h3 {
+     position: relative;
+     padding-left: r(10);
+     span {
+       position: relative;
+       display: inline-block;
+       @include remCalc(font-size, 36);
+       line-height: r(50);
+       font-weight: 900;
+      background:linear-gradient(to bottom,#fa9368,#fa695d); 
+      -webkit-background-clip:text; 
+      -webkit-text-fill-color:transparent; 
+     }
+
+     .h3-amout {
+       display: block;
+       color: $bg-color-ff6e06;
+       @include remCalc(font-size, 24);
+       line-height: 1.5;
+       font-weight: 200;
+     }
+   }
+
+   .title-h4 {
+     @include remCalc(height, 60);
+     @include remCalc(line-height, 60);
+     padding-left: r(50);
+     position: relative;
+
+     span {
+       display: block;
+       @include remCalc(font-size, 30);
+       line-height: r(60);
+       @include remCalc(height, 60);
+     }
+
+     .h3-amout {
+       color: $bg-color-ff6e06;
+       @include remCalc(font-size, 24);
+       font-weight: 200;
+     }
+
+     &::before {
+       display: block;
+       content: "";
+       width: 6px;
+       height: 6px;
+       position: absolute;
+       left: r(30);
+       top: 50%;
+       margin-top: -3px;
+       border-radius: 6px;
+       background-color: $bg-color-ff6e06;
+
+     }
+   }
+
+   .btn-box {
+     width: 100%;
+     padding: 0 r(30);
+
+     .half {
+       width: 50%;
+       float: left;
+       display: inline-block;
+     }
+
+     .add {
+       //float: right;
+       width: r(250);
+       margin-top: 10px;
+       margin-bottom: 10px;
+
+       i {
+         margin-right: 5px;
+       }
+     }
+   }
+
+   .item-paddright {
+     padding-right: 15px !important;
+   }
+
+   .items {
+     padding: r(15) r(10);
+     @include remCalc(line-height, 60);
+     min-height: r(60);
+     border-bottom: 1px solid #eeeeee;
+     @include remCalc(font-size, 32);
+     position: relative;
+
+     &.active {
+       border-bottom-color: $baseColor2;
+     }
+   }
+
+   .items.errors {
+     border-bottom: 1px solid red !important;
+
+     & .lables {
+       color: red;
+     }
+
+     &>.from-right {
+
+       >input,
+       a,
+       select,
+       span {
+         color: red;
+       }
+
+       >input::-webkit-input-placeholder,
+       input:-moz-placeholder,
+       input::-moz-placeholder,
+       input:-ms-input-placeholder,
+       input,
+       a,
+       select,
+       span {
+         color: red;
+       }
+
+     }
+   }
+
+   .lables {
+     display: inline-block;
+     @include remCalc(line-height, 60);
+     height: r(60);
+     color: #000;
+     float: left;
+   }
+
+   .from-right {
+     position: relative;
+     min-width: 60px;
+     text-align: right;
+     max-width: 70%;
+     height: r(60);
+     @include remCalc(line-height, 60);
+     float: right;
+     display: inline-block;
+
+     &.moreWid {
+       width: 80%;
+       height: auto;
+       min-width: r(60);
+     }
+   }
+
+   .max-width {
+     max-width: 90%;
+     overflow: hidden;
+   }
+
+   //核保身高体重样式，勿删
+   .from-width {
+     max-width: 60%;
+   }
+
+   .occupaCheck {
+     display: inline-block;
+     width: 100%;
+     height: r(60);
+     line-height: r(60);
+     color: #000;
+   }
+
+   .lz-radio {
+     margin-left: 5px;
+     margin-right: 5px;
+   }
+
+   .birth-input,
+   .cityIntos,
+   .cityIntos,
+   .a-input {
+     display: inline-block;
+     @include remCalc(line-height, 60);
+     @include remCalc(height, 60);
+     min-width: r(200);
+     color: #000;
+     text-align: right !important;
+     -webkit-appearance: none;
+     padding-right: 15px;
+   }
+
+   .cityIntos {
+     padding-right: 25px;
+
+     &:after {
+       content: '\e6ce';
+       font-family: "iconfont" !important;
+       position: absolute;
+       right: 0;
+       top: 50%;
+       transform: translateY(-50%);
+       font-size: 20px;
+       color: $baseColor2;
+     }
+   }
+
+   select {
+     display: inline-block;
+     border: none;
+     background-color: #fff;
+     @include remCalc(line-height, 60);
+     @include remCalc(height, 60);
+     color: #000;
+     text-align: right !important;
+     direction: rtl;
+     padding-right: 15px;
+     -webkit-appearance: none;
+
+     option {
+       @include remCalc(line-height, 60);
+       @include remCalc(height, 60);
+     }
+   }
+
+   #places {
+     direction: ltr;
+     min-width: r(400);
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     max-width: 99%;
+     float: inherit;
+   }
+
+   .birth-input {
+     border: none;
+     padding: 0;
+     margin: 0;
+     height: 100%;
+     text-align: right;
+     margin-left: 15px;
+     padding-right: 25px;
+
+     &:after {
+       content: '\e6cd';
+       font-family: "iconfont" !important;
+       position: absolute;
+       right: 0;
+       top: 50%;
+       transform: translateY(-50%);
+       font-size: 18px;
+       color: $baseColor2;
+     }
+   }
+
+   .icon-gengduo {
+     position: absolute;
+     right: 0;
+     top: 50%;
+     transform: translateY(-50%);
+     color: #999;
+   }
+
+   p.more-infor {
+     line-height: 1.8;
+     @include remCalc(font-size, 24);
+     width: 100%;
+     color: red;
+     // padding: 5px;
+   }
+
+   .in-text {
+     display: inline-block;
+     @include remCalc(line-height, 60);
+     //padding-right: 20px;
+     color: #000;
+   }
+
+   .in-col {
+     color: #fe5066;
+   }
+
+   .form-text {
+     .from-right {
+       padding-right: 0;
+     }
+   }
+
+   .commonicons-right {
+     float: right;
+     padding-right: 15px !important;
+     width: 100%;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+
+     &:after {
+       content: '\e607';
+       font-family: "iconfont" !important;
+       position: absolute;
+       right: 0;
+       top: 50%;
+       transform: translateY(-50%);
+       font-size: 16px;
+       color: #999;
+     }
+   }
+
+   .input-text {
+     position: absolute;
+     right: 0;
+     display: inline-block;
+     width: r(380);
+     @include remCalc(height, 60);
+     @include remCalc(line-height, 60);
+     @include remCalc(font-size, 32);
+     text-align: right;
+     border-color: transparent;
+     color: #666;
+     margin: 0;
+   }
+   .input-yzm {
+     float: left;
+     display: inline-block;
+     width: r(250);
+     @include remCalc(height, 60);
+     @include remCalc(line-height, 60);
+     @include remCalc(font-size, 32);
+     text-align: left;
+     border-color: transparent;
+     color: #666;
+     margin: 0;
+   }
+   .getYZM{
+     display: inline-block;
+     width: r(180);
+     height: r(60);
+     line-height: r(55);
+     text-align: center;
+     color: $baseColor2;
+     padding: 2px 0;
+     border: 1px solid $baseColor2;
+     border-radius: 30px;
+     font-size: r(26);
+     margin-left: 5px;
+     &.disabled{
+       color: #999;
+       border-color: #999;
+     }
+   }
+
+   .emailSuffix {
+     width: 100%;
+     height: 100%;
+   }
+
+   .form-textarea {
+     .lables {
+       line-height: r(100);
+     }
+
+     .from-right {
+       @include remCalc(height, 100);
+     }
+   }
+
+   .from-right-price {
+     float: right;
+     color: #000;
+     @include remCalc(font-size, 32);
+   }
+
+   .in-textarea {
+     line-height: r(50);
+     @include remCalc(font-size, 26);
+     color: #666;
+     @include remCalc(width, 500);
+     @include remCalc(height, 100);
+     border-color: transparent;
+   }
+
+   .box-blank {
+     width: 100%;
+     @include remCalc(height, 120);
+   }
+
+   .button-box {
+     width: 100%;
+     height: r(100);
+   }
+
+   .btn-bottom {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     margin-top: 10px;
+     width: 100%;
+     @include remCalc(height, 100);
+
+     .left {
+       float: left;
+       width: 60%;
+       height: 100%;
+       @include remCalc(line-height, 100);
+       @include remCalc(font-size, 36);
+       //border-top: 1px solid #ececec;
+       background-color: #fff;
+       padding-left: 10px;
+       color: #000;
+
+       span {
+         color: $baseColor2;
+       }
+     }
+
+     .btn-next {
+       float: left;
+       width: 40%;
+       height: 100%;
+       @include remCalc(line-height, 100);
+       text-align: center;
+       @include remCalc(font-size, 32);
+       color: #fff;
+       background-color: $baseColor2;
+       display: inline-block;
+     }
+   }
+
+   .orders-ul {
+     width: 100%;
+     position: relative;
+     //font-family: Helvetica;
+     @include remCalc(padding, 30, 20, 0, 20);
+
+     li {
+       @include remCalc(padding, 6, 0, 6, 160);
+       position: relative;
+     }
+
+     li.order-title {
+       @include remCalc(font-size, 32);
+     }
+
+     li.order-info {
+       @include remCalc(font-size, 28);
+       color: #222;
+
+       .order-name {
+         position: absolute;
+         left: 0;
+         top: r(6);
+         color: #999;
+       }
+
+       .order-inform {
+         color: #666;
+       }
+     }
+
+     .need-pay {
+       @include tips(1px 8px, 3px, 12px, #4ed051, 5px);
+       margin-left: 10px;
+     }
+   }
+
+   .healthy {
+     padding: 0;
+   }
+
+   .order-company {
+     position: absolute;
+     right: 0;
+     @include remCalc(width, 300);
+     top: r(250);
+     opacity: 0.5;
+   }
+
+   .wts-btn-big {
+     @include button-size(r(690), r(70), r(28), r(70), r(10));
+     margin: 10px auto;
+   }
+
+   .order-content {
+     padding: 10px;
+
+     .titles {
+       @include remCalc(font-size, 32);
+     }
+
+     ul {
+       width: 100%;
+       padding-bottom: 10px;
+
+       li {
+         width: 100%;
+         @include remCalc(padding, 10, 0);
+         color: #666;
+         @include remCalc(font-size, 26);
+
+         .name {
+           width: r(200);
+           text-align: right;
+           float: left;
+         }
+       }
+     }
+
+     ul.border-b {
+
+       border-bottom: 1px solid #C7C7C7;
+     }
+   }
+
+   .padding-bot-20 {
+     padding-bottom: r(10);
+   }
+
+   a.check-more {
+     text-align: right;
+     display: block;
+     @include remCalc(line-height, 80);
+     text-decoration: underline;
+     @include remCalc(font-size, 28);
+     padding-right: r(20);
+   }
+
+   .notice-p {
+     color: #000;
+     word-break: break-all;
+     word-wrap: break-word;
+     line-height: r(50);
+     padding: r(10) r(20);
+     @include remCalc(font-size, 30);
+
+     .check-box {
+       display: inline-block;
+     }
+
+     .lz-checkbox-02 {
+       margin-right: 10px;
+       position: relative;
+       top: 5px;
+     }
+
+     .clause-title {
+       @include remCalc(font-size, 30);
+       line-height: r(50);
+       color: $baseColor2;
+     }
+   }
+
+   /*多选框*/
+   .from-addition {
+     .from-add {
+       height: r(60);
+       @include remCalc(line-height, 60);
+
+       input {
+         &:before {
+           top: 2px;
+         }
+       }
+
+       .in-sapntext {
+         font-size: 12px;
+         color: #666;
+       }
+     }
+   }
+
+   .form-item-image {
+     .icon-help {
+       font-size: 24px;
+       margin-left: 10px;
+       color: $baseColor2;
+     }
+
+     // 多图片上传
+     .imgUploading {
+       width: 100%;
+       height: auto;
+       max-width: 100%;
+       float: none;
+       display: block;
+
+       .file-item {
+         width: r(160);
+         height: r(160);
+         float: left;
+         position: relative;
+         margin: r(20);
+
+         .delet {
+           width: r(50);
+           height: r(50);
+           display: inline-block;
+           background: rgba(0, 0, 0, 0.5);
+           font-size: r(50);
+           color: #fff;
+           border-bottom-left-radius: r(10);
+           text-align: center;
+           position: absolute;
+           line-height: r(50);
+           right: 0;
+           top: 0;
+           z-index: 200;
+         }
+
+         img {
+           width: 100%;
+         }
+       }
+
+       .imgUploading-top {
+         padding: 0;
+         border: 0;
+
+         .imgload {
+           width: r(160);
+           height: r(160);
+           float: left;
+           //border: 2px dashed #cbcbcb;
+           position: relative;
+           color: #cbcbcb;
+           line-height: r(156);
+           text-align: center;
+           margin: r(20);
+           @include remCalc(font-size, 160);
+         }
+
+         .webuploader-pick {
+           padding: 0;
+         }
+       }
+     }
+   }
+
+   .informLayer {
+     color: $cpBaseCol;
+   }
+
+   .captch {
+     width: 100%;
+     padding: r(15) 0;
+     height: r(110);
+     font-size: r(30);
+     background-color: #fff;
+     border-top: 1px solid #eee;
+
+     .left {
+       width: 25%;
+       height: 100%;
+       line-height: r(80);
+       color: #000;
+     }
+
+     .right {
+       width: 74%;
+       height: 100%;
+
+       input {
+         margin-bottom: 0;
+         padding: 0 3px;
+       }
+
+       .intoTell {
+         width: 100%;
+         height: 100%;
+         border: 1px solid #eee;
+       }
+
+       .intocaptch {
+         width: 60%;
+         height: 100%;
+         border: 1px solid #eee;
+       }
+
+       #cendcaptch {
+         display: inline-block;
+         text-align: center;
+         width: 35%;
+         height: 100%;
+         line-height: r(80);
+         background-color: #fff;
+         border-radius: 5px;
+         border: 1px solid $baseColor2;
+         color: $baseColor2;
+
+         &.active {
+           background-color: $baseColor2;
+           color: #fff;
+         }
+       }
+     }
+   }
+ }

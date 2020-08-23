@@ -1,0 +1,334 @@
+.claimFlow{
+    background: #fff;
+    width: r(750);
+    height: r(440);
+    .header{
+       width:100%;
+       height: r(440);
+       box-sizing: border-box;
+       padding:r(28) r(30) 0 r(30);
+       margin-bottom: r(15);
+       .claimTitle{
+           width:100%;
+           height: r(48);
+           line-height: r(48);
+           text-align: left;
+           font-size: r(39);
+           color: #000;
+       }
+       P{
+           width:100%;
+           height: r(40);
+           line-height: r(40);
+           font-size: r(29);
+           color: $cpBaseCol;
+           text-align: left;
+       }
+       .claimDList{
+           margin-top: r(16);
+           width: 100%;
+           height: auto;
+           
+           text-align: center;
+           dt{
+               width:100%;
+               height: r(58);
+               line-height: r(58);
+               font-size: r(42);
+               color: #000;
+           }
+           dd{
+               width:100%;
+               height: r(44);
+               line-height: r(44);
+               font-size: r(29);
+               color:#090909;
+               img{
+                   width: r(466);
+                   height: r(11);
+               }
+           }
+       }
+       
+    }
+    .claimUList{
+        width:100%;
+        height: auto;
+        
+        position: relative;
+
+        li{
+            width:100%;
+            height: auto;
+            box-sizing: border-box;
+            background: #fff;
+            margin-bottom: r(15);
+            .firstOne{
+                .img-centers{
+                    width: 100%;
+                }
+                dt{
+                    width:100%;
+                    height: r(98);
+                    line-height: r(98);
+                    position: relative;
+                    overflow: hidden;
+                    font-size: r(32);
+                    color: #000;
+                    padding-left: r(30);
+                    .content{
+                        width:r(4);
+                        height: r(40);
+                        top:r(29);
+                        position: absolute;
+                        display: inline-block;
+                        background: $cpBaseCol;
+                    }
+                    span{
+                        margin-left: r(16);
+                    };
+                }
+                dd{
+                    width:r(686);
+                    height: r(230);
+                    background: #f5f5f5;
+                    img{
+                        width:r(680);
+                        height: r(180);
+                    }
+                }
+            }
+            .two{
+                width:100%;
+                dd{
+                    width:r(340);
+                    height: r(560);
+                    float:left;
+                    margin-right: r(15);
+                    margin-bottom: r(15);
+                img{
+                    width:r(340);
+                    height: r(560);
+                }
+                }
+            }
+            .three{
+                width:100%;
+                height: auto;
+                dd{
+                    width:100%;
+                    height: r(486);
+                    background: #fff;
+                    .p1{
+                        width:100%;
+                        height: r(56);
+                        line-height: r(56);
+                        font-size: r(28);
+                        margin-left: r(30);
+                        span{
+                            display: inline-block;
+                            width:r(36);
+                            height: r(36);
+                            line-height: r(36);
+                            font-size: r(23);
+                            color: #fffeff;
+                            border-radius: 50%;
+                            text-align: center;
+                            background: #ff6b00;
+                            margin-right: r(8);
+                        }
+                    }
+                    .p1Box{
+                        width:100%;
+                        height: r(434);
+                        line-height: r(434);
+                        position: relative;
+                        margin-top: r(28);
+                        overflow: hidden;
+                        .leftBox{
+                            width:r(320);
+                            height: r(370);
+                            float:left;
+                            font-size: r(42);
+                            color: #ff6b00;
+                            line-height: r(370);
+                            .logo{
+                                width:r(82);
+                                height: r(62);
+                                position: absolute;
+                                top:40%;
+                                margin-top: r(-25);
+                                display: inline-block;
+                            }
+                            .wutong{
+                                margin-left: r(92);
+                                
+                            }
+                            .arrow{
+                                width:r(76);
+                                height: r(25);
+                                display: inline-block;
+                            }
+                            .leftUl{
+                                width:r(253);
+                                height: r(249);
+                                background: #eaeaea;
+                                li{
+                                    width:r(122);
+                                    height: r(60);
+                                    box-sizing: border-box;
+                                    background: #fff;
+                                    float:left;
+                                    position: relative;
+                                    vertical-align: middle;
+                                    text-align: center;
+                                    padding-left: 0;
+                                    padding-bottom: 0;
+                                    margin-bottom: 0;
+                                    margin-left: 1px;
+                                    margin-top: 1px;
+                                    img{
+                                        width:r(103);
+                                        height: r(32);
+                                        left: r(9);
+                                        top:r(13);
+                                        margin-left: 1px;
+                                        position: absolute;
+                                    }
+                                }
+                                li:nth-child(odd){
+                                    margin-right: 1px;
+                                }
+                            }
+                            .more{
+                                width:r(253);
+                                height: r(70);
+                                text-align: center;
+                                font-size: r(25);
+                                color: #000;
+                                line-height: r(70);
+                            }
+                            .arror2{
+                                position: absolute;
+                                top:0;
+                                width:r(56);
+                                height: r(25);
+                                left: r(258);
+                                top:r(150);
+                            }
+                            .leftImg{
+                                width:r(230);
+                                height: r(370);
+                                 background: #cecece;
+                                float:left;
+                            }
+                        }
+                        .leftImgBox{
+                            .arrow{
+                                margin-left: r(10);
+                            }
+                        }
+                        .rightBox{
+                            width:r(338);
+                            height: r(370);
+                            background: #cecece;
+                            float:left;
+                        }
+                    }
+                }
+            }
+            .helper{
+                width:100%;
+                height: r(100);
+                vertical-align: middle;
+                text-align: center;
+                padding-top: 10px;
+                @include remCalc(font-size,32);
+                img{
+                    display: inline-block;
+                    @include remCalc(height,60);
+                    position: relative;
+                    top: 5px;
+                }
+
+            }
+            .lastList{
+                width:100%;
+                height: auto;
+                padding-right: r(30);
+                padding-left: r(30);
+                position: relative;
+                padding-bottom: 10px;
+                li{
+                    padding-left: 0;
+                    margin-bottom: 0;
+                    .img-centers{
+                        width: 100%;
+                    }
+                    h2{
+                        width:100%;
+                        height: r(56);
+                        line-height: r(56);
+                        text-align: left;
+                        font-size: r(30);
+                        color: #000;
+                    }
+                    p{
+                        width:100%;
+                        height: auto;
+                        line-height: r(48);
+                        text-align: left;
+                        font-size: r(26);
+                        color: #000;
+                        span{
+                            color: $cpBaseCol;
+                             margin: 0 r(15);
+                        }
+                        .choose{
+                            color: #020202;
+                            font-weight: bold;
+                            margin-left: 0;
+                           
+                        }
+                    }
+                    .none{
+                        width:100%;
+                        height: r(456);
+                        table{
+                            width:100%;
+                            height: 100%;
+                            background:#eee ;
+                            tr{
+                                width:100%;
+                                height: r(42);
+                                line-height: r(42);
+                                th{
+                                    font-size: r(30);
+                                    color: #fff;
+                                    background: $cpBaseCol;
+                                }
+                                th,td{
+                                    width:50%;
+                                    height: r(42);
+                                    line-height: r(42);
+                                    text-align: center;
+                                    border:1px solid #fff;
+                                }
+                                td{
+                                    font-size: r(28);
+                                    color: #000;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .li-left-pad{
+            padding-left: r(30);
+            dt{
+                margin-left: 0!important;
+            }
+        }
+    }
+}

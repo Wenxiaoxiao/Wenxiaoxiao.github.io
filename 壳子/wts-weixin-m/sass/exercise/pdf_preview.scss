@@ -1,0 +1,93 @@
+.pdfViewer .page {
+  direction: ltr;
+  margin: 0 auto;
+  margin-bottom: r(20);
+  position: relative;
+  overflow: visible;
+  background-color: white;
+}
+
+.pdfViewer .page canvas {
+  margin: 0;
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#outerContainer {
+  width: 100%;
+  height: 100%;
+  background: #666;
+  position: relative;
+}
+
+#fileInput{
+    display: none;
+  }
+
+  
+#outerContainer{
+  height: 100%;
+  position: relative;
+  #sidebarContainer{
+      display: none;
+  }
+  
+#mainContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-size: r(30);
+  color: #fff;
+  line-height: r(80);
+  padding: 0 r(30);
+  #toolbarViewer::after{
+    clear:both;content:'';display:block;width:0;height:0;visibility:hidden;
+  }
+  #toolbarViewerLeft{
+    float: left;
+    #pageNumber{
+      background: none;
+      border:none;
+      width: r(30);
+      text-align: center;
+      color: #fff;
+    }
+  }
+  #toolbarViewerRight{
+    float: left;
+  }
+  .outerCenter{
+    float: left;
+    position: relative;
+  }
+  
+}
+
+#viewerContainer {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  position: absolute;
+  top: r(80);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  outline: none;
+}
+
+}
+
+.textLayer {
+  display: none;
+}
+
+
+

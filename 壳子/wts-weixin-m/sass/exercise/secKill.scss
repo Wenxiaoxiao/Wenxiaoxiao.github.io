@@ -1,0 +1,224 @@
+// 秒杀详情与赠险详情
+.secKill,.handsel-box{
+    background-color: #ffe691;
+    padding-bottom: r(30);
+    min-height:100vh;
+    .banner {
+        width: 100%;
+        display: block;
+    }
+    .product-box{
+        padding: 0 r(20);
+        min-height: r(600);
+        .playLis{
+            background-color: #fff;
+            padding: r(20);
+            position: relative;
+            margin-bottom: r(20);
+            .playLis_content{
+                h2{
+                    width: r(540);
+                    font-size: r(38);
+                    font-weight: 900;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                .desc{
+                    font-size: r(24);
+                    color: #686767;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    line-height: 1.5;
+                    padding: r(10) 0;
+                }
+                .playLis_js{
+                    padding-bottom: r(20);
+                    border-bottom: 1px solid #ddd;
+                    .profile{
+                        font-size: r(24);
+                        width: r(300);
+                        border-right: 1px dashed #ccc;
+                        padding-right: r(20);
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        .ldea{
+                            background-color: #FF6E07;
+                            color: #fff;
+                            padding: r(5) r(10);
+                            margin-right: r(20);
+                            border-radius: 3px;
+                            -webkit-border-radius: 3px;
+                            -moz-border-radius: 3px;
+                            -ms-border-radius: 3px;
+                            -o-border-radius: 3px;
+}
+                    }
+                    .introduce{
+                        width: r(360);
+                        padding-left: r(15);
+                        text-overflow: -o-ellipsis-lastline;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        font-size: 0.35rem;
+                        p{
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            font-size: r(24);
+                            padding-left: r(35);
+                            background: url(../images/secKill-dianzan.png) no-repeat center left;
+                            background-size: 15px 15px;
+                        }
+                        
+                    }
+                }
+                .tag{
+                    position: absolute;
+                    right: r(25);
+                    top: 0;
+                    height: r(50);
+                    line-height: r(50);
+                    width: r(120);
+                    font-size: r(32);
+                    background-color: #FE7612;
+                    color: #fff;
+                    text-align: center;
+                    &::before,&::after{
+                        content: '';
+                        position: absolute;
+                        width: 0;
+                        height: r(0);
+                        bottom: r(-12);
+                        border-color: #FE7612;
+                        border-style: solid;
+                        border-top-width: r(6);
+                        border-bottom-width: r(6);
+                        border-left-width: r(30);
+                        border-right-width: r(30);
+                        border-bottom-color: transparent;
+                    }
+                    &::before{
+                        left: 0;
+                       
+                        border-right-color: transparent;
+                    }
+                    &::after{
+                        right: 0;
+                        
+                        border-left-color: transparent;
+                    }
+                }
+                .count-box{
+                    padding-top: r(20);
+                    .price{
+                        color: #fe750f;
+                        font-size: r(34);
+                        span{
+                            font-size: r(24)
+                        }
+                        s{
+                            font-size: r(24);
+                            color:#666666;
+                        }
+                    }
+                    .last{
+                        color:#ff422c;
+                        font-size: r(30);
+                    }
+                }
+            }
+        }
+        .playLis_bottom{
+            padding-top: r(20);
+            .btn{
+                width: r(672);
+                height: r(96);
+                margin: 0 auto;
+                display: block;
+                background-color: #fff;
+                img{
+                    display: block;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+.birth-tips{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #7F7F7F;
+    display: none;
+    .tips-box{
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        margin-left: r(-270);
+        width: r(520);
+        height: r(540);
+        z-index: 9;
+        background-color: #fff;
+        .tips-list{
+            .tips-icon{
+                padding-top:r(45);
+                height: r(254);
+                background-color: #ffe3df;
+                position: relative;
+                .icon-img{
+                    width: r(240);
+                    margin: 0 auto;
+                    display: block;
+                }
+                .icon-cha{
+                    position: absolute;
+                    right: 5px;
+                    top: 0px;
+                    font-size: 24px;
+                    color: #ff9090;
+                    font-weight: 900;
+                }
+            }
+            .tips-icon2{
+                background-color: #fffad7;
+            }
+            .tips-content{
+                font-size: r(30);
+                padding: r(50) 0 r(25);
+                text-align: center;
+            }
+            .btnInfo{
+                text-align: center;
+            }
+            .tips-btn{
+                display: inline-block;
+                width: r(220);
+                height: r(80);
+                text-align: center;
+                line-height: r(80);
+                background-color: #ff2121;
+                border-radius: 3px;
+                color: #fff;
+                margin: 0 auto;
+                font-size: r(34);
+            }
+            .tips-btn-close{
+                background: #ccc;
+            }
+        }
+    } 
+}
+// 赠险详情
+.handsel-box{
+    background-color: #4680f6;
+}

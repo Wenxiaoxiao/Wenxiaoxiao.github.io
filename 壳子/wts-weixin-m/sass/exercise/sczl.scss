@@ -1,0 +1,45 @@
+.destail{
+      height: 100%;
+  padding-bottom: r(170);
+  overflow: auto;
+}
+.destail #uploader-demo #fileList .file-item {
+  height: auto;
+  .file-item-desc{
+    width: 100%;
+    line-height: r(60);
+    font-size: r(28);
+    color: #000;
+    text-align: center;
+  }
+}
+
+#uploader-demo{
+  .uploader_title{
+    line-height: r(100);
+    color: #000;
+    font-size: r(33);
+  }
+}
+#submit_btn{
+    width:100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    padding: 0 r(30);
+    padding-bottom: r(50);
+    padding-top: r(30);
+    background: #fff;
+    span{
+    display: block;
+    background: #1266fc;
+    color: #fff;
+    line-height: r(80);
+    text-align: center;
+    font-size: r(33);
+    letter-spacing: r(2);
+    border-radius: r(40);
+    -moz-box-shadow:0px 2px 11px #159FEE; -webkit-box-shadow:0px 2px 11px #159FEE; box-shadow:0px 2px 11px #159FEE;
+    }
+  }

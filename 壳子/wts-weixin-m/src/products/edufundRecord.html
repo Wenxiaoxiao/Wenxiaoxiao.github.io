@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"教育金券记录", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container edufundRecord">
+        <div class="fund-header">
+            <div class="fund-d">
+                <div class="d1">累计获得额度</div>
+                <div class="d2"><b class="allNum"></b><span>元</span></div>
+            </div>
+            <div class="fund-d">
+                <div class="d1">当前可用额度</div>
+                <div class="d2"><b class="curNum"></b><span>元</span></div>
+            </div>
+        </div>
+        <div class="space"></div>
+        <div class="fundrecord">
+            <div class="tab-title">
+                <div class="title1 active" onclick="tabChange(1)">
+                    <span>赠送记录</span>
+                </div>
+                <div class="title1" onclick="tabChange(2)">
+                    <span>使用记录</span>
+                </div>
+            </div>
+            <ul class="tab-content">
+                
+            </ul>
+        </div>
+    </div>
+</body>
+@@include("include/footer.htm")
+@@if (name === 'build') {
+    <script src="https://libs.wts999.com/wtsLogin.min.js"></script>
+    <script src="https://libs.wts999.com/nativeApp.min.js"></script>
+}
+@@if(name === 'dev'){
+    <script src="https://libs.wts999.com/wtsLogin.js"></script>
+    <script src="https://libs.wts999.com/nativeApp.js"></script>
+}
+<!-- 模板 -->
+<script type="text/html" id="recordList">
+{{each data as val i}}
+<li class="recordItem">
+    <div class="d-left">
+        <div class="detail">{{val.detail}}</div>
+        <div class="createTime">{{val.createTime}}</div>
+    </div>
+    <div class="d-right">
+        {{if val.type === '1'}}+￥{{else}}-￥{{/if}}{{val.num}}
+    </div>
+</li>
+{{/each}}
+{{if more}}
+<li class="data-tips">正在加载中...</li>
+{{else !more}}
+<li class="data-tips">已加载全部~~</li>
+{{/if}}
+</script>
+<script>
+$(function(){
+    var login = wtsLogin;
+    login.init({env:$.globedata.environment},function(user){
+        if(user && user.token)sessionStorage.setItem("token",user.token);
+        if(!user || !user.id){
+            if($.tools().isWtsNativeApp()){
+                nativeApp.general.deviceready(function () {
+                    nativeApp.general.closeWebView();
+                    var url = encodeURIComponent(window.location.href);
+                    nativeApp.general.router({url:"wts://web?force=1&url="+url});
+                    return;
+                })
+            }
+            window.location.href= "http://" + $.domain.replace(/www/,"bx") + "/index.html#/BDmobileHtml?type=2&redUrl="+ window.location.href;
+            return;
+        }
+        var token = $.getQueryString("WTS_TOKEN") || user.token;
+        sessionStorage.setItem("edufund_token",token);
+        var AccountAmount =  AjaxList("/policy/education/api/accountInfo","post",{},"AccountAmount");
+        tabChange(1);
+    })
+    //计算tab-content高度
+    var clientH = document.documentElement.clientHeight || document.body.clientHeight;
+    var headH = $(".fund-header").height();
+    var spaceH = $(".space").height();
+    var titleH = $(".tab-title").height();
+    var contentH = clientH - headH - spaceH - titleH ;
+    $(".tab-content").height(contentH);
+})
+$(".tab-content").scroll(function(){
+    var scrollTop = $(".tab-content").scrollTop();
+    var contentH = $(".tab-content").height();
+    var scrollHeight = $(".tab-content")[0].scrollHeight;
+    //滚动条到底部的条件
+    if(scrollTop+contentH == scrollHeight){
+        getPages();
+    }
+});
+function tabChange(type){
+    //缓存当前type
+    this.more = true;
+    this.type = type;
+    this.pageNum = 1;//重置num
+    if(type === 2){
+        $($(".title1")[1]).addClass("active");
+        $($(".title1")[0]).removeClass("active");
+    }
+    else{
+        $($(".title1")[0]).addClass("active");
+        $($(".title1")[1]).removeClass("active");
+    }
+    //教育金变动记录
+    var querylist = {
+        "type":type,
+        "pageSize":10,
+        "pageNum":pageNum,
+        "WTS_TOKEN":sessionStorage.getItem("edufund_token")
+    }
+    var changeRecords = AjaxList("/policy/education/api/change/list","post",querylist,type);
+}
+function getPages(){
+    console.log("=================>",this.type);//判断是哪一个tab
+    console.log("----------------->",this.pageNum);//获取pageNum
+    if(!this.more){
+        return;
+    }
+    this.pageNum++;
+    //教育金变动记录分页逻辑
+    var querylist = {
+        "type":type,
+        "pageSize":10,
+        "pageNum":pageNum,
+        "WTS_TOKEN":sessionStorage.getItem("edufund_token")
+    }
+    var changeRecords = AjaxList("/policy/education/api/change/list","post",querylist,"pages");
+}
+function AjaxList(url,method,params,name){
+  var startAxList = {
+    type:method,
+    url:url,
+    contentType: "application/json;charset=UTF-8",
+    data: JSON.stringify(params?params:{}),
+    success: function (ajaxData, isError) {
+        if (!isError) {
+            return;
+        }
+        return_result(ajaxData,name);
+    }
+  }
+  $.ajaxPackage(startAxList);
+}
+function return_result(res,type){
+    if(type === "AccountAmount"){
+        $(".allNum").html(res.data.allNum);
+        var Num = Number(res.data.curNum)-Number(res.data.freezeNum);
+        $(".curNum").html(Num);
+    }
+    if(type === 1 || type === 2){
+        var tmpHtml = template('recordList',{
+          data:res.data
+        })
+        this.recordList = res.data;//将数据存起来
+        $(".tab-content").html(tmpHtml);
+    }
+    if(type === "pages"){
+        console.log("recordList",recordList);
+        var tmpList = recordList.concat(res.data);
+        console.log("res",res);
+        if(res.data.length < 10){
+            //缓存一下该记录没有更多的标识
+            this.more = false;
+        }
+        var tmpHtml = template('recordList',{
+          data:tmpList,
+          more:this.more
+        })
+        this.recordList = tmpList;//将数据存起来
+        $(".tab-content").html(tmpHtml);
+    }
+}
+</script>
+</html

@@ -1,0 +1,125 @@
+.memberBind-container{
+    width:r(750);
+    background:#fff;
+    position: relative;
+    .mint-popup{
+        width:100%;
+    }
+    .surebtn{
+        border: none !important;
+        box-shadow: none !important;
+        background: none;
+        color:#4580f6;
+    }
+    .picker-toolbar{
+        text-align:right;
+    }
+    .picker-items{
+        .picker-slot-center{
+            width:100%;
+        }
+    }
+    .formitem{
+        height:r(102);
+        line-height: r(102);
+        // &>.label{
+        //     float:left;
+        //     width:r(500);
+        //     height:r(102);
+        //     font-size: 16px;
+        //     padding-left:10px;
+        //     border-bottom:r(2) solid #d9d9d9;
+        // }
+        // &>input{
+        //     float:left;
+        //     height:r(102);
+        //     width:r(250);
+        //     border: none;
+        //     font-size: 16px;
+        //     text-align: right;
+        //     padding-right:10px;
+        //     border-bottom:r(2) solid #d9d9d9;
+        // }
+            .mint-cell{
+                border:none;
+                height:r(102);
+                line-height: r(102);
+                .mint-cell-wrapper{
+                    border:none;
+                    height:r(102);
+                    line-height: r(102);
+                    background-image: none;
+                }
+            }
+        
+    }
+    .subBind{
+        width:r(690);
+        height:r(90);
+        background:#4580f6;
+        line-height:r(90);
+        border-radius: r(10);
+        text-align: center;
+        font-size:r(33);
+        color:#fff;
+        position: absolute;
+        left:50%;
+        transform: translateX(-50%);
+        top:r(712);
+        &>a{
+            display: block;
+        }
+    }
+    .delBind{
+        width:r(690);
+        height:r(90);
+        line-height:r(90);
+        color:#4580f6;
+        font-size:r(33);
+        text-align: center;
+        margin:r(0) auto;
+    }
+    .delModal{
+        width:100%;
+        height:100%;
+        position:fixed;
+        left:0;
+        top:0;
+        .bg{
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.3);
+        }
+        .content{
+            position:fixed;
+            width:r(520);
+            height:r(330);
+            background:#fff;
+            border-radius: r(10);
+            top:r(500);
+            left:r(115);
+            font-size:r(30);
+            &>.des{
+                padding:r(64) r(50);
+                height:r(226);
+            }
+            &>.btns{
+                height:r(102);
+                border-top:r(2) solid #dfdfdf;
+                &>div{
+                    width:50%;
+                    float:left;
+                    text-align: center;
+                    line-height:r(102);
+                }
+                &>.left{
+                    color:#999;
+                    border-right:r(2) solid #dfdfdf;
+                }
+                &>.right{
+                    color:#4580f6;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>授权</title>
+
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+    $(function () {
+        var code = getQueryString('code');
+        var url = getQueryString('url');
+        if(code){
+            window.location.href = url+"?code="+code;
+        }else{
+            alert("页面报错了，请检查访问地址或参数");
+        }
+
+
+        /*
+         * 获取
+         * */
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    })
+
+</script>
+</body>
+</html>

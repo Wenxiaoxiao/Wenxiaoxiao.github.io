@@ -1,0 +1,205 @@
+.iphoneLogin {
+    min-height: 100vh;
+.lz-logo-box {
+  padding: r(50) 0;
+  > img {
+    width: r(220);
+    height: r(220);
+  }
+  > p {
+    padding-top: r(15);
+    font-size: r(40);
+    text-align: center;
+    font-weight: 900;
+    color: #f83811;
+  }
+  #version {
+    padding-top: (20);
+    text-align: center;
+    font-size: r(30);
+  }
+}
+// 登录input表单
+.lz-from-input {
+  height: r(92);
+  color: #787878;
+  border-bottom: 1px solid #dedede;
+  position: relative;
+  > i {
+    position: absolute;
+    font-size: r(38);
+    color: #000;
+    top: 20%;
+    &.left {
+      left: r(10);
+    }
+    &.right {
+      color: #e50011;
+      right: r(10);
+    }
+  }
+  > input {
+    border: none;
+    display: block;
+    margin: 0;
+    height: r(90);
+    line-height: r(90);
+    font-size: r(30);
+  }
+  >.inputVals{
+      padding: 0 r(60);
+      width: r(430);
+  }
+}
+
+
+}
+.input-container{
+    box-sizing: border-box;
+    padding: 0 r(30);
+}
+
+//登录页按钮样式
+.lz-loginBtn {
+  color: #fff;
+  display: block;
+  height: r(90);
+  line-height: r(90);
+  text-align: center;
+  font-size: r(34);
+  margin-top: r(50);
+  background: #ff5500;
+  border-radius: 5px;
+}
+.iphoneLogin {
+  min-height: 100vh;
+  .input-container {
+    padding: 0 r(30);
+    .lz-from-input {
+      .eye {
+        color: #e50011;
+        right: r(10);
+      }
+    }
+    .authCode {
+      .getNum {
+        position: absolute;
+        font-size: r(38);
+        color: #000;
+        top: 17%;
+        right: 0;
+        font-size: r(28);
+        width: r(250);
+        height: r(60);
+        line-height: r(60);
+        background-color: #ff5500;
+        color: #fff;
+        text-align: center;
+        border-left: 1px solid #c8c8c8;
+        border-radius: r(8);
+        &.active {
+          background-color: #ccc;
+          color: #fff;
+        }
+      }
+    }
+    .extend-box {
+      height: r(100);
+      line-height: r(100);
+      > a {
+        color: #787878;
+        font-size: r(28);
+      }
+    }
+  }
+  .userLogin-bg {
+    padding: r(60) r(45) 0;
+    margin-bottom: r(40);
+    .border-line {
+      border: 1px solid #dcdcdc;
+    }
+    .bg {
+      width: 100%;
+      img {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    .auth-con {
+      .icon-log {
+        text-align: center;
+        line-height: r(110);
+        padding: r(50) 0 r(30) 0;
+        img {
+          width: r(110);
+          height: r(110);
+          vertical-align: middle;
+        }
+        .iconfont {
+          color: #e38332;
+          margin: 0 r(40);
+          font-size: r(60);
+          vertical-align: middle;
+        }
+      }
+      p {
+        font-size: r(26);
+        color: #000;
+        text-align: center;
+        padding-bottom: r(40);
+      }
+    }
+  }
+  .weixin-container {
+    padding: r(10) r(50);
+    position: relative;
+    > p {
+      position: relative;
+      text-align: center;
+      font-size: r(32);
+      color: #000;
+      margin-bottom: r(25);
+      &::after,
+      &::before {
+        content: "";
+        height: 1px;
+        width: r(180);
+        background-color: #dedede;
+        position: absolute;
+        top: 50%;
+      }
+      &::after {
+        left: 0;
+      }
+      &::before {
+        right: 0;
+      }
+    }
+    #weixin {
+      display: block;
+      height: r(90);
+      line-height: r(90);
+      border-radius: 5px;
+      background-color: #ff7800;
+      text-align: center;
+      font-size: r(36);
+      color: #fff;
+      .iconfont {
+        font-size: r(80);
+        color: #fff;
+        vertical-align: middle;
+        padding-right: r(20);
+      }
+    }
+    #iphone {
+      font-size: r(30);
+      color: #ff7800;
+      margin-top: r(40);
+      text-align: center;
+      display: block;
+      span {
+      }
+    }
+  }
+}

@@ -1,0 +1,250 @@
+.special{
+  .img_big{
+    height: auto;
+    max-width: r(750);
+    width: 100%;
+    display:block;
+  }
+  .teambuy_top{
+    text-align: center;
+    height: r(58);
+    //width: r(400);
+    margin: 0 auto;
+
+    span{
+      display:inline-block;
+      height: r(58);
+      //width: r(260);
+      color:#fff;
+      font-size: r(36);
+      text-align: center;
+      line-height: r(58);
+
+    }
+    img{
+      vertical-align: middle;
+      width: r(60);
+      height: r(58);
+      overflow: hidden;
+    }
+  }
+  .ewmimg_btn{
+    position: relative;
+    .img_big_bg{
+      height:auto;
+      max-width: r(750);
+      display:block;
+    }
+    .special-btn{
+      position: absolute;
+      width: r(580);
+      height: r(145);
+      top:80.32%;
+      left: 11.33%;
+    }
+  }
+  .ewmimg_2wm {
+    height:100vh;
+    width:r(750);
+    background:rgba(0,0,0,0.8);
+    position: fixed;
+    z-index:77;
+    display:none;
+
+  }
+  .zc_bj {
+    //margin: r(200) r(30) 0;
+    z-index:88;
+    position: absolute;
+    top: r(200);
+    padding: 0 r(30);
+  }
+  .top_01{
+    position:relative;
+    .middle {
+      width: r(280);
+      position: absolute;
+      left: r(80);
+      top: r(40);
+    }
+  }
+
+  //steam-buying
+  .teambuy_bg{
+    background: #F04243;
+    max-width:r(750);
+    padding: 0 r(30) 10px;
+    font-size: r(24);
+    color: #1E1E1E;
+    line-height: r(32);
+    .teambuy_bg_box{
+      margin-top:r(10) ;
+      background: #ffdc92;
+      padding: r(11);
+      margin-bottom:10px;
+      border-radius:r(10) r(10);
+    }
+
+
+    .xianjie{
+      position: relative;
+      .img_xj{
+        position: absolute;
+        top: r(-25);
+        width: 100%;
+      }
+    }
+  }
+  .teambuy_foot{
+    text-align: center;
+    padding: r(20) 0;
+    background: #fff;
+    max-width: r(750);
+    .logo{
+      width: r(357);
+      height: auto;
+    }
+    .Statement{
+      background: #EFEFEF;
+      padding: r(20);
+      margin: r(10) 0;
+      li{
+        float: left;
+        //padding: 0 r(20) 0 0;
+        font-size: r(28);
+        line-height: r(40);
+        text-align: left;
+
+        p{
+         font-size: r(26);
+          float: left;
+          overflow: hidden;
+          color: #1E1E1E;
+
+        }
+        img{
+          width: r(52);
+
+          margin-right: 10px;
+          margin-top:r(10);
+        }
+      }
+      li:nth-of-type(1){
+        width: 38%;
+      }
+      li:nth-of-type(2){
+        width: 30%;
+      }
+      li:last-child{
+        margin-right:0;
+        padding-right: 0;
+        width: 31%;
+      }
+    }
+  }
+
+}
+
+
+.timescolls{
+  width: 100%;
+  height: r(240);
+  background-color: #f04244;
+  padding-top: 10px;
+  .act-tip{
+    text-align: center;
+    color: #fff;
+    line-height:r(60);
+    h3{
+      display: inline-block;
+      margin: 0 auto;
+      font-weight: 200;
+      position: relative;
+      &::before,&::after{
+        position: absolute;
+        content: "";
+        display: block;
+        width: r(102);
+        height: 1px;
+        background-color: #fff;
+        top: 50%;
+
+      }
+
+      &::before{
+        left: r(-122);
+      }
+      &::after{
+        right: r(-122);
+      }
+    }
+  }
+  .time-box{
+    @include remCalc(width,602);
+    @include remCalc(height,167);
+    margin: 0 auto;
+    background: url("../images/timescoll-02.png") no-repeat;
+    background-size: cover;
+    position: relative;
+    .tips{
+      @include remCalc(width,130);
+      @include remCalc(font-size,34);
+      @include remCalc(height,63);
+      position: absolute;
+      .tips-time{
+        @include remCalc(width,84);
+        @include remCalc(height,63);
+        letter-spacing: r(8);
+        float: left;
+        background: url("../images/timescoll-01.png") no-repeat;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+        color:#fff;
+        font-size: r(40);
+        line-height: r(63);
+        .tipscoll{
+          @include remCalc(width,84);
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+      .name{
+        float: left;
+        line-height: r(70);
+        margin-left: 5px;
+      }
+    }
+    .hours{
+      @include remCalc(left,90);
+      @include remCalc(top,45);
+    }
+    .minute{
+      @include remCalc(left,235);
+      @include remCalc(top,45);
+    }
+    .second{
+      @include remCalc(left,380);
+      @include remCalc(top,45);
+    }
+    .overText{
+      display: none;
+      padding-top: r(30);
+      p{
+        text-align: center;
+        color:#673013;
+        display: block;
+        letter-spacing: 3px;
+        &:first-child{
+          font-weight: 500;
+          font-size: r(40);
+        }
+        &:last-child{
+          margin-top: -5px;
+          font-size: r(26);
+        }
+      }
+    }
+  }
+}

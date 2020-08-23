@@ -1,0 +1,92 @@
+/*我的保单*/
+.orderList{
+  .order-ul {
+      width: 100%;
+      li {
+      position: relative;
+        width: 100%;
+        font-size: r(32);
+        background-color: #FFF;
+        margin-bottom: 10px;
+          &:last-child{
+              margin-bottom: 0;
+          }
+      }
+      .head{
+          height: r(100);
+          line-height: r(60);
+          color: #000;
+          padding: r(20) 10px;
+          .title{
+              display: inline-block;
+              width: 75%;
+              height: 100%;
+              @include textOver(1);
+              line-height: r(60);
+              font-size: r(34);
+          }
+          .status{
+              line-height: r(60);
+              font-size: r(32);
+              float: right;
+              color: $personal-col;
+          }
+      }
+      .center{
+          position: relative;
+          border-top: 1px dashed #f3f3f3;
+          border-bottom: 1px dashed #f3f3f3;
+          padding: 10px;
+          color: #000;
+          .txt{
+              line-height: r(50);
+              font-size: r(32);
+              position: relative;
+                z-index: 11;
+          }
+          .img-compangs{
+              position: absolute;
+              right: 5px;
+              top: r(50);
+              height: r(80);
+              max-width: 50%;
+              z-index: 1;
+              opacity: .8;
+          }
+      }
+      .bottom{
+          height: r(100);
+          line-height: r(60);
+          color: #000;
+          padding: r(20) 10px;
+          .price{
+              color: $personal-col;
+              i{
+                  font-weight: 800;
+              }
+          }
+      }
+      .btn{
+          position: absolute;
+          right: 10px;
+          bottom: r(20);
+          height: r(60);
+          line-height: r(60);
+          padding: 0 10px;
+          background-color: $personal-col;
+      }
+    }
+    .noOrders{
+        text-align: center;
+        img{
+            width: 38%;
+            display: block;
+            margin: 80px auto 20px;
+        }
+        .btn{
+            padding: 8px 20px;
+            background-color: $personal-col;
+        }
+    }
+}
+

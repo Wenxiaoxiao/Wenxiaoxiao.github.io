@@ -1,0 +1,29 @@
+.customization_detail{
+  height: 100%;
+  padding: r(30);
+  font-size: r(30);
+  color: #000;
+  line-height: r(50);
+  letter-spacing: (1);
+  word-wrap:break-word;
+  img{
+    display: block;
+    width: 100%;
+    margin: r(15) 0;
+  }
+  .customization_detail_title{
+    font-size: r(36);
+    color: #000;
+    font-weight: 900;
+    text-align: center;
+    padding-bottom:r(30);
+  }
+  .pdfList{
+    color: #428bca;
+    font-size: r(36);
+    margin-top: r(20);
+    .pdfitem{
+      margin-top: r(10);
+    }
+  }
+}

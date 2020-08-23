@@ -1,0 +1,96 @@
+.bjx-0920 {
+    background: #f9eae6;
+    padding-bottom: 50px;
+    .banner {
+        width: 100%;
+        min-width: 1200px;
+    }
+    .bar-right .form{
+        .fromTitle{
+            font-size: 20px;
+            width: 100%;
+            left: 0;
+            margin-left: 0;
+            border-radius: 0;
+        }
+        .fromTitle span{
+            color: #f9ff43;
+        }
+        .btn span{
+            font-size: 16px;
+            text-decoration: line-through;
+        }
+        .fromNumber{
+            text-align: center;
+            span{
+                color: #fc6054;
+            }
+        }
+    }
+    .banner1 {
+        height: 468px;
+        background: url("../../images/bjx-0920/banner.jpg") no-repeat 50% 0;
+        position: relative;
+    }
+    .panel {
+        width: 1110px;
+        margin: 20px auto 0;
+        background: transparent;
+        box-shadow: none;
+        .box {
+            width: 730px;
+            background: #fff;
+            padding: 40px 0;
+            text-align: center;
+            .title1 {
+                font-size: 34px;
+                span {
+                    color: #f04157;
+                }
+            }
+            .title2 {
+                font-size: 18px;
+                margin-top: 10px;
+            }
+            img {
+                margin-top: 20px;
+            }
+        }
+        .bottom-img {
+            margin-top: 50px;
+        }
+    }
+
+    .bar-right {
+        float: right;
+        margin-top: 20px;
+        position: relative;
+        width: 359px;
+        &.active .bars{
+            position: fixed;
+            top: 30px;
+        }
+        .form {
+            background: #fff;
+            border-radius: 15px;
+            width: 359px;
+            box-shadow: 5px 5px 5px #f9dcd6;
+        }
+        .fromTitle {
+            background-color: #f04157;
+        }
+        .btn {
+            width: 100%;
+            background-color: #fc596d;
+            border-bottom: 4px solid #e4152f;
+        }
+        .form input.form-control {
+            border-radius: 10px;
+            border: 1px solid #ffbac3;
+        }
+    }
+    
+}
+.bzjh .form .form-group .check-more .checkBtns:last-child {
+    margin-right: 0;
+}

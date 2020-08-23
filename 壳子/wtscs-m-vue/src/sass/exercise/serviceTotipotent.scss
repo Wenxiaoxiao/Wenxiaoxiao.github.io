@@ -1,0 +1,214 @@
+.service-totipotent.serve-find-box {
+  padding-bottom: r(100);
+  height: 100vh;
+  overflow-y: auto;
+  .bold {
+    font-weight: 900;
+  }
+  .panel {
+    background: #e4f0fe;
+    padding-bottom: 0;
+    .banner {
+      width: 100%;
+    }
+    .title {
+      background: url("~@/exercise/totipotent/title_icon.png") no-repeat;
+      background-size: r(91) r(93);
+      height: r(100);
+      line-height: r(100);
+      padding-left: r(50);
+      font-size: r(40);
+      font-weight: 900;
+      color: #175c92;
+      margin-left: r(20);
+    }
+    .box1 {
+      margin: r(20) r(40);
+      padding: 0 r(40) r(40);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 5px;
+      .item {
+        text-align: center;
+        width: 47%;
+        margin-top: r(100);
+        padding-top: r(70);
+        padding-bottom: r(20);
+        position: relative;
+        border-radius: 5px;
+        img {
+          position: absolute;
+          left: 0;
+          right: 0;
+          width: r(148);
+          top: r(-74);
+          margin: auto;
+        }
+        .text {
+          font-size: r(28);
+          line-height: 1.3;
+        }
+        &.item1 {
+          background: #e3f9f8;
+          color: #256270;
+        }
+        &.item2 {
+          background: #e4f5fb;
+          color: #2b477a;
+        }
+        &.item3 {
+          background: #fffae3;
+          color: #6b4b2d;
+        }
+        &.item4 {
+          background: #fef0e2;
+          color: #73462f;
+        }
+      }
+    }
+    .box2 {
+      margin: r(20) r(40);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .item {
+        width: 48%;
+        background: #fff;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        &.big {
+          width: 100%;
+          .item-title {
+            height: r(164);
+            padding-left: r(100);
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .text1 {
+              font-size: r(36);
+              color: #fff;
+            }
+            .text2 {
+              font-size: r(34);
+              color: #126c84;
+            }
+          }
+          .text {
+            padding: 15px;
+          }
+        }
+        &.big2 {
+          .item-title {
+            height: r(158);
+            .text1 {
+              font-weight: 900;
+            }
+          }
+          .text-box {
+            padding: 15px;
+            .info-text1 {
+              font-size: r(32);
+              color: #333;
+              font-weight: 900;
+            }
+            .info-text2 {
+              font-size: r(28);
+              color: #666;
+              margin-bottom: 5px;
+            }
+          }
+
+        }
+        .text {
+          color: #666;
+          font-size: r(28);
+          padding: 5px 10px;
+        }
+        .item-title {
+          width: 100%;
+          height: r(100);
+          line-height: r(100);
+          padding-left: r(70);
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          font-size: r(36);
+          color: #fff;
+          &.icon1 {
+            background-image: url("~@/exercise/totipotent/item1.jpg");
+          }
+          &.icon2 {
+            background-image: url("~@/exercise/totipotent/item2.jpg");
+          }
+          &.icon3 {
+            background-image: url("~@/exercise/totipotent/item3.jpg");
+          }
+          &.icon4 {
+            background-image: url("~@/exercise/totipotent/item4.jpg");
+          }
+          &.icon5 {
+            background-image: url("~@/exercise/totipotent/item5.jpg");
+          }
+          &.icon6 {
+            background-image: url("~@/exercise/totipotent/item6.jpg");
+          }
+          &.icon7 {
+            background-image: url("~@/exercise/totipotent/item7.jpg");
+          }
+          &.icon8 {
+            background-image: url("~@/exercise/totipotent/item8.jpg");
+          }
+          &.icon9 {
+            background-image: url("~@/exercise/totipotent/item9.jpg");
+          }
+          &.icon10 {
+            background-image: url("~@/exercise/totipotent/item10.jpg");
+          }
+        }
+      }
+    }
+    .gray-box {
+      background-color: #f5f5f5;
+      padding-top: 1px;
+    }
+  }
+  .bottom-box {
+    line-height: r(100);
+    height: r(100);
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 10rem;
+    .money-box {
+      display: inline-block;
+      font-size: r(40);
+      color: #ff6c00;
+      font-weight: bold;
+      border-top: 1px solid #e8e8e8;
+      width: 60%;
+      padding-left: r(30);
+      .old {
+        height: 100%;
+        text-decoration: line-through;
+        font-size: r(25);
+        font-weight: initial;
+        color: #999999;
+      }
+    }
+
+    .button {
+      font-size: r(30);
+      background: #116ef9;
+      color: #fff;
+      width: 40%;
+      text-align: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+    }
+  }
+}

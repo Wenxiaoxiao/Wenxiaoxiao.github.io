@@ -1,0 +1,287 @@
+.subject2 {
+
+    // 公共
+    .txt-h3 {
+        font-size: r(32);
+        font-weight: 900;
+        color: #0d51e0;
+        text-indent: 2em;
+        padding: r(10) 0;
+    }
+    .boxs{
+        padding: r(10) 0;
+    }
+    .text-p {
+        font-size: r(30);
+        color: #000;
+        text-indent: 2em;
+    }
+
+    .title-h3 {
+        font-size: r(45);
+        text-align: center;
+        line-height: 1;
+        padding-bottom: r(22);
+        h3 {
+            display: inline-block;
+            position: relative;
+            font-weight: 900;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                height: 3px;
+                width: r(90);
+                background-color: #e2e2e2;
+                margin-top: -1px;
+            }
+
+            &::before {
+                left: r(-110);
+            }
+
+            &::after {
+                right: r(-110);
+            }
+        }
+    }
+    .title-1{
+        width: 100%;
+        font-size: 32px;
+        line-height: 50px;
+        font-weight: 900;
+        text-align: center;
+        .img-icon{
+            width: 50px;
+            display: inline-block;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+    }
+    p.red1{
+        color: $baseColor;
+        font-size: r(30);
+        text-align: center;
+    }
+    p.p1{
+        font-size: r(30);
+        text-align: center;
+        color: #000;
+    }
+    p.p2{
+        text-indent: r(60);
+        font-size: r(30);
+        color: #000;
+        padding: 3px r(20);
+    }
+    .switch-padding {
+        padding: r(30) r(20);
+    }
+    
+    // 公共 end
+    .subject-top-tap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: r(85);
+        width: 100%;
+        overflow-x: scroll;
+        background-color: #fff;
+        z-index: 99;
+        .contain{
+            height: 100%;
+        }
+        .sub-column {
+            box-sizing: border-box;
+            background-color: #fff;
+            border-bottom: 1px solid #ececec;
+            height: r(85);
+            line-height: r(85);
+            padding: 0 r(10);
+            font-size: r(32);
+            color: #000;
+            display: block;
+            text-align: center;
+            &.active {
+                color: $font-color-active;
+                border-bottom: 2px solid $font-color-active;
+                background-color: #fff;
+            }
+            .txt {
+                height: 100%;
+                font-weight: 900;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .subject-switch {
+        display: none;
+        padding-top: r(85);
+        &.active {
+            display: block;
+        }
+        &.subject-wts{
+            overflow: hidden;
+            background-color: #fff;
+            .subject-wts-swiper2{
+                height: r(543);
+                padding: r(15) 0;
+                background-color: #fff5df;
+                position: relative;
+                overflow: hidden;
+                .swiper-wrapper{
+                    .swiper-slide{
+                        padding: 0 r(24);
+                        img{
+                            display: block;
+                            width: 100%;
+                            height: r(321);
+                        }
+                        .swiper-desc{
+                            font-size: r(30);
+                            color: #000;
+                            height: r(130);
+                            padding: r(20);
+                            background-color: #fff;
+                        }
+                    }
+                }
+                .swiper-pagination{
+                    .swiper-pagination-bullet{
+                        background-color: rgba(255,200,84,.9);
+                    }
+                    .swiper-pagination-bullet-active{
+                        background-color: rgb(255,200,84)
+                    }
+                }
+            }
+            .subject-wts-swiper1{
+                    width: r(608);
+                    height: r(462);
+                    margin: 0 auto;
+                    overflow: initial;
+                    position: relative;
+                    padding-top: r(20);
+                    padding-bottom: r(36);
+                    background-color: #fff;
+                    .swiper-slide {
+                        //width: 100% !important;
+                        // height: 608px !important;
+                        opacity: 0.4;
+                        -webkit-transition: 300ms;
+                        -moz-transition: 300ms;
+                        -ms-transition: 300ms;
+                        -o-transition: 300ms;
+                        transition: 300ms;
+                        -webkit-transform: scale(0.8);
+                        -moz-transform: scale(0.8);
+                        -ms-transform: scale(0.8);
+                        -o-transform: scale(0.8);
+                        transform: scale(0.8);
+                        img {
+                            width: auto;
+                            height: 100%;
+                            display: block;
+                            margin: 0 auto;
+                        }
+                    }
+        
+                    .swiper-slide-visible {
+                        opacity: 0.5;
+                        -webkit-transform: scale(0.8);
+                        -moz-transform: scale(0.8);
+                        -ms-transform: scale(0.8);
+                        -o-transform: scale(0.8);
+                        transform: scale(0.8);
+                    }
+        
+                    .swiper-slide-active {
+                        top: 0;
+                        opacity: 1;
+                        -webkit-transform: scale(1);
+                        -moz-transform: scale(1);
+                        -ms-transform: scale(1);
+                        -o-transform: scale(1);
+                        transform: scale(1);
+                    }
+        
+                    .swiper-pagination{
+                        bottom:-3px;
+                        .swiper-pagination-bullet{
+                            background-color: #fed4be;
+                        }
+                        .swiper-pagination-bullet-active{
+                            background-color: #fc6a21;
+                        }
+                    }
+            }
+            .subject-wts-swiper3{
+                background-color: #fff5df;
+                height: r(390);
+                padding-bottom: r(55);
+                position: relative;
+                overflow: hidden;
+                .swiper-pagination{
+                    .swiper-pagination-bullet{
+                        background-color: rgba(255,200,84,.9);
+                    }
+                    .swiper-pagination-bullet-active{
+                        background-color: rgb(255,200,84)
+                    }
+                }
+            }
+            .client-moving{
+                padding: r(20) r(30);
+                .moving{
+                    width: r(320);
+                    height: r(265);
+                    background-color: #fdb017;
+                    text-align: center;
+                    padding: r(20) 0;
+                    .iconfont{
+                        font-size: r(68);
+                        color: #fff;
+                    }
+                    .nums{
+                        font-size: r(52);
+                        line-height: 1.3;
+                    }
+                    p{
+                        color: #fff;
+                        font-size: r(30)
+                    }
+                }
+            }
+        }
+    }
+    .box-2{
+        padding: r(20) 0;
+        border-bottom: 1px solid #ececec;
+        &:last-child{
+            border-bottom: none;
+        }
+    }
+    .list{
+        font-size: r(32);
+        line-height: r(40);
+        position: relative;
+        padding: 0 0 0 r(45);
+        .icons{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: r(35);
+        }
+    }
+    .question{
+        color: #ff8420;
+        margin-bottom: 10px;
+    }
+    .answer{
+        color: #000;
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "data": {
+        "birthday": 20140609, 
+        "city": "深圳市", 
+        "createTime": "2017-5-20 18:20:09",
+        "email": "9999999992229@qq.com",
+        "enable": true,
+        "headimgurl": "http://img07.tooopen.com/images/20170620/tooopen_sy_214579652271.jpg",
+        "id": 871910705773043700,
+        "mobile": "132****5857",
+        "mobile1": "ByWybBQyxnMGNXvdWdqjaa==",
+        "mobile2": "gufWwkf1y2NKyotTnVN2W7NHtqMM6jpwuhEBfDWd7W1vxyKpkv32lqCzXS3wRCkbLz2NOEEqYFAmfOO8UQ/5Uq==",
+        "nickname": "曾曾曾",
+        "openid": "o-WRKwaKBdPJF7typjFLnVfwkeEE",
+        "policyholderId": 872013056324309000,
+        "province": "广东省",
+        "sex": "2",
+        "updateBy": 1, 
+        "updateTime": 1498147200000
+    },
+    "httpCode": 200, 
+    "msg": "请求成功", 
+    "timestamp": 1498705267990 
+}

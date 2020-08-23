@@ -1,0 +1,312 @@
+//个人中心
+.personals-wrap {
+  background-color: #F5F5F5;
+  .person-center-top {
+    width: 100%;
+    padding: r(20);
+    background: url("../images/personal_top.png") no-repeat;
+    background-size: contain;
+    font-size: r(32);
+    color: #ffffff;
+    box-sizing: border-box;
+    overflow: hidden;
+    .content{
+      position: relative;
+      background: url("../images/personal_top2.jpg") no-repeat;
+      background-size: cover;
+      padding: r(55) 0 r(55) r(150);
+      height: r(210);
+      #auther_img{
+        width: r(110);
+        height: r(110);
+        @include border-radius(50%);
+        border: r(5) solid #E2E2E2;
+        position: absolute;
+        left: r(20);
+        top: 50%;
+        margin-top: r(-55);
+      }
+      .p_wdbd{
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin-top: r(-30);
+        background: url(../images/p_wdbd.png) no-repeat center;
+        background-size: contain;
+        width: r(225);
+        height: r(62);
+        color: #fff;
+        line-height: r(60);
+        text-align: right;
+        padding-right: r(20);
+      }
+    }
+    .myName{
+      color: #000;
+      font-size: r(32);
+      line-height: r(60);
+    }
+    .ziliao{
+      display: block;
+      color: #999;
+      font-size: r(28);
+      i{
+        font-size: r(28);
+      }
+    }
+
+  }
+ //列表栏
+.box {
+  position: relative;
+  padding: r(20) r(20);
+  background-color: #fff;
+  margin-bottom: r(20);
+  &.padd0{
+    padding: 0 r(20);
+  }
+  .li-cross{
+    width: 50%;
+    float: left;
+    height: r(130);
+    text-align: center;
+    color: #000;
+    &:first-child{
+      border-right: 1px solid #ececec;
+    }
+    .icons{
+      display: block;
+      width: r(82);
+      height: r(80);
+      margin: 0 auto 3px;
+    }
+    .item-e-title{
+      font-size: r(30);
+      line-height: r(40);
+    }
+  }
+  .li-vertical{
+    position: relative;
+    height: r(90);
+    line-height: r(90);
+    display: block;
+    color: #000;
+    border-bottom: 1px solid #ececec;
+    padding-left: r(75);
+    font-size: r(30);
+    &:last-child{
+      border-bottom: none;
+    }
+    .icons-left{
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      margin-top: r(-23);
+      width: r(42);
+      height: r(47);
+    }
+    .icons-right{
+      position: absolute;
+      right: 5px;
+      top: 0;
+      font-size: r(30);
+    }
+  }
+}
+}
+
+//绑定信息页
+.binding {
+  height: 100vh;
+  background-color: #efeff4;
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  .binding-top-text {
+    @include remCalc(font-size, 30);
+    text-align: left;
+    @include remCalc(line-height, 40);
+    background-color: $bg-color-ff6e06;
+    color: #fff;
+    @include remCalc(padding, 10, 20);
+  }
+  .read-inform {
+    @include remCalc(padding, 0, 30);
+    @include remCalc(font-size, 28);
+    @include remCalc(height, 82);
+    @include remCalc(line-height, 82);
+    color: #888;
+
+  }
+  .form-list {
+    width: 100%;
+    background: #fff;
+    @include remCalc(padding, 0, 30);
+    @include remCalc(height, 90);
+    @include remCalc(line-height, 90);
+    border-bottom: 1px solid #efeff4;
+    @include remCalc(font-size, 34);
+    overflow: hidden;
+    
+    .name,.name-img {
+      width: 25%;
+      float: left;
+      height: 100%;
+      position: relative;
+      p{
+        font-size: 12px;
+        height: 40%;
+        line-height: 1;
+      }
+      img{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 90%;
+        display: block;
+        @include transform(translateX(-50%) translateY(-50%));
+      }
+    }
+    .name-img{
+      width: 35%;
+      float: left;
+      height: 100%;
+    }
+    .form-right,.form-right-img {
+      width: 75%;
+      float: left;
+      height: 98%;
+    }
+    .form-right-img{
+      width: 65%;
+    }
+    input[type="text"], input[type="number"], input[type="tel"] {
+      border: none;
+      width: 100%;
+      height: 98%;
+      color: #000;
+      padding: 0;
+      margin: 0;
+      font-size: r(30);
+    }
+    input[type="tel"] {
+      float: left;
+    }
+    input[type="radio"] {
+      padding: 0;
+      margin: 0;
+      margin-right: 10px;
+    }
+    input.verification {
+      width: 50%;
+      float: left;
+    }
+    .sentVerification {
+      float: right;
+      width: 45%;
+      height: r(90);
+      @include remCalc(line-height, 90);
+      text-align: center;
+      color: $bg-color-ff6e06;
+      border-left: 1px solid #efeff4;
+      background-color: #fff;
+    }
+
+  }
+  .bind-msg-head {
+    margin-top: r(50);
+    padding: r(30);
+    position: relative;
+    .bind-msg-cen {
+      text-align: center;
+      font-size: r(36);
+      color: #000;
+      position: absolute;
+      top: 0;
+      left: r(280);
+      width: r(180);
+      background: #efeff4;
+    }
+    .bind-top-border {
+      border-top: 1px solid #ddd;
+      padding-top: r(30);
+    }
+    .bind-msg-title {
+      padding-left: r(42);
+      font-size: r(30);
+      color: #000;
+      line-height: 1.8;
+      position: relative;
+      span {
+        position: absolute;
+        font-size: r(30);
+        left: 0;
+        display: inline-block;
+        width: r(35);
+        height: r(35);
+        border-radius: 50%;
+        background: #fa9352;
+        color: #fff;
+        top: 5px;
+        text-align: center;
+        line-height: r(32);
+      }
+    }
+
+    .bind-msg-content {
+      padding-left: r(42);
+      font-size: r(28);
+      color: #999;
+      line-height: 1.5;
+    }
+
+  }
+
+}
+
+.bind-id {
+  z-index: 555;
+  position: fixed;
+  left: 50%;
+  margin-left: r(-375);
+  top: 0;
+
+}
+
+.bind-mobile {
+  z-index: 444;
+  position: fixed;
+  left: 50%;
+  margin-left: r(-375);
+  top: 0;
+}
+
+.item-one{
+  .icons-left{
+    height: auto!important;
+    top:r(32)!important;
+  }
+}
+
+

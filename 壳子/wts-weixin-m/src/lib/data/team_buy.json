@@ -1,0 +1,31 @@
+[
+  {
+    "name": "啊啊啊",
+    "content": [
+      {
+        "productId": "900641910134603776",
+        "productName": "合众爱宝贝少儿重疾两全计划",
+        "file": [
+          {
+            "name": "20170904170215641.png",
+            "url": "./lib/images/teambuy_05.jpg",
+            "uid": 1504515745732,
+            "status": "success"
+          }
+        ]
+      },
+      {
+        "productId": "902110946781478912",
+        "productName": "健康一生重大疾病保险A款",
+        "file": [
+          {
+            "name": "20170904170241324.png",
+            "url": "./lib/images/teambuy_05.jpg",
+            "uid": 1504515762665,
+            "status": "success"
+          }
+        ]
+      }
+    ]
+  }
+]

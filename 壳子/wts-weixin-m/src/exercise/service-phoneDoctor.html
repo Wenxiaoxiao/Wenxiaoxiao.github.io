@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"电话医生", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container phone-doctor">
+        <img src="@@webRoot/lib/images/exercise/phoneDoctor/01.png" class="img">
+        <div class="box">
+            <div class="line">客户通过电话方式与医生进行一对一交流</div>
+            <div class="line">
+                医生为客户提供解答饮食、养生、运动、疾病预防、就医、用药、康复、心理、教育等方面的健康咨询，并提供生活方式改善建议、疾病预防常识等健康知识
+            </div>
+            <div class="line">
+                咨询的问题可以包含：本人健康咨询、家属健康 咨询、配偶健康咨询、子女健康咨询
+            </div>
+        </div>
+        <img src="@@webRoot/lib/images/exercise/phoneDoctor/03.png" class="img">
+        <div class="info-box">
+            <div class="title-box">
+                <img src="@@webRoot/lib/images/exercise/phoneDoctor/icon2.png">
+                <span>特殊说明</span>
+            </div>
+            <div>电话医生服务为咨询服务，不可视为电话诊疗或120服务，不能解释为要求施行或放弃任何医疗行为</div>
+        </div>
+        <div class="bottom-box">
+            <div class="money-box">
+                <span class="money"></span>
+                <span class="old oldMoney"></span>
+            </div>
+            <div class="button" id="submit">立即购买</div>
+        </div>
+    </div>
+
+</body>
+@@include("include/footer.htm")
+
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+ 
+
+<script>
+    var login = wtsLogin
+    login.init({
+        env: $.globedata.environment
+    }, function(user) {
+        if (!$.tools().hasPhonrNumber(user)) {
+            return window.location.href = window.location.origin + "/m/index.html#/BDmobileHtml?type=2&redUrl=" + window.location.href;
+        }
+        var id = $.getQueryString("id");
+        // var id = "1145255547524734976";
+        var data = {};
+
+        $("#submit").click(function() {
+            location.href = "./service-phoneDoctorPay.html?id=" + data.id;
+        });
+
+        getData();
+
+        function getData() {
+            var paramList = {
+                url: "/addedservices/upmarketServer/api/real/list",
+                data: JSON.stringify({}),
+                contentType: "application/json;charset=UTF-8",
+                success: function(ajaxData, isError) {
+                    if (!isError) {
+                        return;
+                    }
+                    ajaxData.data.forEach(function(item) {
+                        if (id == item.id) {
+                            data = item;
+                        }
+                    });
+                    if (data.realMoney) {
+                        $(".money").text("￥" + Number(data.realMoney) + "元");
+                    }
+                    if (data.originalMoney) {
+                        $(".oldMoney").text("原价 ￥" + Number(data.originalMoney) + "元");
+                    }
+                    if (Number(data.realMoney) == Number(data.originalMoney)) {
+                        $(".oldMoney").hide();
+                    }
+                }
+            }
+            $.ajaxPackage(paramList);
+        }
+
+    })
+</script>
+</html

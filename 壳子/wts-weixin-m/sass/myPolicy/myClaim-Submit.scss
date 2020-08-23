@@ -1,0 +1,79 @@
+.myClaim-Submit
+{
+  .myClaim-bg{
+    background: #fff;
+    margin-bottom: r(10);
+    .myClaim-top-title {
+      font-size: r(28);
+      color: #000000;
+      padding: r(30);
+      border-bottom: 1px solid #E5E5E5;
+      li{
+        line-height: r(46);
+        .more{
+          color: #C9C9CD;
+        }
+      }
+  }
+    .myClaim-top-list {
+      font-size: r(30);
+      color: #656565;
+      padding: r(30);
+      li{
+        line-height: r(46);
+        h2{
+          font-size:r(34);
+          padding: r(10) 0;
+          color: #000;
+        }
+      }
+    }
+    .myClaim-mid-title{
+      font-size: r(34);
+      color: #000;
+      padding: r(30);
+      border-bottom: 1px solid #E5E5E5;
+      .border-left{
+        border-left: 4px solid #FF6D05;
+        padding-left: r(20);
+      }
+    }
+    .myClaim-mid-sub{
+      padding: r(30) r(30) 0;
+      li{
+        float: left;
+        width: 25%;
+        margin-bottom: r(15);
+        .img-sub{
+          width: 100%;
+          height: 100%;
+          max-width: r(140);
+          max-height: r(140);
+        }
+      }
+    }
+    .myClaim-mid-txt{
+      font-size: r(26);
+      line-height: r(46);
+      padding: 0 r(30) r(30);
+    }
+
+  }
+  .myClaim-bg-bottom{
+    margin-bottom: r(80);
+  }
+  .myClaim-next{
+    font-size: r(32);
+    color: #fff;
+    text-align: center;
+    height: r(80);
+    line-height: r(80);
+    background: $baseColor;
+    display: block;
+    position: fixed;
+    bottom:0;
+    width: r(750);
+  }
+
+
+}

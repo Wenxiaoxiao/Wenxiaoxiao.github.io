@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"客服咨询", "keywords": "客服咨询", "description": "" })
+    <link rel="stylesheet" href="@@webRoot/lib/css/swiper-4.3.3.min.css">
+</head>
+
+<body>
+    <div class="body-container kefu">
+        <div class="kefu_content">
+            <div class="kefuheader clearfix">
+                <div class="kefu_head"><img src="@@webRoot/lib/images/kefu/kef.png" alt=""></div>
+                <div class="kefu_head_info"><span></span><br>梧桐树保险网很高兴为您服务!</div>
+            </div>
+            <div class="kefu_banner"><img src="@@webRoot/lib/images/kefu/baner.png" alt=""></div>
+            <div class="kefu_que">
+                <div class="kefu_pue_title"><img class="kefu_pue_title_img" src="@@webRoot/lib/images/kefu/kfwd.png" alt=""><span>常见问题</span></div>
+                <div class="swiper-container hotSearchUl">
+                    <div class="swiper-wrapper">
+                        <a class="swiper-slide active" nav="1" style="width:auto">产品投保</a>
+                        <a class="swiper-slide" nav="2" style="width:auto">保单问题</a>
+                        <a class="swiper-slide" nav="3" style="width:auto">理赔问题</a>
+                        <a class="swiper-slide" nav="4" style="width:auto">关于我们</a>
+                    </div>
+                </div>
+
+                <div class="kefu_que_content">
+
+                </div>
+            </div>
+        </div>
+        <div class="kefuButtom">
+        </div>
+    </div>
+
+<script type="text/html" id="question">
+    {{each list as item,index}}
+        <div class="item">
+            <div class="title clearfix"><span class="left"></span><span class="center">{{item.question}}</span><i
+                    class="iconfont icon-xiajiantou"></i></div>
+            <div class="desc">
+                <div class="top">{{#item.answer}}</div>
+                <div class="bottom">
+                    <div class="bottom_title">此回答是否解决您的问题?</div>
+                    
+                    <div class="bottom_desc clearfix type1 {{if item.usetype !=1}}hide{{/if}}">
+                        <div class="desc_pic"><img src="@@webRoot/lib/images/kefu/up02.png" alt=""></div>
+                        <div class="desc_info">感谢您给的赞，我们会继续加油的！</div>
+                    </div>
+                    <div class="bottom_desc clearfix type2 {{if item.usetype !=2}}hide{{/if}}">
+                        <div class="desc_pic"><img src="@@webRoot/lib/images/kefu/down02.png" alt=""></div>
+                        <div class="desc_info">收到您的反馈，我们会努力改正！</div>
+                    </div>
+                    <div class="bottom_desc type0 {{if item.usetype !=0}}hide{{/if}}">
+                        <div class="use" idx="{{item.idx}}" usetype="1">
+                            <img src="@@webRoot/lib/images/kefu/up01.png" alt="">
+                            <i>有用</i>
+                        </div>
+                        <div class="nouse" idx="{{item.idx}}" usetype="2">
+                            <img src="@@webRoot/lib/images/kefu/down01.png" alt="">
+                            <i>没用</i>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</script>
+
+<script type="text/html" id="kefuDesc">
+    <ul class="clearfix">
+        <li>
+            <a style="color:#000;" href="https://webpage.qidian.qq.com/2/chat/h5/index.html?linkType=1&env=ol&kfuin=2852150563&fid=162&key=3635f50f03b5a57b7dbb7656c9868ee1&cate=7&type=10&ftype=1&_type=wpa&qidian=true&translateSwitch=0&roleValue=1&roleData=69">
+                <div class="pic">
+                    <i class="iconfont icon-2"></i>
+                </div>
+                <div class="desc">在线客服</div>
+            </a>
+        </li>
+        <li class="wxKefuInfo">
+            <div class="pic">
+                <i class="iconfont icon-zaixianzixun"></i>
+            </div>
+            <div class="desc">专属微信客服</div>
+        </li>
+        <li>
+            <a style="color:#000;" href="tel:{{phoneNumber}}">
+                <div class="pic">
+                    <i class="iconfont icon-dianhua4"></i>
+                </div>
+                <div class="desc">客服热线</div>
+            </a>
+        </li>
+    </ul>
+</script>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/js/swiper-4.3.3.min.js"></script>
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+ 
+<script src="@@webRoot/lib/js/easemob.js"></script>
+<!-- <script src='//kefu.easemob.com/webim/easemob.js?configId=e00496ea-0029-4e25-a159-5f5cda018720'></script> -->
+<script>
+    //window.easemobim = window.easemobim || {};
+    var loadJS = function(url, cb){
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.setAttribute("type", "text/javascript");
+        script.setAttribute("src", url);
+        head.appendChild(script);
+        script.onload = script.onreadystatechange = function(){
+            if ((!this.readyState) || this.readyState == "complete" || this.readyState == "loaded" ){
+                typeof cb == 'function' && cb();
+            }
+            else
+            {
+                $.layerMsg("can not load the js file");
+            }
+        }
+    }
+    $(function(){
+        var login = wtsLogin;
+        login.init({env:$.globedata.environment}, function(users){
+            if(users && users.token)sessionStorage.setItem("token",users.token);
+            var type = 1;
+            var listData = null;
+            var user = users && users;
+            var tools = $.tools();
+            // var user = tools.getLocal("user");
+            var swiper = new Swiper(".swiper-container", {
+                slidesPerView: "auto",
+                spaceBetween: 10,
+                freeMode: true
+            });
+            getQuestion();
+            getKefuInfo();
+
+            var tiems = setTimeDesc();
+            $(".kefu_head_info span").html(tiems);
+
+            // 切换分类的点击事件
+            $(".swiper-slide").click(function () {
+                type = $(this).attr("nav");
+                $(".swiper-slide").removeClass("active");
+                $(this).addClass("active");
+                getQuestion();
+            })
+
+            //获取客服相关
+            function getKefuInfo() {
+                var questionList = {
+                    type: "post",
+                    url: "/app/infoConfig/api/getInfoByCode",
+                    data: JSON.stringify({ code: "hxCusService" }),
+                    contentType: "application/json",
+                    success: function (data, isError) {
+                        if (!isError) {
+                            return;
+                        }
+                        var html = template("kefuDesc", data.data[0]);
+                        $(".kefuButtom").html(html);
+
+                        //微信客服的点击事件
+                        $(".wxKefuInfo").click(function () {
+                            window.location.href = "./wxkefu.html";
+                        })
+                    }
+                };
+                $.ajaxPackage(questionList);
+            }
+
+            function setTimeDesc() {
+                var hour = new Date().getHours();
+                if (hour >= 6 && hour < 12) {
+                    return "上午好";
+                }
+
+                if (hour >= 12 && hour < 18) {
+                    return "下午好";
+                }
+                if (hour >= 18 && hour < 23) {
+                    return "晚上好";
+                }
+
+                if (hour >= 0 && hour < 6) {
+                    return "晚上好";
+                }
+            }
+
+            //获取问题详情信息
+            function getQuestion() {
+                if (listData) {
+                    display();
+                    return;
+                }
+                var questionList = {
+                    type: "get",
+                    url: "/app/infoConfig/api/getInfo/customerQuestion?code=customerService",
+                    success: function (data, isError) {
+                        if (!isError) {
+                            return;
+                        }
+                        listData = data;
+                        for (var i = 0; i < data.data.length; i++) {
+                            var item = data.data[i];
+                            item.usetype = 0;
+                        }
+                        display();
+                    }
+                };
+                $.ajaxPackage(questionList);
+            }
+
+            function display() {
+                var data = listData;
+                var arr = [];
+                for (var i = 0; i < data.data.length; i++) {
+                    var item = data.data[i];
+                    if (item.type == type) {
+                        item.idx = i;
+                        arr.push(item);
+                    }
+                }
+                var list = template("question", { list: arr });
+                $(".kefu_que_content").html(list)
+
+                //问答的点击事件
+                $(".kefu_que_content .item .title").click(function (event) {
+                    if ($(this).parents(".item").hasClass("active")) {
+                        $(this).parents(".item").removeClass("active");
+                        $(this).parents(".item").find(".iconfont").removeClass("icon-shangjiantou");
+                        $(this).parents(".item").find(".iconfont").addClass("icon-xiajiantou");
+                    } else {
+                        $(this).parents(".item").addClass("active");
+                        $(this).parents(".item").find(".iconfont").removeClass("icon-xiajiantou");
+                        $(this).parents(".item").find(".iconfont").addClass("icon-shangjiantou");
+                    }
+                    event.stopPropagation();
+                })
+
+                // 问题反馈的点击事件
+                $(".use,.nouse").click(function () {
+                    var types = $(this).attr("usetype");
+                    var index = $(this).attr("idx");
+                    listData.data[index].usetype = types;
+                    $(this).parents(".bottom").find(".bottom_desc").addClass("hide");
+                    $(this).parents(".bottom").find(".type" + types).removeClass("hide");
+                })
+            }
+        });
+    });
+</script>
+</body>
+</html>

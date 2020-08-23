@@ -1,0 +1,106 @@
+.ambassadorReward{
+  background: #fff;
+  width:r(750);
+  padding-bottom:r(30);
+  overflow: hidden;
+  .header{
+    position: relative;
+    width:r(682);
+    height:r(269);
+    margin:r(30) auto r(20);
+    &>img{
+      width:r(682);
+      height:r(269);
+    }
+    &>.txt{
+      width:r(682);
+      height:r(269);
+      position: absolute;
+      left:0;
+      top:0;
+      padding:r(44) r(54) r(30) r(46);
+      color:#fff;
+      .t1{
+        font-size:r(24);
+      }
+      .t2{
+        font-size:r(46);
+        font-weight:bold;
+        position: relative;
+        &>span{
+          font-size:r(26);
+        }
+        .withdraw{
+          position: absolute;
+          top:r(-30);
+          right:0;
+          width: r(78);
+          height: r(76);
+          &>img{
+            width: r(78);
+            height: r(76);
+          }
+        }
+      }
+      .t3{
+        font-size:r(24);
+        margin-top:r(50);
+        &>.left{
+          float:left;
+        }
+        &>.right{
+          float:right;
+        }
+      }
+    }
+  }
+  .content{
+    width:r(679);
+    height:auto;
+    background:#fff;
+    box-shadow: 0 0 r(10) #eee;
+    margin:0 auto;
+    font-size:r(30);
+    .tab-title{
+      &>a{
+        width:r(330);
+        line-height:r(118);
+        text-align:center;
+        display:inline-block;
+        color:#000;
+      }
+      &>a.active{
+        color:#2260df;
+        background:url("~@/ambassador/line.png") no-repeat center bottom;
+        background-size:r(99) r(9);
+      }
+    }
+    .wrapper{
+      .item{
+        width:100%;
+        // height:r(170);
+        padding:r(50) r(30) r(30) r(30);
+        border-top:r(2) solid #eee;
+        overflow: hidden;
+        &>.left{
+          float:left;
+          .t1{
+            font-size:r(30);
+          }
+          .t2{
+            font-size:r(21);
+            color:#6c6c6c;
+          }
+        }
+        &>.right{
+          float:right;
+          color: #ffbb00;
+          font-size:r(40);
+          &>span{
+            font-size:r(40);
+          }
+        }
+      }
+    }
+  }
+}

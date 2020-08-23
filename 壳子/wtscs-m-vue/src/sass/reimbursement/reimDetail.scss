@@ -1,0 +1,121 @@
+.reimDetail-container{
+    width:r(750);
+    .status-show{
+        height:r(166);
+        overflow: hidden;
+        padding:r(34) r(39) r(32) r(39);
+        &>dt{
+            width:r(100);
+            float:left;
+            &>img{
+                width:r(100);
+            }
+        }
+        &>dd{
+            width:r(572);
+            float:left;
+            padding-left:r(24);
+            .d1{
+                font-size:r(32);
+                font-weight:bold;
+                line-height:r(52);
+            }
+            .d2{
+                font-size:r(27);
+                line-height:r(44);
+            }
+        }
+    }
+    .createtime{
+        height:r(73);
+        line-height:r(73);
+        background:#fff;
+        color:#666666;
+        padding:0 r(32);
+    }
+    .infos{
+        background:#fff;
+        .title{
+            font-size:r(33);
+            font-weight:bold;
+        }
+        .invoicePic{
+            width:r(400);
+            height:r(245);
+            // background: #f5f5f5;
+        }
+        .reason{
+            min-height:r(97);
+            padding:r(30);
+            border-bottom:r(2) solid #f5f5f5;
+            font-size:r(29);
+            overflow: hidden;
+            &>.s1{
+                width:r(124);
+                float:left;
+            }
+            &>.s2{
+                max-width:r(562);
+                float:right;
+                word-break: break-all;
+            }
+        }
+        .invoice{
+            height:r(309) !important;
+            .mint-cell-wrapper{
+                height:r(309) !important;
+            }
+        }
+        margin-top:r(16);
+        .mint-cell-text{
+            font-size:r(29);
+        }
+        .mint-cell-value{
+            font-size:r(27);
+            color:#000;
+            &>input{
+                text-align: right;
+            }
+        }
+        .mint-cell{
+            border:none;
+            height:r(102);
+            line-height: r(102);
+            .mint-cell-wrapper{
+                border:none;
+                height:r(102);
+                line-height: r(102);
+                background-image: none;
+                border-bottom:r(2) solid #f5f5f5;
+                padding:r(0) r(30);
+            }
+        }
+        .btns{
+            overflow: hidden;
+            width:r(750);
+            height:r(150);
+            padding:r(30);
+            line-height:r(90);
+            &>div{
+                width:r(335);
+                height:r(90);
+                text-align: center;
+                color:#fff;
+                border-radius: r(10);
+                font-size:r(32);
+            }
+            .left{
+                float:left;
+                background:#419efe;
+                &>a{
+                    color:#fff;
+                    display:block;
+                }
+            }
+            .right{
+                float:right;
+                background:#4580f6;
+            }
+        }
+    }
+}

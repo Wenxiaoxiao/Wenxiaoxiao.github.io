@@ -1,0 +1,107 @@
+.edufundRecord{
+    width:r(750);
+    .fund-header{
+        height:r(230);
+        width:r(750);
+        overflow: hidden;
+        background-image:linear-gradient(to bottom,#fb8f0f,#f96311);
+        background-image:-o-linear-gradient(to bottom,#fb8f0f,#f96311);
+        background-image:-ms-linear-gradient(to bottom,#fb8f0f,#f96311);
+        background-image:-moz-linear-gradient(to bottom,#fb8f0f,#f96311);
+        background-image:-webkit-linear-gradient(to bottom,#fb8f0f,#f96311);
+        &>.fund-d{
+            height:100%;
+            width:50%;
+            float:left;
+            color:#fff;
+            padding:r(50) r(10);
+            &>.d1{
+                font-size:r(27);
+                text-align:center;
+                line-height:r(57);
+            }
+            &>.d2{
+                text-align:center;
+                font-size:r(46);
+                font-weight:bold;
+                line-height:r(76);
+                &>span{
+                    font-size:r(27);
+                    font-weight:bold;
+                }
+            }
+        }
+    }
+    .space{
+        height:r(18);
+        width:r(750);
+        color:#eeeeee;
+    }
+    .fundrecord{
+        width:r(750);
+        background: #fff;
+        .tab-title{
+            width:100%;
+            height:r(74);
+            overflow: hidden;
+            border-bottom:r(1) solid #eeeeee;
+            .title1{
+                width:50%;
+                height:100%;
+                float:left;
+                text-align:center;
+                line-height:r(70);
+                &>span{
+                    height:r(70);
+                    display:inline-block;
+                    width:r(148);
+                    font-size:r(28);
+                }
+            }
+            .title1.active{
+                &>span{
+                    color:#f96411;
+                    border-bottom:r(4) solid #f96411;
+                }
+            }
+        }
+        .tab-content{
+            overflow-y:auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling:touch;
+            .data-tips{
+                text-align:center;
+                color:#999;
+                font-size:r(28);
+                line-height:r(60);
+            }
+            .recordItem{
+                overflow: hidden;
+                border-bottom:r(1) solid #eeeeee;
+                padding:r(25) r(30);
+                &>.d-left{
+                    width:r(540);
+                    float:left;
+                    height:100%;
+                    .detail{
+                        font-size:r(28);
+                        word-break: break-all;
+                        line-height:r(38);
+                    }
+                    .createTime{
+                        font-size:r(28);
+                        color:#a0a0a0;
+                        line-height:r(38);
+                    }
+                }
+                &>.d-right{
+                    width:r(150);
+                    float:right;
+                    font-size:r(28);
+                    line-height:r(70);
+                    text-align:right;
+                }
+            }
+        }
+    }
+}

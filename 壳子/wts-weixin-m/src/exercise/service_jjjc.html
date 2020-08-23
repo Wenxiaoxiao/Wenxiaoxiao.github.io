@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"基因检测", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container gene">
+        <div class="geneTest">
+            <img src="@@webRoot/lib/images/exercise/jjjc/jjjc_02.png" alt="" class="geneImg">
+            <img src="@@webRoot/lib/images/exercise/jjjc/jjjc_03.png" alt="" class="geneImg">
+            <img src="@@webRoot/lib/images/exercise/jjjc/jjjc_04.png" alt="" class="geneImg">
+            <img src="@@webRoot/lib/images/exercise/jjjc/jjjc_05.png" alt="" class="geneImg">
+        </div>
+        <div class="nonGeneHight">
+        </div>
+        <div class="geneFixed">
+            <img src="@@webRoot/lib/images/exercise/jjjc/jjjc_06.png" alt="" class="geneImg">
+        </div>
+    </div>
+</body>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+ 
+<script>
+    var login = wtsLogin
+    login.init({
+        env: $.globedata.environment
+    }, function(user) {
+        $(".geneFixed").click(function() {
+            location.href = "./service_checkHis.html"
+        })
+        var name = $.getQueryString('name', 1);
+        var imgUrl = $.getQueryString('img');
+        var inviteId = $.getQueryString('inviteId');
+        var checkKey = $.getQueryString('checkKey');
+        if (name) $('.name').text(name) //设置姓名
+        if (imgUrl) $('.auther').attr('src', imgUrl); //设置图片
+    })
+</script>
+</html

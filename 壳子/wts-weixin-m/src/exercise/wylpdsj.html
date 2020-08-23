@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        @@include("include/header.htm",{ "title":"梧优理赔", "keywords": "", "description": "" })
+    </head>
+
+    <body>
+        <!-- 加载动画 -->
+        <!-- @@include("include/ready-ani.htm") -->
+        <div class="body-container wylpdsj">
+            <div class="wylpdsjContent">
+                <div class="content">
+                    <div class="item">
+                        <div class="title"><img src="@@webRoot/lib/images/exercise/wylpdsj/3.png"
+                                alt=""><span>梧优理赔-理赔实时数据</span></div>
+                        <div class="desc"><span>2019年1月1日--</span><span class="time"></span><br>我们成功协助客户理赔<span
+                                class="numbers"></span>件，理赔总金额<span class="price">123213</span>元。
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="title"><img src="@@webRoot/lib/images/exercise/wylpdsj/4.png"
+                                alt=""><span>什么是梧优理赔——让理赔很简单</span></div> 
+                        <div class="desc">(1)在梧桐树买保险，帮选帮理赔。<br>(2)梧桐树直接对接各保险公司理赔中心，享理赔绿通。<br>(3)理赔专员全程帮您理赔，全程协助您准备理赔资料。
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="title"><img src="@@webRoot/lib/images/exercise/wylpdsj/2.png"
+                                alt=""><span>高水准理赔协助——尽责而且专业</span></div>
+                        <div class="desc">
+                            (1)理赔团队，全年365天*24小时服务。<br>(2)理赔团队成员全部来自保险公司资深理赔专家，其中医学专业、法律专业人士占比80%。<br>(3)多家保险公司理赔，多个产品理赔，理赔团队帮您规划最佳理赔方案。<br>(4)理赔进度实时反馈，可在线查询。服务记录可回溯，专人督办，显示解决客户理赔。
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="title"><img src="@@webRoot/lib/images/exercise/wylpdsj/1.png"
+                                alt=""><span>保险双牌照机构——更值得信赖</span></div>
+                        <div class="desc">
+                            (1)保险业务经营许可证：260580000000800。13年保险经纪牌照，中国银保监会官网可查询。<br>(2)中国银保监会网销许可的正规互联网保险中介机构。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @@include("include/footer.htm")
+
+        <script>
+            $(function () {
+                var paramList = {
+                    type: "post",
+                    url: "/app/infoConfig/api/getInfoByCode",
+                    data: '{"code":"claimField"}',
+                    contentType: "application/json;charset=UTF-8",
+                    success: function (ajaxData, isError) {
+                        if (!isError) {
+                            return;
+                        }
+                        console.log(ajaxData);
+                        $(".content .time").html(ajaxData.data[0].date);
+                        $(".content .numbers").html(ajaxData.data[0].num);
+                        $(".content .price").html(ajaxData.data[0].amount);
+                    }
+                }
+                $.ajaxPackage(paramList);
+            })
+        </script>
+    </body>
+
+</html>

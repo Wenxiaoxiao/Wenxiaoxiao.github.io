@@ -1,0 +1,210 @@
+.products-detail {
+    background: #efefef;
+    .icon {
+        width: r(86);
+        position: absolute;
+        right: r(60);
+        top: 0;
+        bottom: 0;
+        display: block;
+        margin: auto;
+    }
+    .red {
+        color: #ff6c37 !important;
+    }
+    .error-box {
+        position: relative;
+        background: #fff8f5;
+        color: #ff6c37;
+        padding: r(30);
+        .icon {
+            right: r(40);
+            width: auto;
+            font-size: r(28);
+            line-height: r(50);
+            border-radius: r(25);
+            padding: 0 12px;
+            height: r(50);
+            background: #ff6c37;
+            color: #fff;
+        }
+        .img {
+            width: r(38);
+            vertical-align: middle;
+        }
+        
+        .tx1 {
+            vertical-align: middle;
+            font-size: r(34);
+            display: inline-block;
+        }
+        .tx2 {
+            font-size: r(26);
+        }
+        .tx3 {
+            font-size: r(34);
+            color: #000;
+        }
+        .tx4 {
+            font-size: r(26);
+            color: #999;
+        }
+        .tx5 {
+            font-size: r(34);
+            color: #000;
+            margin-bottom: 5px;
+        }
+    }
+    .top-box {
+        background: linear-gradient(to right,#ff973f, #ffad3d);
+        padding: r(40) r(30);
+        position: relative;
+        &.gray{
+            background: #ccc;
+            color: #fff;
+            .text3 {
+                color: #fff;
+            }
+        }
+        .text1 {
+            font-size: r(30);
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .text2 {
+            font-size: r(28);
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .text3 {
+            font-size: r(24);
+            color: #ffdcac;
+        }
+    }
+    .info-box {
+        position: relative;
+        padding: r(40) r(30);
+        background: #fff;
+        .icon {
+            width: r(172);
+        }
+        .text4 {
+            font-size: r(34);
+            font-weight: 700;
+            margin-bottom: 5px;
+            span{
+                margin-right: 1px;
+                color: #ff6c37;
+            }
+        }
+        .text5 {
+            font-size: r(26);
+            color: #999;
+            span{
+                background: #ff6c37;
+                color: #fff;
+                padding: 3px 5px;
+                border-radius: 3px;
+                margin-left: 3px;
+            }
+        }
+    }
+    .detail-box {
+        background: #fff;
+        padding: 1px 0;
+        
+        .top-title {
+            border-bottom: 1px solid #c2c2c2;
+            font-size: r(32);
+            padding: r(15) r(30);
+            margin-bottom: r(15);
+        }
+        .item {
+            font-size: r(28);
+            padding: 0 r(30);
+            line-height: r(60);
+            height: r(60);
+            .key {
+                color: #666;
+            }
+            .text {
+                color: #0a0205;
+                float: right;
+            }
+            .key2 {
+                font-size: r(32);
+                color: #000;
+            }
+            .text2 {
+                float: right;
+                color: #446cad;
+            }
+            .arr {
+                width: r(12);
+                vertical-align: middle
+            }
+        }
+    }
+    .text-btn {
+        font-size: r(28);
+        margin: r(30);
+        span {
+            color: #446cad;
+            margin-left: r(20);
+        }
+    }
+    .submit-btn {
+        background: #ff6c37;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        margin: r(20) r(30);
+        font-size: r(34);
+        line-height: r(90);
+        height: r(90);
+    }
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 10rem;
+        height: 100%;
+        margin: auto;
+        background: rgba(0,0,0,0.3);
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .cover {
+            border-radius: 5px;
+            padding: r(30);
+            background: #fff;
+            width: 80%;
+            padding: r(70) 0;
+            position: relative;
+            text-align: center;
+            .close {
+                width: r(36);
+                position: absolute;
+                right: 0;
+                top: 0;
+                z-index: 1;
+                margin-top: 10px;
+                margin-right: 10px;
+            }
+            .text1 {
+                font-size: r(34);
+                line-height: r(60);
+                span {
+                    font-weight: bold;
+                }
+            }
+            .text2 {
+                font-size: r(28);
+                margin-top: r(10);
+                color: #666;
+            }
+        }
+    }
+}

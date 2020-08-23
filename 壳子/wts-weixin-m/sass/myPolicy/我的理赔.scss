@@ -1,0 +1,1148 @@
+
+.formLine {
+  background: #fff;
+}
+
+.claimsList {
+  padding-top: 1px;
+  background: #fff;
+  .claims-05-list {
+    height: r(225);
+    width: 100%;
+    @include remCalc(font-size,32);
+    line-height: (250);
+    text-align: center;
+    background: #fff;
+    .dlBox {
+      height: r(205);
+      line-height: r(205);
+      text-align: center;
+      background: #fff;
+      dd {
+        width: r(689);
+        height: r(171);
+        background: #f5f5f5;
+        margin-top: r(29);
+        margin-left: r(30);
+        .ulListBox {
+          width: r(689);
+          //height: r(170);
+          padding: 0 r(38);
+          box-sizing: border-box;
+          border: 1px solid #e3e3e3;
+          border-radius: r(5);
+          li {
+            //height:r(85);
+            line-height: r(85);
+            text-align: left;
+          }
+
+          .firstID {
+            border-bottom: 1px solid #cecece;
+          }
+        }
+      }
+    }
+  }
+  .lists1 {
+    height: auto;
+    background: #eee;
+    padding-bottom: r(20);
+    @include remCalc(font-size,30);
+    .dlBox {
+      height: auto;
+      background: #fff;
+      .dlheader {
+        @include remCalc(height, 91);
+        @include remCalc(line-height, 91);
+        border-bottom: 1px solid #ccc;
+        position: relative;
+        span {
+          margin-left: r(46);
+        }
+        div {
+          position: absolute;
+          top: r(27);
+          width: r(6);
+          height: r(36);
+          line-height: r(36);
+          margin-left: r(30);
+          display: inline-block;
+          background: #ff6e07;
+        }
+      }
+      input[type="text"],input[type="number"] {
+        border: none;
+        height: r(78);
+        margin-left: r(15);
+      }
+      dd {
+        //              margin-left: r(30);
+        //              padding-top:r(24);
+        box-sizing: border-box;
+        overflow: hidden;
+        //              @include remCalc(height,468);
+        height: auto;
+        .lastEmail {
+          border-bottom: none !important;
+        }
+        .btnClick {
+          @include remCalc(height, 80);
+          @include remCalc(line-height, 80);
+          border-bottom: 1px solid #ccc;
+          margin-left: r(30);
+          position: relative;
+          i {
+            position: absolute;
+            right: r(30);
+          }
+          .policyholderName {
+            width: 70%;
+            @include remCalc(height,70);
+          }
+
+        }
+        .ulListBox {
+          input {
+            position: absolute;
+            margin-left: r(20);
+          }
+          .per1, .per2, .neither {
+            margin-left: r(80);
+          }
+          li {
+            //@include remCalc(height,80);
+            @include remCalc(line-height, 80);
+            border-bottom: 1px solid #ccc;
+            margin-left: r(30);
+            position: relative;
+            span {
+              margin-left: r(23);
+              padding-right: 5px;
+            }
+            .IDInfo {
+              margin-left: r(52);
+              position: relative;
+
+            }
+            i {
+              position: absolute;
+              right: r(45);
+            }
+            .contactEmail {
+              width: 70%;
+            }
+          }
+          .lastList {
+            margin-top: r(35);
+          }
+          .lastInfo {
+            padding-bottom: r(20);
+            line-height: r(202);
+            position: relative;
+            border-bottom: none;
+            span {
+              margin-left: 0 !important;
+              float: left;
+              height: r(90);
+              line-height: r(90);
+            }
+            dl {
+              padding-bottom: r(30);
+              width: r(550);
+              float: left;
+              dd {
+                height: r(80);
+                width: r(220);
+                line-height: r(90);
+                float: left;
+                input {
+                  margin-top: r(24);
+                }
+                span {
+                  margin-left: r(70) !important;
+                }
+              }
+            }
+
+          }
+        }
+      }
+      .d1, .d2, .d3, .d4 {
+        display: none;
+      }
+      .d5 {
+        height: r(40);
+        width: 100%;
+        line-height: r(40);
+        background: #eee;
+        font-size: r(34);
+        color: $baseColor;
+        text-align: center;
+        margin-bottom: r(100);
+      }
+      #btnBox1 {
+        li > input {
+          margin-top: 0;
+          width: 70%;
+
+        }
+      }
+
+    }
+  }
+  .lists2 {
+    height: auto;
+    background: #eee;
+    padding-bottom: r(20);
+    @include remCalc(font-size,30);
+    .dlBox {
+      height: auto;
+      background: #fff;
+      input {
+        border: none;
+        padding-top: 0;
+        margin-left: r(15);
+        height: r(80);
+      }
+      .dlheader {
+        @include remCalc(height, 91);
+        @include remCalc(line-height, 91);
+        border-bottom: 1px solid #ccc;
+        position: relative;
+        span {
+          margin-left: r(46);
+        }
+        div {
+          position: absolute;
+          top: r(27);
+          width: r(6);
+          height: r(36);
+          line-height: r(36);
+          margin-left: r(30);
+          display: inline-block;
+          background: #ff6e07;
+        }
+      }
+      dd {
+        box-sizing: border-box;
+        @include remCalc(height, auto);
+        .btnClick {
+          @include remCalc(height, 80);
+          @include remCalc(line-height, 80);
+          border-bottom: 1px solid #ccc;
+          margin-left: r(30);
+          position: relative;
+          i {
+            position: absolute;
+            right: r(30);
+          }
+          .dangerTime {
+            width: 70%;
+            background: rgba(0, 0, 0, 0);
+          }
+        }
+        .ulListBox {
+          padding-left: r(30);
+          li {
+            @include remCalc(line-height, 80);
+            border-bottom: 1px solid #ccc;
+            position: relative;
+            span {
+              margin-left: r(23);
+              
+            }
+            .IDInfo {
+              margin-left: r(52);
+              position: relative;
+
+            }
+            i {
+              position: absolute;
+              right: r(45);
+            }
+          }
+          .describe {
+            height: r(296);
+            position: relative;
+            border-bottom: none;
+
+            img {
+              position: absolute;
+              top: r(46);
+              left: r(45);
+            }
+            textarea {
+              height: r(190);
+              width: r(690);
+              @include remCalc(padding,10);
+              text-align: left;
+              color: #676767;
+              border: 1px solid #ccc;
+              border-radius: r(5);
+              background: #f5f5f5;
+            }
+          }
+        }
+        .dangerAddress {
+          width: r(300);
+          background: rgba(0, 0, 0, 0);
+        }
+      }
+    }
+
+  }
+  .list3 {
+    height: r(438);
+    background: #eee;
+    .dlBox {
+      height: r(418);
+      background: #fff;
+    }
+  }
+  .list4 {
+    //height: r(438);
+    height: auto;
+    background: #fff;
+    .dlBox {
+      height: auto;
+      margin-bottom: r(80);
+      .ulListBox {
+        li {
+          border-bottom: none !important;
+          dl {
+            //min-height: r(292);
+            dt {
+              border-bottom: 1px solid #ccc;
+              font-size: r(31);
+              color: #000;
+            }
+            dd {
+              padding-left: r(30);
+              line-height: r(54) !important;
+              font-size: r(28);
+              color: #030303;
+              position: relative;
+            }
+            dd:before{
+              content: '';
+              display: inline-block;
+              width: 8px;
+              height: 8px;
+              background-color: #000;
+              @include border-radius(10px);
+              position: absolute;
+              left: 0;
+              top: 50%;
+              margin-top: -4px;
+            }
+          }
+        }
+      }
+    }
+    //.d1 ,.d3{
+    //    min-height:r(290)!important;
+    //}
+    //.d2{
+    //    min-height:r(270)!important;
+    //}
+    //.d4{
+    //    min-height:r(360)!important;
+    //}
+  }
+}
+
+.claimsListPolicy4 {
+  padding-bottom: 0;
+}
+
+.wts-btnBox {
+  height: r(165);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  .wts-btn-big {
+    margin-left: r(30);
+    margin-top: r(33) !important;
+    background: $baseColor;
+    font-size: r(32);
+    color: #fff;
+  }
+  .wts-btn-big2 {
+    //      margin-top:r(53)!important;
+  }
+}
+
+.wts-btnBox2 {
+  height: r(160);
+}
+
+.claimsLine {
+  height: r(80);
+  line-height: r(80);
+  background: #fff;
+  li {
+    width: 50%;
+    height: r(80);
+    float: left;
+    text-align: center;
+    box-sizing: border-box;
+    //      border-bottom: r(3) solid #fd7007;
+    a {
+      color: #000;
+    }
+  }
+}
+
+.claimsbody {
+  .claimLineBox {
+    height: r(102);
+    background: #f0eff5;
+    width: 100%;
+    //margin-top:r(34);
+    padding-top: r(34);
+    padding-bottom: r(102);
+    border-bottom: 1px solid #d6d6d8;
+    .research {
+      width: r(600);
+      height: r(68);
+      line-height: r(68);
+      background: #fff;
+      float: left;
+      position: relative;
+      border-radius: r(12);
+      margin-left: r(30);
+      i {
+        font-size: r(36);
+        padding: 0 r(19);
+      }
+      div {
+        width: r(3);
+        height: r(25);
+        background: #ff6e07;
+        display: inline-block;
+      }
+      input {
+        border: none;
+        height: r(78);
+        position: absolute;
+        width: 70%;
+        padding-left: r(8);
+        font-size: r(25);
+        color: #6a6a6a;
+      }
+      .icon-cha-copy {
+        color: #b2b2b2;
+        position: absolute;
+        right: 0;
+      }
+
+    }
+    .cancel {
+      float: left;
+      font-size: r(25);
+      color: #ff7008;
+      padding-top: r(18);
+      padding-left: r(20);
+    }
+  }
+  .claimsLineBtn-blank{
+    width:r(750);
+    @include remCalc(height,160);
+  }
+  .claimsLineBtn {
+    width: r(750);
+    height: r(140);
+    position: fixed;
+    padding-top: r(30);
+    background: #fff;
+    bottom: 0;
+    border-top: 1px solid #ddd;
+    .callInfo {
+      background: #ff6e07;
+      color: #fff;
+      i {
+        margin-left: r(-118);
+      }
+      span {
+        position: absolute;
+      }
+    }
+    .lineInfo {
+      background: #11aeff;
+      color: #fff;
+      i {
+        margin-left: r(-118);
+      }
+      span {
+        position: absolute;
+      }
+    }
+    li {
+      float: left;
+      box-sizing: border-box;
+      width: r(293);
+      margin-left: r(37);
+      margin-right: r(37);
+      height: r(80);
+      line-height: r(80);
+      border-radius: r(10);
+      text-align: center;
+      i {
+        font-size: r(48);
+      }
+      a {
+        color: #fff;
+        margin-top: r(8);
+      }
+    }
+  }
+  .listclaims {
+    height: auto;
+    padding-bottom: 1px;
+    background: #f5f5f5;
+    color: #000;
+    .d1 {
+      background: #fff;
+      padding-left: r(30);
+      padding-right: r(30);
+      box-sizing: border-box;
+      padding-top: r(20);
+      padding-bottom: r(38);
+      margin-bottom: r(15);
+      li {
+        font-size: r(34);
+        min-height: r(54);
+        line-height: r(64);
+        color: #000;
+        position: relative;
+        .policyIdleft{
+          display: inline-block;
+          width: r(170);
+          min-width: r(170);
+        }
+
+        a {
+          width: 100%;
+          display: inline-block;
+          height: r(88);
+          line-height: r(88);
+          text-align: center;
+          box-sizing: border-box;
+          border: 1px solid $cpBaseCol;
+          border-radius: r(9);
+          color: $cpBaseCol;
+          background: #fff;
+          font-size: r(34);
+        }
+        .IdNumber {
+          position: absolute;
+          width: 100%;
+          top: r(0);
+          opacity: 0;
+          height: r(90);
+
+        }
+      }
+      .d1-last-li{
+        margin-top: r(23);
+      }
+    }
+    .d11 {
+      background: #fff;
+      padding-left: r(30);
+      padding-right: r(30);
+      box-sizing: border-box;
+      padding-top: r(20);
+      padding-bottom: r(38);
+      margin-bottom: r(15);
+      li {
+        font-size: r(34);
+        min-height: r(54);
+        line-height: r(64);
+        color: #000;
+        position: relative;
+        a {
+          width: 100%;
+          display: inline-block;
+          height: r(88);
+          line-height: r(88);
+          text-align: center;
+          box-sizing: border-box;
+          border: 1px solid $cpBaseCol;
+          border-radius: r(9);
+          color: $cpBaseCol;
+          background: #fff;
+          font-size: r(34);
+        }
+        .IdNumber {
+          position: absolute;
+          width: 100%;
+          top: r(0);
+          opacity: 0;
+          height: r(90);
+
+        }
+      }
+      .d1-last-li{
+        margin-top: r(23);
+      }
+    }
+    .d11:last-of-type{
+      margin-bottom: 0;
+    }
+  }
+  .headerPoint {
+    width: 100%;
+    line-height: r(60);
+    min-height: 100vh;
+    text-align: center;
+    color: #fff;
+    font-size: r(28);
+    background: #fff;
+    box-sizing: border-box;
+    padding-top: r(260);
+    display: none;
+    .noClaims {
+      width: auto;
+      height: auto;
+      img {
+        width: r(240);
+        height: r(180);
+      }
+    }
+    p {
+      color: #000;
+      font-size: r(34);
+    }
+    .pointTip {
+      width: 100%;
+      height: auto;
+      background: #fff;
+      color: #626262;
+      text-align: left;
+      font-size: r(26);
+      margin-top: r(200);
+      box-sizing: border-box;
+      padding-left: r(50);
+      padding-right: r(50);
+      dd {
+        line-height: r(46);
+      }
+    }
+  }
+  .listmyclaims {
+    padding-bottom: r(164);
+  }
+
+  .listclaimg_new{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding-bottom: r(140);
+    .listclaimg_li {
+      padding-top: r(15);
+      .myClaim_dt {
+        height: r(130);
+        position: relative;
+        box-sizing: border-box;
+        border-bottom: 1px solid #ddd;
+        background: #fff;
+        padding-top: r(16);
+        padding-left: r(30);
+        @include remCalc(font-size,32);
+        .myClaim_box {
+          height: r(52);
+          line-height: r(52);
+          position: relative;
+          i {
+            margin-right: r(17);
+            @include remCalc(font-size,32);
+          }
+          span {
+            margin-left: r(22);
+          }
+        }
+        .done {
+          position: absolute;
+          right: r(28);
+          top: r(50);
+          color: $cpBaseCol;
+        }
+
+      }
+      .myClaim{
+        color: #000;
+      }
+      .myClaim_dd {
+        padding-left: r(30);
+        padding-bottom: r(20);
+        background: #fff;
+        padding-top: r(10);
+        .mali {
+          color: #000;
+          line-height: r(52);
+          font-size: r(32);
+          word-break: break-all;
+        }
+        .mali1{
+          line-height: r(72);
+        }
+        .mali2{
+          line-height: r(56);
+          font-size: r(36);
+          font-weight: 600;
+        }
+        .category {
+          color: #000;
+        }
+
+      }
+    }
+    .NoPoints-01{
+      .no-img{
+        @include remCalc(width,300);
+        display: block;
+        margin: 10px auto;
+        margin-top: r(200);
+      }
+    }
+
+  }
+
+
+}
+
+.remodalLine {
+  height: r(366);
+  width: r(625);
+  overflow: hidden;
+  border-radius: r(8);
+  .dialog_hd {
+    height: r(89);
+    line-height: r(89);
+  }
+  .dialog_bd {
+    height: r(182);
+    div {
+      height: r(182);
+      line-height: r(52);
+      text-align: left;
+      padding: 0 r(55);
+    }
+  }
+  .dialog_ft {
+    height: r(104);
+    line-height: r(104);
+    border-top: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    button {
+      width: 49%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    .remodal-cancel1 {
+      border-right: 1px solid #ccc;
+    }
+    .remodal-confirm1 {
+      border-bottom: none;
+    }
+  }
+}
+
+.listclaims-doing {
+  height: auto;
+  overflow: hidden;
+  li {
+    padding-top: r(10);
+    dt {
+      height: r(130);
+      position: relative;
+      box-sizing: border-box;
+      background: #fff;
+      padding-top: r(26);
+      padding-left: r(30);
+      @include remCalc(font-size,32);
+      div {
+        height: r(44);
+        line-height: r(44);
+        position: relative;
+        i {
+          margin-right: r(17);
+          @include remCalc(font-size,32);
+        }
+        span {
+          margin-left: r(22);
+        }
+      }
+      .done {
+        position: absolute;
+        right: r(28);
+        top: r(50);
+        color: $cpBaseCol;
+      }
+      .myClaimsDoing {
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        top: r(0);
+        opacity: 0;
+      }
+    }
+    .myClaim{
+      color: #000;
+    }
+    dd {
+      padding-left: r(30);
+      padding-bottom: r(30);
+      background: #fff;
+      li {
+        height: r(54);
+        line-height: r(54);
+        color: #000;
+      }
+      .policyIdleft{
+        width: r(150);
+        min-width: r(150);
+        display: inline-block;
+      }
+      .pilicyInf{
+        line-height: r(54);
+        color: #000;
+        height: auto;
+        min-height: r(54);
+      }
+      .category {
+        color: #000;
+      }
+
+    }
+  }
+  .doing-id-first{
+      dt{
+        border-bottom: 1px solid #ddd;
+      }
+    dd{
+      padding: r(15) r(30);
+    }
+    li{
+      line-height: r(62);
+    }
+  }
+  .NoPoints-01{
+    .no-img{
+      @include remCalc(width,300);
+      display: block;
+      margin: 10px auto;
+      margin-top: r(200);
+    }
+  }
+}
+
+
+
+.hasBody {
+  margin-top: r(-15);
+  .listclaims-doing {
+    background:#efeff5 ;
+    padding-top: r(0);
+    .Info1{
+      color: #000;
+      .category{
+        font-size: r(36);
+        font-weight: 600;
+      }
+      li{
+        word-break: break-all;
+        padding-top: 0;
+      }
+    }
+    .doingfirst {
+      padding-top: 0;
+      background: #f5f5f5;
+      dt {
+        padding-top: 0 !important;
+        height: r(90);
+        line-height: r(90);
+        box-sizing: border-box;
+        background: #f5f5f5;
+        div {
+          display: inline-block;
+          font-size: r(30);
+          width: r(4);
+          position: absolute;
+          height: r(42);
+          top: r(22);
+          background: #ff6e07;
+          i:nth-of-type(2){
+            color:#b2b2b2;
+          }
+        }
+        span {
+          margin-left: r(18);
+        }
+      }
+      dd {
+        //height: r(336);
+        padding: r(15) r(30) r(15) r(30);
+        li {
+          padding-top: 0;
+          height: r(64);
+          line-height: r(64);
+          box-sizing: border-box;
+          overflow: hidden;
+          //padding-top: r(30);
+          color: #000;
+          //border-bottom: 1px solid #e3e3e3;
+          span {
+            float: right;
+            color: #656565;
+          }
+        }
+        .catesize{
+          font-size: r(30);
+        }
+        .noHeight{
+          height: auto;
+          min-height: r(54);
+          @include remCalc(line-height,64);
+          .dangerAddress{
+            @include remCalc(line-height,64);
+          }
+        }
+        .lastInfo {
+          border: none;
+        }
+        dl {
+          dt {
+            padding-left: 0;
+          }
+          .firstOne {
+            margin-top: r(12);
+          }
+          dd {
+            @include remCalc(font-size,28);
+            height: r(48);
+            line-height: r(48);
+            color: #000;
+            position: relative;
+          }
+          dd:before{
+            content: '';
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 8px;
+            height: 8px;
+            background-color: #000;
+            @include border-radius(10px);
+            margin-top: -4px;
+          }
+        }
+      }
+    }
+    .dangerInfo {
+      height: auto;
+      dd {
+        height: auto;
+        .lastInfo {
+          height: auto;
+        }
+        li{
+          height: r(64);
+          line-height: r(64);
+        }
+      }
+    }
+    .dangerLine {
+      height: auto;
+      dd {
+        height: auto;
+        .lastInfo {
+          height: auto;
+        }
+      }
+    }
+    .lastOne .ulListBox li{
+      height: auto;
+      border-bottom: none;
+    }
+  }
+
+  .active {
+    color: #fd7007;
+    border-color: #fd7007;
+    border-bottom: 1px solid #fd7007;
+  }
+}
+
+
+.claimsLine-02 {
+  background: #fff;
+  border-bottom: 1px solid #f0eff5;
+  li {
+    height: r(90);
+    line-height: r(90);
+    width: 50%;
+    //height: r(80);
+    background: #fff;
+    float: left;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: r(34);
+    a {
+      color: #000;
+    }
+  }
+  .active{
+    color: $cpBaseCol;
+    border-bottom: 2px solid $cpBaseCol;
+  }
+}
+
+.myclaims {
+  width: r(129);
+  height: r(719);
+  background: #fff;
+  img {
+    width: r(129);
+    height: r(619);
+    display: block;
+    margin: 10px auto;
+  }
+}
+
+
+
+.myclaimsText {
+  width: r(622);
+  position: absolute;
+  left: r(129);
+  height: r(719);
+  margin-bottom: r(26);
+  background: #fff;
+  li {
+    height: r(144);
+    padding-top: r(30);
+    margin-right: r(24);
+    box-sizing: border-box;
+    border-bottom: 1px dashed #e9e9e9;
+    dt {
+      height: r(38);
+      line-height: r(38);
+      color: #000;
+    }
+    dd {
+      height: r(40);
+      line-height: r(40);
+      color: #666;
+    }
+  }
+  .myclaimsTwo {
+    height: r(274);
+    span {
+      color: #ff6e07;
+    }
+    dd {
+      font-size: r(22);
+    }
+  }
+  .myclaimsLast {
+    height: r(202);
+
+  }
+}
+
+.myclaimsBox {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.btngroup {
+  position: fixed;
+  height: r(124);
+  line-height: r(124);
+  background: #fff;
+  padding-left: r(7);
+  bottom: 0;
+  input {
+    width: r(294);
+    background: #ff6e07;
+    height: r(78);
+    text-align: center;
+    color: #fff;
+    margin: 0 r(35);
+    border-radius: r(9);
+
+  }
+
+}
+
+.westpoint {
+  .artModal-content {
+    width: 100%;
+    height: r(100);
+    line-height: r(100);
+    text-align: center;
+    font-size: r(42);
+  }
+  .artModal-content2 {
+    height: r(130);
+    line-height: r(150);
+    h3 {
+      font-size: r(38) !important;
+    }
+  }
+  .dialog_bd {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 r(30);
+    height: r(150);
+    font-size: r(32);
+    .noUse {
+      width: 100%;
+      height: r(150);
+      line-height: r(120);
+      text-align: center;
+    }
+    span {
+      color: $baseColor;
+    }
+  }
+  .confirm {
+    display: inline-block;
+    height: r(50);
+    line-height: r(60);
+    width: 50%;
+    font-size: r(42);
+    text-align: center;
+    float: left;
+  }
+  .confirmBtn {
+    font-size: r(38);
+  }
+}
+
+#myModal_3 {
+  .artModal-dialog2 {
+    overflow: initial;
+    h3 {
+      font-size: r(34) !important;
+    }
+    .dialog_bd {
+      font-size: r(32);
+      color: #ff6e07;
+    }
+    .NoPoint {
+      line-height: r(130);
+    }
+  }
+}
+
+
+
+
+

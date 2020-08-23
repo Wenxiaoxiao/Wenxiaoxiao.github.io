@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        @@include("include/header.htm",{ "title":"上传资料", "keywords": "", "description": "" })
+        <!--图片上传-->
+        <link rel="stylesheet" type="text/css" href="../lib/css/webuploader.css" />
+    </head>
+
+    <body>
+        <!-- 加载动画 -->
+        @@include("include/ready-ani.htm")
+        <div class="body-container destail">
+            <div id="uploader-demo" class="clearfix">
+                <div class="uploader_title">选择需要上传的资料</div>
+                <!--用来存放item-->
+                <div id="fileList" class="uploader-list"></div>
+                <div id="filePicker"><i class="iconfont icon-xiangji"></i></div>
+            </div>
+            <div id="submit_btn">
+                <span>提交资料</span>
+            </div>
+        </div>
+        <!--底部公共部分-->
+    </body>
+    <!--<script src="../lib/units/global.js"></script>-->
+    <script src="../lib/js/flexible.js"></script>
+    <!--模板引擎-->
+    <script src="../lib/js/template.js"></script>
+    <script src="../lib/layer/layer.js"></script>
+    <!--emoji-->
+    <link rel="stylesheet" type="text/css" href="../lib/js/emoji.css" />
+    <script src="../lib/js/emoji.js"></script>
+    <script src="@@webRoot/lib/js/jweixin-1.4.0.js"></script>
+    <!--template辅助函数-->
+    <script src="../lib/units/helper.js?r=@@time"></script>
+    <script src="../lib/units/common_all.js?r=@@time"></script>
+    <!--全局js-->
+    <script src="../lib/js/webuploader.js"></script>
+    <script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+    <script src="@@webRoot/lib/js/UserCenterHelper.js"></script>
+    <script type="text/javascript">
+        var uploader;
+        var s = 0;
+        var id = $.getQueryString("id");
+        var imgs = [];
+        function init(user) {
+            var submitNum = 0;
+            //初始化组件
+            uploader = WebUploader.create({
+                auto: true,
+                server: '/api/cms/upload/o_upload.jspx',
+                pick: '#filePicker',
+                duplicate: true,
+                resize: true,
+                fileSingleSizeLimit: 10*1024*1024, //限制单个上传图片的大小
+                accept: {
+                    title: 'Images',
+                    extensions: 'gif,jpg,jpeg,bmp,png',
+                    mimeTypes: 'image/*'
+                }
+            });
+
+            $(".lz-readys").hide();
+
+            //加入队列
+            uploader.on('fileQueued', function (file) {
+                console.log("加入队列fileQueued");
+                var $li = $(
+                    '<div id="' + file.id + '" class="file-item thumbnail">' +
+                    '<img>' + '<i class="iconfont icon-chuyidong delet" onclick="deleteImg(event)"></i>' +
+                    '<div class="file-item-desc">上传中</div>' +
+                    '</div>'
+                );
+                $("#fileList").append($li);
+                $img = $li.find('img');
+                $desc = $li.find('.file-item-desc');
+                (function ($img, $desc) {
+                    uploader.makeThumb(file, function (error, src) {
+                        if (error) {
+                            $img.replaceWith('<span>不能预览</span>');
+                            $desc.html("上传失败");
+                            return;
+                        }
+                        console.log("本地图片导入");
+                        $img.attr('src', src);
+                    }, 100, 100);
+                })($img, $desc)
+            });
+
+
+            //上传完毕
+            uploader.on("uploadAccept", function (file, data) {
+                console.log("上传完毕");
+                s++;
+                var obj = {};
+                obj.name = file.file.name;
+                obj.url = data.data[0];
+                imgs.push(obj);
+                $("#" + file.file.id).find(".file-item-desc").html("上传成功");
+            })
+
+            //准备加入队列
+            uploader.on("beforeFileQueued", function (handler) {
+                console.log("准备上传");
+                console.log(handler)
+            })
+
+            //错误捕获
+            uploader.on('error', function (handler) {
+                if(handler == "Q_TYPE_DENIED"){
+                    return $.layerMsg('文件格式类型不对,请重新上传!');
+                }else if(handler == "F_EXCEED_SIZE"){
+                    return $.layerMsg('文件大于10M,请重新上传!');
+                }else{
+                    return $.layerMsg('上传失败!');
+                }
+            });
+
+
+
+
+            //提交的点击事件
+            $("#submit_btn").click(function () {
+                if (!imgs.length) {
+                    return $.layerMsg('请先选择需要上传的图片资料,再提交!');
+                }
+                var load = $.layerLoad("正在提交资料...");
+                submit(load);
+            })
+
+        }
+
+        //提交请求
+        function submit(load) {
+            var submitData = {};
+            submitData.orderId = id;
+            submitData.profile = [];
+            for(var i=0;i<imgs.length;i++){
+                submitData.profile.push(imgs[i].url);
+            }
+            $.ajaxPackage({
+                url: "/fsservers/serversOrder/api/addContent",
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(submitData),
+                dataType: 'json',
+                async: true,
+                success: function (data, isError) {
+                    if (!isError) {
+                        return;
+                    };
+                    if (data.httpCode != 200) {
+                        return;
+                    }
+                    layer.close(load);
+                    $.layerMsg('提交成功!');
+                    setTimeout(function () {
+                        window.history.go(-1);
+                        // location.replace("./my_scheme.html?hospital=" + "true");
+                    }, 300);
+
+                }
+            });
+        }
+
+        //删除
+        function deleteImg(event) {
+            var removeID = $(event.target).parent().attr("id");
+            var ids = $(event.target).parent().index(".thumbnail");
+            uploader.removeFile(removeID);
+            $(event.target).parent().remove()
+            imgs.splice(ids, 1);
+        }
+
+
+    </script>
+
+</html>

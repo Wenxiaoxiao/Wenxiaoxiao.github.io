@@ -1,0 +1,324 @@
+.community {
+    width: 100%;
+    position: relative;
+    .community_btn{
+      position: fixed;
+      z-index: 100;
+      bottom: r(100);
+      left: r(20);
+      .guanbi,.bianji{
+        width: r(78);
+        position:absolute;
+        left: r(15);
+      }
+      .tiwen,.wenda{
+        width: r(110);
+        position:absolute;
+        left: 0;
+      }
+      img{
+        width: 100%;
+        display: block;
+      }
+      .bianji{
+        bottom: r(0);
+      }
+      .guanbi{
+        bottom: r(0);
+      }
+      .tiwen{
+        bottom: r(240);
+      }
+      .wenda{
+        bottom: r(110);
+      }
+    }
+    .wrapper{
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .loading-wrapper{
+      width: 100%;
+      height: 55px;
+      line-height: 55px;
+      font-size: r(30);
+      text-align: center;
+    }
+  
+    .dlList {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      // margin-top: r(15);
+      background: #fff;
+      padding: 0 r(28);
+      padding-top: r(8);
+      padding-bottom: r(10);
+      box-sizing: border-box;
+      border-bottom: 1px solid #e6e6e6;
+      .dlList_img{
+        width: 100%;
+      }
+  
+      i {
+        font-size: r(52);
+        color: #999999;
+        position: absolute;
+        margin-left: r(28);
+      }
+  
+      .myPhoto {
+        width: r(80);
+        height: r(80);
+        margin-top: r(10);
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+}
+  
+      .dlList-username {
+        width: r(400);
+        top: r(18);
+        display: inline-block;
+        position: absolute;
+        height: r(35);
+        line-height: r(35);
+        margin-left: r(20);
+        color: $baseColor;
+        font-size: r(28);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        a {
+          color: $baseColor;
+        }
+  
+        .emoji {
+          vertical-align: middle;
+          margin-top: r(-8);
+        }
+      }
+  
+      .dlList-say {
+        font-size: r(28);
+        top: r(53);
+        display: inline-block;
+        position: absolute;
+        height: r(35);
+        line-height: r(35);
+        margin-left: r(20);
+        color: #999999;
+  
+      }
+  
+      .dlList-question {
+        background: $baseColor;
+        display: inline-block;
+        font-size: r(32);
+        color: #fff;
+        text-align: center;
+        line-height: r(72);
+        width: r(200);
+        height: r(70);
+        position: absolute;
+        border-radius: r(35);
+        right: r(20);
+        top: r(18);
+      }
+  
+      .consultation {
+        display: inline-block;
+        width: r(240);
+        height: r(80);
+        line-height: r(80);
+        border-radius: r(9);
+        background: -webkit-linear-gradient(to right, #ff9205, #ff6e07);
+        background: linear-gradient(to right, #ff9205, #ff6e07);
+        color: #fff;
+        font-size: r(28);
+        position: absolute;
+        right: r(24);
+        top: r(12);
+        text-align: center;
+  
+        img {
+          @include remCalc(width, 36);
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 5px;
+        }
+      }
+  
+    }
+  
+    .lz-tab-box {
+      width: 100%;
+      padding: 0 25px;
+      height: r(80);
+      position: relative;
+    }
+  
+    .lz-tab {
+      position: relative;
+      position: -webkit-sticky;
+      position: sticky;
+      top: -1px;
+      left: 0;
+      width: 100%;
+      height: r(80);
+      background-color: #fff;
+      padding: 0 25px;
+      overflow: hidden;
+      z-index: 99;
+      border-bottom: 1px solid #e6e6e6;
+  
+      .swiper-wrapper {
+        // width: 100%;
+        height: 100%;
+      }
+  
+      .swiper-slide {
+        font-size: r(30);
+        text-align: center;
+        line-height: r(80);
+        max-width: r(200);
+        min-width: r(100);
+        z-index: 2;
+        font-weight: 900;
+      }
+  
+      .button-prev,
+      .button-next {
+        position: absolute;
+        top: 0;
+        width: 25px;
+        height: 100%;
+        background-color: #fff;
+        z-index: 10;
+        overflow: hidden;
+  
+        i {
+          font-size: r(50);
+          color: #000;
+          position: absolute;
+          top: 50%;
+          margin-top: r(-35);
+        }
+      }
+  
+      .swiper-button-disabled {
+        i {
+          color: #ccc;
+  
+        }
+      }
+  
+      .button-prev {
+        left: 0;
+  
+        i {
+          left: 0;
+        }
+      }
+  
+      .button-next {
+        right: 0;
+  
+        i {
+          right: 2px;
+        }
+      }
+  
+      .active {
+        border-bottom: 4px solid $baseColor;
+        color: $baseColor;
+      }
+  
+      .next-btn {
+        width: r(50);
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        text-align: center;
+        color: #c5c5c5;
+        background-color: #fff;
+        z-index: 10;
+        box-shadow: -3px 0 5px rgb(255, 203, 177);
+  
+        .iconfont {
+          font-size: r(36);
+          position: absolute;
+          top: 50%;
+          right: 1px;
+          margin-top: r(-30);
+        }
+      }
+    }
+    a.publication {
+      position: fixed;
+      right: 10px;
+      top: 80%;
+      @include remCalc(width, 100);
+      @include remCalc(height, 100);
+      background: url("~@/publication.png") no-repeat;
+      background-size: cover;
+      z-index: 999;
+    }
+  
+    .footer {
+      margin-top: 0;
+    }
+  }
+  
+  .mescroll-totop {
+    bottom: 30% !important;
+  }
+  
+  .myZone {
+    .claimsLine2 {
+      width: 100%;
+      background-color: #fff;
+      @include remCalc(height, 90);
+  
+      li {
+        width: 50%;
+        height: 100%;
+        float: left;
+        text-align: center;
+        line-height: r(90);
+        @include remCalc(font-size, 34);
+        border-bottom: 1px solid #f1f1f1;
+      }
+  
+      .active {
+        color: #ff6e00;
+        border-bottom: 2px solid #ff6e00;
+  
+      }
+    }
+  
+    .contents {
+      >ul {
+        width: 100%;
+        display: none;
+      }
+  
+      .icon-fabiaowenzhang {
+        display: block;
+        color: #ff6e00;
+        margin: 50px auto 10px;
+        @include remCalc(font-size, 80);
+        text-align: center;
+      }
+  
+      .active {
+        display: block;
+      }
+    }
+  
+  
+  }

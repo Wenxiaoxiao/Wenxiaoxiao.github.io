@@ -1,0 +1,96 @@
+.initialsPicker{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 999;
+    &.active{
+        display: block;
+    }
+    .header {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 40px;
+        background-color: #eee;
+        z-index: 20;
+        padding: 0 15px;
+        >span{
+            width: 40px;
+            height: 40px;
+            color: $baseColor;
+            line-height: 40px;
+            font-size: 18px;
+            text-align: center;
+            &:first-child{
+                color: #000;
+            }
+
+        }
+    }
+    .mainList{
+        position: absolute;
+        left: 0;
+        top: 50px;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 50px;
+        overflow-y: auto;
+        font-size: 16px;
+        color: #000;
+        >ul{
+            
+            >li{
+                margin-left: 10px;
+                width: 82%;
+                height: 40px;
+                line-height: 40px;
+                font-size: 16px;
+                border-bottom: 1px solid #eee;
+                &:first-child{
+                    width: 85%;
+                    margin-left: 0;
+                    height: 24px;
+                    line-height: 24px;
+                    font-size: 18px;
+                    border-bottom:none;
+                    padding-left: 10px;
+                    color: #fff;
+                    background-color: #c3c3c3;
+                }
+                &:last-child{
+                    border-bottom:none;
+                }
+                .check{
+                    float: right;
+                    margin-top: 8px;
+                    &.lz-radio-new{
+                        margin-top :0;
+                    }
+                }
+
+            }
+        }
+    }
+    .nums{
+        position: absolute;
+        right: 0;
+        top: 50px;
+        width: 15%;
+        height: 100%;
+        text-align: center;
+        font-size: 14px;
+        >a{
+            color: #666;
+            display: block;
+            line-height: 18px;
+            &.active{
+                color: $baseColor;
+            }
+        }
+    }
+}

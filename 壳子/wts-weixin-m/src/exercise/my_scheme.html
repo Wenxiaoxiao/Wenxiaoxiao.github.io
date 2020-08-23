@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        @@include("include/header.htm",{ "title":" ", "keywords": "", "description": "" })
+    </head>
+
+    <body>
+        <!-- 加载动画 -->
+        @@include("include/ready-ani.htm")
+        <div class="my_scheme_mask">
+            <img src="@@webRoot/lib/images/customization/m30.png" alt="">
+            <div class="my_scheme_mask_content">请点击右上角分享</div>
+        </div>
+        <div class="body-container my_scheme">
+
+        </div>
+
+        @@include("include/footer.htm")
+        <script type="text/html" id="orderList">
+                {{if data.length>0}}
+                    <div class="my_scheme_list">
+                        {{each data as item i}}
+                            <div class="my_scheme_item" supportType="{{item.serverType}}" orderId="{{item.id}}">
+                                {{if !item.hospital}}
+                                    <div class="my_scheme_item_title">保障方案量身定制</div>
+                                    {{else}}
+                                    <div class="my_scheme_item_title">保险诊断服务</div>
+                                {{/if}}
+                                
+                                <div class="my_scheme_item_content">
+                                    <div class="my_scheme_item_content_desc">
+                                        <div class="my_scheme_item_content_desc_title">{{item.serverName}}</div>
+                                        <div class="my_scheme_item_content_desc_desc">下单时间:{{item.createTime | trustTime}}</div>
+                                    </div>
+                                    <div class="my_scheme_item_content_state_pic">
+                                        {{if item.payStatus == 1}}
+                                            <img src="@@webRoot/lib/images/customization/m21.png" alt="">
+                                        {{else if item.payStatus == 2 || item.payStatus == 3}}
+                                            <img src="@@webRoot/lib/images/customization/m27.png" alt="">
+                                        {{else if item.payStatus == 4}}
+                                            {{if item.serverStatus==3}}
+                                                <img src="@@webRoot/lib/images/customization/m23.png" alt="">
+                                            {{else}}
+                                                <img src="@@webRoot/lib/images/customization/m22.png" alt="">
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <div class="my_scheme_item_bottom">
+                                    <div class="my_scheme_item_bottom_price">¥{{item.needAmount || item.realAmount}}</div>
+                                    <div class="my_scheme_item_bottom_btn">
+                                         {{if item.payStatus == 1}}
+                                        <span class="zhifu">立即支付</span>
+                                        {{else if item.payStatus == 2 || item.payStatus == 3}}
+                                            {{if item.hospital}}
+                                                <span class="sczl">上传资料</span>
+                                            {{else}}
+                                                <span class="wszl">完善资料</span>
+                                            {{/if}}
+                                        {{else if item.payStatus == 4 && item.serverStatus==3}}
+                                            {{if !item.hospital}}
+                                                <span class="ckfa" srcs="{{item.resultUrl}}">查看方案</span>
+                                            {{else}}
+                                                <span class="ckfa" srcs="{{item.resultUrl}}">查看结果</span>
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{else}}
+                <div class="my_scheme_no">
+                        <div class="my_scheme_no_pic"><img src="@@webRoot/lib/images/customization/m11.png" alt=""></div>
+                        <div class="my_scheme_no_btn">
+                            <span>点击制作方案</span>
+                        </div>
+                    </div>
+                {{/if}}
+        </script>
+        <script>
+            $(function () {
+                var hospital = $.getQueryString("hospital") || null;
+                var planType = hospital ? "2" : "1";
+                if (hospital) {
+                    $("title").html("我的保险诊断服务");
+                } else {
+                    $("title").html("我的方案");
+                }
+
+                //获取订单列表
+                get_order_list()
+                function get_order_list() {
+                    $.ajaxPackage({
+                        type: "post",
+                        url: "/fsservers/serversOrder/api/orders",
+                        contentType: "application/json",
+                        async: true,
+                        data: JSON.stringify({serverStatusStr:"1,2,3",payStatusStr :"2,3,4",pageSize:10000}),
+                        success: function (data, isError) {
+                            if (!isError) {
+                                return;
+                            };
+                            if (data.httpCode != 200) {
+                                return;
+                            }
+                            for (var i = 0; i < data.data.length; i++) {
+                                data.data[i].hospital = hospital;
+                            }
+
+                            var orderList = template("orderList", data); //模板渲染
+                            $(".my_scheme").html(orderList);
+
+                            //立即支付的点击事件
+                            $(".zhifu").click(function () {
+                                var orderId = $(this).parents(".my_scheme_item").attr("orderId");
+                                window.location.href = "./pay.html?id=" + orderId;
+                            })
+
+                            //上传资料的点击事件
+                            $(".sczl").click(function () {
+                                var orderId = $(this).parents(".my_scheme_item").attr("orderId");
+                                window.location.href = "./sczl.html?id=" + orderId;
+                            })
+
+                            //完善资料的点击事件
+                            $(".wszl").click(function () {
+                                var orderId = $(this).parents(".my_scheme_item").attr("orderId");
+                                var supportType = $(this).parents(".my_scheme_item").attr("supportType");
+                                window.location.href = "./srdz-questionList.html?id=" + orderId + "&supportType=" + supportType;
+                            })
+
+                            //查看方案的点击事件
+                            $(".ckfa").click(function () {
+                                var url = $(this).attr("srcs");
+                                if (hospital) {
+                                    window.location.href = window.location.origin+"/pdf/viewer.html?file="+url;
+                                } else {
+                                    window.location.href = url;
+                                }
+                            });
+
+                            //立即定制和重新定制的点击事件
+                            $(".my_scheme_no_btn,.cxdz").click(function () {
+                                if (hospital) {
+                                    window.location.href = "./insurancehospital.html?isshow=" + "true";
+                                } else {
+                                    window.location.href = "./customization_home.html?isshow=" + "true";
+                                }
+
+                            })
+
+                            //我要分享的点击事件
+                            $(".share").click(function () {
+                                $(".my_scheme_mask").show();
+                                var orderId = $(this).parents(".my_scheme_item").attr("orderId");
+                                //微信分享
+                                $.shareWx({
+                                    title: "投保全攻略，你值得拥有",
+                                    desc: '科学规划，理性投保，为您提供更全面的保险投保攻略，不花冤枉钱！',
+                                    link: $.domain + '/exercise/customization_details.html?id=' + orderId
+                                });
+                            })
+
+                            $(".my_scheme_mask").click(function () {
+                                $(".my_scheme_mask").hide();
+                            })
+
+                            $(".lz-readys").hide();
+
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(textStatus);
+                        }
+                    });
+                }
+            })
+        </script>
+    </body>
+
+</html>

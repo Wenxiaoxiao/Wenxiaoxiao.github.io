@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{
+    "title":"梧桐树教育金",
+    "keywords": "",
+    "description": "梧桐树教育金"
+    })
+    <link rel="stylesheet" type="text/css" href="../lib/css/date.css" />
+    <link rel="stylesheet" type="text/css" href="../lib/css/city-picker.css" />
+</head>
+<body>
+    <!-- @@include("include/ready-ani.htm") -->
+    <div class="body-container educationfund" >
+      <div class="top">
+        <div class="toptxt">
+          <span class="s24">梧桐树少儿教育储蓄金</span>|<span class="s23">渤海人寿i宝贝教育年金险</span><a class="link" href="/m/market/pros-detail.html?id=1209386582397870080"><img src="@@webRoot/lib/images/educationfund/link.png"/></a>
+        </div>
+      </div>
+      <div class="header">
+        <div class="d1"><img src="@@webRoot/lib/images/educationfund/chosed.png"/><span>收益保障：可领取金额写进合同</span></div>
+        <div class="d1"><img src="@@webRoot/lib/images/educationfund/chosed.png"/><span>灵活投保：随时加保，攒点零花钱保障孩子未来</span></div>
+        <div class="d1"><img src="@@webRoot/lib/images/educationfund/chosed.png"/><span>省钱计划：梧桐树教育金券可抵扣追加保费</span></div>
+      </div>
+      <div id="InsurederList"></div>
+      <div class="detail" id="InsurederDetail"></div>
+      <div class="measureBox">
+        <div class="insureBirth div">
+          <span class="left">宝贝生日</span>
+          <input readonly class="design-input right" id="chose_time" placeholder="YYYY-MM-DD"/>
+        </div>
+        <div class="insureSex div">
+          <span class="left">宝贝性别</span>
+          <select class="right design-select" id="insurederSex" onchange="changeSex()">
+            <option value="1">男</option>
+            <option value="2">女</option>
+          </select>
+        </div>
+        <div class="insureAmount div">
+          <span class="left">投入金额</span>
+          <span class="right addAndde">
+            <img class="deAmount" src="@@webRoot/lib/images/educationfund/deAmount.png" onclick="ChangeAmount('de')"/>
+            <input class="amount" id="AccountAmount" type="number" onblur="ChangeAmount('get')" oninput="if(value.length==1){value=value.replace(/[^1-9]/g,'')}else{value=value.replace(/\D/g,'')}"/>
+            <img class="addAmount" src="@@webRoot/lib/images/educationfund/addAmount.png" onclick="ChangeAmount('add')"/>
+          </span>
+        </div>
+        <div class="insureStyle div">
+          <span class="left">投入方式</span>
+          <span class="right">
+            可随时追加保费至11周岁
+          </span>
+        </div>
+        <div class="submitbtn" onclick="Insure()">立即投钱</div>
+      </div>
+      <div class="space"></div>
+      <div class="banner">
+        <div class="title">参与活动 梧桐树免费帮您投钱</div>
+        <img src="https://www.wts999.com/r/cms/www/mobile/images/educationfund_banner.jpg" class="bannerImg"/>
+      </div>
+      <div class="space"></div>
+      <div class="bottom">
+        <div class="title">梧桐树少儿教育储蓄金</div>
+        <div class="box">
+          <div class="box-top">
+            <div class="box_d">
+              <img src="@@webRoot/lib/images/educationfund/icon1.png"/>
+              <span class="box_s1">低门槛</span>
+              <span class="box_s2">1元起投 多投多领</span>
+            </div>
+            <div class="box_d">
+              <img src="@@webRoot/lib/images/educationfund/icon2.png"/>
+              <span class="box_s1">随时可投</span>
+              <span class="box_s2">1元加保 持续投钱</span>
+            </div>
+            <div class="box_d">
+              <img src="@@webRoot/lib/images/educationfund/icon3.png"/>
+              <span class="box_s1">教育金券</span>
+              <span class="box_s2">加保可用 抵扣保费</span>
+            </div>
+          </div>
+          <div class="box-bottom list" id="AddRecords">
+
+          </div>
+        </div>
+      </div>
+      <div class="detailModal hide">
+        <div class="bg"></div>
+        <div class="content">
+          <div class="tit"><span></span>保障详情</div>
+          <ul class="con-box">
+            <li class="item">
+              <div class="label">生存保险金</div>
+              <div class="con">每次领取9%基本保险金额，可领取4次</div>
+            </li>
+            <li class="item">
+              <div class="label">满期保险金</div>
+              <div class="con"> 64%基本保险金额</div>
+            </li>
+            <li class="item">
+              <div class="label">身故保险金</div>
+              <div class="con">累计已交保费与现金价值较大者</div>
+            </li>
+          </ul>
+        </div>
+        <div class="close detailModalX">X</div>
+      </div>
+    </div>  
+</body>
+@@include("include/footer.htm")
+@@if (name === 'build') {
+  <script src="https://libs.wts999.com/wtsLogin.min.js"></script>
+  <script src="https://libs.wts999.com/nativeApp.min.js"></script>
+}
+@@if(name === 'dev'){
+  <script src="https://libs.wts999.com/wtsLogin.js"></script>
+  <script src="https://libs.wts999.com/nativeApp.js"></script>
+}
+<script src="@@webRoot/lib/js/lodash.js"></script>
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="@@webRoot/lib/js/jdate.min.js"></script>
+<script src="https://libs.wts999.com/wtsTools.min.js"></script>
+<!-- 模板 -->
+<script type="text/html" id="AddRecordsTpl">
+  {{if data.length < 4}}
+  {{each data as val i}}
+  {{if val.type === '1'}}
+  <div class="list_d">{{val.holder}}为{{val.insureder}}投入{{val.premium}}元，累计可享{{val.totalAmount}}教育金</div>
+  {{else if val.type === '2' && val.deductNum !== '0'}}
+  <div class="list_d">{{val.holder}}使用教育金券为{{val.insureder}}加保{{val.premium}}元</div>
+  {{else}}
+  <div class="list_d">{{val.holder}}为{{val.insureder}}加保{{val.premium}}元，累计可享{{val.totalAmount}}教育金</div>
+  {{/if}}
+  {{/each}}
+  {{else}}
+  <div class="marquee">
+    <div class="marquee_box">
+        <div class="lists" >
+          {{each data as val i}}
+          {{if val.type === '1'}}
+          <div class="list_d">{{val.holder}}为{{val.insureder}}投入{{val.premium}}元，累计可享{{val.totalAmount}}教育金</div>
+          {{else if val.type === '2' && val.deductNum !== '0'}}
+          <div class="list_d">{{val.holder}}使用教育金券为{{val.insureder}}加保{{val.premium}}元</div>
+          {{else}}
+          <div class="list_d">{{val.holder}}为{{val.insureder}}加保{{val.premium}}元，累计可享{{val.totalAmount}}教育金</div>
+          {{/if}}
+          {{/each}}
+        </div>
+    </div>
+  </div>
+  {{/if}}
+  </script>
+<script type="text/html" id="InsurederDetailTpl">
+  <div class="lookdetail" onclick="showDetail()">保障详情</div>
+  {{if data.firstshow}}
+  <div class="t_d1">投保后可领取教育金（元）</div>
+  <div class="t_d2 orange">{{data.fromvalue.amount}}</div>
+  <div class="t_d3">
+    <span class="s1">18-21周岁可领</span>
+    <span class="s2 orange">{{data.fromvalue.surviveAmount}}元*4次</span>
+  </div>
+  <div class="t_d3">
+    <span class="s1">21岁一次性可领</span>
+    <span class="s2 orange">{{data.fromvalue.expireAmount}}元</span>
+  </div>
+  {{else}}
+  <div class="t_d1">投保后可领取教育金（元）</div>
+  <div class="t_d2 orange">{{data.fromvalue.amount}}</div>
+  <div class="t_d3">
+    <span class="s1">18-21周岁可领</span>
+    <span class="s2 orange">{{data.fromvalue.surviveAmount}}元*4次</span>
+  </div>
+  <div class="t_d3">
+    <span class="s1">21岁一次性可领</span>
+    <span class="s2 orange">{{data.fromvalue.expireAmount}}元</span>
+  </div>
+  {{/if}}
+</script>
+<script type="text/html" id="InsurederListTpl">
+<div class="nameList">
+  {{each data as title q}}
+    {{if title.designActiveName}}
+    <span class="active name" onclick="ChangeName({{title.policyNo}})">{{title.insurederName}}<span class="tri"></span></span>
+    {{else if !title.designActiveName}}
+    <span class="name" onclick="ChangeName({{title.policyNo}})">{{title.insurederName}}<span class="tri"></span></span>
+    {{/if}}
+  {{/each}}
+  <span class="active name">
+    +再投一人
+  </span>
+</div>
+</script>
+<script type="text/javascript">
+$(function(){
+  var login = wtsLogin;
+  login.init({env:$.globedata.environment},function(user){
+    if(user && user.token)sessionStorage.setItem("token",user.token);
+    if(!user || !user.id){
+        if($.tools().isWtsNativeApp()){
+            nativeApp.general.deviceready(function () {
+                nativeApp.general.closeWebView();
+                var url = encodeURIComponent(window.location.href);
+                nativeApp.general.router({url:"wts://web?force=1&url="+url});
+                return;
+            })
+        }
+        window.location.href= "http://" + $.domain.replace(/www/,"bx") + "/index.html#/BDmobileHtml?type=2&redUrl="+ window.location.href;
+        return;
+    }
+    //重置滚动条位置
+    sessionStorage.setItem("scrollleftposition_nameList",sessionStorage.getItem('scrollleftposition_nameList')||0);
+    var token = $.getQueryString("WTS_TOKEN") || user.token;
+    //教育金账户余额
+    var AccountAmount =  AjaxList("/policy/education/api/accountInfo","post",{},"AccountAmount");
+    //教育金首次加载
+    var firstShow = AjaxList("/bus/core/order/146002","post",{},"firstShow");
+    //加保记录
+    var AddRecords = AjaxList("/policy/education/api/insure/list","post",{},"AddRecords");
+    var InsurederList =  AjaxList("/policy/education/api/insureder/list","post",{},"InsurederList",0);
+  })
+  //时间选择器
+  var now_date = new Date();
+  var now_month = Number(now_date.getMonth())>9?Number(now_date.getMonth()):'0'+Number(now_date.getMonth());
+  var now_day = now_date.getDate()>9?now_date.getDate():'0'+now_date.getDate();
+  new Jdate({
+      el: '#chose_time',
+      format: 'YYYY-MM-DD',
+      confirm: function(date) {
+          var d1 = new Date(date).getTime(),
+              d2 = new Date().getTime(),
+              d30 = 1000 * 60 * 60 * 24 * 30,
+              y12 = new Date(new Date().setFullYear((new Date().getFullYear()-12))).getTime(),
+              d3 = d2-d1;
+              //new Date(new Date().setMonth((new Date().getMonth()-1))) 获取前一个月
+              //new Date(date - 1000 * 60 * 60 * 24 * 30) 获取前30天
+          if(d3<d30){
+            $.layerMsg("被保人承保年龄为出生满30天至11周岁！");
+            return false;
+          }
+          else if(d1<y12 ||d1 === y12){
+            $.layerMsg("被保人承保年龄为出生满30天至11周岁！");
+            return false;
+          }
+          else{
+            //计算被保人的年龄
+            var insurederAge = calAge(date);
+            var insurederSex = $("#insurederSex").val();
+            goAjax(insurederSex,insurederAge,date);
+            return date;
+          }
+      },
+      beginYear:now_date.getFullYear()-12,
+      endYear:now_date.getFullYear(),
+      value:"2018-01-01"
+      //value:$("#chose_time").val()
+      //value:now_date.getFullYear()+'-'+now_month+'-'+now_day
+  });
+  $(".detailModalX").on("click",function(){
+    $(".detailModal").addClass("hide");
+  })
+  $(".bannerImg").on("click",function(){
+    var link = /bx.wts999.com/g.test(window.location.origin)?"https://bx.wts999.com":"https://bx.wts9999.net";
+    window.location.href = link+"/products/edufund.html";
+  })
+})
+//保障详情弹窗
+function showDetail(){
+  console.log("展示弹窗");
+  $(".detailModal").removeClass("hide");
+}
+//立即投钱
+function Insure(){
+  var chosedFormValue_first = JSON.parse(sessionStorage.getItem("chosedFormValue_first"));
+  console.log("chosedFormValue_first",chosedFormValue_first);
+  var premiumNext = {
+      type: "post",
+      url: "/bus/core/startPolicy/146002",
+      data: JSON.stringify(chosedFormValue_first),
+      contentType: "application/json;charset=UTF-8",
+      dataType: 'json',
+      success: function (res, isError) {
+          console.log(res);
+          if (!isError) {
+              return;
+          }
+          setInform(res.data); //储存数据到服务器
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+          console.log(textStatus);
+          console.log(XMLHttpRequest);
+          if (textStatus == "error") {
+              popJs.msg('未联网，请先检查网络')
+              self.submitNum = 0;
+          }
+      }
+  }
+  $.ajaxPackage(premiumNext);
+}
+function setInform(data) {
+    var chosedFormValue_first = JSON.parse(sessionStorage.getItem("chosedFormValue_first"));
+    var datas = new Object();
+    datas.productProcess = {"inform":1,"code":{"proCode":"146002","idCode":"1209386582397870080"},"renewal":0,"health":0,"isActive":0,"needNotice":0,"intelligent":0,"premium":2,"payType":4,"orderPage":2,"company":"1158928755977154560","isMake":0,"payReturn":0}; //流程
+    datas.writeInform = data;
+    datas.fromvalue = chosedFormValue_first;
+    console.log(datas);
+    // saveCache({ info: datas }, (key) => {
+    //   var link = /bx.wts9999.net/g.test(window.location.origin)?"https://bx.wts9999.net":"https://bx.wts999.com";
+    //   window.location.href = link+"/m/market/writeInform-3.html?key=" + key;
+    // })
+    saveCache({ info: datas },function(key){
+      var link = /bx.wts9999.net/g.test(window.location.origin)?"https://bx.wts9999.net":"https://bx.wts999.com";
+      window.location.href = link+"/m/market/writeInform-3.html?key=" + key;
+    })
+}
+function saveCache(data,callback){
+    // 存服务器缓存封装
+    var payList = {
+        type: "post",
+        url: '/tools/caculate/api/save',
+        contentType: "application/json;charset=UTF-8",
+        data: JSON.stringify(data),
+        dataType: 'json',
+        success: function(data, isError) {
+            console.log(data);
+            if (!isError) {
+                return;
+            }
+            if(callback)callback(data.data)
+        },
+        error: function(xhr, type, errorThrown) {
+            //异常处理；
+            console.log(type);
+        }
+    }
+    $.ajaxPackage(payList);
+}
+function changeSex(ele){
+  var insurederAge = calAge($("#chose_time").val());
+  var insurederSex = $("#insurederSex").val();
+  goAjax(insurederSex,insurederAge,$("#chose_time").val());
+}
+function ChangeAmount(type){
+  var originNum = Number($("#AccountAmount").val());
+  sessionStorage.setItem("lastTimeAmount",originNum);
+  if(type === 'add'){
+    originNum = originNum + 100;
+    $("#AccountAmount").val(originNum);
+  }
+  else if(type === 'de'){
+    originNum = originNum - 100;
+    if(originNum<0){
+      originNum = 0;
+    }
+    $("#AccountAmount").val(originNum);
+  }
+  if(type === 'get'){
+    console.log("originNum",originNum);
+    if(originNum<1){//加保保费小于1元
+      $.layerMsg("加保保费1元起，且为1元的整数倍！");
+      $("#AccountAmount").val(1);
+    }
+    else{
+      $("#AccountAmount").val(originNum);
+    }
+  }
+  //计算被保人的年龄
+  var insurederAge = calAge($("#chose_time").val());
+  var insurederSex = $("#insurederSex").val();
+  goAjax(insurederSex,insurederAge,$("#chose_time").val());
+}
+function calAge(strBirthday){
+  var returnAge;  
+    var strBirthdayArr=strBirthday.split("-");  
+    var birthYear = strBirthdayArr[0];  
+    var birthMonth = strBirthdayArr[1];  
+    var birthDay = strBirthdayArr[2];  
+      
+    d = new Date();  
+    var nowYear = d.getFullYear();  
+    var nowMonth = d.getMonth() + 1;  
+    var nowDay = d.getDate();
+    if(nowYear == birthYear){returnAge = 0;}  
+    else{
+        var ageDiff = nowYear - birthYear; //年之差  
+        if(ageDiff > 0){
+            if(nowMonth == birthMonth) {
+                var dayDiff = nowDay - birthDay;//日之差  
+                if(dayDiff < 0){returnAge = ageDiff - 1;}  
+                else{returnAge = ageDiff;}  
+            }  
+            else{  
+                var monthDiff = nowMonth - birthMonth;//月之差  
+                if(monthDiff < 0){returnAge = ageDiff - 1;}  
+                else{returnAge = ageDiff;}  
+            }  
+        }  
+        else{  
+            returnAge = -1;//返回-1 表示是后面一年出生，错误
+        }  
+    }
+    return returnAge;//返回周岁年龄
+}
+//开始测算
+function goAjax(insurederSex,insurederAge,insurederBirthday){
+  console.log("insurederAge====",insurederAge);
+  var originNum = Number($("#AccountAmount").val());
+  //调用测算接口 获取 加保后累计可获取教育金
+  var chosedFormValue_first = JSON.parse(sessionStorage.getItem("chosedFormValue_first"));
+  chosedFormValue_first.mainPremium = String(originNum);
+  chosedFormValue_first.insurederBirthday = insurederBirthday;
+  chosedFormValue_first.insurederAge = insurederAge;
+  chosedFormValue_first.insurederSex = insurederSex;
+  sessionStorage.setItem("chosedFormValue_first",JSON.stringify(chosedFormValue_first));
+  console.log("chosedFormValue_first",chosedFormValue_first);
+  var load = $.layerLoad("正在加载数据...");
+  var startAxList = {
+    type:"post",
+    url:"/bus/core/order/146002",
+    contentType: "application/json;charset=UTF-8",
+    data:"{json:" + JSON.stringify(chosedFormValue_first) + "}",
+    success: function (result, isError) {
+      layer.close(load);
+        if (!isError) {
+            //返回错误的情况下，account的只应该是未改变时的值
+            var lastTimeAmount = sessionStorage.getItem("lastTimeAmount");
+            $("#AccountAmount").val(lastTimeAmount);
+            return;
+        }
+        var DetailHTML = template('InsurederDetailTpl',{
+          data:result.data
+        })
+        sessionStorage.setItem("chosedFormValue_first",JSON.stringify(result.data.fromvalue));
+        $("#InsurederDetail").html(DetailHTML);
+    }
+  }
+  $.ajaxPackage(startAxList);
+}
+function ChangeName(val){
+  console.log("val",val);
+  //缓存当前滚动条的位置
+  var ScollPostion = scollPostion($(".nameList")[0]);
+  sessionStorage.setItem("scrollleftposition_nameList",ScollPostion.left);
+  //跳转到对应人员的页面
+  var tmp = window.location.href.split("educationfundfirst.html")[0]+"educationfund.html";
+  window.location.href = tmp+'?policyNo='+val;
+}
+//获取滚动条当前位置
+function scollPostion(ele){//滚动条位置
+  var t, l, w, h;
+  if(ele){
+    t = ele.scrollTop;
+    l = ele.scrollLeft;
+    w = ele.scrollWidth;
+    h = ele.scrollHeight;
+  }
+  else{
+    if (document.documentElement && document.documentElement.scrollTop) {
+        t = document.documentElement.scrollTop;
+        l = document.documentElement.scrollLeft;
+        w = document.documentElement.scrollWidth;
+        h = document.documentElement.scrollHeight;
+    } else if (document.body) {
+        t = document.body.scrollTop;
+        l = document.body.scrollLeft;
+        w = document.body.scrollWidth;
+        h = document.body.scrollHeight;
+    }
+  }
+  return { top: t, left: l, width: w, height: h };
+}
+function AjaxList(url,method,params,name,activeNum){
+  if(name === "firstShow"){
+    var load1 = $.layerLoad("正在加载数据...");
+  }
+  var startAxList = {
+    type:method,
+    url:url,
+    contentType: "application/json;charset=UTF-8",
+    data: name==='firstShow'?"{json:" + JSON.stringify({"mainPremium": "1000"}) + "}":JSON.stringify(params?params:{}),
+    success: function (ajaxData, isError) {
+      if (!isError) {
+          return;
+      }
+      return_result(ajaxData,name,activeNum);
+      if(name === "firstShow"){
+        layer.close(load1);
+      }
+    }
+  }
+  $.ajaxPackage(startAxList);
+}
+function return_result(ajaxData,name,num){
+  if(name === "AddRecords"){
+    console.log("ajaxData+++++++++++++",ajaxData);
+    var recordHtml = template('AddRecordsTpl',{
+      data:ajaxData.data
+    })
+    $("#AddRecords").html(recordHtml);
+  }
+  if(name === "AccountAmount"){
+    console.log("ajaxData",ajaxData);
+    var AccountAmount = 1000;
+    $("#AccountAmount").val(AccountAmount);
+  }
+  if(name === "firstShow"){
+    var DetailHTML = template('InsurederDetailTpl',{
+      data:ajaxData.data
+    })
+    sessionStorage.setItem("chosedFormValue_first",JSON.stringify(ajaxData.data.fromvalue));
+    $("#InsurederDetail").html(DetailHTML);
+    $("#chose_time").val(ajaxData.data.fromvalue.insurederBirthday);
+  }
+  if(name === "InsurederList"){
+    if(ajaxData.data.length === 0){//没有被保人，进入首投界面
+      // var link = /bx.wts999.com/g.test(window.location.origin)?"https://bx.wts999.com":"https://bx.wts9999.net";
+      // var tmpurl = link+"/products/educationfundfirst.html";
+      // window.location.replace(tmpurl);
+      // return
+      $("#InsurederList").addClass("hide");
+    }
+    else{
+      var html = template('InsurederListTpl', {
+          data: ajaxData.data
+      });
+      $("#InsurederList").html(html);
+      var scrollleftposition_nameList = sessionStorage.getItem("scrollleftposition_nameList");
+      $(".nameList").scrollLeft(scrollleftposition_nameList);
+    }
+    console.log("ajaxData.data",ajaxData.data);
+    //根据保单单号获取测算页默认值
+    // getDefaultBypolicyNo(ajaxData.data[num].policyNo);
+  }
+}
+</script>
+</html>

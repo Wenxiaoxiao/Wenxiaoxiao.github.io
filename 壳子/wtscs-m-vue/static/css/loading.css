@@ -1,0 +1,176 @@
+.lz-loading {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #fff;
+    z-index: 9999
+}
+
+.lz-loading .spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+    width: 40px;
+    height: 40px
+}
+
+.lz-loading .container1>div,
+.lz-loading .container2>div,
+.lz-loading .container3>div {
+    width: 10px;
+    height: 10px;
+    background-color: #0084ff;
+    border-radius: 100%;
+    position: absolute;
+    -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+    animation: bouncedelay 1.2s infinite ease-in-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+.lz-loading .spinner .spinner-container {
+    position: absolute;
+    width: 100%;
+    height: 100%
+}
+
+.lz-loading .container2 {
+    -webkit-transform: rotateZ(45deg);
+    transform: rotateZ(45deg)
+}
+
+.lz-loading .container3 {
+    -webkit-transform: rotateZ(90deg);
+    transform: rotateZ(90deg)
+}
+
+.lz-loading .circle1 {
+    top: 0;
+    left: 0
+}
+
+.lz-loading .circle2 {
+    top: 0;
+    right: 0
+}
+
+.lz-loading .circle3 {
+    right: 0;
+    bottom: 0
+}
+
+.lz-loading .circle4 {
+    left: 0;
+    bottom: 0
+}
+
+.lz-loading .container2 .circle1 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s
+}
+
+.lz-loading .container3 .circle1 {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s
+}
+
+.lz-loading .container1 .circle2 {
+    -webkit-animation-delay: -.9s;
+    animation-delay: -.9s
+}
+
+.lz-loading .container2 .circle2 {
+    -webkit-animation-delay: -.8s;
+    animation-delay: -.8s
+}
+
+.lz-loading .container3 .circle2 {
+    -webkit-animation-delay: -.7s;
+    animation-delay: -.7s
+}
+
+.lz-loading .container1 .circle3 {
+    -webkit-animation-delay: -.6s;
+    animation-delay: -.6s
+}
+
+.lz-loading .container2 .circle3 {
+    -webkit-animation-delay: -.5s;
+    animation-delay: -.5s
+}
+
+.lz-loading .container3 .circle3 {
+    -webkit-animation-delay: -.4s;
+    animation-delay: -.4s
+}
+
+.lz-loading .container1 .circle4 {
+    -webkit-animation-delay: -.3s;
+    animation-delay: -.3s
+}
+
+.lz-loading .container2 .circle4 {
+    -webkit-animation-delay: -.2s;
+    animation-delay: -.2s
+}
+
+.lz-loading .container3 .circle4 {
+    -webkit-animation-delay: -.1s;
+    animation-delay: -.1s
+}
+
+@-webkit-keyframes bouncedelay {
+
+    0%,
+    100%,
+    80% {
+        -webkit-transform: scale(0)
+    }
+
+    40% {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes bouncedelay {
+
+    0%,
+    100%,
+    80% {
+        transform: scale(0);
+        -webkit-transform: scale(0)
+    }
+
+    40% {
+        transform: scale(1);
+        -webkit-transform: scale(1)
+    }
+}
+
+.lz-loading .loadText {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 100px;
+    margin-left: -50px;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, .6);
+    color: #fff;
+    font-size: 14px;
+    padding-bottom: 10px
+}
+
+.lz-loading .loadText .gifLoad {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 10px auto
+}

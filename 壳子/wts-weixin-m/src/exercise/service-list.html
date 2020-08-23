@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"健康订单", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container checkHistory">
+        <div class="hisContent">
+
+        </div>
+    </div>
+</body>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+ 
+<script id="dataList" type="text/html">
+    {{each data as value i}}
+    <div class="hisList">
+        <a class="jump-a" data-id="{{value.id}}" server-id="{{value.serverId}}" data-name="{{value.serverName}}">
+            <p class="p1">{{value.name}} <span class="fr colRig">{{value.statusName}}</span></p>
+            <p class="p2">{{value.serverName}} <span class="fr colRig">￥{{value.money}}</span></p>
+            </p>
+            <p class="p3">{{value.time}} {{if value.status==1}}
+                <span class="fr btn" server-id="{{value.serverId}}" order-no="{{value.orderNo}}" data-id="{{value.id}}" data-name="{{value.serverName}}">继续支付</span> {{/if}}
+            </p>
+        </a>
+    </div>
+    {{/each}} {{if !data || data.length==0}}
+    <div class="noList">
+        <img src="@@webRoot/lib/images/adds-service/noClaims.png" alt="">
+        <p class="jump-list">您没有健康服务的订单，去健康商城逛逛</p>
+    </div>
+    {{/if}}
+</script>
+<script>
+    var login = wtsLogin
+    login.init({
+        env: $.globedata.environment
+    }, function(user) {
+        if (!$.tools().hasPhonrNumber(user)) {
+            return window.location.href = window.location.origin + "/m/index.html#/BDmobileHtml?type=2&redUrl=" + window.location.href;
+        }
+        $.ajaxPackage({
+            url: "/addedservices/serverOrders/api/read/list",
+            data: "{pageSize:50,pageNum:1}",
+            contentType: "application/json;charset=UTF-8",
+            success: function(data, isError) {
+                // console.log(data);
+                if (!isError) return;
+                var html = template('dataList', data);
+                $(".hisContent").html(html)
+                event();
+            }
+        });
+
+        function event() {
+            $(".btn").on('click', function(e) {
+                e.stopPropagation();
+                var product = $(this).attr("server-id");
+                var orderNo = $(this).attr('order-no');
+                var id = $(this).attr('data-id');
+                var name = $(this).attr('data-name');
+                if (name == "电话医生") {
+                    location.href = './service-phoneDoctorPay.html?id=' + product + '&orderNo=' + orderNo + '&orderId=' + id;
+                } else if (name == "重疾绿通") {
+                    location.href = './service-strickenPassagewayPay.html?id=' + product + '&orderNo=' + orderNo + '&orderId=' + id;
+                } else {
+                    location.href = './service-order.html?product=' + product + '&orderNo=' + orderNo + '&orderId=' + id;
+                }
+                return false;
+            })
+        }
+        sessionStorage.removeItem('service_inspects');
+
+        $(".hisContent").on("click", ".jump-a", function() {
+            var id = $(this).attr("data-id");
+            var serverId = $(this).attr("server-id");
+            var name = $(this).attr('data-name');
+            if (name == "电话医生" || name == "重疾绿通") {
+                location.href = "./service-orderDetail.html?id=" + id;
+            } else {
+                location.href = "./service-detail.html?id=" + id;
+            }
+        })
+        $(".hisContent").on("click", ".jump-list", function() {
+            location.href = window.location.origin + "/m/index.html#/personal/servePage";
+        });
+    })
+</script>
+</html

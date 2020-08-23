@@ -1,0 +1,366 @@
+/*机器人界面*/
+#robot {
+  padding-bottom: 20px;
+  //机器人对话框
+  .section {
+    @include remCalc(padding, 0, 120);
+    box-sizing: border-box;
+    margin-top: r(50);
+    .section-box {
+      width: 100%;
+      @include remCalc(padding, 0, 40);
+      @include border-radius(5px);
+      background-color: #fff;
+      position: relative;
+    }
+    .section-box:before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      left: -18px;
+      @include remCalc(top, 15);
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-right-color: #fff;
+    }
+    .auther {
+      position: absolute;
+      @include remCalc(left, -95);
+      top: 0;
+      background: url("../images/jing-icons-01.png") no-repeat;
+      @include remCalc(width, 66);
+      @include remCalc(height, 66);
+      background-size: cover;
+    }
+    .section-info {
+      word-break:break-all;
+      width: 100%;
+      padding-top: r(20);
+      padding-bottom: r(20);
+      @include remCalc(font-size, 28);
+      span{
+        @include remCalc(font-size,24);
+        color: #999;
+      }
+    }
+    .section-pro {
+      @include remCalc(padding, 20, 0);
+      border-top: 1px solid #e2e5e7;
+    }
+    .icons-xiangyou {
+      background: url("../images/jing-icons-03.png") no-repeat;
+      @include remCalc(width, 29);
+      @include remCalc(height, 29);
+      display: inline-block;
+      background-size: cover;
+      float: right;
+    }
+  }
+
+  //回答对话框
+  .replay {
+    @include remCalc(padding, 0, 120);
+    box-sizing: border-box;
+    margin-top: r(50);
+    .replay-box{
+      width: 100%;
+      position: relative;
+    }
+    .auther-r {
+      position: absolute;
+      @include remCalc(right, -95);
+      top: r(10);
+      background: url("../images/jing-icons-10.png") no-repeat;
+      @include remCalc(width, 66);
+      @include remCalc(height, 66);
+      background-size: contain;
+    }
+    .answer{
+      @include remCalc(font-size,28);
+      @include remCalc(padding,20,30);
+      @include border-radius(5px);
+      background-color: $baseColor;
+      color: #fff;
+      display: inline-block;
+      float: right;
+      position: relative;
+    p{
+      color: #fff;
+    }
+    }
+    .answer:before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      right: -18px;
+      @include remCalc(top, 20);
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-left-color: $baseColor;
+    }
+  }
+/*表单选框样式*/
+  .section-pro-item {
+    @include remCalc(padding, 10, 0, 40);
+    position: relative;
+  }
+    .radio-item,.checkbox-item{
+      float: left;
+    }
+    .w-50{
+      width: 50%;
+      @include remCalc(height,200);
+    }
+    .w-30{
+      width: 33.3%;
+      @include remCalc(height,180);
+    }
+    .radio-head{
+      margin: 0 auto;
+      position: relative;
+    }
+    .img-140-04{
+      background: url("../images/jing-icons-04.png") no-repeat;
+      background-size: contain;
+    }
+    .img-140-05{
+      background: url("../images/jing-icons-05.png") no-repeat;
+      background-size: contain;
+    }
+    .img-140-06{
+      background: url("../images/jing-icons-06.png") no-repeat;
+      background-size: contain;
+    }
+    .img-140-07{
+      background: url("../images/jing-icons-07.png") no-repeat;
+      background-size: contain;
+    }
+    .img-140-08{
+      background: url("../images/jing-icons-08.png") no-repeat;
+      background-size: contain;
+    }
+    .img-140-09{
+      background: url("../images/jing-icons-09.png") no-repeat;
+      background-size: contain;
+    }
+    .img-140-10{
+      background: url("../images/jing-icons-10.png") no-repeat;
+      background-size: contain;
+    }
+    .img-140-11{
+      background: url("../images/jing-icons-11.png") no-repeat;
+      background-size: contain;
+    }
+    .img-140-12{
+      background: url("../images/jing-icons-12.png") no-repeat;
+      background-size: contain;
+    }
+    .img-140{
+      @include remCalc(width,140);
+      @include remCalc(height,140);
+    }
+    .radio-name{
+      text-align: center;
+      margin-top: r(10);
+    }
+    .radio-checked{
+      background: url("../images/jing-icons-02.png") no-repeat;
+      background-size: contain;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: none;
+    }
+    .active{
+      display: inline-block;
+    }
+    .img-44{
+      @include remCalc(width,44);
+      @include remCalc(height,44);
+    }
+    .img-124{
+      @include remCalc(width,124);
+      @include remCalc(height,124);
+    }
+    .img-124-01{
+      background: url("../images/img2_01.png") no-repeat;
+      background-size: contain;
+    }
+    .img-124-02{
+      background: url("../images/img2_02.png") no-repeat;
+      background-size: contain;
+    }
+    .img-124-03{
+      background: url("../images/img2_03.png") no-repeat;
+      background-size: contain;
+    }
+    .img-124-04{
+      background: url("../images/img2_04.png") no-repeat;
+      background-size: contain;
+    }
+    .img-124-05{
+      background: url("../images/img2_05.png") no-repeat;
+      background-size: contain;
+    }
+    .img-124-06{
+      background: url("../images/img2_06.png") no-repeat;
+      background-size: contain;
+    }
+    .img-124-07{
+      background: url("../images/img2_07.png") no-repeat;
+      background-size: contain;
+    }
+    .img-98{
+      @include remCalc(width,98);
+      @include remCalc(height,98);
+    }
+    .section-check{
+      @include button-variant(#fff,#8c7fee);
+      @include button-size(r(280),r(70),r(32),r(70),r(50));
+      display: block;
+      text-align: center;
+      margin: 0 auto;
+      position: absolute;
+      @include remCalc(bottom,-35);
+      left: 50%;
+      margin-left: r(-140);
+      @include box-shadow(0 0 3px 3px rgba(191,183,254,.5));
+    }
+
+  .layer-add{
+    display: none;
+    width: 100%;
+    padding: r(20);
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    .add-item{
+      float: left;
+      width: 33.3%;
+      @include remCalc(height,200);
+    }
+  }
+  .hidebox{
+    display: none;
+  }
+  /*第四个时间选项*/
+  .section-time{
+    li{
+      width: 100%;
+      @include remCalc(height,180);
+    }
+    .left{
+      width: 40%;
+    }
+    .right{
+      width: 60%;
+      padding-top: r(30);
+      a.time-check{
+        background-color: #fe5b70;
+        color: #fff;
+        @include remCalc(width,220);
+        @include remCalc(height,60);
+        @include remCalc(line-height,60);
+        text-align: center;
+        @include remCalc(font-size,24);
+        display: inline-block;
+        @include border-radius(50px);
+      }
+      .in-text{
+        @include remCalc(width,150);
+        @include remCalc(height,50);
+        background-color: #eeeeee;
+        border: 1px solid transparent;
+        @include remCalc(line-height,50);
+        padding-left: r(5);
+        padding-right: r(5);
+        text-align: center;
+      }
+      .in-text:focus{
+        border: 1px solid $baseColor;
+      }
+    }
+  }
+  .section-radio-t{
+    .in-radios{
+      @include radio-variant(r(40),50%);
+      @include radio-checked($baseColor);
+      @include remCalc(margin,0,10);
+    }
+    .right-radio{
+      vertical-align: middle;
+      span{
+        @include remCalc(line-height,40);
+        @include remCalc(font-size,30);
+      }
+    }
+  }
+  .section-citys{
+    a.section-city{
+      @include remCalc(width,200);
+      @include remCalc(height,50);
+      text-align: center;
+      @include remCalc(font-size,26);
+      @include remCalc(line-height,50);
+      display: inline-block;
+      background-color: #fe5b70;
+      color: #fff;
+      @include border-radius(30px);
+      margin-right: r(5);
+    }
+  }
+  .section-checkbox{
+    @include checkbox-variant(r(40),$baseColor,50%);
+
+  }
+  .section-checkbox:before{
+    @include remCalc(top,6);
+  }
+  .img-link{
+    width: 100%;
+    height: 100%;
+  }
+  .returns{
+    display: block;
+    margin: r(80) auto r(30);
+    background: #fff;
+    @include border-radius(30px);
+    border: 1px solid #e2e2e2;
+    @include remCalc(width,200);
+    @include remCalc(height,60);
+    @include remCalc(line-height,60);
+    @include remCalc(font-size,24);
+    text-align: center;
+    color: $baseColor;
+    .icons-return{
+      background: url("../images/jing-icons-05.png") no-repeat;
+      background-size: contain;
+      @include remCalc(width,22);
+      @include remCalc(height,22);
+      display: inline-block;
+    }
+  }
+  .section-money{
+    margin-bottom: r(20);
+    li{
+      position: relative;
+      width: 100%;
+      line-height: r(70);
+      @include remCalc(font-size,30);
+      @include remCalc(line-height,70);
+      padding-left: r(80);
+    }
+    .radio-money{
+      @include radio-variant(r(40),50%);
+      position: absolute;
+      @include remCalc(left,10);
+      top: 50%;
+      margin-top: r(-20);
+    }
+    .money-checked .radio-money:before{
+      background-color: $baseColor;
+      border: 1px solid $baseColor;
+    }
+  }
+}

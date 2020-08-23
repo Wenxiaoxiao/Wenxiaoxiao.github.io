@@ -1,0 +1,82 @@
+<script id="fromHtml" type="text/html">
+    {{each data as val i}}
+    <!-- 日期选择 -->
+    {{if val.type==1}}
+	<div class="form-group">
+        <label for="{{val.id}}" class="col-sm-3 control-label">{{val.name}}</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control from-time" id="{{val.id}}" placeholder="点击选择出生日期">
+        </div>
+    </div>
+    <!-- 输入框 -->
+    {{else if val.type==2}}
+    <div class="form-group clearfix">
+        <label for="{{val.id}}" class="col-sm-3 control-label">{{val.name}}</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="{{val.id}}" placeholder="{{val.desc?val.desc:'请输入'+val.name}}">
+        </div>
+    </div>
+    <!-- 电话号码 -->
+    {{else if val.type==3}}
+    <div class="form-group clearfix">
+        <label for="{{val.id}}" class="col-sm-3 control-label">{{val.name}}</label>
+        <div class="col-sm-9">
+          <input type="tel" class="form-control" id="{{val.id}}" placeholder="{{val.desc?val.desc:'请输入'+val.name}}">
+        </div>
+    </div>
+    <!-- 单选 -->
+    {{else if val.type==4}}
+    <div class="form-group">
+        <label for="{{val.id}}" class="col-sm-3 control-label">{{val.name}}</label>
+        <div class="col-sm-9">
+            {{each val.items as item n}}
+            <label class="radio-inline" style="padding-top:0;padding-left:30px;">
+                {{if n==0}}
+                <input type="radio" class="lz-radio radio-{{val.id}}" name="{{val.id}}" checked='checked' value="{{item.value}}"> {{item.value}}
+                {{else}}
+                <input type="radio" class="lz-radio radio-{{val.id}}" name="{{val.id}}" value="{{item.value}}"> {{item.value}}
+                {{/if}}
+            </label>
+            {{/each}}
+        </div>
+    </div>
+    <!-- 下拉框 -->
+    {{else if val.type==5}}
+    <div class="form-group">
+        <label for="{{val.id}}" class="col-sm-3 control-label">{{val.name}}</label>
+        <div class="col-sm-9">
+            <select class="form-control" id="{{val.id}}">
+                {{each val.items as item n}}
+                {{if item.selected}}
+                <option selected="selected" value="{{item.value}}">{{item.value}}</option>
+                {{else}}
+                <option value="{{item.value}}">{{item.value}}</option>
+                {{/if}}
+                {{/each}}
+            </select>
+        </div>
+    </div>
+    <!-- 单选-按钮 -->
+    {{else if val.type==6}}
+    <div class="form-group">
+        <label for="{{val.id}}" class="col-sm-3 control-label">{{val.name}}</label>
+        {{each val.items as that}}
+            {{if that.selected}} 
+            <span class="hide">{{that.value}}</span>
+            {{/if}}
+        {{/each}}
+        <div class="col-sm-9 check-more" id="{{val.id}}" data-value="">
+            {{each val.items as item n}}
+            {{if item.isInput}}
+            <input class="checkInput" type="text" placeholder="其他金额"></span>
+            {{else if item.selected}}
+            <span class="checkBtns active" value="{{item.value}}">{{item.value}}</span>
+            {{else}}
+            <span class="checkBtns" value="{{item.value}}">{{item.value}}</span>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+    {{/each}}
+</script>

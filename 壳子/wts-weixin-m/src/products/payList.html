@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"交费记录", "keywords": "", "description": "" })
+</head>
+
+<body>
+    @@include("include/ready-ani.htm")
+    <div class="body-container products-payList" id="detailMain">
+        
+    </div>
+</body>
+@@include("include/footer.htm")
+<script id="detailTemp" type="text/html">
+    {{if effectiveStatus == 1}}
+    <div class="top-box">
+        <div class="text1">累计交费总额</div>
+        <div class="text2"><span>{{totalPayPremium}}</span>元</div>
+        <div class="item">
+            <div class="text1">每期应缴保费</div>
+            <div class="text3"><span>{{evrPayPremium}}</span>元</div>
+        </div>
+        <div class="item">
+            <div class="text1">已缴/总期数</div>
+            <div class="text3"><span>{{paySuccssCount}}/12</span>期</div>
+        </div>
+        <div class="item">
+            <div class="text1">下期扣费时间</div>
+            {{if paySuccssCount == 12}}
+            <div class="text5">已缴全部保费</div>
+            {{else}}
+            <span class="text3"><span>{{month}}</span>月<span>{{day}}</span>日</span>
+            {{/if}}
+        </div>
+    </div>
+    {{else}}
+    <div class="top-box stop">
+        <div class="text1">累计交费总额</div>
+        <div class="text2"><span>{{totalPayPremium}}</span>元</div>
+        <div class="text4">— 保障已终止 —</div>
+    </div>
+    {{/if}}
+    <div class="pay-list">
+        <div class="title">
+            <span>交费明细</span>
+            <span class="fr lz-col-666">按月交费</span>
+        </div>
+        {{each briefpayRecords as data i}}
+        <div class="item">
+            <div class="text1">
+                <span>第{{data.sn}}期保费</span>
+                <span class="fr {{if data.status==-1 || data.status==-2 || data.status==3}}red{{/if}}">￥{{data.premium}}</span>
+            </div>
+            <div class="text2 lz-col-999">
+                <span>{{data.applyTime}}</span>
+                <span class="fr {{if data.status==-1 || data.status==-2 || data.status==3}}red{{/if}}">{{data.remark}}</span>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</script>
+<script>
+    $(function() {
+        var policyId = $.getQueryString("policyId");
+
+        getData();
+
+        function getData() {
+            if(!policyId){
+                $.layerAlert("policyId不存在");
+                return;
+            }
+            var startAxList = {
+                type: "post",
+                url: "/bus/core/brief/api/briefPappayDetail",
+                data: { policyId: policyId },
+                success: function (ajaxData, isError) {
+                    console.log(ajaxData);
+                    $(".lz-readys").remove();
+                    if (!isError) {
+                        return;
+                    }
+                    if(ajaxData.data.overdueInfo) {
+                        getOpenid();
+                    }
+                    if(ajaxData.data.nextPayTime){
+                        var date = new Date(ajaxData.data.nextPayTime.replace(/-/g,"/"));
+                        ajaxData.data.month = date.getMonth()+1;
+                        ajaxData.data.day = date.getDate();
+                    }
+                    ajaxData.data.briefpayRecords.forEach(item => {
+                        var date = new Date(item.applyTime.replace(/-/g,"/"));
+                        item.applyTime = $.tools().dateFormat("yyyy-MM-dd hh:mm",date);
+                    });
+                    var detailTemp = template("detailTemp", ajaxData.data);
+                    $("#detailMain").prepend(detailTemp);
+                }
+            }
+            $.ajaxPackage(startAxList);
+        }
+    });
+</script>
+</html

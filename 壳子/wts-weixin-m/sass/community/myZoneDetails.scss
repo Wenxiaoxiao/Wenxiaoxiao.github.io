@@ -1,0 +1,700 @@
+.myZonedetails {
+  .mainContent {
+    width: 100%;
+    height: auto;
+    position: relative;
+    background: #efeff4;
+    overflow: hidden;
+    .mainList {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      margin-bottom: r(15);
+      background: #fff;
+      border-top: 1px solid #e6e6e6;
+      dl {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        padding-bottom: r(15);
+        dt {
+          width: 100%;
+          height: r(120);
+          line-height: r(90);
+          padding: 0 r(30);
+          box-sizing: border-box;
+          position: relative;
+          padding-top: r(30);
+          .img-auther {
+            width: r(90);
+            height: r(90);
+            border-radius: r(5);
+            position: absolute;
+            left: r(30);
+            top: r(30);
+          }
+          .textBox {
+            width: 100%;
+            height: r(90);
+            padding-left: r(100);
+            p {
+              line-height: r(50);
+              font-size: r(30);
+              padding: r(20) 0;
+              color: #000;
+              position: relative;
+            }
+            .level {
+              @include remCalc(width, 100);
+              display: inline-block;
+            }
+            .time {
+              width: 100%;
+              height: r(34);
+              margin-top: r(10);
+              line-height: r(34);
+              font-size: r(28);
+              color: #949494;
+              .Hour {
+                margin-left: r(21);
+              }
+              .Month {
+                margin-left: 0;
+              }
+            }
+          }
+        }
+        .problemBox {
+          width: 100%;
+          height: auto;
+          padding-right: r(30);
+          padding-left: r(30);
+          position: relative;
+          margin-top: r(20);
+          .problem {
+            width: 100%;
+            height: auto;
+            font-size: r(32);
+            line-height: r(42);
+            .text2 {
+              height: auto;
+              line-height: r(52);
+              color: #000;
+              >p{
+                color: #000;
+                font-size: 16px;
+              }
+              img{
+                max-width: 90%!important;
+                margin: 5px auto;
+                display: block;
+              }
+              video{
+                max-width: 90%!important;
+                margin: 5px auto;
+                display: block;
+              }
+            }
+            .text3 {
+              height: auto;
+              line-height: 1.5;
+              color: #3f3f3f;
+              >p{
+                color: #3f3f3f;
+                font-size: 16px;
+              }
+              img{
+                max-width: 90%!important;
+                margin: 5px auto;
+                display: block;
+              }
+              video{
+                max-width: 90%!important;
+                margin: 5px auto;
+                display: block;
+              }
+            }
+            .imgBox{
+              margin-top: 5px;
+            }
+            .active {
+              max-height: 100%;
+            }
+            .imgOne {
+              width: r(450);
+              margin-right: r(8);
+              display: inline-block;
+            }
+            .imgTwo {
+              display: inline-block;
+              margin-right: r(10);
+              width: r(250);
+            }
+            .video-js {
+              width: 100%;
+            }
+          }
+          .problemTip {
+            display: block;
+            width: 100%;
+            height: r(50);
+            line-height: r(50);
+            position: relative;
+            text-align: right;
+            .problemTip-lib{
+              display: inline-block;
+              @include remCalc(height,50);
+              color: #9d9d9d;
+              font-size: r(26);
+              width: 25%;
+              text-align: left;
+              i {
+                font-size: r(32);
+                float: right;
+              }
+              .problemname {
+                float: right;
+                right: r(16);
+                margin-left: r(10);
+                top: r(-2);
+                display: inline-block;
+                height: r(50);
+              }
+              .dianzan{
+                float: right;
+                display: inline-block;
+                @include remCalc(width,40);
+                @include remCalc(height,50);
+                background: url("../images/dianzan.png") no-repeat;
+                background-size: contain;
+                position: relative;
+                top: 2px;
+              }
+              .hasdianzan{
+                float: right;
+                display: inline-block;
+                @include remCalc(width,40);
+                @include remCalc(height,50);
+                background: url("../images/dianzan-02.png") no-repeat;
+                background-size: contain;
+                position: relative;
+                top: 2px;
+              }
+              .dianzan.active{
+                background: url("../images/dianzan-02.png") no-repeat;
+                background-size: contain;
+                animation: dianzanActive 0.5s ease forwards;
+              }
+              @keyframes dianzanActive
+              {
+                0% {transform: scale(1) }
+                50% {transform: scale(1.5) }
+                100% {transform: scale(1)}
+              }
+            }
+
+          }
+        }
+
+      }
+      .answer {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: r(24) r(30) 0 r(30);
+        .answerList {
+          width: 100%;
+          height: auto;
+          position: relative;
+          padding-bottom: r(25);
+          padding-left: r(15);
+          margin-bottom: r(30);
+          background: #f7f7f7;
+          li {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            font-size: r(30);
+            color: #4a7caf;
+            span {
+              float: left;
+              margin-right: r(12);
+            }
+            .answerText {
+              color: #010101;
+
+            }
+          }
+        }
+      }
+    }
+  }
+  .detailsContent {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    .bestDt {
+      display: none;
+    }
+    dt {
+      width: 100%;
+      height: auto;
+      position: relative;
+      box-sizing: border-box;
+      padding-left: r(30);
+      background: #fff;
+      .answer {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0 r(30) 0 0;
+        .answerList {
+          width: 100%;
+          height: auto;
+          position: relative;
+          margin-bottom: r(20);
+          background: #f7f7f7;
+          padding: 5px 0;
+          .more-a{
+            font-size: r(28);
+            line-height: r(46);
+            color: #4a7caf;
+            padding: 0 5px;
+          }
+          li {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            font-size: r(30);
+            line-height: r(46);
+            color: #4a7caf;
+            padding: 0 5px;
+            >span {
+              float: left;
+              margin-right: r(12);
+            }
+            .answerText {
+              color: #000;
+            }
+          }
+        }
+      }
+      .best {
+        width: 100%;
+        @include remCalc(height,90);
+        line-height: r(90);
+        font-size: r(36);
+        color: #000;
+        text-align: left;
+        //i {
+        //  font-size: r(38);
+        //  color: #ff6e07;
+        //  margin-right: r(10);
+        //}
+      }
+      > .detailsContentBox {
+        position: relative;
+        .comment-top-newadd{
+          position: absolute;
+          right: r(30);
+          top: r(20);
+          font-size: r(16);
+          .problemTip-lib{
+            display: inline-block;
+            @include remCalc(height,50);
+            color: #9d9d9d;
+            font-size: r(26);
+            text-align: left;
+            margin-left: r(30);
+            i {
+              font-size: r(32);
+              float: right;
+            }
+            .problemname {
+              float: right;
+              display: inline-block;
+              font-size: r(26);
+              margin-top: r(10);
+              margin-left: r(10);
+            }
+            .dianzan{
+              float: right;
+              display: inline-block;
+              @include remCalc(width,40);
+              @include remCalc(height,50);
+              background: url("../images/dianzan.png") no-repeat;
+              background-size: contain;
+              position: relative;
+              top: 2px;
+            }
+            .hasdianzan{
+              float: right;
+              display: inline-block;
+              @include remCalc(width,40);
+              @include remCalc(height,50);
+              background: url("../images/dianzan-02.png") no-repeat;
+              background-size: contain;
+              position: relative;
+              top: 2px;
+            }
+            .dianzan.active{
+              background: url("../images/dianzan-02.png") no-repeat;
+              background-size: contain;
+              animation: dianzanActive 0.5s ease forwards;
+            }
+
+
+
+          }
+        }
+
+      }
+      .img-auther {
+        width: r(72);
+        height: r(72);
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .right {
+        width: 100%;
+        height: r(78);
+        padding-left: r(90);
+        .name {
+          width: 50%;
+          max-width: 60%;
+          line-height: r(42);
+          color: #000;
+          display: inline-block;
+          font-size: r(30);
+          padding: r(18) 0;
+        }
+        .level {
+          @include remCalc(width, 120);
+          display: inline-block;
+          margin-left: 5px;
+          vertical-align: middle;
+          position: relative;
+          top: -2px;
+        }
+        .time {
+          width: 100%;
+          height: r(32);
+          line-height: r(32);
+          color: #989898;
+          font-size: r(26);
+          .MM-DD {
+            margin-right: r(21);
+          }
+        }
+      }
+      .bestAnswer {
+        padding-left: r(96);
+        padding-right: r(20);
+        line-height: r(48);
+        font-size: r(30);
+        color: #000;
+        margin-top: r(20);
+      }
+      .answer-sent{
+        width:100%;
+        height: auto;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding:r(10) r(30) 0 0;
+        .answerList{
+          height: auto;
+          position: relative;
+          margin-bottom:0;
+          padding:5px 0;
+          background: #f7f7f7;
+          margin-left: r(96);
+          .more-a{
+            font-size: r(28);
+            line-height: r(46);
+            color: #4a7caf;
+            padding: 0 5px;
+          }
+          li{
+            width:100%;
+            height: auto;
+            overflow: hidden;
+            padding: 0 5px;
+            font-size: r(30);
+            line-height: r(46);
+            color:#4a7caf;
+            span{
+              float:left;
+              margin-right: r(12);
+            }
+            .answerText{
+              color: #010101;
+
+            }
+          }
+        }
+      }
+
+    }
+    .detailsContentBox {
+      padding-bottom: r(10);
+      margin-top: r(18);
+      position: relative;
+      border-bottom: 1px solid #efeff4;
+      .answer-list {
+          width: 100%;
+          height: auto;
+          overflow: hidden;
+          box-sizing: border-box;
+
+
+          .answerList {
+            height: auto;
+            position: relative;
+            margin: r(10) 0;
+            background: #f7f7f7;
+            padding: 5px 0;
+            li {
+              width: 100%;
+              height: auto;
+              overflow: hidden;
+              font-size: r(30);
+              line-height: r(46);
+              color: #4a7caf;
+              padding: 0 5px;
+              >span {
+                float: left;
+                margin-right: r(12);
+              }
+              .answerText {
+                color: #000;
+              }
+            }
+            .more-a{
+              font-size: r(28);
+              line-height: r(46);
+              color: #4a7caf;
+              padding: 0 5px;
+            }
+          }
+        }
+      .comment-top-newadd{
+        position: absolute;
+        right: 0;
+        top: r(20);
+        font-size: r(16);
+        .problemTip-lib{
+          display: inline-block;
+          @include remCalc(height,50);
+          color: #9d9d9d;
+          font-size: r(26);
+          text-align: left;
+          margin-left: r(30);
+          i {
+            font-size: r(32);
+            float: right;
+          }
+          .problemname {
+            float: right;
+            display: inline-block;
+            font-size: r(26);
+            margin-top: r(10);
+            margin-left: r(10);
+          }
+          .dianzan{
+            float: right;
+            display: inline-block;
+            @include remCalc(width,40);
+            @include remCalc(height,50);
+            background: url("../images/dianzan.png") no-repeat;
+            background-size: contain;
+            position: relative;
+            top: 2px;
+          }
+          .hasdianzan{
+            float: right;
+            display: inline-block;
+            @include remCalc(width,40);
+            @include remCalc(height,50);
+            background: url("../images/dianzan-02.png") no-repeat;
+            background-size: contain;
+            position: relative;
+            top: 2px;
+          }
+          .dianzan.active{
+            background: url("../images/dianzan-02.png") no-repeat;
+            background-size: contain;
+            animation: dianzanActive 0.5s ease forwards;
+          }
+
+
+
+        }
+      }
+    }
+    dd {
+      width: 100%;
+      height: auto;
+      padding-left: r(30);
+      padding-right: r(30);
+      position: relative;
+      img {
+        width: r(72);
+        height: r(72);
+        border-radius: r(5);
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .commentRight {
+        width: 100%;
+        height: r(72);
+        padding-left: r(90);
+        .name {
+          line-height: r(42);
+          padding: r(15) 0;
+          color: #000;
+          font-size: r(30);
+        }
+        .time {
+          width: 100%;
+          height: r(32);
+          line-height: r(32);
+          color: #989898;
+          font-size: r(26);
+          .MM-DD {
+            margin-right: r(21);
+          }
+        }
+      }
+      .Answer {
+        padding-left: r(96);
+        line-height: r(48);
+        font-size: r(30);
+        color: #000;
+        word-break: break-all;
+        margin: 0;
+        margin-top: r(10);
+      }
+      .answer-sent{
+        padding-left: r(96);
+        width:100%;
+        height: auto;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding:r(10) 0 0;
+        .answerList{
+          height: auto;
+          position: relative;
+          margin-bottom:0;
+          padding:5px 0;
+          background: #f7f7f7;
+          margin-left: r(96);
+          .more-a{
+            font-size: r(28);
+            line-height: r(46);
+            color: #4a7caf;
+            padding: 0 5px;
+          }
+          li{
+            width:100%;
+            height: auto;
+            overflow: hidden;
+            padding: 0 5px;
+            font-size: r(30);
+            line-height: r(46);
+            color:#4a7caf;
+            span{
+              float:left;
+              margin-right: r(12);
+            }
+            .answerText{
+              color: #010101;
+
+            }
+          }
+        }
+      }
+    }
+    .ddBox {
+      margin-bottom: r(50);
+      background: #fff;
+    }
+    .contentTitle {
+      background: #fff;
+      width: 100%;
+      height: r(90);
+      box-sizing: border-box;
+      padding-top: 0;
+      border: none;
+      line-height: r(90);
+      i {
+        font-size: r(36);
+        color: #ff6e07;
+        margin-top: r(4);
+        position: absolute;
+        margin-right: r(0);
+      }
+      .allComment {
+        display: inline-block;
+        font-size: r(36);
+      }
+    }
+  }
+  .blank-box{
+    width: 100%;
+    height: r(100);
+  }
+  .bottom {
+    width: r(750);
+    position: fixed;
+    bottom: 0;
+    background: #f0f3f8;
+    padding: r(20) r(180) r(15) r(30);
+    box-sizing: border-box;
+    border-top: 1px solid #e6e6e6;
+    .inp1 {
+      width: r(520);
+      display: inline-block;
+      line-height: r(40);
+      border-radius: r(8);
+      font-size: 16px;
+      color: #000;
+      -webkit-transition: all 0.30s ease-in-out;
+      -moz-transition: all 0.30s ease-in-out;
+      -ms-transition: all 0.30s ease-in-out;
+      -o-transition: all 0.30s ease-in-out;
+      outline: none;
+      padding: 5px;
+      border: 1px solid #dbdbdb;
+      overflow-x:hidden;
+      resize:none;
+    }
+    .textCount{
+      position: absolute;
+      left: -999px;
+      bottom: -50px;
+      font-size: 16px;
+    }
+    a {
+      display: inline-block;
+      width: r(130);
+      height: r(70);
+      text-align: center;
+      line-height: r(68);
+      position: absolute;
+      right: r(30);
+      top: 50%;
+      @include transform(translateY(-50%));
+      box-sizing: border-box;
+      background: #ff6e07;
+      font-size: r(34);
+      color: #fbffff;
+      border-radius: r(8);
+    }
+  }
+}

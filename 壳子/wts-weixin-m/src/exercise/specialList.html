@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <!--测试环境-->
+    @@include("include/header.htm",{ "title":"保险专题", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container special">
+        <div class="toolba">
+            <a href="/">首页</a>><a href="#">保险专题</a>
+        </div>
+        <div class="content">
+            <a href="@@topic/{{value.id}}.html"></a>
+                <div class="item clearfix">
+                    <div class="word">
+                        <div class="title">大声大声道撒大声地大多数啊实打实大萨达啊实打实大师大所多</div>
+                        <div class="desc clearfix">
+                            <span class="time"><i class="iconfont icon-shijian2"></i><span>日期:2/12</span></span>
+                            <span class="ly"><i class="iconfont icon-icon-eye-open"></i><span>阅读:65</span></span>
+                        </div>
+                    </div>
+                    <div class="pic">
+                        <img src="@@webRoot/lib/images/d_help_01.jpg" alt="">
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="reload">
+            <img src="@@webRoot/lib/images/reload.gif" alt="">
+        </div>
+    </div>
+    <!--底部公共部分-->
+@@include("include/footer.htm")
+<script id="list" type="text/html">
+    {{if list&&list.length>0}}
+        {{each list as value i}}
+            <div class="item clearfix">
+                <a href="@@topic/{{value.id}}.html">
+                    <div class="word">
+                        <div class="title">{{value.title | subString:13}}</div>
+                        <div class='desccontent'>{{value.description | subString:35}}</div>
+                        <div class="desc clearfix">
+                            <span class="time"><i class="iconfont icon-shijian2"></i><span>日期：{{value.updateTime | shijian}}</span></span>
+                            <span class="ly"><i class="iconfont icon-icon-eye-open"></i><span>阅读：{{value.readTimes}}</span></span>
+                        </div>
+                    </div>
+                    <div class="pic">
+                        <img src="{{value.imgUrl}}" alt="">
+                    </div>
+                </a>
+            </div>
+        {{/each}}
+    {{/if}}
+</script>
+<script>
+    $(function(user) {
+        
+        var listLoad = true;
+        var num = 1;
+        var pageSize = 10;
+        dataList(0);
+        function dataList(num){
+            var paramList = {
+                type: 'GET',
+                url: "/app/specialTopic/api/list",
+                data: {
+                    pageNum: num,
+                    pageSize: pageSize,
+                },
+                dataType: 'json',
+                async: true,
+                success: function (data, isError) {
+                    console.log(data);
+                    if (!isError) {
+                        return;
+                    }
+                    console.log(data)
+                    var html = template("list", data.data);
+                    if(num>1){
+                        $('.content').append(html);
+                        $(".reload").hide();
+                    }else{
+                        $('.content').html(html);
+                    }
+                    if(data.data.list.length < pageSize){
+                        listLoad = true;
+                        $(".content").append("<div class='no_more_list'>没有更多内容了</div>")
+                        return;
+                    }else{
+                        listLoad = false;
+                    }
+                    listPageFn();
+                }
+            };
+            $.ajaxPackage(paramList);
+        }
+
+        function listPageFn(){
+            $(window).on("scroll",function(){
+                if(  $(this).scrollTop() + $(this).height() + 100 >$(document).height() &&!listLoad){
+                $(".reload").show();
+                // 当滑出距离大度页面高度
+                listLoad = true;
+                num++; //开始的索引变完结束之后的第一个
+                dataList(num); //再次请求
+              }
+            })
+        }
+    })
+</script>
+</body>
+
+
+</html>

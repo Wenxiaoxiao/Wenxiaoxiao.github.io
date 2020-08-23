@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"检测详情", "keywords": "", "description": "" })
+</head>
+
+<body>
+    <div class="body-container checkDetial">
+        <div class="desTop">
+            <div class="desTitle">
+                检测流程
+            </div>
+            <div class="desLes">
+                <div class="lesList">
+                    <span class="spaIco"><i class="iconfont icon-yinhangqiaxieru_"></i></span>
+                    <p>下单</p>
+                </div>
+                <div class="lesList active">
+                    <span class="spaIco"><i class="iconfont icon-caiyanghe"></i></span>
+                    <p>采样回寄</p>
+                    <span class="iconGoTo"><i class="iconfont icon-zhankai-xianxing"></i></span>
+                </div>
+                <div class="lesList">
+                    <span class="spaIco"><i class="iconfont icon-yisongda"></i></span>
+                    <p>已送达</p>
+                    <span class="iconGoTo"><i class="iconfont icon-zhankai-xianxing"></i></span>
+                </div>
+                <div class="lesList">
+                    <span class="spaIco"><i class="iconfont icon-yingxiao"></i></span>
+                    <p>检测基因</p>
+                    <span class="iconGoTo"><i class="iconfont icon-zhankai-xianxing"></i></span>
+                </div>
+                <div class="lesList">
+                    <span class="spaIco"><i class="iconfont icon-zongjie"></i></span>
+                    <p>出报告</p>
+                    <span class="iconGoTo"><i class="iconfont icon-zhankai-xianxing"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="desContent">
+            <div class="desTitle">
+                受检人
+            </div>
+            <div class="desMsg">
+                <p><span>儿童天赋基因检测:</span><span>张三</span> <span class="clickRig">绑定受检人</span></p>
+            </div>
+            <div class="desTitle">
+                说明
+            </div>
+            <div class="desMsg">
+                <p>请在采样盒说明书的指导下完成采样与回寄</p>
+                <p>回寄样本时，请务必将内外包装盒一并返还，并确保外包装盒上的条形码无损</p>
+            </div>
+            <div class="desTitle">
+                物流信息
+            </div>
+            <div class="desDress">
+                <p class="p1"><span class="lef">物流公司</span><span>顺丰</span></p>
+                <p class="p1"><span class="lef">物流单号</span><span>123456789</span></p>
+                <p class="p1"><span class="lef">最新状态</span><span>快件已由苏州中海快件已由苏州中海快件已由苏州中海快件已由苏州中海快件已由苏州中海快件已由苏州中海</span></p>
+                <a href="">查看物流日志</a>
+            </div>
+        </div>
+        <div class="orderNum">
+            <p>订单号：65466546556465</p>
+            <p>创建时间：6543465654546865465</p>
+        </div>
+        <a href="" class="telMe">联系客服</a>
+    </div>
+</body>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+ 
+<script>
+    var login = wtsLogin
+    login.init({
+        env: $.globedata.environment
+    }, function(user) {
+        $(".clickRig").click(function() {
+            location.href = "./service-bind.html"
+        });
+
+    })
+</script>
+</html

@@ -1,0 +1,106 @@
+.bodyLogin{
+    background: #fff;
+    .headBarLogin{
+        text-align: left;
+        position: relative;
+        font-size: r(30);
+        height: r(80);
+        line-height: r(80);
+        .back{
+            display: inline-block;
+        }
+        a{
+            color:#fff;
+            i{
+                font-size: r(34);
+            }
+        }
+        span{
+            position: absolute;
+            left: 46%;
+            
+        }
+    }
+    .content{
+        width:100%;
+        height: auto;
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding-top:r(60);
+        text-align: center;
+        .box{
+            width:r(665);
+            height: auto;
+            margin-left: r(42);
+            box-sizing: border-box;
+            border: r(1) solid #ccc;
+            border-radius: r(5);
+//          overflow: hidden;
+            text-align: center;
+            .mainImg{
+                width:r(665);
+                margin-left: -1px;
+                margin-top: -1px;
+                height:r(304);
+            }
+            .item1{
+                width: 100%;
+                height: r(108);
+                line-height: r(108);
+                overflow: hidden;
+                position: relative;
+                margin-top: r(40);
+                .img1{
+                    display: inline-block;
+                    width:r(108);
+                    height: r(108);
+                    background: #20a73e;
+                    border-radius: 50%;
+                    font-size: r(58);
+                    color: #fff;
+                    margin-top: 0;
+                    line-height: r(108);
+                    text-align: center;
+                }
+                i{
+                    position: absolute;
+                    left: r(156);
+                }
+                .img2{
+                    margin-left: r(130);
+                    margin-right: r(5);
+                    background: #fff;
+                    height: r(90);
+                }
+                .img3{
+                    background: #fff;
+                }    
+            }
+            p{
+                width: 100%;
+                height: r(90);
+                line-height: r(90);
+                font-size: r(26);
+                color:#6e6e6e;
+                text-align: center;
+                margin-bottom: r(39);
+            }
+        }
+        .wts-btn-big-blue{
+            margin-top: r(42);
+        }
+        .cellphoneLogin{
+            width:100%;
+            height: r(140);
+            line-height: r(140);
+            text-align: center;
+            font-size: r(32);
+            color: #3aa9f8;
+            i{
+                font-size: r(36);
+            }
+        }
+        
+    }
+}

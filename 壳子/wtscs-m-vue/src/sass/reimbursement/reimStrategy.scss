@@ -1,0 +1,211 @@
+.reimStrategy-container{
+    width:r(750);
+    background:#fff;
+    overflow-y: auto;
+    overflow-x:hidden;
+    -webkit-overflow-scrolling: touch;
+    .tips{
+        width:r(672);
+        text-align: center;
+        padding: r(28) r(0);
+        font-size: r(30);
+        color:#ff3000;
+        background:#ffecdd;
+        border-radius: r(10);
+        margin:r(19) auto r(0);
+        position: relative;
+    }
+    .tips:before{
+        content:"";
+        width:0;
+        height:0;
+        position: absolute;
+        top:r(-19);
+        left:r(316);
+        border-right:solid r(28) transparent;
+        border-left:solid r(28) transparent;
+        border-bottom:solid r(28) #ffecdd;
+    }
+    .header{
+        width:r(750);
+        height:r(390);
+        background:url('~@/reimbursement/2.png') no-repeat ;
+        background-size:r(750) r(390);
+        padding-top:r(42);
+        color:#fff;
+        .title{
+            font-size:r(56);
+            font-weight: bold;
+            text-shadow:r(4) r(4) r(4) rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .subtitle{
+            font-size:r(27);
+            text-align: center;
+            line-height:r(46);
+        }
+        .icons{
+            height:r(149);
+            padding:r(0) r(18);
+            display: flex;
+            margin-top:r(37);
+            &>.icon{
+                width:33.33%;
+                text-align: center;
+                &>img{
+                    width:r(86);
+                    height:r(86);
+                }
+                &>div{
+                    font-size:r(27);
+                    line-height:r(63);
+                }
+            }
+        }
+    }
+    .part1{
+        height:r(520);
+        .title{
+            font-size:r(42);
+            font-weight:bold;
+            text-align: center;
+            line-height: r(127);
+            &>span{
+                display: block;
+                position: relative;
+            }
+            &>span:before,&>span:after{
+                content: '';                 /*CSS伪类用法*/
+                position: absolute;         /*定位背景横线的位置*/
+                top:50%;
+                background: #b0b0b0;       /*宽和高做出来的背景横线*/
+                width:20%;
+                height:r(2);
+            }
+            &>span:before{
+                left:16%;
+            }
+            &>span:after{
+                right:16%;
+            }
+        }
+        .symptoms{
+            padding:r(0) r(20);
+            display:flex;
+            height:r(208);
+            .symptom{
+                padding:r(0) r(9) r(0) r(18);
+                width: 25%;
+                &>img{
+                    width:r(148);
+                    height:r(148);
+                    border-radius: r(10);
+                }
+                &>div{
+                    text-align: center;
+                    font-size: r(27);
+                    line-height: r(60);
+                }
+            }
+        }
+        .advantages{
+            line-height:r(58);
+            font-size:r(22);
+            line-height:r(58);
+            text-align: center;
+            color: #a0a0a0;
+            margin-bottom:r(20);
+        }
+    }
+    .part2{
+        height:r(438);
+        padding:r(0) r(38);
+        .box{
+            width:r(672);
+            height:r(388);
+            background:#e0f1ff;
+            border-radius: r(10);
+            margin:r(16) auto;
+            padding:r(82) r(26) r(29) r(27);
+            position: relative;
+            .title{
+                position: absolute;
+                width:r(240);
+                height:r(70);
+                line-height:r(70);
+                color: #fff;
+                font-size: r(35);
+                font-weight: bold;
+                background: #4580f6;
+                text-align: center;
+                border-radius: r(10);
+                top:r(-16);
+                left:r(216)
+            }
+            .txt{
+                line-height:r(42);
+                color: #333;
+                font-size:r(26);
+                margin-bottom: r(22);
+            }
+            .example{
+                width: r(618);
+            }
+        }
+    }
+    .space{
+        height:r(16);
+        background:#efefef;
+    }
+    .part3{
+        padding-bottom:r(36);
+        .title{
+            font-size:r(42);
+            font-weight:bold;
+            text-align: center;
+            line-height: r(127);
+            &>span{
+                display: block;
+                position: relative;
+            }
+            &>span:before,&>span:after{
+                content: '';                 /*CSS伪类用法*/
+                position: absolute;         /*定位背景横线的位置*/
+                top:50%;
+                background: #b0b0b0;       /*宽和高做出来的背景横线*/
+                width:8%;
+                height:r(2);
+            }
+            &>span:before{
+                left:14%;
+            }
+            &>span:after{
+                right:14%;
+            }
+        }
+        .news-box{
+            padding:r(0) r(38);
+            &>dl{
+                overflow: hidden;
+                height:r(106);
+                margin-bottom:r(36);
+                &>dt{
+                    float:left;
+                    width:r(132);
+                    &>img{
+                        width:r(106);
+                        height:r(106); 
+                        margin-left:r(26);
+                    }
+                }
+                &>dd{
+                    float:left;
+                    width:r(542);
+                    line-height: r(106);
+                    font-size:r(29);
+                    text-indent:r(16);
+                }
+            }
+        }
+    }
+}

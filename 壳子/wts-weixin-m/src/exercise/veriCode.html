@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"家庭保单智能管家", "keywords": "", "description": "" })
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="body-container veriCode" style="background:#FFFBF0;">
+        <h2 class="title">手机号码验证</h2>
+        <div class="box">
+            <div class="froms clearfix">
+                <input type="number" class="fl input-t tell" id="tellNum" placeholder="请输入手机号码">
+            </div>
+            <div class="froms clearfix">
+                <input type="button" class="fr text sendCodeBtn" value="发送验证码">
+                <input type="number" class="fr input-t" id="sendCode" placeholder="请输入验证码">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="@@webRoot/lib/js/template.js"></script>
+<script src="@@webRoot/lib/layer/layer.js"></script>
+<script src="@@webRoot/lib/js/jweixin-1.4.0.js"></script>
+<script src="@@webRoot/lib/units/helper.js?r=@@time"></script>
+<script>
+    // $(function () {
+         //手机号  获取的验证码 输入的验证码
+         var pro_code = $.getQueryString("procode")
+         var productType = $.getQueryString("productType") || 0;
+         var urlArr = [
+             "/bus/core/thirdparty/sms", //平安
+             "/bus/core/accountSign/api/apply/"+pro_code //瑞华
+         ]
+
+        var mobile,sendCode,
+        //是否完成验证
+        isByCode = false,
+        //节流阀
+        clickNum = 0;
+        getSenCode()
+        function getSenCode(){
+            $(".sendCodeBtn").click(function(){
+                if(clickNum>0)return;
+                console.log(mobile)
+                if(!mobile || mobile == "")return $.layerMsg("手机号不能为空")
+                if(!$.regular().isPhone(mobile)){
+                    $.layerMsg("您输入了非法的手机号码");
+                    return;
+                }
+                clickNum++
+                isByCode = false
+                var datas = {
+                    holderMobile:mobile,
+                    code:pro_code,
+                    platform:'h5',
+                    deviceType:$.tools().iPhone?'IOS':'ANDROID',
+                    netType:getNetworkType()
+                }
+                var paramList = {
+                    type: "post",
+                    url: urlArr[productType],
+                    data: JSON.stringify(datas),
+                    contentType: "application/json;charset=UTF-8",
+                    success: function (ajaxData, isError) {
+                        clickNum = 0;
+                        if (!isError) {
+                            return;
+                        }
+                        isByCode = true;
+                        var interval = ajaxData.data.interval-0;
+                         //发送验证码计时   
+                        intervals(interval)
+                    }
+                }
+                $.ajaxPackage(paramList);
+            })
+            $(".input-t").on("change",function(){
+                var id = $(this).attr("id");
+                var vals = $(this).val()
+                console.log(123)
+                if(id == "tellNum"){
+                    mobile = vals
+                }else if(id == "sendCode"){
+                    if(isByCode && vals != "")sendCode = vals
+                }
+            })
+
+        }
+        //发送验证码计时
+        function intervals(count) {
+                var dom = $(".sendCodeBtn");
+                var countdown = count;
+                $(dom).val(countdown + "S");
+                $(dom).addClass("disableds")
+                timer = setInterval(function () {
+                    countdown--;
+                    if (countdown < 1) {
+                        $(dom).removeClass("disableds")
+                        $(dom).attr("disabled", false)
+                        $(dom).val("发送验证码");
+                        clearInterval(timer);
+                    } else {
+                        $(dom).attr("disabled", true);
+                        $(dom).val(countdown + "S");
+                    }
+                }, 1000);
+            }
+        function confirmBtn(){
+            if(!isByCode)return false;
+            if(!sendCode)return false;
+            return {
+                holderMobile:mobile,
+                smsCode:sendCode
+            }
+        }
+
+        function getNetworkType() {
+            var ua = navigator.userAgent;
+            var networkStr = ua.match(/NetType\/\w+/) ? ua.match(/NetType\/\w+/)[0] : 'NetType/other';
+            networkStr = networkStr.toLowerCase().replace('nettype/', '');
+            if(networkStr.indexOf("other")){
+                return 'other'
+            }else{
+                return networkStr
+            }
+        }
+    // })
+</script>
+
+</html

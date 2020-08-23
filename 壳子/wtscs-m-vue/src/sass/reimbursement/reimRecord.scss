@@ -1,0 +1,89 @@
+.reimRecord-container{
+    width:r(750);
+    .empty{
+        min-height:r(880);
+        text-align: center;
+        padding-top:r(320);
+        padding-bottom:r(320);
+        &>img{
+            width:r(185);
+            height:r(154);
+            display:block;
+            margin:0 auto r(30);
+        }
+        &>span{
+            font-size:r(28);
+            color:#666;
+            line-height:r(80);
+        }
+        &>div{
+            width:r(180);
+            height:r(60);
+            border:r(2) solid #4580f6;
+            text-align:center;
+            line-height:r(56);
+            color:#4580f6;
+            margin:0 auto;
+            border-radius:r(10);
+            font-size:r(30);
+        }
+    }
+    .reim-list{
+        width:r(750);
+        padding:r(30) r(20) r(20);
+        .reim{
+            min-height:r(270);
+            width:r(690);
+            background:#fff;
+            box-shadow:0 0 r(8) rgba(0,0,0,0.2);
+            border-radius:r(10);
+            margin:0 auto r(30);
+            font-size:r(30);
+            .top{
+                overflow: hidden;
+                height:r(80);
+                border-bottom:r(2) solid #ededed;
+                line-height:r(80);
+                padding:r(0) r(18) r(0) r(24);
+                .s1{
+                    float:left;
+                }
+                .s2{
+                    float:right;
+                    color:#4580f6;
+                }
+            }
+            .middle{
+                padding:r(25) r(18) r(0) r(24);
+                line-height:r(52);
+            }
+            .bottom{
+                padding:r(0) r(18) r(0) r(24);
+                overflow: hidden;
+                .p1{
+                    float:left;
+                }
+                .p2{
+                    float:right;
+                    &>span{
+                        color:#ff7200;
+                    }
+                }
+            }
+            .reason{
+                padding:r(0) r(18) r(20) r(24);
+                overflow: hidden;
+                &>.s1{
+                    float:left;
+                    width:r(150);
+                    white-space: nowrap;
+                }
+                &>.s2{
+                    float:right;
+                    width:r(490);
+                    word-break: break-all;
+                }
+            }
+        }
+    }
+}

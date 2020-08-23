@@ -1,0 +1,260 @@
+.listInfoBox {
+  font-size: r(34);
+
+  .policy-04-list {
+    .dlBox {
+      z-index: 3;
+
+      .dlheader {
+        @include remCalc(height, 90);
+        @include remCalc(line-height, 90);
+        position: relative;
+        font-size: r(38);
+        background: #f5f5f5;
+
+        .item-title {
+          margin-left: r(30);
+          border-left: 5px solid $bg-color-ff6e06;
+          padding-left: 5px;
+        }
+
+        div {
+          position: absolute;
+          top: r(26);
+          width: r(6);
+          height: r(36);
+          line-height: r(36);
+          margin-left: r(30);
+          display: inline-block;
+          background: $cpBaseCol;
+        }
+
+      }
+
+      dd {
+        padding-left: r(30);
+        box-sizing: border-box;
+
+        .ulListBox {
+          padding: 5px 0;
+
+          li {
+            @include remCalc(min-height, 46);
+            @include remCalc(line-height, 64);
+            position: relative;
+            word-break: break-all;
+
+            span {
+              margin-left: r(23);
+              padding-right: 5px;
+            }
+
+            .policyIdleft {
+              margin: 0;
+              display: inline-block;
+              width: r(150);
+              min-width: r(150);
+            }
+
+            .IDInfo {
+              margin-left: 0;
+            }
+
+            .IDType {
+              margin-left: r(52);
+              min-width: r(300);
+              text-align: right;
+            }
+
+            .btn {
+              display: inline-block;
+              text-align: center;
+              border: 1px solid #ff6f07;
+              background: #fff;
+              color: #ff6f07;
+              margin: 0 3px;
+              border-radius: r(9);
+              font-size: r(28);
+              height: r(60);
+              line-height: r(58);
+              padding: 0 8px;
+            }
+          }
+
+          .lastList {
+            margin: r(10) 0;
+            padding-right: r(20);
+            text-align: right;
+            min-height: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .policy-04-list:first-of-type {
+    .dlBox {
+      position: relative;
+      z-index: 3;
+    }
+  }
+
+  .lists1 {
+    .dlBoxDown1 {
+      dd {
+        span {
+          position: absolute;
+          right: r(32);
+          color: #6a6a6a;
+        }
+      }
+    }
+  }
+
+  .lists2 {
+    .dlBoxDown2 {
+      dd {
+        span {
+          position: absolute;
+          right: r(32);
+          color: #6a6a6a;
+        }
+      }
+    }
+  }
+
+  .lists3 {
+    padding-bottom: 0;
+
+    .dlBoxDown3 {
+      dd {
+        span {
+          position: absolute;
+          right: r(32);
+          color: #6a6a6a;
+        }
+      }
+    }
+  }
+
+  .listspolicy {
+    margin-top: r(15);
+    height: r(120);
+    position: relative;
+    background: #f5f5f5;
+
+    .cancellation {
+      box-sizing: border-box;
+      line-height: r(76);
+      background: #f5f5f5;
+      color: #ff6d06;
+      border: 1px solid #ff6d06;
+      border-radius: r(10);
+      display: inline-block;
+      position: absolute;
+      top: r(15);
+      right: r(20);
+
+      .phone-tel {
+        font-size: r(42);
+      }
+    }
+  }
+}
+
+.policy-02 {
+  text-align: left;
+  color: #000;
+  overflow: hidden;
+  width: 100%;
+  background-color: #fff;
+
+  .IDBox {
+    margin-left: r(20);
+    display: inline-block;
+    width: 70%;
+    margin-top: 0;
+    line-height: r(70);
+    position: absolute;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    .IDInfo {
+      margin-left: r(19);
+    }
+  }
+
+  .orderForm {
+    position: absolute;
+    right: r(24);
+    line-height: r(70);
+    margin-top: 0;
+  }
+
+  .img-compangs {
+    position: absolute;
+    right: 5px;
+    top: r(210);
+    height: r(100);
+    z-index: 1;
+    opacity: .8;
+  }
+
+  .NoPoint {
+    width: 100%;
+    @include remCalc(height, 150);
+    @include remCalc(line-height, 150);
+    margin-top: r(70);
+    background-color: #fff;
+    text-align: center;
+
+    >i {
+      font-size: r(50);
+      margin-left: 5px;
+      color: $cpBaseCol;
+    }
+  }
+}
+
+.checkPolicy_list_mask {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+
+.checkPolicy_list {
+  width: r(680);
+  background: #fff;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  margin-left: r(-340);
+  text-align: center;
+  color: #000;
+  z-index: 101;
+
+  .checkPolicy_list_title {
+    font-size: r(35);
+    font-weight: 900;
+    line-height: r(90);
+    border-bottom: 1px solid #ccc;
+  }
+
+  .checkPolicy_list_item {
+    padding: 0 r(20);
+
+    .item {
+      line-height: r(90);
+      border-bottom: 1px solid #ccc;
+
+      &:nth-last-of-type(1) {
+        border: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+.points-list-panel {
+  height: 100vh;
+  .mescroll {
+    padding-bottom: r(90);
+  }
+  .nav-box {
+    div {
+      float: left;
+      text-align: center;
+      width: 50%;
+      font-size: r(30);
+      border-bottom: 1px solid #ccc;
+      span {
+        display: inline-block;
+        line-height: r(90);
+        height: r(90);
+        padding: 0 20px;
+        font-size: r(30);
+        border-bottom: 2px solid transparent;
+      }
+      &.active {
+        background: #fff;
+        span {
+          color: #0082ff;
+          font-weight: 900;
+          border-bottom: 2px solid #4480f3;
+        }
+      }
+    }
+  }
+  .item {
+    background: #fff;
+    border-bottom: 1px solid #ececec;
+    padding: r(30);
+    .name {
+      font-size: r(32);
+      display: inline-block;
+      width: calc(100% - 80px);
+      vertical-align: top;
+    }
+    .count {
+      font-size: r(35);
+      color: #999;
+      float: right;
+      line-height: 1.2;
+      &.red {
+        color: #ff6c00;
+      }
+      span{
+        vertical-align: middle;
+      }
+      .arr {
+        width: r(12);
+        vertical-align: middle;
+        margin-left: 5px;
+      }
+    }
+    .time {
+      color: #666;
+    }
+
+  }
+  .empty-box {
+    padding-top: r(300);
+    text-align: center;
+    img {
+      width: r(185);
+      height: r(154);
+    }
+    .text {
+      font-size: r(30);
+      margin-top: r(30);
+      color: #666;
+    }
+  }
+}

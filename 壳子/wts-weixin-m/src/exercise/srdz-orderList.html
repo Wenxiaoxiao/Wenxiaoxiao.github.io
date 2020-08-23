@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        @@include("include/header.htm",{ "title":"我的方案", "keywords": "", "description": "" })
+    </head>
+
+    <body>
+        <!-- 加载动画 -->
+        @@include("include/ready-ani.htm")
+        <div class="my_scheme_mask">
+            <img src="@@webRoot/lib/images/customization/m30.png" alt="">
+            <div class="my_scheme_mask_content">请点击右上角分享</div>
+        </div>
+        <div class="body-container my_scheme">
+
+        </div>
+
+        @@include("include/footer.htm")
+        <script type="text/html" id="orderList">
+                {{if data.length>0}}
+                    <div class="my_scheme_list">
+                        {{each data as item i}}
+                            <div class="my_scheme_item" supportType="{{item.serverType}}" orderId="{{item.id}}">
+                                <div class="my_scheme_item_title">保障方案量身定制</div>
+                                <div class="my_scheme_item_content">
+                                    <div class="my_scheme_item_content_desc">
+                                        <div class="my_scheme_item_content_desc_title">{{item.serverName}}</div>
+                                        <div class="my_scheme_item_content_desc_desc">下单时间:{{item.createTime | trustTime}}</div>
+                                    </div>
+                                    <div class="my_scheme_item_content_state_pic">
+                                        {{if item.payStatus == 1}}
+                                            <img src="@@webRoot/lib/images/customization/m21.png" alt="">
+                                        {{else if item.payStatus == 2 || item.payStatus == 3}}
+                                            <img src="@@webRoot/lib/images/customization/m27.png" alt="">
+                                        {{else if item.payStatus == 4}}
+                                            {{if item.serverStatus==3}}
+                                                <img src="@@webRoot/lib/images/customization/m23.png" alt="">
+                                            {{else}}
+                                                <img src="@@webRoot/lib/images/customization/m22.png" alt="">
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <div class="my_scheme_item_bottom">
+                                    <div class="my_scheme_item_bottom_price">¥{{item.needAmount || item.realAmount}}</div>
+                                    <div class="my_scheme_item_bottom_btn">
+                                         {{if item.payStatus == 1}}
+                                        <span class="zhifu">立即支付</span>
+                                        {{else if item.payStatus == 2 || item.payStatus == 3}}
+                                            <span class="wszl">完善资料</span>
+                                        {{else if item.payStatus == 4 && item.serverStatus==3}}
+                                            <span class="ckfa" srcs="{{item.resultUrl}}">查看方案</span>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{else}}
+                <div class="my_scheme_no">
+                        <div class="my_scheme_no_pic"><img src="@@webRoot/lib/images/customization/m11.png" alt=""></div>
+                        <div class="my_scheme_no_btn">
+                            <span>点击制作方案</span>
+                        </div>
+                    </div>
+                {{/if}}
+        </script>
+        <script>
+            $(function () {
+                //获取订单列表
+                get_order_list()
+                function get_order_list() {
+                    $.ajaxPackage({
+                        type: "post",
+                        url: "/fsservers/serversOrder/api/payorders",
+                        contentType: "application/json",
+                        async: true,
+                        data: JSON.stringify({serverStatusArr:"1,2",payStatusStr :"2,3,4",pageSize:10000}),
+                        success: function (data, isError) {
+                            if (!isError) {
+                                return;
+                            };
+                            if (data.httpCode != 200) {
+                                return;
+                            }
+
+                            var orderList = template("orderList", data); //模板渲染
+                            $(".my_scheme").html(orderList);
+
+                            //查看方案的点击事件
+                            $(".ckfa").click(function () {
+                                var url = $(this).attr("srcs");
+                                window.location.href = url;
+                            });
+
+                            //我要分享的点击事件
+                            $(".share").click(function () {
+                                $(".my_scheme_mask").show();
+                                var orderId = $(this).parents(".my_scheme_item").attr("orderId");
+                                //微信分享
+                                $.shareWx({
+                                    title: "投保全攻略，你值得拥有",
+                                    desc: '科学规划，理性投保，为您提供更全面的保险投保攻略，不花冤枉钱！',
+                                    link: $.domain + '/exercise/customization_details.html?id=' + orderId
+                                });
+                            })
+
+                            $(".my_scheme_mask").click(function () {
+                                $(".my_scheme_mask").hide();
+                            })
+
+                            $(".lz-readys").hide();
+
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(textStatus);
+                        }
+                    });
+                }
+            })
+        </script>
+    </body>
+
+</html>

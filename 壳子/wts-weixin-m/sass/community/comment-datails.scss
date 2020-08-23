@@ -1,0 +1,587 @@
+.comment-datails{
+
+  .mainContent {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    .postID {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      opacity: 0;
+    }
+    .mainList {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+
+      margin-top: r(15);
+      position: relative;
+      background: #fff;
+      dl {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        border-bottom: 1px solid #e6e6e6;
+        padding-bottom: r(20);
+      .more{
+        font-size: r(28);
+        color: #4F7DAF;
+        padding: 0 r(30);
+      }
+        dt {
+          width: 100%;
+          height: r(120);
+          padding: 0 r(30);
+          box-sizing: border-box;
+          position: relative;
+          padding-top: r(30);
+          .img-auther {
+            width: r(70);
+            height: r(70);
+            position: absolute;
+            left: r(30);
+            top: r(30);
+          }
+          .textBox {
+            width: 100%;
+            height: r(90);
+            padding-left: r(85);
+            .top_box{
+              width: 100%;
+              @include remCalc(height,40);
+            }
+            .name {
+              height: r(40);
+              line-height: r(40);
+              font-size: r(30);
+              color: #000;
+              position: relative;
+              top: -2px;
+            }
+            .level {
+              @include remCalc(width,100);
+              display: inline-block;
+
+            }
+            .time {
+              width: 100%;
+              height: r(34);
+              line-height: r(36);
+              font-size: r(28);
+              color: #949494;
+            }
+          }
+        }
+        .problemBox {
+          width: 100%;
+          height: auto;
+          padding-right: r(30);
+          padding-left: r(30);
+          position: relative;
+          .problem {
+            font-size: r(28);
+            line-height: r(38);
+            .stop{
+              color: $font-color-ff6e06;
+            }
+            .imgBtn {
+              display: inline-block;
+              height: 174px;
+              width: 248px;
+              left: 0;
+            }
+            .text2 {
+              height: auto;
+              max-height: r(155);
+              line-height: r(50);
+              color: #000;
+              overflow: hidden;
+              font-size: r(30);
+            }
+            .active {
+              max-height: 100%;
+            }
+            .imgBox {
+              margin-top: 5px;
+              .imgOne {
+                width: r(450);
+                height: r(450);
+                margin-right: r(8);
+                display: block;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                position: relative;
+                overflow: hidden;
+              }
+              .imgTwo {
+                display: inline-block;
+                margin-right: r(10);
+                width: r(250);
+                height: r(200);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                position: relative;
+                overflow: hidden;
+              }
+              .img-hidden{
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+              }
+            }
+            .videoBox {
+              height: auto;
+              width: 100%;
+              overflow: hidden;
+              .video-js {
+                width: r(690);
+                height: auto;
+                max-height: r(388);
+                max-width: r(690);
+                .vjs-tech {
+                  width: r(690);
+                  height: r(388);
+                }
+                .vjs-big-play-button {
+                  width: r(102);
+                  height: r(102);
+                  text-align: center;
+                  line-height: r(102);
+                  border-radius: 50%;
+                  top: 50%;
+                  left: 50%;
+                  margin-left: r(-51);
+                  margin-top: r(-51);
+                }
+              }
+              .imgTwo {
+                width: r(226);
+                height: r(226);
+                margin-right: r(8);
+              }
+            }
+          }
+          .problemTip {
+            display: block;
+            width: 100%;
+            margin-top: 5px;
+            height: r(50);
+            line-height: r(50);
+            position: relative;
+            text-align: right;
+            .problemTip-lib{
+              display: inline-block;
+              @include remCalc(height,50);
+              color: #9d9d9d;
+              font-size: r(26);
+              width: 25%;
+              text-align: left;
+              i {
+                font-size: r(32);
+                float: right;
+              }
+              .problemname {
+                float: right;
+                right: r(16);
+                margin-left: r(10);
+                top: r(-2);
+                display: inline-block;
+                height: r(50);
+              }
+              .dianzan{
+                float: right;
+                display: inline-block;
+                @include remCalc(width,40);
+                @include remCalc(height,50);
+                background: url("../images/dianzan.png") no-repeat;
+                background-size: contain;
+                position: relative;
+                top: 2px;
+              }
+              .hasdianzan{
+                float: right;
+                display: inline-block;
+                @include remCalc(width,40);
+                @include remCalc(height,50);
+                background: url("../images/dianzan-02.png") no-repeat;
+                background-size: contain;
+                position: relative;
+                top: 2px;
+              }
+              .dianzan.active{
+                background: url("../images/dianzan-02.png") no-repeat;
+                background-size: contain;
+                animation: dianzanActive 0.5s ease forwards;
+              }
+              @keyframes dianzanActive
+              {
+                0% {transform: scale(1) }
+                50% {transform: scale(1.5) }
+                100% {transform: scale(1)}
+              }
+            }
+
+          }
+        }
+
+      }
+    }
+  }
+  .comment-top-newadd{
+    position: absolute;
+    right: r(30);
+    top: r(20);
+    font-size: r(16);
+    .problemTip-lib{
+        display: inline-block;
+        @include remCalc(height,50);
+        color: #9d9d9d;
+        font-size: r(26);
+        text-align: left;
+        margin-left: r(30);
+        i {
+          font-size: r(32);
+          float: right;
+        }
+        .problemname {
+          float: right;
+          display: inline-block;
+          font-size: r(26);
+          margin-top: r(10);
+          margin-left: r(10);
+        }
+        .dianzan{
+          float: right;
+          display: inline-block;
+          @include remCalc(width,40);
+          @include remCalc(height,50);
+          background: url("../images/dianzan.png") no-repeat;
+          background-size: contain;
+          position: relative;
+          top: 2px;
+        }
+        .hasdianzan{
+          float: right;
+          display: inline-block;
+          @include remCalc(width,40);
+          @include remCalc(height,50);
+          background: url("../images/dianzan-02.png") no-repeat;
+          background-size: contain;
+          position: relative;
+          top: 2px;
+        }
+        .dianzan.active{
+          background: url("../images/dianzan-02.png") no-repeat;
+          background-size: contain;
+          animation: dianzanActive 0.5s ease forwards;
+        }
+
+
+
+    }
+  }
+  .mainContent-list {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    .postID {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      opacity: 0;
+    }
+    .mainList {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+
+      margin-top: r(15);
+      position: relative;
+      background: #fff;
+      dl {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        border-bottom: 1px solid #e6e6e6;
+        padding-bottom: r(20);
+
+        dt {
+          width: 100%;
+          height: r(120);
+          padding: 0 r(30);
+          box-sizing: border-box;
+          position: relative;
+          padding-top: r(30);
+          .img-auther {
+            width: r(60);
+            height: r(60);
+            position: absolute;
+            left: r(30);
+            top: r(30);
+          }
+          .textBox {
+            width: 100%;
+            height: r(90);
+            padding-left: r(85);
+            .top_box{
+              width: 100%;
+              @include remCalc(height,40);
+            }
+            .name {
+              height: r(40);
+              line-height: r(40);
+              font-size: r(28);
+              color: #000;
+              position: relative;
+              top: -2px;
+            }
+            .level {
+              @include remCalc(width,100);
+              display: inline-block;
+
+            }
+            .time {
+              width: 100%;
+              height: r(34);
+              line-height: r(24);
+              font-size: r(24);
+              color: #949494;
+            }
+          }
+        }
+        .problemBox {
+          width: 100%;
+          height: auto;
+          padding-right: r(30);
+          padding-left: r(30);
+          position: relative;
+          .problem {
+            font-size: r(28);
+            line-height: r(38);
+            .stop{
+              color: $font-color-ff6e06;
+            }
+            .imgBtn {
+              display: inline-block;
+              height: 174px;
+              width: 248px;
+              left: 0;
+            }
+            .text2 {
+              height: auto;
+              max-height: r(155);
+              line-height: r(50);
+              color: #000;
+              overflow: hidden;
+              font-size: r(30);
+            }
+            .active {
+              max-height: 100%;
+            }
+            .imgBox {
+              margin-top: 5px;
+              .imgOne {
+                width: r(450);
+                height: r(450);
+                margin-right: r(8);
+                display: block;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                position: relative;
+                overflow: hidden;
+              }
+              .imgTwo {
+                display: inline-block;
+                margin-right: r(10);
+                width: r(250);
+                height: r(200);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                position: relative;
+                overflow: hidden;
+              }
+              .img-hidden{
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+              }
+            }
+            .videoBox {
+              height: auto;
+              width: 100%;
+              overflow: hidden;
+              .video-js {
+                width: r(690);
+                height: auto;
+                max-height: r(388);
+                max-width: r(690);
+                .vjs-tech {
+                  width: r(690);
+                  height: r(388);
+                }
+                .vjs-big-play-button {
+                  width: r(102);
+                  height: r(102);
+                  text-align: center;
+                  line-height: r(102);
+                  border-radius: 50%;
+                  top: 50%;
+                  left: 50%;
+                  margin-left: r(-51);
+                  margin-top: r(-51);
+                }
+              }
+              .imgTwo {
+                width: r(226);
+                height: r(226);
+                margin-right: r(8);
+              }
+            }
+          }
+          .problemTip {
+            display: block;
+            width: 100%;
+            margin-top: 5px;
+            height: r(50);
+            line-height: r(50);
+            position: relative;
+            text-align: right;
+            .problemTip-lib{
+              display: inline-block;
+              @include remCalc(height,50);
+              color: #9d9d9d;
+              font-size: r(26);
+              width: 25%;
+              text-align: left;
+              i {
+                font-size: r(32);
+                float: right;
+              }
+              .problemname {
+                float: right;
+                right: r(16);
+                margin-left: r(10);
+                top: r(-2);
+                display: inline-block;
+                height: r(50);
+              }
+              .dianzan{
+                float: right;
+                display: inline-block;
+                @include remCalc(width,40);
+                @include remCalc(height,50);
+                background: url("../images/dianzan.png") no-repeat;
+                background-size: contain;
+                position: relative;
+                top: 2px;
+              }
+              .hasdianzan{
+                float: right;
+                display: inline-block;
+                @include remCalc(width,40);
+                @include remCalc(height,50);
+                background: url("../images/dianzan-02.png") no-repeat;
+                background-size: contain;
+                position: relative;
+                top: 2px;
+              }
+              .dianzan.active{
+                background: url("../images/dianzan-02.png") no-repeat;
+                background-size: contain;
+                animation: dianzanActive 0.5s ease forwards;
+              }
+              @keyframes dianzanActive
+              {
+                0% {transform: scale(1) }
+                50% {transform: scale(1.5) }
+                100% {transform: scale(1)}
+              }
+            }
+
+          }
+        }
+
+      }
+      .answer {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0 r(30) 0 r(30);
+        .answerList {
+          width: 100%;
+          height: auto;
+          position: relative;
+          margin-bottom: r(30);
+          background: #f7f7f7;
+          padding: 5px 0;
+          li {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            font-size: r(28);
+            line-height: r(46);
+            color: #4a7caf;
+            padding: 0 5px;
+            >span {
+              float: left;
+              margin-right: r(12);
+            }
+            .answerText {
+              color: #000;
+            }
+          }
+        }
+      }
+    }
+  }
+  .bottom {
+    width: 100%;
+    height: r(100);
+    line-height: r(100);
+    position: fixed;
+    background: #f0f3f8;
+    padding-left: r(30);
+    box-sizing: border-box;
+    border-top: 1px solid #e6e6e6;
+    bottom: 0;
+    .inp1 {
+      width: r(527);
+      height: r(72);
+      line-height: r(68);
+      border-radius: r(8);
+      font-size: r(30);
+      color: #000;
+      border: 1px solid #dbdbdb;
+      padding-left: r(20);
+      margin-top: r(15);
+    }
+    a {
+      display: inline-block;
+      width: r(130);
+      height: r(68);
+      text-align: center;
+      line-height: r(68);
+      position: absolute;
+      resize: r(30);
+      top: r(10);
+      box-sizing: border-box;
+      background: #ff6e07;
+      font-size: r(34);
+      color: #fbffff;
+      margin-left: r(32);
+      margin-top: r(5);
+      border-radius: r(8);
+    }
+  }
+
+}

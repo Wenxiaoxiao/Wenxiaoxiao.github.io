@@ -1,0 +1,740 @@
+
+@import "../../common";//变量
+
+$color:#3f9dff;
+[v-cloak]{
+    display:none
+}
+#app{
+    height: 100%;
+    background-color: #fafafa;
+}
+.page-wrapper{
+    position: relative;
+    width: 100%;
+}
+.btn{
+    display: block;
+    width: 60%;
+    margin: 5px auto;
+    height: r(80);
+    line-height: r(80);
+    background: #FFFFFF;
+    box-shadow: 0 0.02rem 0.08rem 0.02rem rgba(254,149,2,0.59);
+    border-radius: r(50);
+    font-family: "PingFang-SC-Bold";
+    font-size: r(34);
+    color: #FF6E00;
+}
+.btn2{
+    display: block;
+    width: 60%;
+    height: r(80);
+    line-height: r(80);
+    border-radius: r(50);
+    font-family: "PingFang-SC-Bold";
+    font-size: r(34);
+    background: $color;
+    box-shadow: 0 0.02rem 0.08rem 0.02rem rgba(125,209,253,0.59);
+    color: #fff;
+    margin: 10px auto;
+}
+.btn3{
+    display: block;
+    width: 90%;
+    height: r(100);
+    line-height: r(100);
+    border-radius: r(15);
+    font-family: "PingFang-SC-Bold";
+    font-size: r(34);
+    background: $color;
+    color: #fff;
+    margin: 15px auto;
+    img{
+        vertical-align: middle;
+        width:r(40);
+        margin-left: 10px;
+        position: relative;
+        top: -2px;
+    }
+}
+.page-0{
+    height: 100%;
+    background-color: #fff;
+    .bac{
+        width: 100%;
+        height: 100%;
+        background: url('../../images/questionnaire/bg01.jpg') no-repeat;
+        background-position: top center;
+        background-size: 100%;
+    }
+    .topview{
+        width: 100%;
+        padding: r(50) r(50) 0;
+        .p1{
+            font-size: r(55);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: r(20);
+        }
+        .p2{
+            font-size: r(40);
+            color: #fff;
+            font-weight: 900;
+            margin-bottom: r(20);
+        }
+        .p3{
+            font-size: r(30);
+            color: #fff;
+            margin-bottom: r(20);
+        }
+        .heng{
+            display: inline-block;
+            width: r(100);
+            height: r(20);
+            margin-bottom: r(20);
+            background-color: #ffd65a;
+        }
+    }
+    .btnBxo{
+        width: 100%;
+        position: absolute;
+        bottom: 4%;
+        left: 0;
+        .btn{
+            margin: 5px auto;
+        }
+        >p{
+            text-align: center;
+            font-size: r(26);
+            line-height: 2;
+            color: #7A4700;
+        }
+    }
+}
+
+.page-1{
+    padding: r(20) r(30);
+    .page-title{
+        font-size: r(36);
+        color: #333333;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+    .appPersonList{
+        width: 100%;
+        background-color: #fff;
+        border-radius: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .personal-img{
+        width: 100%;
+        border-radius: 50%;
+    }
+    .person{
+        width: r(120);
+        margin: 10px r(20);
+        >span{
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
+        .auther{
+            border: 3px solid transparent;
+            width: r(120);
+            height: r(120);
+        }
+        .choose{
+            position: relative;
+            border-color: $color;
+            border-radius: 50%;
+            .selected{
+                width: r(40);
+                position: absolute;
+                right: -5px;
+                bottom: -5px;
+            }
+        }
+    }
+    .notice {
+        width: 100%;
+        background-color: $color;
+        border-radius: 15px;
+        padding: r(30);
+        margin: 10px 0;
+        font-size: r(28);
+        color: #fff;
+        line-height: 1.5;
+    }
+}
+.friendTips{
+    h2{
+        font-family: "PingFang-SC-Bold";
+        font-size: r(30);
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+    p{
+        font-size: r(26);
+    }
+}
+
+.page-2{
+    padding-bottom: r(20);
+    .top{
+        width: 100%;
+        background-color: #fff;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding: 10px;
+    }
+    .page-title{
+        font-size: r(36);
+        color: #333333;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+    .appPersonList{
+        width: 100%;
+        background-color: #fff;
+        border-radius: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .personal-img{
+        width: 100%;
+        border-radius: 50%;
+    }
+    .person{
+        width: r(100);
+        margin: 10px r(20);
+        >span{
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
+        .auther{
+            border: 3px solid transparent;
+            width: r(100);
+            height: r(100);
+        }
+        .choose{
+            position: relative;
+            border-color: $color;
+            border-radius: 50%;
+            .selected{
+                width: r(40);
+                position: absolute;
+                right: -5px;
+                bottom: -5px;
+            }
+        }
+    }
+    .listInfos{
+        padding: 10px r(40);
+        margin-top: 20px;
+        .fillModule{
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: r(20);
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+        .topModule{
+            color: #fff;
+            width: 100%;
+            height: r(105);
+            background: url('../../images/questionnaire/fillModule-title.png') no-repeat;
+            background-size: contain;
+            padding: r(20) r(50);
+            box-sizing: border-box;
+            .name{
+                float: left;
+                font-size: r(32);
+                line-height: r(65);
+                .fangx{
+                    width: r(30);
+                    vertical-align: middle;
+                    transition: .3s;
+                    position: relative;
+                    top: -2px;
+                    transform: rotate(-90deg);
+                    &.active{
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+            .close{
+                position: relative;
+                top: 3px;
+                width: r(50);
+                float: right;
+            }
+        }
+        .fillContent{
+            padding: r(20) r(40);
+            .c-title{
+                font-size: r(30);
+                color: #000000;
+                font-weight: 500;
+                margin-bottom: r(15);
+                position: relative;
+            }
+        }
+        
+    }
+    .friendTips{
+        padding: 0 r(40);
+    }
+}
+.page-3{
+    .topview{
+        width: 100%;
+        height: r(320);
+        padding: r(50) r(50) 0;
+        background: url('../../images/questionnaire/topBac.png') no-repeat;
+        background-size: cover;
+        .p1{
+            font-size: r(55);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: r(20);
+        }
+        .p2{
+            font-size: r(40);
+            color: #fff;
+            font-weight: 900;
+            margin-bottom: r(20);
+        }
+        .heng{
+            display: inline-block;
+            width: r(100);
+            height: r(20);
+            background-color: #ffd65a;
+        }
+    }
+    .listInfos{
+        width: 90%;
+        margin: r(30) auto;
+        padding: r(30);
+        background-color: #fff;
+        border-radius: r(20);
+        .c-title{
+            font-size: r(34);
+            color: #000000;
+            font-weight: 500;
+            margin-bottom: r(30);
+            position: relative;
+            span{
+                color: #fe9401;
+                font-size: r(28);
+            }
+        }
+    }
+    .btn-two-box{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .btn-two{
+            width: 40%;
+            text-align: center;
+            height: r(80);
+            font-weight: 900;
+            line-height: r(80);
+            border-radius: r(50);
+            font-family: "PingFang-SC-Bold";
+            font-size: r(34);
+            background: #FFFFFF;
+            box-shadow: 0 0.02rem 0.08rem 0.02rem rgba(0,133,251,0.59);
+            color: $color;
+            margin: 15px auto;
+        }
+        .btn-next{
+            background: $color;
+            color: #fff;
+            box-shadow: 0 0.02rem 0.08rem 0.02rem rgba(0,133,251,0.59);
+        }
+    }
+}
+.page-4{
+    .topview{
+        width: 100%;
+        height: r(320);
+        padding: r(50) r(50) 0;
+        background: url('../../images/questionnaire/topBac.png') no-repeat;
+        background-size: cover;
+        .p1{
+            font-size: r(55);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: r(20);
+        }
+        .p2{
+            font-size: r(40);
+            color: #fff;
+            font-weight: 900;
+            margin-bottom: r(20);
+        }
+        .heng{
+            display: inline-block;
+            width: r(100);
+            height: r(20);
+            background-color: #ffd65a;
+        }
+    }
+    .sub-from{
+        background-color: #f6f6f6;
+        .mint-cell{
+            background-color: #f6f6f6;
+        }
+    }
+    .questionList{
+        width: 94%;
+        margin: r(20) auto;
+        padding: r(30);
+        background-color: #fff;
+        border-radius: 10px;
+    }
+    .btn-two-box{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .btn-two{
+            width: 40%;
+            text-align: center;
+            height: r(80);
+            font-weight: 900;
+            line-height: r(80);
+            border-radius: r(50);
+            font-family: "PingFang-SC-Bold";
+            font-size: r(34);
+            background: #FFFFFF;
+            box-shadow: 0 0.02rem 0.08rem 0.02rem rgba(0,133,251,0.59);
+            color: $color;
+            margin: 15px auto;
+        }
+        .btn-next{
+            background: $color;
+            color: #fff;
+            box-shadow: 0 0.02rem 0.08rem 0.02rem rgba(0,133,251,0.59);
+        }
+    }
+}
+.page-5{
+    padding: r(30);
+    .page-title{
+        font-size: r(50);
+        margin-bottom: r(30);
+    }
+    .sureList{
+        position: relative;
+        padding: r(100) r(40) r(40) r(40);
+        background: linear-gradient(to right, #3f9dff,#1988fe);
+        margin-bottom: r(30);
+        color: #fff;
+        font-size: r(28);
+        line-height: 2;
+        border-radius: 10px;
+        .sure-title{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: r(150);
+            height: r(80);
+            line-height: r(80);
+            text-align: center;
+            border-bottom-right-radius: 10px;
+            background: url('../../images/questionnaire/from-title.png') no-repeat;
+            background-size: contain;
+        }
+        .sure-item{
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .sure-name{
+            display: inline-block;
+            min-width: r(200);
+            margin-right: r(20);
+        }
+    }
+    .from-2{
+        background: linear-gradient(to right, #fe6955,#ff8a3d);
+        .sure-title{
+            width: r(220);
+            background: url('../../images/questionnaire/from-title-2.png') no-repeat;
+        }
+    }
+    .btn-two-box{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .btn-two{
+            width: 40%;
+            text-align: center;
+            height: r(80);
+            font-weight: 900;
+            line-height: r(80);
+            border-radius: r(50);
+            font-family: "PingFang-SC-Bold";
+            font-size: r(34);
+            background: #FFFFFF;
+            box-shadow: 0 0.02rem 0.08rem 0.02rem rgba(0,133,251,0.59);
+            color: $color;
+            margin: 15px auto;
+        }
+        .btn-next{
+            background: $color;
+            color: #fff;
+            box-shadow: 0 0.02rem 0.08rem 0.02rem rgba(0,133,251,0.59);
+        }
+    }
+}
+
+.sub-page{
+    .sub-box{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+    .box-vertical{
+        display:block;
+        .sub-title,.sub-from{
+            width: 100%;
+            max-width: 100%;
+        }
+        .sub-title{
+            margin-bottom: 10px;
+        }
+    }
+    .sub-title{
+        max-width: 70%;
+        font-size: r(30);
+        .zhushi{
+            color: #FE9502;
+        }
+    }
+    .sub-from{
+        position: relative;
+        .sub-input{
+            width: r(350);
+            padding: 0 15px;
+            height: r(70);
+            line-height: r(64);
+            border: 1px solid #C7C7C7;
+            border-radius: r(70);
+            font-size: r(28);
+        }
+        .hasTips{
+            padding-right: r(100);
+        }
+        .input-tips{
+            font-size: r(28);
+            line-height: r(50);
+            position: absolute;
+            right: r(20);
+            top: 50%;
+            margin-top: r(-25)
+        }
+        .sub-textarea{
+            width: 100%;
+            border: none;
+            background: #F5F6FA;
+            border-radius: 5px;
+            padding: r(15);
+            font-size: r(26);
+            color: #999;
+        }
+        .def-text{
+            position: relative;
+            width: r(350);
+            padding: 0 15px;
+            height: r(70);
+            line-height: r(64);
+            border: 1px solid #C7C7C7;
+            border-radius: r(70);
+            color: #666;
+            font-size: r(28);
+        }
+        .def-text-2{
+            display: inline;
+            padding-right: 10px;
+        }
+        .common-icon:before{
+            content: '';
+            display: inline-block;
+            background: url('../../images/questionnaire/downArrows.png') no-repeat;
+            background-size: r(20);
+            width: 20px;
+            height: r(50);
+            position: absolute;
+            right:0;
+            top: 50%;
+            margin-top: r(-6);
+        }
+        .checkList{
+            padding: r(10) r(30);
+            .checkItem{
+                position: relative;
+                border-bottom: 1px solid #d4d4d4;
+                padding: r(20) r(15) r(20) r(60);
+                font-size: r(30);
+                &:last-child{
+                    border-bottom: none;
+                }
+            }
+            .checkRole{
+                position: absolute;
+                left: 0;
+                top: r(25);
+                width: r(40);
+                height: r(40);
+                border: 1px solid #d9d9d9;
+                border-radius: 50%;
+                &.active{
+                    background: url('../../images/questionnaire/checkActive.png') no-repeat;
+                    background-size: cover;
+                    border: none;
+                }
+            }
+        }
+    }
+    .sub-desc{
+        width: 100%;
+        font-size: r(26);
+        color: #999;
+    }
+    .select-layer-box {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        .mask {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba($color: #000000, $alpha: 0.5);
+          z-index: 1;
+        }
+        .mainContent {
+          position: absolute;
+          width: 10rem;
+          left: 50%;
+          bottom: 0;
+          z-index: 2;
+          background-color: #fff;
+          transform: translateX(-50%);
+        }
+        .frombtn {
+          line-height: 40px;
+          padding: 0 20px;
+        }
+        .btn-cancle {
+          float: left;
+        }
+        .btn-sure {
+          float: right;
+          color: $baseColor;
+        }
+      }
+}
+.tell-layer-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    .mask {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        z-index: 1;
+    }
+    .mainContent {
+        position: absolute;
+        width: 9rem;
+        left: 50%;
+        top: 20%;
+        z-index: 2;
+        background-color: #fff;
+        transform: translateX(-50%);
+        border-radius: 15px;
+        padding: r(100) r(50) r(30);
+        .complate{
+            position: absolute;
+            top: r(-80);
+            left: 50%;
+            width: r(158);
+            margin-left: r(-79);
+        }
+        h2{
+            font-size: r(36);
+            line-height: 2;
+            text-align: center;
+            font-weight: 900;
+            color: #000;
+        }
+        .d1{
+            font-size: r(30);
+            text-align: center;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .tell-input{
+            width: 100%;
+            padding: 0 15px;
+            height: r(80);
+            line-height: r(74);
+            border: 1px solid #dadada;
+            border-radius: r(70);
+            font-size: r(30);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .btn-sure-tell{
+            display: block;
+            width: 100%;
+            height: r(80);
+            line-height: r(80);
+            border-radius: r(50);
+            font-family: "PingFang-SC-Bold";
+            font-size: r(34);
+            background: $color;
+            box-shadow: 0 0.02rem 0.08rem 0.02rem rgba(125,209,253,0.59);
+            color: #fff;
+            margin: 10px auto;
+            text-align: center;
+        }
+      }
+}

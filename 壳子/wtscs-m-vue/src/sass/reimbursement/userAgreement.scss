@@ -1,0 +1,72 @@
+.userAgreement-container{
+    width:r(750);
+    background:#fff;
+    padding-bottom:r(10);
+    &>h3{
+        font-size:r(36);
+        font-weight:bold;
+        text-align: center;
+        height:r(80);
+        line-height:r(80);
+    }
+    &>.tips{
+        font-size:r(26);
+        height:r(60);
+        line-height: r(60);
+        text-align: center;
+        color:#999;
+        position: relative;
+    }
+    /*CSS伪类用法*/
+    &>.tips>span:after,&>.tips>span:before {
+        position: absolute;
+        top: 50%;
+        background: #ddd;
+        content: "";
+        height: 1px;
+        width: 10%;
+    }
+    /*调整背景横线的左右距离*/
+    &>.tips>span:before {
+        left: 0;
+    }
+    &>.tips>span:after {
+        right: 0;
+    }
+    .notice-box{
+        font-size:r(28);
+        line-height:r(54);
+        padding:r(20) r(32) r(0) r(29);
+        .item{
+            // margin-bottom:r(70);
+            .title{
+                // padding-left:r(44);
+                font-size:r(34);
+                position: relative;
+                &>.code{
+                    position: absolute;
+                    left:0;
+                    top:0;
+                }
+            }
+            .content{
+                padding-left:r(44);
+                position: relative;
+                &>.code{
+                    position: absolute;
+                    left:r(0);
+                    top:0;
+                }
+                &>.subitem{
+                    padding-left:r(44);
+                    position: relative;
+                    &>.code{
+                        position: absolute;
+                        left:r(0);
+                        top:0;
+                    }
+                }
+            }
+        }
+    }
+}

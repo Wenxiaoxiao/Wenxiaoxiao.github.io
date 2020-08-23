@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    @@include("include/header.htm",{ "title":"为什么要在梧桐树买保险", "keywords": "", "description": "" })
+</head>
+
+<body>
+    @@include("include/ready-ani.htm")
+    <div class="body-container wyp">
+        <div class="w">
+            <div class="head-tab">
+                <span class="tab active">梧优理赔</span>
+                <span class="tab">产品优</span>
+                <span class="tab">专业强</span>
+            </div>
+            <div class="non-height">
+
+            </div>
+            <div class="contents">
+                <div class="content">
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_02.jpg" class="img_big">
+                    <div class="case"></div>
+                    <a href="@@webRoot/community/claims-detais.html">
+                        <p class="more-text">查看更多客户分享&nbsp;></p>
+                    </a>
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_03.png" class="img_big">
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_04.png" class="img_big">
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_05.png" class="img_big">
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_06.png" class="img_big">
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_07.png" class="img_big">
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_08.png" class="img_big">
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_09.png" class="img_big">
+                </div>
+                <div class="content">
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_cpy_01.jpg" class="img_big">
+                    <div class="case"></div>
+                    <a href="https://bx.wts999.com/m/index.html#/strategy" class="margin-bottom-20" style="display: block;">
+                        <p class="more-text">查看更多客户分享&nbsp;></p>
+                    </a>
+                    <div class="bigBox">
+    
+                    </div>
+                    <p class="title-1">—— 品牌推荐 ——</p>
+                    <a href="@@webRoot/super.html" id="product_all">
+                        <p class="more-text">进入产品库&nbsp;></p>
+                    </a>
+                </div>
+                <div class="content">
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_zyq_02.jpg" class="img_big">
+                    <div class="case"></div>
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_zyq_03.png" class="img_big">
+                    <img src="@@webRoot/lib/images/exercise/ztwyp/d_wyp_zyq_04.png" class="img_big">
+                    <div class="des">
+                        <p class="p1">梧桐树保险经济有限公司拥有百余人的专业客服理赔团队，<b>7天24小时在线服务</b>，服务方便、快捷、安全、保密。</p>
+                        <p class="p1">保险事业是一个高度专业化的行业，专业是其立业之基本。为了让所有梧桐树人能成为行业领先的精英，严谨的教育及培训，是我们梧桐树至关重要的制度之一。我们着眼于全力打造完善的客户服务体系，提供全面的服务保障。梧桐树人如同您的家人，陪伴您人生的每个重要瞬间，倾听理解您的需求，提供合适的家庭保险配置。我们重视客户体验，始终坚守对客户的承诺。</p>
+                        <p class="p1">梧桐树拥有专业的理赔服务团队，通过梧优理赔为客户提供高标准的理赔服务，我们将全程协助客户办理保险理赔，让客户免费享受保险经济公司基于客户利益的理赔咨询服务。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+@@include("include/footer.htm")
+<script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+<script src="@@webRoot/lib/js/UserCenterHelper.js"></script>
+<script type="text/html" id="testId">
+    <div class="content-box">
+        {{each data as value i}}
+        {{if i<4}}
+        {{each value.imgUrl as val j}} 
+        {{if j==0}}
+        <a href="@@webRoot/market/pros-detail.html?id={{value.productId}}" class="img_content img_content_top">
+            <img src="{{val.url}}">
+        </a> 
+        {{/if}} 
+        {{/each}} 
+        {{/if}}
+        {{/each}}
+    </div>
+</script>
+
+<script>
+    function init(user) {
+        var types = $.getQueryString("type");
+        getTopCase();
+        getInfoByCode();
+        getRecomment();
+        runTab(types);
+        //点击事件
+        $(".tab").click(function() {
+            var index=$(this).index();
+            runTab(index)
+        })
+        function runTab(i){
+            //导航切换
+            $('.tab').eq(i).addClass("active").siblings().removeClass("active");
+            $(".contents .content").eq(i).show().siblings(".content").hide();
+        }
+        function getInfoByCode() {
+            var paramList = {
+                type: "post",
+                url: "/app/infoConfig/api/getInfoByCode",
+                data: JSON.stringify({
+                    code: "productGreat",
+                }),
+                contentType: "application/json;charset=UTF-8",
+                success: function(data, isError) {
+                    if (!isError) {
+                        return;
+                    }
+                    var list = template("testId", data);
+                    $(".bigBox").html(list)
+
+                }
+            };
+            $.ajaxPackage(paramList);
+        }
+        function getTopCase() {
+            var paramList = {
+                type: "post",
+                url: "/app/infoConfig/api/getInfoByCode",
+                data: JSON.stringify({
+                    code: "claimBanner",
+                }),
+                contentType: "application/json;charset=UTF-8",
+                success: function(data, isError) {
+                    if (!isError) {
+                        return;
+                    }
+                    var datas=data.data;
+                    for(var k in datas){
+                        $(".case").eq(k).html('<img src="'+datas[k].imgUrl[0].url+'" class="img_big">')
+                    }
+                    $('.lz-readys').remove();
+                }
+            };
+            $.ajaxPackage(paramList);
+        }
+        function getRecomment() {
+            var paramList = {
+                type: "post",
+                url: "/app/infoConfig/api/getInfoByCode",
+                data: JSON.stringify({
+                    code: "companyRecommend",
+                }),
+                contentType: "application/json;charset=UTF-8",
+                success: function(data, isError) {
+                    if (!isError) {
+                        return;
+                    }
+                    var img='<a href="../market/pros-detail.html?id='+data.data[0].productId+'" style="display: block;">'+
+                        '<img src="'+data.data[0].imgUrl[0].url+'" class="img_big">'+
+                        '</a>';
+                    $("#product_all").before(img);
+                }
+            };
+            $.ajaxPackage(paramList);
+        }
+    }
+</script>
+
+</html

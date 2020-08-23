@@ -1,0 +1,44 @@
+//积分详情页
+.privileges{
+  background-color: #fff;
+  padding: r(30) r(30);
+  .box {
+    width: 100%;
+    margin-bottom: r(20);
+    @include border-radius(5px);
+    border: 1px solid #fd6c40;
+    &:last-child{
+      margin-bottom: 0;
+    }
+    .contents{
+      padding: r(20) r(20);
+    }
+    .title{
+      font-size: r(38);
+      text-align: center;
+      color: #fff;
+      line-height: r(70);
+      background-color: #fd6c40;
+      i{
+        color: #feb6a0;
+        font-size: r(70);
+        margin: 0 5px;
+        line-height: r(70);
+        vertical-align: middle;
+      }
+    }
+    .name{
+      display: inline-block;
+      color: #ff4a2e;
+      padding: r(5) r(20);
+      @include border-radius(30px);
+      background-color: #ffe7e5;
+      font-size: r(32);
+      margin: 5px 0;
+    }
+    .text{
+      font-size: r(30);
+      color: #000;
+    }
+  }
+}

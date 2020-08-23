@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        <!--测试环境-->
+        @@include("include/header.htm",{ "title":"为什么要买保险", "keywords": "", "description": "" })
+        <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.7.2/skins/default/aliplayer-min.css" />
+        <script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/de/prismplayer/2.7.2/aliplayer-min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="https://player.alicdn.com/aliplayer/presentation/js/aliplayercomponents.min.js"></script>
+    </head>
+
+    <body>
+        @@include("include/ready-ani.htm")
+        <div class="body-container subject-video">
+
+        </div>
+    </body>
+    <!--底部公共部分-->
+    @@include("include/footer.htm")
+    <!--新懒加载-->
+    <script src="@@webRoot/lib/units/common_all.js?r=@@time"></script>
+    <script src="@@webRoot/lib/js/jquery.lazyload.js"></script>
+    <script src="@@webRoot/lib/js/jquery.cookie.js"></script>
+    <script src="@@webRoot/lib/js/UserCenterHelper.js"></script>
+    <script src="@@webRoot/lib/js/audiojs/audio.min.js"></script>
+    <script type="text/html" id="parentListTml">
+    {{if articleInfo.articleType=="1"}}
+    <div class="video-pay-box">
+        {{include 'videoPlay' articleInfo}}
+    </div>
+    {{else if articleInfo.articleType=="4"}}
+    <div class="video-pay-box">
+        {{include 'audioPlay' articleInfo}}
+    </div>
+    {{/if}}
+    {{if articleInfo.articleType=="1"}}
+    <div class="video-relevance margin-top-20">
+        <div class="video-title-h3">
+            <i class="iconfont icon-guanlian"></i>
+            关联采访
+        </div>
+        <div class="video-ul">
+        {{each relationList as list i}}
+        <a href="javascript:;" data-id="{{list.id}}" class="video-list clearfix">
+            <div class="video-list-left fl">
+                {{if !videoImg ||videoImg == ''}}
+                <img src="@@webRoot/lib/images/timg.gif" class="video-cover" alt="">
+                {{else}}
+                <img data-original="{{list.videoImg}}" data-loaded="false" src="@@webRoot/lib/images/timg.gif" alt="" class="video-cover lazy"> 
+                {{/if}}
+                <img src="@@webRoot/lib/images/start.png" class="video-icon-start" alt="">
+                <span class="pay-time">{{list.videoTime}}</span>
+            </div>
+            <div class="video-details-right fr">
+                {{list.articleDesc | subString:38}}
+            </div>
+            <div class="video-function-bottom fr">
+                <div class="video-fl video-comment fl">
+                    <i class="iconfont icon-yanjing"></i>
+                    <span class="link-comment">{{list.readTimes}}</span>
+                </div>
+                <div class="video-fl video-share fl">
+                    <i class="iconfont icon-zhifeiji"></i>
+                    <span>分享</span>
+                </div>
+            </div>
+        </a>
+        {{/each}}
+        </div>
+    </div>
+    {{/if}}
+    {{if otherList && otherList!="[]" && otherList.length>0}}
+    <div class="video-relevance margin-top-20">
+        <div class="video-title-h3">
+            <i class="iconfont icon-chanpin"></i>
+            更多采访
+        </div>
+        <div class="video-ul">
+            {{each otherList as list i}}
+            <a href="javascript:;" data-id="{{list.id}}" class="video-list clearfix">
+                <div class="video-list-left fl">
+                    {{if !videoImg ||videoImg == ''}}
+                    <img src="@@webRoot/lib/images/timg.gif" class="video-cover" alt="">
+                    {{else}}
+                    <img data-original="{{list.videoImg}}" data-loaded="false" src="@@webRoot/lib/images/timg.gif" alt="" class="video-cover lazy"> 
+                    {{/if}}
+                    <img src="@@webRoot/lib/images/start.png" class="video-icon-start" alt="">
+                    <span class="pay-time">{{list.videoTime}}</span>
+                </div>
+                <div class="video-details-right fr">
+                    {{list.articleDesc | subString:38}}
+                </div>
+                <div class="video-function-bottom fr">
+                    <div class="video-fl video-comment fl">
+                        <i class="iconfont icon-yanjing"></i>
+                        <span class="link-comment">{{list.readTimes}}</span>
+                    </div>
+                    <div class="video-fl video-share fl">
+                        <i class="iconfont icon-zhifeiji"></i>
+                        <span>分享</span>
+                    </div>
+                </div>
+            </a>
+            {{/each}}
+        </div> 
+    </div>
+    {{/if}}
+</script>
+    <script type="text/html" id="audioPlay">
+
+    <div class="toDetails">
+        <a href="@@textAdmin/{{id}}.html" class="video-describe clearfix">
+            {{articleDesc}}
+            <span class="fr video-details">详情 <i>></i></span>
+        </a>
+        <div class="radio-box">
+            <audio controls="controls" class="audio" controlsList="nodownload">
+                <source src="{{videoUrl.url}}" type="audio/mpeg">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+        <a href="@@textAdmin/{{id}}.html" class="video-function clearfix">
+            <div class="video-fl video-share fr" data-id="{{id}}" data-title="{{articleTitle}}" data-describe="{{articleDesc}}">
+                <i class="iconfont icon-zhifeiji"></i>
+                <span>分享</span>
+            </div>
+            <div class="video-fl video-comment fr">
+                <i class="iconfont icon-iconfontzhizuobiaozhun023133"></i>
+                <span class="link-comment">{{commentCount}}</span>
+            </div>
+            <div class="video-fl video-comment fr">
+                <i class="iconfont icon-yanjing"></i>
+                <span class="link-comment">{{readTimes}}</span>
+            </div>
+        </a>
+    </div>
+</script>
+    <script type="text/html" id="videoPlay">
+    <div class="AliPlay" id="AliPlay">
+        
+    </div>
+    <a href="@@textAdmin/{{id}}.html">
+        <div class="video-describe clearfix">
+            {{articleDesc}}
+            <span class="fr video-details">详情 <i>></i></span>
+        </div>
+        <div class="video-function clearfix">
+            <div class="video-fl video-share fr" data-id="{{id}}" data-title="{{articleTitle}}" data-describe="{{articleDesc}}">
+                <i class="iconfont icon-zhifeiji"></i>
+                <span>分享</span>
+            </div>
+            <div class="video-fl video-comment fr">
+                <i class="iconfont icon-iconfontzhizuobiaozhun023133"></i>
+                <span class="link-comment">{{commentCount}}</span>
+            </div>
+            <div class="video-fl video-comment fr">
+                <i class="iconfont icon-yanjing"></i>
+                <span class="link-comment">{{readTimes}}</span>
+            </div>
+        </div>
+    </a>
+</script>
+
+    <script type="text/html" id="relevanceTml">
+    <a href="javascript:;" data-id="{{id}}" class="video-list clearfix">
+        <div class="video-list-left fl">
+            {{if !videoImg ||videoImg == ''}}
+            <img src="@@webRoot/lib/images/timg.gif" class="video-cover" alt="">
+            {{else}}
+            <img data-original="{{videoImg}}" data-loaded="false" src="@@webRoot/lib/images/timg.gif" alt="" class="video-cover lazy"> 
+            {{/if}}
+            <img src="@@webRoot/lib/images/start.png" class="video-icon-start" alt="">
+            <span class="pay-time">{{videoTime}}</span>
+        </div>
+        <div class="video-details-right fr">
+            {{articleDesc | subString:38}}
+        </div>
+        <div class="video-function-bottom fr">
+            <div class="video-fl video-comment fl">
+                <i class="iconfont icon-yanjing"></i>
+                <span class="link-comment">{{readTimes}}</span>
+            </div>
+            <div class="video-fl video-share fl">
+                <i class="iconfont icon-zhifeiji"></i>
+                <span>分享</span>
+            </div>
+        </div>
+    </a>
+</script>
+    <script>
+        function init(user) {
+            var csAnimates = $.csAnimates();
+            function ThisPage() {
+                this.id = $.getQueryString("id");
+                this.code = $.getQueryString("code")
+            }
+            ThisPage.prototype = {
+                constructor: ThisPage,
+                init: function () {
+                    var self = this;
+                    this.getVideoDetail();
+                },
+                /**/
+                getVideoDetail: function () {
+                    var self = this;
+                    var paramList = {
+                        type: "post",
+                        url: "/app/articleGroup/api/getInfo",
+                        data: '{"type":"' + self.code + '","articleId":"' + self.id + '"}',
+                        contentType: "application/json",
+                        async: true,
+                        success: function (data, isError) {
+                            if (!isError) {
+                                return
+                            }
+                            $('title').text(data.data.articleInfo.articleTitle)
+                            var html = template("parentListTml", data.data);
+                            $(".subject-video").html(html);
+                            csAnimates.shareWx({
+                                title:data.data.articleInfo.articleTitle,
+                                desc:data.data.articleInfo.articleDesc
+                            }); //微信分享
+                            self.actionLink() //点击跳转当前ID专题
+                            $("img.lazy").lazyload({
+                                effect: "fadeIn",
+                                threshold: 800
+                            });
+                            self.thisVideoPlay(data.data.articleInfo)
+                            setTimeout(function () {
+                                $(".lz-readys").remove()
+                            }, 200) //关闭动画
+                            self.dianzanClass(self.id); //点赞校验 存在改ID设置active
+                            $("#video-link").click(function () {
+                                // 点赞点击+1
+                                if (!self.shareDianzan(self.id)) return;
+                                $(this).addClass("active");
+                                var num = $(this).find(".link-num").attr("data-readTime") - 0 + 1;
+                                $(this).find(".link-num").attr("data-readTime", num);
+                                num = num <= 4 ? num : (num / 10000).toFixed(1) + "万";
+                                $(this).find(".link-num").html(num);
+                                self.dianzanAjax(self.id)
+                            })
+                        }
+                    };
+                    $.ajaxPackage(paramList);
+                },
+                thisVideoPlay: function (video) {
+                    if (video.articleType == 4) {
+                        audiojs.events.ready(function () {
+                            var as = audiojs.createAll();
+                        });
+                        return;
+                    }
+                    var videoHeight = $(window).width() / (16 / 9) + "px";
+                    $(".video-pay-box").css("padding-top", videoHeight)
+                    var player = new Aliplayer({
+                        "id": "AliPlay",
+                        "source": video.videoUrl.url,
+                        "width": "100%",
+                        "height": videoHeight,
+                        "autoplay": false,
+                        "isLive": false,
+                        "cover": video.videoImg,
+                        "rePlay": false,
+                        "playsinline": false,
+                        "preload": false,
+                        "controlBarVisibility": "click",
+                        "showBarTime": 5000,
+                        "useH5Prism": true,
+                        "x5_type": "h5",
+                        "x5_fullscreen": false,
+                        "components": [{
+                            "name": 'MemoryPlayComponent',
+                            "type": AliPlayerComponent.MemoryPlayComponent,
+                        }],
+                        "skinLayout": [{
+                            "name": "bigPlayButton",
+                            "align": "blabs",
+                            "x": $(window).width() / 2 - 32,
+                            "y": 80
+                        },
+                        {
+                            "name": "H5Loading",
+                            "align": "cc"
+                        },
+                        {
+                            "name": "errorDisplay",
+                            "align": "tlabs",
+                            "x": 0,
+                            "y": 0
+                        },
+                        {
+                            "name": "infoDisplay"
+                        },
+                        {
+                            "name": "tooltip",
+                            "align": "blabs",
+                            "x": 0,
+                            "y": 56
+                        },
+                        {
+                            "name": "thumbnail"
+                        },
+                        {
+                            "name": "controlBar",
+                            "align": "blabs",
+                            "x": 0,
+                            "y": 0,
+                            "children": [{
+                                "name": "progress",
+                                "align": "blabs",
+                                "x": 0,
+                                "y": 44
+                            },
+                            {
+                                "name": "playButton",
+                                "align": "tl",
+                                "x": 15,
+                                "y": 12
+                            },
+                            {
+                                "name": "timeDisplay",
+                                "align": "tl",
+                                "x": 10,
+                                "y": 7
+                            },
+                            ]
+                        }
+                        ]
+                    }, function (player) {
+                        console.log("播放器创建了。");
+                        console.log(player)
+                    });
+                    var setLayout = function () {
+                        if ($.tools().ios || $.tools().iPhone || $.tools().iPad) return;
+                        //设置播放器容器的高度
+                        var height; //根据实际情况设置高度
+                        player.el().style.height = "100%";
+                    }
+                    window.onresize = function () {
+                        setLayout();
+                    }
+                    player.on("requestFullScreen", function () {
+                        setLayout();
+                    });
+                },
+                //点赞动画
+                dianzanClass: function (id) {
+                    var datas = $.tools().getLocal("shareGoodsdata");
+                    if (datas != null && datas.indexOf(id) > -1) {
+                        return $("#video-link").addClass("active")
+                    }
+                },
+                shareDianzan: function (id) {
+                    var isTrue = true;
+                    var datas = $.tools().getLocal("shareGoodsdata");
+                    if (datas != null) {
+                        if (datas.indexOf(id) > -1) {
+                            isTrue = false;
+                            return isTrue;
+                        } else {
+                            datas = datas + id + ",";
+                            $.tools().setLocal("shareGoodsdata",datas);
+                        }
+                        isTrue = true;
+                    } else {
+                        var data = "";
+                        data += id + ",";
+                        $.tools().setLocal("shareGoodsdata",data);
+                    }
+                    return isTrue;
+                },
+                dianzanAjax: function (id) {
+                    var paramList = {
+                        type: "get",
+                        url: "/app/article/api/laud/" + id + "?userId=",
+                        async: false,
+                        success: function (data, isError) {
+                            console.log(data);
+                            if (!isError) {
+                                return;
+                            }
+                        }
+                    };
+                    $.ajaxPackage(paramList);
+                },
+                actionLink: function () {
+                    var self = this;
+                    $(".body-container").on("click", ".video-ul .video-list", function () {
+                        var _id = $(this).attr("data-id");
+                        location.href = "./subject-video.html?id=" + _id + "&code=" + self.code + ""
+                    })
+                },
+            }
+            new ThisPage().init()
+        }
+    </script>
+
+</html>

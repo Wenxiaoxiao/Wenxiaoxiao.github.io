@@ -1,0 +1,288 @@
+
+.qusetionList{
+    background:#fff;
+    font-size:r(28);
+    select,input{-webkit-appearance: none; -moz-appearance: none; -o-appearance: none; appearance: none;}
+    *{
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+    .design-radio{
+        width:r(40);
+        height:r(40);
+        display:inline-block;
+        vertical-align: middle;
+        background:url('../images/srdz/radio.png') center no-repeat;
+        background-size:r(40) r(40);
+        margin-right:r(13);
+        cursor: pointer;
+    }
+    .active-design-radio{
+        background:url('../images/srdz/radio-chosed.png') center no-repeat;
+        background-size:r(40) r(40);
+    }
+    .design-checkbox{
+        height:r(80);
+        line-height:r(80);
+        background:#fff;
+        .checkbox{
+            width:r(48);
+            height:r(45);
+            display:inline-block;
+            vertical-align: middle;
+            background:url('../images/srdz/box.png') center no-repeat;
+            background-size:r(45) r(45);
+            margin-right:r(13);
+            cursor: pointer;
+        }
+        .active{
+            background:url('../images/srdz/box-chosed.png') center no-repeat;
+            background-size:r(48) r(45);
+            cursor: pointer;
+        }
+    }
+    .province,.city{
+        background-color:transparent;
+        border-color:transparent;
+        -webkit-appearance: none;
+    }
+    .down_select{
+        height:r(80);
+        border:r(2) solid #ccc;
+        text-indent:r(27);
+        min-width:r(200);
+        margin-left:r(20);
+        background:url('../images/srdz/select.png') r(154) center no-repeat;
+        background-size:r(24) r(14);
+    }
+    .city{
+        background:url('../images/srdz/select.png') r(300) center no-repeat;
+        background-size:r(24) r(14);
+    }
+    .city{
+        width:r(350);
+    }
+    .addRole{
+        margin-top:r(24);
+    }
+    .design-sexchose{
+        display:inline-block;
+        height:r(80);
+        line-height:r(80);
+        margin-right:r(34);
+        &>div{
+            display:inline-block;
+        }
+        .sexSelect{
+            border:r(2) solid #ccc;
+            width:r(240);
+            height:r(80);
+            text-indent: r(12);
+            background:url('../images/srdz/select.png') r(194) center no-repeat;
+            background-size:r(24) r(14);
+            input{
+                width:r(180);
+                height:r(70);
+                border:none;
+                margin:0;
+                padding:0;
+                background-color: #fff;
+                -webkit-user-select: none;
+                -webkit-text-size-adjust: 100%;
+                -webkit-tap-highlight-color: transparent;
+                outline: 0;
+                color:#000;
+            }
+        }
+    }
+    .design-agechose{
+        display:inline-block;
+        height:r(80);
+        line-height:r(80);
+        &>div{
+            display:inline-block;
+        }
+        .ageselect{
+            border:r(2) solid #ccc;
+            width:r(240);
+            height:r(80);
+            text-indent: r(12);
+            background:url('../images/srdz/select.png') r(194) center no-repeat;
+            background-size:r(24) r(14);
+            input{
+                width:r(180);
+                height:r(70);
+                border:none;
+                margin:0;
+                padding:0;
+                background-color: #fff;
+                -webkit-user-select: none;
+                -webkit-text-size-adjust: 100%;
+                -webkit-tap-highlight-color: transparent;
+                outline: 0;
+                color:#000;
+            }
+        }
+    }
+    .design-socialSecuritychose{
+        display: flex;
+        padding: r(30) 0;
+        .socialSecurityselect{
+            display: flex;
+            .socialSecurity-chose{
+                margin-left: r(20);
+            }
+        }
+    }
+    .design-rolechose{
+        display:inline-block;
+        height:r(80);
+        line-height:r(80);
+        &>div{
+            display:inline-block;
+        }
+        .roleSelect{
+            border:r(2) solid #ccc;
+            width:r(240);
+            height:r(80);
+            text-indent: r(12);
+            background:url('../images/srdz/select.png') r(194) center no-repeat;
+            background-size:r(24) r(14);
+            input{
+                width:r(180);
+                height:r(70);
+                border:none;
+                margin:0;
+                padding:0;
+                background-color: #fff;
+                -webkit-user-select: none;
+                -webkit-text-size-adjust: 100%;
+                -webkit-tap-highlight-color: transparent;
+                outline: 0;
+                color:#000;
+            }
+        }
+    }
+    .addFamilyMem{
+        width:r(347);
+        height:r(80);
+        line-height:r(80);
+        margin:0 auto;
+        margin-top:r(26);
+        color:#39a0ff;
+        border:r(2) solid #39a0ff;
+        text-indent:r(30);
+        position: relative;
+        #addMember{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+        span{
+            width:r(30);
+            height:r(30);
+            display:inline-block;
+            vertical-align: middle;
+            margin-right:r(46);
+            background:url('../images/srdz/add.png') center no-repeat;
+            background-size:r(30) r(30);
+        }
+    }
+    .design-input{
+        height:r(80);
+        border:r(2) solid #ccc;
+        width:r(690);
+        margin:0 auto;
+        display:block;
+        text-indent:r(24);
+    }
+    .design-input1{
+        height:r(80);
+        width:r(690);
+        border:r(2) solid #ccc;
+        margin:0 auto;
+        display:block;
+        text-indent:r(24);
+        background:#fff;
+        background:url('../images/srdz/select.png') r(640) center no-repeat;
+        background-size:r(24) r(14);
+    }
+    .age-chose{
+        height:r(80);
+        line-height:r(80);
+        width:r(690);
+        background:#f6f6f6;
+        padding-left:r(24);
+    }
+    .income-chose,.security-chose{
+        height:r(60);
+        line-height:r(60);
+    }
+    .require-mark{
+        color:#ff0000;
+        margin-left:r(5);
+    }
+    .booktime{
+        height:r(80);
+        line-height:r(80);
+        border:r(2) solid #ccc;
+        width:r(690);
+        margin:0 auto;
+        display:block;
+        color:#333;
+        text-indent:r(24);
+    }
+    .submit{
+        background:url("../images/srdz/btn.png");
+        background-size:r(428) r(103);
+        margin:0 auto;
+        height:r(103);
+        width:r(428);
+        margin-top:r(46);
+        margin-bottom:r(20);
+    }
+    .footer{
+        color:#999;
+        font-size:r(24);
+        line-height:r(30);
+        padding-left:r(32);
+        padding-right:r(22);
+        padding-bottom:r(22);
+    }
+    .wrapper{
+        width:100%;
+        background:#fff;
+        .center1{
+            height:r(358);
+            width:r(750);
+            &>img{
+                height:r(358);
+                width:r(750);
+            }
+        }
+        .part{
+            padding:0 r(30);
+            .title{
+                font-size:r(29);
+                color:#000;
+                font-weight:bold;
+                height:r(73);
+                line-height:r(73);
+                margin-top:r(8);
+            }
+        }
+    }
+}
+// 时间选择器 样式覆盖
+.layui-laydate-list{
+    overflow: hidden;
+    padding:0 !important
+}
+.layui-laydate-list>li{
+    width:100% !important;
+    padding:10px;
+}

@@ -1,0 +1,220 @@
+.claims {
+    // min-height: 100%;
+    background-color: #f5f5f5;
+    .memeber {
+        min-height: 100vh;
+        background: #fff;
+        padding-bottom: r(100);
+        padding-top: r(30);
+        .member-item {
+            background-color: #fff;
+            .memeber-title {
+                font-size: r(34);
+                color: #000;
+                height: r(70);
+                line-height: r(70);
+                padding-left: r(35);
+                font-weight: 900;
+                background-color: #fff;
+                span {
+                    display: inline-block;
+                    height: r(70);
+                    vertical-align: middle;
+                }
+                .iconfont {
+                    color: #cda05e;
+                    height: r(70);
+                    vertical-align: middle;
+                }
+                .icon-tubiao-huiyuan {
+                    font-size: r(36);
+                }
+                .icon-jiankang1 {
+                    font-size: r(50);
+                }
+            }
+            .member-chosen-flex {
+                width: r(640);
+                height: r(208);
+                padding: r(25);
+                background-color: #fff;
+                box-shadow: 0 0 5px #e3bf85;
+                margin: 0 auto r(30);
+                position: relative;
+                border-radius: 10px;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                -ms-border-radius: 10px;
+                -o-border-radius: 10px;
+                .meber-br {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+                .meber-flex-icon {
+                    display: block;
+                    width: r(695);
+                    height: r(208);
+                    position: absolute;
+                    top: 0;
+                }
+                .meber-txt {
+                    h5 {
+                        font-size: r(34);
+                        font-weight: 900;
+                        color: #000;
+                        line-height: r(55);
+                        display: flex;
+                        align-items: center;
+                        .iconfont {
+                            margin-left: r(15);
+                            display: inline-block;
+                            width: r(35);
+                            height: r(35);
+                            line-height: r(35);
+                            text-align: center;
+                            font-size: r(26);
+                            color: #fff;
+                            border-radius: 50%;
+                            -webkit-border-radius: 50%;
+                            -moz-border-radius: 50%;
+                            -ms-border-radius: 50%;
+                            -o-border-radius: 50%;
+                        }
+                    }
+                    p {
+                        font-size: r(28);
+                        color: #666;
+                        line-height: r(45)
+                    }
+                }
+                .p_money {
+                    padding-top: r(18);
+                    font-size: r(34);
+                    color: #ff5a00;
+                    span {
+                        font-size: r(24);
+                        color: #666;
+                        text-decoration: line-through;
+                    }
+                }
+                &.item_01 {
+                    margin-right: r(22);
+                    padding-left: r(250);
+                    .meber-flex-icon {
+                        left: r(-55);
+                    }
+                    .meber-txt {
+                        .iconfont {
+                            background-color: #f75807;
+                        }
+                    }
+                }
+                &.item_02 {
+                    margin-left: r(22);
+                    padding-right: r(250);
+                    .meber-flex-icon {
+                        right: r(-55);
+                    }
+                    .meber-txt {
+                        .iconfont {
+                            background-color: #f75807;
+                        }
+                    }
+                }
+            }
+            .meber-flex {
+                width: 100%;
+                padding: 0 r(25);
+                background-color: #fff;
+                a {
+                    position: relative;
+                    width: 100%;
+                    padding: r(20) 0;
+                    background-color: #fff;
+                    border-bottom: 1px solid #eee;
+                    display: block;
+                    &.meber-line-none {
+                        border-bottom: 0;
+                    }
+                    .meber-flex-icon {
+                        vertical-align: middle;
+                        width: r(110);
+                        height: r(110);
+                        display: inline-block;
+                    }
+                    .meber-txt {
+                        width: r(460);
+                        display: inline-block;
+                        vertical-align: middle;
+                        h5 {
+                            font-size: r(28);
+                            font-weight: 900;
+                            color: #000;
+                            white-space: nowrap;
+                            .p_money {
+                                color: #fff !important;
+                                background-color: #fe7a35;
+                                border-radius: 4px;
+                                -webkit-border-radius: 4px;
+                                -moz-border-radius: 4px;
+                                -ms-border-radius: 4px;
+                                -o-border-radius: 4px;
+                                font-size: r(24);
+                                padding: 0 3px;
+                                font-weight: 400;
+                                text-align: center;
+                            }
+                        }
+                        p {
+                            font-size: r(24);
+                            line-height: r(46);
+                            color: #666;
+                            vertical-align: middle;
+                        }
+                    }
+                    .meber-look {
+                        position: absolute;
+                        top: 50%;
+                        right: r(10);
+                        transform: translateY(-50%);
+                        font-size: r(24);
+                        display: inline-block;
+                        background-color: #e2bb7d;
+                        width: r(108);
+                        height: r(54);
+                        line-height: r(54);
+                        text-align: center;
+                        vertical-align: middle;
+                        color: #fff;
+                        border-radius: 5px;
+                        -webkit-border-radius: 5px;
+                        -moz-border-radius: 5px;
+                        -ms-border-radius: 5px;
+                        -o-border-radius: 5px;
+                    }
+                }
+            }
+        }
+    }
+    .button-list {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        a {
+            font-size: r(30);
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            background: #fda712;
+            padding: 12px 0;
+            &:nth-child(2) {
+                background: #4580f6;
+            }
+        }
+    }
+}

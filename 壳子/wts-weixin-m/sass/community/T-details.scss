@@ -1,0 +1,116 @@
+.video-details{
+
+  .box{
+    width: 100%;
+    @include remCalc(padding,20,30);
+    margin-bottom: r(30);
+    background-color: #fff;
+    .box-title{
+      @include remCalc(font-size,34);
+      @include remCalc(line-height,60);
+    }
+    h2{
+      @include remCalc(font-size,38);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: r(20);
+    }
+    .article_sup{
+      strong{
+        @include remCalc(font-size,34);
+        font-weight: 700;
+        color: #ffc30b;
+        position: relative;
+        top: 2px;
+      }
+      .retList{
+        @include remCalc(font-size,28);
+        padding-bottom: 1px;
+        //border-bottom: 1px solid #3aa9f8;
+        color: #3aa9f8;
+        margin-right: 5px;
+      }
+      .detailTime{
+        color: #91919f;
+        font-size: 12px;
+      }
+
+    }
+    .mainText{
+      width: 100%;
+      font-size: 16px;
+      @include remCalc(padding,10,0);
+      color: #3f3f3f;
+      video,img{
+        max-width: 90%;
+        display: block;
+        margin: 5px auto;
+      }
+    }
+    .videos{
+      width: 100%;
+      margin-top: r(30);
+      video{
+        @include remCalc(width,690);
+        @include remCalc(height,390);
+        background-color: #000;
+      }
+    }
+
+    .uls{
+      li{
+        @include remCalc(height,100);
+        width: 100%;
+        @include remCalc(margin,20,0);
+        padding-right: r(250);
+        position: relative;
+      }
+      .img-right{
+        position: absolute;
+        right: 0;
+        top: 0;
+        @include remCalc(width,240);
+        @include remCalc(height,100);
+      }
+    }
+  }
+  .no-padd{
+    padding: 0;
+    margin: 0;
+  }
+  ul.detail_bottom{
+    width: 100%;
+    li{
+      @include remCalc(height,80);
+      @include remCalc(line-height,80);
+      @include remCalc(font-size,32);
+      text-align: center;
+      float: left;
+      width: 33.3%;
+      border-bottom: 1px solid #eeeeee;
+      border-left: 1px solid #eeeeee;
+    }
+
+  }
+  .name{
+    margin-top: 10px;
+    padding-bottom: 20px;
+    text-align: center;
+    @include remCalc(line-height,60);
+    @include remCalc(font-size,30);
+    .logo-01{
+      vertical-align: middle;
+      display: inline-block;
+      @include remCalc(width,60);
+      margin-right: 5px;
+    }
+  }
+  .jiathis_style{
+    width: r(350);
+    @include remCalc(height,50);
+    @include remCalc(line-height,50);
+    float: right;
+  }
+
+}

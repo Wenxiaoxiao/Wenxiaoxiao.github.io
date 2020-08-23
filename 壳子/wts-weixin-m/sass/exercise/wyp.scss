@@ -1,0 +1,96 @@
+.wyp {
+    background: #f5f5f5;
+    .img_big{
+        width: 100%;
+        vertical-align: middle;
+    }
+    .title-1{
+        padding-top: r(20);
+        font-size: r(40);
+        font-weight: 900;
+        color: #000;
+        text-align: center;
+        line-height: 1.6;
+        background-color: #fff;
+    }
+    .head-tab {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        .tab {
+            display: inline-block;
+            background: #fff;
+            width: 33.33%;
+            float: left;
+            height: r(80);
+            border-bottom: 2px solid #ccc;
+            box-sizing: border-box;
+            font-size: r(32);
+            color: #000;
+            text-align: center;
+            line-height: r(80);
+            font-weight: 600;
+        }
+        .active {
+            border-bottom: 3px solid $font-color-ff6e06;
+            color: $font-color-ff6e06;
+        }
+    }
+    .case{
+        padding: 5px 5px 0;
+        background-color: #fff;
+        text-align: center;
+        >img{
+            display: block;
+        }
+    }
+    .non-height {
+        height: r(80);
+    }
+    .more-text {
+        line-height: r(80);
+        color: #000;
+        font-size: r(32);
+        font-weight: 900;
+        text-align: center;
+        background: #fff;
+    }
+    .content {
+        .des {
+            background-color: #fff;
+            padding: r(24) r(24) r(41) r(24);
+            .p1 {
+                line-height: r(50);
+                font-size: r(28);
+                color: #000;
+                text-indent: 2em;
+                b {
+                    color: $font-color-ff6e06;
+                }
+            }
+        }
+        .content-box {
+            margin: r(15) 0;
+            overflow: hidden;
+            .img_content {
+                float: left;
+                width: r(374);
+                box-sizing: border-box;
+                >img {
+                    width: 100%;
+                    vertical-align: middle;
+                }
+            }
+            .img_content_top {
+                border-bottom: r(2) solid #ccc;
+            }
+            .img_content:nth-of-type(2n+1) {
+                width: r(376);
+                border-right: r(2) solid #ccc;
+            }
+        }
+    }
+}
