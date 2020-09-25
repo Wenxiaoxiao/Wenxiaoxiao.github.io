@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 37.5px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style type="text/css">
+*{margin:0;padding:0;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
+.wxf-design-list-progress-wrapper{
+    padding-left:0.4rem;
+    background:url("./image/line.png") no-repeat;
+    /* background-repeat:repeat-y; */
+    background-size:1px 5.46667rem;/* 根据background-size来控制长度*/
+    background-position:0.57333rem 0.28rem;
+}
+.wxf-design-list-progress-wrapper-box{
+    background:url("./image/unchosed.png") no-repeat;
+    background-size:0.34667rem 0.34667rem;
+    background-position:left 0.10667rem;
+    padding-left: 0.62667rem;
+    height: 1.88rem;
+}
+.wxf-design-list-progress-wrapper-box.active{
+    background:url("./image/chosed.png") no-repeat;
+    background-size:0.34667rem 0.34667rem;
+    background-position:left 0.10667rem;
+}
+.wxf-design-list-progress-wrapper-box-progress{
+    color:#3C7CFC;
+}
+.wxf-design-list-progress-wrapper-box-progress{
+    font-size: 0.37333rem;
+    color: #3C464F;
+    line-height: 0.56rem;
+}
+.wxf-design-list-progress-wrapper-box-des{
+    font-size: 0.32rem;
+    color: #ADB6BD;
+    line-height: 0.48rem;
+}
+</style>
+<body>
+    <div class="wxf-design-list-progress-wrapper">
+        
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var wxf_listdata = [
+        {name:'阶段一',des:'2020.06.07    21:00'},
+        {name:'阶段二',des:'2020.06.06    15:30',active:true},
+        {name:'阶段三',des:'2020.06.05    12:00'},
+        {name:'阶段四',des:'2020.06.03    8:12'},
+        {name:'阶段五',des:'2020.06.03    8:12'}
+    ];
+    var wxf_str = '';
+    for(var m=0;m<wxf_listdata.length;m++){
+        var active = wxf_listdata[m].active?'<div class="wxf-design-list-progress-wrapper-box active">':'<div class="wxf-design-list-progress-wrapper-box">';
+        var tmp = active+
+           ' <div class="wxf-design-list-progress-wrapper-box-progress">'+wxf_listdata[m].name+'</div>'+
+            '<div class="wxf-design-list-progress-wrapper-box-des">'+wxf_listdata[m].des+'</div>'+
+        '</div>';
+        wxf_str = wxf_str+tmp;
+    }
+    var wxf_design_list_progress_wrapper = document.getElementsByClassName('wxf-design-list-progress-wrapper')[0];
+    wxf_design_list_progress_wrapper.innerHTML = wxf_str;
+</script>
