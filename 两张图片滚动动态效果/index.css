@@ -1,0 +1,34 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+}
+.banner{
+    width:100%;
+    height:106px;
+}
+.footer{
+    width: 100%;
+    height: 800px;
+}
+.jumbotron{
+    width: 890px;
+    position: relative;
+    margin:30px auto;
+}
+.blue-img,.red-img{
+    width: 890px;
+    height: 530px;
+}
+.jumbotron-red{
+    transition: height 0.1s;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
