@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="text/javascript" src="./jquery.min.js"></script>
+<style type="text/css">
+.richEditor_content{
+    width:500px;
+    height:400px;
+    border:1px solid #ccc;
+    padding:20px;
+}
+</style>
+<body>
+    <div class="richEditor_btns">
+        <button class="richtext-action" data-action="bold">加粗</button>
+        <button class="richtext-action" data-action="insertImage" data-args="https://img.yzcdn.cn/vant/leaf.jpg">添加图片</button>
+        <button class="richtext-action" data-action="undo">后退</button>
+        <button class="richtext-action" data-action="redo">前进</button>
+        <button class="richtext-action" data-action="insertUnorderedList">无序列表</button>
+        <button class="richtext-action" data-action="insertHorizontalRule">水平线</button>
+        <button class="richtext-action" data-action="createLink" data-args="www.baidu.com">插入链接</button>
+    </div>
+    <div contenteditable="true" class="richEditor_content"></div>
+</body>
+<script type="text/javascript">
+$('.richtext-action').on('click',function(){
+    console.log('this===',this.dataset.action);
+    let name = this.dataset.action;
+    let args = null;
+    if(name=='createLink'||name=='insertImage'){
+        args = this.dataset.args;
+    }
+    document.execCommand(name, false, args);
+})
+</script>
+</html>
