@@ -30,10 +30,7 @@
 $('.richtext-action').on('click',function(){
     console.log('this===',this.dataset.action);
     let name = this.dataset.action;
-    let args = null;
-    if(name=='createLink'||name=='insertImage'){
-        args = this.dataset.args;
-    }
+    let args = this.dataset.args;
     document.execCommand(name, false, args);
 })
 </script>
